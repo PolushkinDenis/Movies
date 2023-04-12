@@ -1,0 +1,17 @@
+@import './components/all.scss';
+@import './reset.scss';
+
+.wrapper {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    background-color: #100e19;
+    width: 100%;
+    height: 100%;
+}
+
+._container {
+    max-width: 1216px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
