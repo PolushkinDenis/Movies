@@ -3,19 +3,28 @@ import './ButtonDevice.scss'
 
 interface ButtonDeviceProps {
     href: string,
-    imgHref: string,
-    from: string,
-    title: string
+    imgHref?: string,
+    from?: string,
+    title?: string,
+    classes?: string;
 }
 
-const ButtonDevice: FC<ButtonDeviceProps> = ({from, href, imgHref, title}) => {
+const ButtonDevice: FC<ButtonDeviceProps> = ({ from, href, imgHref, title, classes }) => {
     return (
-        <a className="buttonDevice" href={href}>
-            <img src={imgHref}/>
-            <div className="buttonDevice__textBlock">
-                <div className="buttonDevice__preamble">{from}</div>
-                <div className="buttonDevice__caption">{title}</div>
-            </div>
+        <a className={classes ? `buttonDevice ${classes}` : "buttonDevice"} href={href}>
+            {imgHref && (
+                <img src={imgHref} />
+            )}
+            {(from || title) && (
+                <div className="buttonDevice__textBlock">
+                    {from && (
+                        <div className="buttonDevice__preamble">{from}</div>
+                    )}
+                    {title && (
+                        <div className="buttonDevice__caption">{title}</div>
+                    )}
+                </div>
+            )}
         </a>
     )
 }

@@ -1,5 +1,5 @@
 .iviFooter__container {
-    width: 1216px;
+    max-width: 1216px;
     margin-left: auto;
     margin-right: auto;
     color: #fff;
@@ -36,6 +36,87 @@
                         display: block;
                     }
                 }
+                .iviFooter__support {
+                    margin-top: 20px;
+                }
+                .iviFooter__supportButtons {
+                    margin-top: 12px;
+                    display: flex;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                }
+                .supportPhonesButton {
+                    width: 40px;
+                    height: 40px;
+                    border-color: #1f1b2e;
+                    border-width: 1px;
+                    border-radius: 8px;
+                    background-color: #1f1b2e;
+                    margin-left: 12px;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: #2e2844;
+                        border-color: #2e2844;
+                    }
+                    &:active {
+                        background-color: #0e0c14;
+                        border-color: #0e0c14;
+                    }
+                }
+                .iviFooter__supportPhones {
+                    visibility: hidden;
+                    width: 196px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    background-color: #1f1b2e;
+                    border-radius: 8px;
+                    position: absolute;
+                    z-index: 1;
+                    .iviFooter__phoneItem {
+                        padding: 8px 16px;
+                        display: block;
+                        &:hover {
+                            background-color: #27223a;
+                            -webkit-transition-duration: 80ms;
+                            transition-duration: 80ms;
+                        }
+                        .iviFooter__phoneNumber {
+                            color: #fff;
+                            font-size: 15px;
+                            line-height: 20px;
+                            font-weight: 600;
+                            font-style: normal;
+                        }
+                    }
+                }
+                .showed {
+                    margin-top: 12px;
+                    opacity: 1;
+                    visibility: visible;
+                    transition: all 0.15s linear;
+                }
+                .iviFooter__questions {
+                    margin-top: 24px;
+                    a {
+                        color: #fff;
+                        position: relative;
+                        opacity: 1;
+                        cursor: pointer;
+                        transition-property: color, box-shadow, opacity;
+                        text-decoration: none;
+                        transition-duration: 0.4s;
+                        font-size: 15px;
+                        &:hover {
+                            color: rgba(255, 255, 255, 0.72);
+                        }
+                    }
+                    .iviFooter__description {
+                        color: rgba(255, 255, 255, 0.48);
+                        font-weight: 400;
+                        font-size: 15px;
+                        line-height: 20px;
+                    }
+                }
                 .footerWidget {
                     display: flex;
                     -webkit-box-align: center;
@@ -45,6 +126,9 @@
                     .footerWidget__iconSection {
                         width: 104px;
                         height: 104px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         border-radius: 20px;
                         --start-gradient-color: #a869f0;
                         --end-gradient-color: #834cc2;
@@ -55,29 +139,6 @@
                             var(--end-gradient-color) 100%
                         );
                         box-shadow: 0 0 104px var(--shadow-color);
-
-                        .nbl-icon {
-                            width: 56px;
-                            height: 56px;
-                            font-size: 56px;
-                            line-height: 56px;
-                            color: #ffffff;
-                            position: relative;
-                            display: inline-block;
-                            // &::after {
-                            //     content: "\E274";
-                            //     position: absolute;
-                            //     left: 0;
-                            //     right: 0;
-                            //     top: 0;
-                            //     bottom: 0;
-                            // }
-                            // &::before{
-                            //     content: "\E273";
-                            //     display: block;
-                            //     transition-property: color;
-                            // }
-                        }
                     }
                     .footerWidget__text {
                         margin-top: 24px;
@@ -115,6 +176,11 @@
                     font-size: 15px;
                     line-height: 20px;
                     color: rgba(255, 255, 255, 0.48);
+                }
+                .iviFooter__community {
+                    display: flex;
+                    justify-content: flex-end;
+                    justify-content: flex-end;
                 }
             }
         }

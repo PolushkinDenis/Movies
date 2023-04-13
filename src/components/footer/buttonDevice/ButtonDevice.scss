@@ -59,3 +59,48 @@
         }
     }
 }
+
+.nbl-button-chatButton {
+    width: 196px;
+    height: 40px;
+    justify-content: center;
+    &:active {
+        background-color: #0e0c14;
+        border-color: #0e0c14;
+    }
+}
+.nbl-button_iconMode_onlyIcon {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    img {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+    }
+
+    &:active {
+        background-color: #0e0c14;
+        border-color: #0e0c14;
+    }
+}
+
+.nbl-knob_style_seshi {
+    width: 40px;
+    border-radius: 20px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    &:active {
+        background-color: #0e0c14;
+        border-color: #0e0c14; 
+    }
+    img {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+    }
+
+}
