@@ -13,11 +13,13 @@ const TabBar: FC = () => {
     return (
         <div className="tabBarPlate">
             <div className="nbl-tabBar">
-                <ButtonBar classes="" href="/" imgHref={my_ivi_img} title="Мой Иви"/>
-                <ButtonBar classes="" href="/" imgHref={catalog_img} title="Каталог"/>
-                <ButtonBar classes="" href="/" imgHref={search_img} title="Поиск"/>
-                <ButtonBar classes="" href="/" imgHref={tv_img} title="TV+"/>
-                <div onClick={e => setMore(!more)} className="nbl-tabBar__more"><ButtonBar classes="" href="/" imgHref={more ? more_close_img : more_img} title="Ещё"/></div>
+                <ButtonBar classes="" type="link" href="/" imgHref={my_ivi_img} title="Мой Иви"/>
+                <ButtonBar classes="" type="link" href="/" imgHref={catalog_img} title="Каталог"/>
+                <ButtonBar classes="" type="link" href="/" imgHref={search_img} title="Поиск"/>
+                <ButtonBar classes="" type="link" href="/" imgHref={tv_img} title="TV+"/>
+                <ButtonBar classes="" type="div" onClick={e => setMore(!more)} href="/" imgHref={more ? more_close_img : more_img}  title="Еще"/>
+
+                {/* <div onClick={e => setMore(!more)} className="nbl-tabBar__more"><ButtonBar classes="" href="/" imgHref={more ? more_close_img : more_img} title="Ещё"/></div> */}
             </div>
         </div>
     )

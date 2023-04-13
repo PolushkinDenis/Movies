@@ -38,7 +38,13 @@
         background-position: 50% 50%;
         opacity: 0;
     }
-
+    .nbl-tabBar__itemIcon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        
+    }
     .nbl-tabBar__itemCaption {
         max-width: 100%;
         -webkit-align-self: center;
