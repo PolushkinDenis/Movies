@@ -1,0 +1,29 @@
+.tabBarPlate {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+
+    .nbl-tabBar {
+        display: flex;
+        backdrop-filter: blur(8px);
+        background-color: rgba(31, 27, 46, 0.88);
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        height: 48px;
+        box-sizing: border-box;
+        box-shadow: 0 -20px 40px rgba(7, 5, 14, 0.24);
+
+        .nbl-tabBar__more {
+            display: flex;
+            padding-top: 4px;
+        }
+    }
+}
+@media screen and (min-width: 1160px) {
+    .tabBarPlate {
+        display: none;
+    }
+}
