@@ -5,7 +5,6 @@ import MyButton from "../UI/Button/MyButton";
 import TabBar from "../UI/Button/TabBar";
 import HeaderDropdownBody from "./HeaderDropdownBody";
 import HeaderTopMenu from "./HeaderTopMenu";
-import TabBarPlate from "./TabBarPlate";
 
 const Header: FC = () => {
   const [width, setWidth] = React.useState(window.innerWidth);
