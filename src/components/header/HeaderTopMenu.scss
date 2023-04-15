@@ -1,0 +1,41 @@
+.headerTop {
+    &__menu {
+        margin-left: 32px;
+        display: flex;
+        align-items: center;
+
+        height: 100%;
+    }
+
+
+}
+
+.headerMenu {
+    &__navigation {
+        height: 100%;
+
+    }
+
+    &__list {
+        height: 100%;
+        display: flex;
+    }
+
+    &__listItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+
+        // align-items: center;
+        &:not(:first-child) {
+            padding-left: 16px;
+        }
+
+        a {
+            color: rgba(255, 255, 255, .48);
+        }
+    }
+
+}
