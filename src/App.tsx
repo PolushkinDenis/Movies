@@ -5,7 +5,7 @@ import Header from "./components/header/Header";
 import Main from "./pages/main/Main";
 import Films from "./pages/films/Films";
 import Footer from "./components/footer/Footer";
-import TabBar from "./components/tabBar/TabBar";
+import Movies from "./pages/movies/Movies";
 
 function App() {
   return (
@@ -16,8 +16,9 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/" element={<Main />} />
           <Route path="/films" element={<Films />} />
+          <Route path="/movies" element={<Movies />} />
         </Routes>
-        <TabBar />
+
         <Footer />
       </BrowserRouter>
     </div>
