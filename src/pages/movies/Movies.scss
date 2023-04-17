@@ -1,3 +1,20 @@
+.section-advertisement {
+    background-color: #1f1b2e;
+    text-align: center;
+    height: 230px;
+    margin-top: 24px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+    font-size: 20px;
+    line-height: 21px;
+    font-weight: 700;
+    font-style: normal;
+}
+
 .headerBar {
 
     &__textInfo {
@@ -123,6 +140,13 @@
     background-color: #7e798f !important;
 }
 
+.filtersDesktop__plank-item.dropdownCenter .filterDropdown {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
 .filterDropdown {
     position: absolute;
     left: 0;
@@ -133,6 +157,10 @@
 
 
     &_genres {
+        width: 630px;
+    }
+
+    &_countries {
         width: 630px;
     }
 

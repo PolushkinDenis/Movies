@@ -47,13 +47,26 @@ function Movies() {
   }
 
   function clickToggleFilter(e: any) {
-    setClickSwitchFilter("Genres");
+    if (e.target.closest(".flag-Genres")) {
+      if (clickSwitchFilter === "Genres") {
+        setClickSwitchFilter("");
+      } else {
+        setClickSwitchFilter("Genres");
+      }
+    } else if (e.target.closest(".flag-Countries")) {
+      if (clickSwitchFilter === "Countries") {
+        setClickSwitchFilter("");
+      } else {
+        setClickSwitchFilter("Countries");
+      }
+    }
   }
 
   return (
     <div>
       <main className="main">
         <div className="main__container _container">
+          <section className="section-advertisement">Реклама</section>
           <section className="headerBar">
             <div className="headerBar__textInfo">
               <div className="headerBar__title">Фильмы смотреть онлайн</div>
@@ -163,8 +176,14 @@ function Movies() {
           <section className="filtersDesktop">
             <div className="filtersDesktop__content">
               <div className="filtersDesktop__plank-list">
-                <div className="filtersDesktop__plank-item">
-                  <div className="filtersDesktop__plank isActive">
+                <div className="filtersDesktop__plank-item flag-Genres">
+                  <div
+                    className={
+                      clickSwitchFilter === "Genres"
+                        ? "filtersDesktop__plank isActive"
+                        : "filtersDesktop__plank"
+                    }
+                  >
                     <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                       <div className="nbl-plank__textWrapper">
                         <div className="nbl-plank__title">Жанры</div>
@@ -173,22 +192,23 @@ function Movies() {
                         <IoIosArrowDown></IoIosArrowDown>
                       </div>
                     </MyButton>
-                    <div className="filterDropdown filterDropdown_genres">
-                      <div className="filterDropdown__inner">
-                        <div className="filterDropdown__content">
-                          <div className="filterDropdown__list-container">
-                            <ul className="filterDropdown__list">
-                              {janr.map((item, index) => {
-                                return (
-                                  <li
-                                    key={item + "-" + index}
-                                    className="filterDropdown__item nbl-button__primaryText"
-                                  >
-                                    {item}
-                                  </li>
-                                );
-                              })}
-                              {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
+                    {clickSwitchFilter === "Genres" ? (
+                      <div className="filterDropdown filterDropdown_genres">
+                        <div className="filterDropdown__inner">
+                          <div className="filterDropdown__content">
+                            <div className="filterDropdown__list-container">
+                              <ul className="filterDropdown__list">
+                                {janr.map((item, index) => {
+                                  return (
+                                    <li
+                                      key={item + "-" + index}
+                                      className="filterDropdown__item nbl-button__primaryText"
+                                    >
+                                      {item}
+                                    </li>
+                                  );
+                                })}
+                                {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
                           <label className="filterDropdown__label">
                             <input
                               type="checkbox"
@@ -198,22 +218,65 @@ function Movies() {
                             <div className="filterDropdown__checkbox"></div>
                           </label>
                         </li> */}
-                            </ul>
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
-                <div className="filtersDesktop__plank-item">
-                  <div className="filtersDesktop__plank">
-                    <MyButton classes="nbl-plank">
+                <div className="filtersDesktop__plank-item flag-Countries">
+                  <div
+                    className={
+                      clickSwitchFilter === "Countries"
+                        ? "filtersDesktop__plank isActive"
+                        : "filtersDesktop__plank"
+                    }
+                  >
+                    <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                       <div className="nbl-plank__textWrapper">
                         <div className="nbl-plank__title">Страны</div>
                       </div>
                       <div className="nbl-plank__icon">
                         <IoIosArrowDown></IoIosArrowDown>
                       </div>
+                      {clickSwitchFilter === "Countries" ? (
+                        <div className="filterDropdown filterDropdown_countries">
+                          <div className="filterDropdown__inner">
+                            <div className="filterDropdown__content">
+                              <div className="filterDropdown__list-container">
+                                <ul className="filterDropdown__list">
+                                  {janr.map((item, index) => {
+                                    return (
+                                      <li
+                                        key={item + "-" + index}
+                                        className="filterDropdown__item nbl-button__primaryText"
+                                      >
+                                        {item}
+                                      </li>
+                                    );
+                                  })}
+                                  {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
+                          <label className="filterDropdown__label">
+                            <input
+                              type="checkbox"
+                              className="filterDropdown__input"
+                            />
+                            <div className="filterDropdown__input-text">Артхаус</div>
+                            <div className="filterDropdown__checkbox"></div>
+                          </label>
+                        </li> */}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
                     </MyButton>
                   </div>
                 </div>
