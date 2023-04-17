@@ -1,0 +1,15 @@
+.contentPage {
+    &__container {
+        &-inner {
+            display: flex;
+        }
+    }
+    &__player {
+        margin-right: 44px;
+    }
+}
+
+video {
+    width: 719px;
+    height: 404.5px;
+}
