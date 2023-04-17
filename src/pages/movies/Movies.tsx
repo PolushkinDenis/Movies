@@ -39,10 +39,17 @@ const janr = [
 ];
 
 function Movies() {
-  const [conClickToggle, setConClickToggle] = React.useState(false);
+  const [onClickToggle, setOnClickToggle] = React.useState(false);
+  // Countries,Genres
+  const [clickSwitchFilter, setClickSwitchFilter] = React.useState("");
   function clickToggle(e: any) {
-    setConClickToggle(!conClickToggle);
+    setOnClickToggle(!onClickToggle);
   }
+
+  function clickToggleFilter(e: any) {
+    setClickSwitchFilter("Genres");
+  }
+
   return (
     <div>
       <main className="main">
@@ -54,7 +61,7 @@ function Movies() {
                 <div className="clause__text">
                   <div
                     className={
-                      conClickToggle
+                      onClickToggle
                         ? "clause__text-inner"
                         : "clause__text-inner hidden-children"
                     }
@@ -148,7 +155,7 @@ function Movies() {
                   </div>
                 </div>
                 <span onClick={clickToggle} className="clause__toggle">
-                  {conClickToggle ? "Свернуть" : "Развернуть"}
+                  {onClickToggle ? "Свернуть" : "Развернуть"}
                 </span>
               </div>
             </div>
@@ -157,8 +164,8 @@ function Movies() {
             <div className="filtersDesktop__content">
               <div className="filtersDesktop__plank-list">
                 <div className="filtersDesktop__plank-item">
-                  <div className="filtersDesktop__plank">
-                    <MyButton classes="nbl-plank">
+                  <div className="filtersDesktop__plank isActive">
+                    <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                       <div className="nbl-plank__textWrapper">
                         <div className="nbl-plank__title">Жанры</div>
                       </div>
@@ -199,14 +206,16 @@ function Movies() {
                   </div>
                 </div>
                 <div className="filtersDesktop__plank-item">
-                  <MyButton classes="nbl-plank">
-                    <div className="nbl-plank__textWrapper">
-                      <div className="nbl-plank__title">Страны</div>
-                    </div>
-                    <div className="nbl-plank__icon">
-                      <IoIosArrowDown></IoIosArrowDown>
-                    </div>
-                  </MyButton>
+                  <div className="filtersDesktop__plank">
+                    <MyButton classes="nbl-plank">
+                      <div className="nbl-plank__textWrapper">
+                        <div className="nbl-plank__title">Страны</div>
+                      </div>
+                      <div className="nbl-plank__icon">
+                        <IoIosArrowDown></IoIosArrowDown>
+                      </div>
+                    </MyButton>
+                  </div>
                 </div>
               </div>
               <div className="filtersDesktop__button-container"></div>

@@ -113,6 +113,16 @@
     }
 }
 
+.filtersDesktop__plank.isActive .nbl-plank__icon {
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.filtersDesktop__plank.isActive .nbl-plank {
+    background-color: #7e798f !important;
+}
+
 .filterDropdown {
     position: absolute;
     left: 0;
