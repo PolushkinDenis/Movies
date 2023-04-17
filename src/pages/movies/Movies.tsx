@@ -221,7 +221,6 @@ function Movies() {
                 </div>
                 <div className="gallery__viewport-inner">
                   <NewMoviesSlider />
-
                 </div>
               </div>
             </div>

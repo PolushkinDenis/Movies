@@ -1,6 +1,39 @@
 .slick {
-
-    &-list {
-        transform: translate3d(0,0,0);
+    // &-list {
+    //     transform: translate3d(0,0,0);
+    // }
+    &-track {
+        width: 100%;
+        padding-right: 24px;
     }
+    &__link {
+        width: 25%;
+        // padding-right: 24px;
+    }
+    &-slide {
+        .nbl-poster {
+            &__image {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.swiper-button-next, .swiper-button-prev {
+    &:hover {
+        &::after {
+            color: #ffffff;
+        }
+    }
+    &::after {
+        transform-origin: 50% 50%;
+        color: #bcbcbf;
+        font-size: 22px !important
+    }
+}
+.swiper-button-next {
+    margin-right: -15px;
+}
+.swiper-button-prev {
+    margin-left: -10px;
 }
