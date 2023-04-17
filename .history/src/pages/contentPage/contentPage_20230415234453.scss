@@ -1,0 +1,27 @@
+.contentPage {
+    &__container {
+        &-inner {
+            display: flex;
+        }
+    }
+    &__player {
+        margin-right: 44px;
+        &-userButtons {
+            display: flex;
+            align-items: center;
+            .userButton-trailer {
+                display: flex;
+                align-items: center;
+                font-size: 15px;
+                line-height: 20px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+video {
+    width: 719px;
+    height: 404.5px;
+    margin-bottom: 24px;
+}

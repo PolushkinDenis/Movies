@@ -6,6 +6,7 @@ import Main from "./pages/main/Main";
 import Films from "./pages/films/Films";
 import Footer from "./components/footer/Footer";
 import Movies from "./pages/movies/Movies";
+import ContentPage from "./pages/contentPage/ContentPage";
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/films" element={<Films />} />
           <Route path="/movies" element={<Movies />} />
+          <Route path="/film" element={<ContentPage />} />
         </Routes>
-
         <Footer />
       </BrowserRouter>
     </div>

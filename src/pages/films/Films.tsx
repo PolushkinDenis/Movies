@@ -1,12 +1,7 @@
-import React, {FC} from 'react'
-
+import React, { FC } from 'react';
 
 const Films: FC = () => {
-    return (
-        <div>
-            Films
-        </div>
-    )
-}
+  return <div>Films</div>;
+};
 
-export default Films
+export default Films;
