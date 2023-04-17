@@ -1,0 +1,18 @@
+.contentPage {
+    &__container {
+        &-inner {
+            display: flex;
+        }
+    }
+    &__player {
+        margin-right: 44px;
+        &-userButtons {
+            display: flex;
+        }
+    }
+}
+
+video {
+    width: 719px;
+    height: 404.5px;
+}
