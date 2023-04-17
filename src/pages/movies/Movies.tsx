@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { testSlice } from "../../store/slices/testSlice";
 import { IoIosArrowDown } from "react-icons/io";
 import "./Movies.scss";
+import NewMoviesSlider from "../../components/newMoviesSlider/NewMoviesSlider";
 
 const janr = [
   "аниме",
@@ -210,6 +211,19 @@ function Movies() {
                 </div>
               </div>
               <div className="filtersDesktop__button-container"></div>
+            </div>
+          </section>
+          <section className="pageSection">
+            <div className="pageSection__container">
+              <div className="gallery">
+                <div className="gallery__header">
+                  <span className="gallery__headerLink">Фильмы-новинки</span>
+                </div>
+                <div className="gallery__viewport-inner">
+                  <NewMoviesSlider />
+
+                </div>
+              </div>
             </div>
           </section>
         </div>

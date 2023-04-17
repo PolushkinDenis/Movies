@@ -1,5 +1,4 @@
 .headerBar {
-
     &__textInfo {
         margin-top: 24px;
     }
@@ -20,8 +19,8 @@
     // width: 75%;
     color: #a5a1b2;
 
-    &_is-native {}
-
+    &_is-native {
+    }
 
     &__text {
         font-weight: 400;
@@ -45,7 +44,7 @@
 
     &__toggle {
         font-weight: 500;
-        color: rgba(255, 255, 255, .88);
+        color: rgba(255, 255, 255, 0.88);
         -webkit-transition: color 400ms, -webkit-transform 400ms;
         -o-transition: color 400ms, -o-transform 400ms;
         transition: transform 400ms, color 400ms;
@@ -97,7 +96,6 @@
     }
 
     &__plank-item {
-
         width: 20%;
 
         -moz-box-sizing: border-box;
@@ -114,13 +112,13 @@
 }
 
 .filterDropdown {
+    display: none; // Удалить
     position: absolute;
     left: 0;
     right: 0;
     top: 100%;
     padding-top: 4px;
     z-index: 1;
-
 
     &_genres {
         width: 630px;
@@ -129,20 +127,20 @@
     &__inner {
         background: #312b45;
         border-radius: 4px;
-        box-shadow: 0 16px 32px rgba(7, 5, 14, .4);
+        box-shadow: 0 16px 32px rgba(7, 5, 14, 0.4);
     }
 
     &__content {
         padding: 16px;
-
     }
 
-    &__list-container {}
+    &__list-container {
+    }
 
     &__list {
         margin-top: 16px;
         padding-top: 4px;
-        border-top: 1px solid rgba(255, 255, 255, .32);
+        border-top: 1px solid rgba(255, 255, 255, 0.32);
 
         display: grid;
         grid-column-gap: 40px;
@@ -151,5 +149,57 @@
 
     &_item {
         margin-top: 12px;
+    }
+}
+
+.pageSection {
+    &__container {
+        position: relative;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        width: auto;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    @media screen and (min-width: 272px) and (max-width: 599px) {
+        &__container {
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+    }
+}
+
+.gallery {
+    position: relative;
+
+    &__header {
+        padding-left: 12px;
+        padding-right: 12px;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        transition: padding-right 400ms;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+    }
+    @media screen and (max-width: 599px) {
+        &__header {
+            padding-left: 8px;
+            padding-right: 8px; 
+        }
+    }
+   
+    &__headerLink {
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 700;
+        color: #fff;
+    }
+    @media screen and (max-width: 599px) {
+        &__headerLink {
+            font-size: 20px; 
+        }  
     }
 }
