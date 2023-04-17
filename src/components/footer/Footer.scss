@@ -1,0 +1,221 @@
+.iviFooter__container {
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+
+    .iviFooter__container-inner {
+        .iviFooter__content {
+            display: flex;
+            padding-top: 48px;
+            padding-bottom: 48px;
+            position: relative;
+
+            &::before {
+                content: "";
+                background-color: rgba(255, 255, 255, 0.16);
+                height: 1px;
+                position: absolute;
+                left: 12px;
+                right: 12px;
+                top: 0;
+            }
+
+            .iviFooter__column {
+                width: 25%;
+                padding-left: 12px;
+                padding-right: 12px;
+
+                .iviFooter__title {
+                    display: block;
+                    font-weight: 700;
+                    color: #fff;
+                    margin-bottom: 8px;
+                }
+
+                .iviFooter__description {
+                    font-size: 15px;
+                    line-height: 20px;
+                    color: rgba(255, 255, 255, 0.48);
+
+                    span {
+                        display: block;
+                    }
+                }
+
+                .iviFooter__support {
+                    margin-top: 20px;
+                }
+
+                .iviFooter__supportButtons {
+                    margin-top: 12px;
+                    display: flex;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                }
+
+                .supportPhonesButton {
+                    width: 40px;
+                    height: 40px;
+                    border-color: #1f1b2e;
+                    border-width: 1px;
+                    border-radius: 8px;
+                    background-color: #1f1b2e;
+                    margin-left: 12px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #2e2844;
+                        border-color: #2e2844;
+                    }
+
+                    &:active {
+                        background-color: #0e0c14;
+                        border-color: #0e0c14;
+                    }
+                }
+
+                .iviFooter__supportPhones {
+                    visibility: hidden;
+                    width: 196px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    background-color: #1f1b2e;
+                    border-radius: 8px;
+                    position: absolute;
+                    z-index: 1;
+
+                    .iviFooter__phoneItem {
+                        padding: 8px 16px;
+                        display: block;
+
+                        &:hover {
+                            background-color: #27223a;
+                            -webkit-transition-duration: 80ms;
+                            transition-duration: 80ms;
+                        }
+
+                        .iviFooter__phoneNumber {
+                            color: #fff;
+                            font-size: 15px;
+                            line-height: 20px;
+                            font-weight: 600;
+                            font-style: normal;
+                        }
+                    }
+                }
+
+                .showed {
+                    margin-top: 12px;
+                    opacity: 1;
+                    visibility: visible;
+                    transition: all 0.15s linear;
+                }
+
+                .iviFooter__questions {
+                    margin-top: 24px;
+
+                    a {
+                        color: #fff;
+                        position: relative;
+                        opacity: 1;
+                        cursor: pointer;
+                        transition-property: color, box-shadow, opacity;
+                        text-decoration: none;
+                        transition-duration: 0.4s;
+                        font-size: 15px;
+
+                        &:hover {
+                            color: rgba(255, 255, 255, 0.72);
+                        }
+                    }
+
+                    .iviFooter__description {
+                        color: rgba(255, 255, 255, 0.48);
+                        font-weight: 400;
+                        font-size: 15px;
+                        line-height: 20px;
+                    }
+                }
+
+                .footerWidget {
+                    display: flex;
+                    -webkit-box-align: center;
+                    align-items: center;
+                    flex-direction: column;
+                    cursor: pointer;
+
+                    .footerWidget__iconSection {
+                        width: 104px;
+                        height: 104px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 20px;
+                        --start-gradient-color: #a869f0;
+                        --end-gradient-color: #834cc2;
+                        --shadow-color: #a869f0;
+                        background: linear-gradient(180deg,
+                                var(--start-gradient-color) 0%,
+                                var(--end-gradient-color) 100%);
+                        box-shadow: 0 0 104px var(--shadow-color);
+                    }
+
+                    .footerWidget__text {
+                        margin-top: 24px;
+                        font-size: 15px;
+                        line-height: 20px;
+                        color: #a5a1b2;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .iviFooter__certificateLinkWrapper {
+                margin-top: 8px;
+                background-image: linear-gradient(-45deg, #c447ff, #ea003d);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+                .iviFooter__certificateLink {
+                    font-size: 15px;
+                    line-height: 20px;
+                    font-weight: 500;
+                }
+            }
+
+            .iviFooter__column_wide {
+                padding-left: 12px;
+                padding-right: 12px;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                width: 50%;
+
+                .iviFooter__stores {
+                    display: flex;
+                    position: relative;
+                }
+
+                .iviFooter__copyrights {
+                    margin-top: 32px;
+                    font-size: 15px;
+                    line-height: 20px;
+                    color: rgba(255, 255, 255, 0.48);
+                }
+
+                .iviFooter__community {
+                    display: flex;
+                    justify-content: flex-end;
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1159px) {
+    .iviFooter__container {
+        display: none;
+    }
+}

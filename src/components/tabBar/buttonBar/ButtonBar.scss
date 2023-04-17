@@ -1,0 +1,72 @@
+.nbl-tabBar__item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    max-width: 120px;
+    padding-top: 8px;
+    padding-bottom: 4px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    cursor: pointer;
+    -webkit-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+
+    .tabBar__itemGlowImage {
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: 0;
+        width: 64px;
+        height: 48px;
+        background-image: url(https://solea-parent.dfs.ivi.ru/picture/7e798f,7e798f/tabBarGlow.svg);
+        background-size: 64px 48px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        opacity: 0;
+    }
+    .nbl-tabBar__itemIcon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        
+    }
+    .nbl-tabBar__itemCaption {
+        max-width: 100%;
+        -webkit-align-self: center;
+        -ms-flex-item-align: center;
+        align-self: center;
+        font-size: 10px;
+        line-height: 12px;
+        font-weight: 500;
+        font-style: normal;
+        height: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 4px;
+        color: #a5a1b2;
+    }
+}
+.nbl-tabBar__item_selected {
+    .nbl-tabBar__itemGlowImage {
+        opacity: 1;
+    }
+    .nbl-tabBar__itemCaption {
+        color: #fff;
+    }
+}

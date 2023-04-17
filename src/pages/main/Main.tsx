@@ -1,22 +1,24 @@
-import React, {FC, useEffect} from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import {testSlice} from '../../store/slices/testSlice'
-
+import React, { FC, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { testSlice } from "../../store/slices/testSlice";
+import "./Main.scss";
 
 const Main: FC = () => {
-    const testData = useAppSelector(state => state.testReducer.test)
-    const dispatch = useAppDispatch()
+  const testData = useAppSelector((state) => state.testReducer.test);
+  const dispatch = useAppDispatch();
 
-    console.log(testData)
+  console.log(testData);
 
-    useEffect(() => {
-        dispatch(testSlice.actions.addTest())
-    }, [])
-    return (
-        <div>
-            Main
-        </div>
-    )
-}
+  useEffect(() => {
+    dispatch(testSlice.actions.addTest());
+  }, []);
+  ////
 
-export default Main
+  return (
+    <div>
+      <main className="main"></main>
+    </div>
+  );
+};
+
+export default Main;

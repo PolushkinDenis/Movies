@@ -30,8 +30,11 @@
         "web-vitals": "^2.1.4"
       },
       "devDependencies": {
-        "@types/react": "^18.0.35",
+<<<<<<< HEAD
+        "@types/react": "^18.0.35"
+=======
         "@types/react-transition-group": "^4.4.5"
+>>>>>>> main
       }
     },
     "node_modules/@adobe/css-tools": {

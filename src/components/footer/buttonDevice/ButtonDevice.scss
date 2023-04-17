@@ -1,0 +1,106 @@
+.buttonDevice {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-radius: 8px;
+    transition-property: background-color;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    background-color: #1f1b2e;
+
+    &:hover {
+        background-color: #28233b;
+    }
+    &:hover:not(:active) {
+        -webkit-transition-duration: 80ms;
+        transition-duration: 80ms;
+    }
+
+    &:active {
+        background-color: #161321;
+    }
+
+    &:not(:first-child) {
+        margin-left: 12px;
+    }
+
+    img {
+        margin-left: 12px;
+        margin-right: 8px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .buttonDevice__textBlock {
+        margin-right: 12px;
+
+        .buttonDevice__preamble,
+        .buttonDevice__caption {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: 500;
+        }
+
+        .buttonDevice__preamble {
+            font-size: 10px;
+            line-height: 12px;
+            height: 12px;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .buttonDevice__caption {
+            color: #fff;
+            font-size: 15px;
+            line-height: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.nbl-button-chatButton {
+    width: 196px;
+    height: 40px;
+    justify-content: center;
+    &:active {
+        background-color: #0e0c14;
+        border-color: #0e0c14;
+    }
+}
+.nbl-button_iconMode_onlyIcon {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    img {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+    }
+
+    &:active {
+        background-color: #0e0c14;
+        border-color: #0e0c14;
+    }
+}
+
+.nbl-knob_style_seshi {
+    width: 40px;
+    border-radius: 20px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    &:active {
+        background-color: #0e0c14;
+        border-color: #0e0c14; 
+    }
+    img {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+    }
+
+}
