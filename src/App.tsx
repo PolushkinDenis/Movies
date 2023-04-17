@@ -6,6 +6,7 @@ import Main from "./pages/main/Main";
 import Films from "./pages/films/Films";
 import Footer from "./components/footer/Footer";
 import TabBar from "./components/tabBar/TabBar";
+import Person from "./pages/person/Person";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/" element={<Main />} />
           <Route path="/films" element={<Films />} />
+          <Route path="/person/:name" element={<Person />} />
         </Routes>
         <TabBar />
         <Footer />
