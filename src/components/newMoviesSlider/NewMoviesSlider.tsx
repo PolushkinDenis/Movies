@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import { Link } from "react-router-dom";
 
 const newFilmsData = [
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: { premieres_img }, title: "Премьеры на Иви"},
@@ -53,9 +54,9 @@ const NewMoviesSlider: FC = () => {
                     <div className="slick__link" >
                         <div className="slick-slide">
                             <div className="nbl-poster">
-                                <a href={film.href}>
+                                <Link to={film.href}>
                                     <img className="nbl-poster__image" src={film.imgHref.premieres_img} />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
