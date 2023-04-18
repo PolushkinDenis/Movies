@@ -1,65 +1,12 @@
 import React, { FC, useEffect } from "react";
-import MyButton from "../../components/UI/Button/MyButton";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { testSlice } from "../../store/slices/testSlice";
-import { IoIosArrowDown } from "react-icons/io";
-import "./Movies.scss";
 
-const janr = [
-  "аниме",
-  "биографический",
-  "боевик",
-  "вестерн",
-  "военный",
-  "детектив",
-  "детский",
-  "документальный",
-  "драма",
-  "исторический",
-  "кинокомикс",
-  "комедия",
-  "концерт",
-  "короткометражный",
-  "криминал",
-  "мелодрама",
-  "мистика",
-  "музыка",
-  "мультфильм",
-  "мюзикл",
-  "научный",
-  "нуар",
-  "приключения",
-  "реалити-шоу",
-  "семейный",
-  "спорт",
-  "триллер",
-  "ужасы",
-  "фантастика",
-  "фэнтези",
-];
+import "./Movies.scss";
+import FiltersDesktop from "../../components/main/filter/FiltersDesktop";
 
 function Movies() {
   const [onClickToggle, setOnClickToggle] = React.useState(false);
-  // Countries,Genres
-  const [clickSwitchFilter, setClickSwitchFilter] = React.useState("");
   function clickToggle(e: any) {
     setOnClickToggle(!onClickToggle);
-  }
-
-  function clickToggleFilter(e: any) {
-    if (e.target.closest(".flag-Genres")) {
-      if (clickSwitchFilter === "Genres") {
-        setClickSwitchFilter("");
-      } else {
-        setClickSwitchFilter("Genres");
-      }
-    } else if (e.target.closest(".flag-Countries")) {
-      if (clickSwitchFilter === "Countries") {
-        setClickSwitchFilter("");
-      } else {
-        setClickSwitchFilter("Countries");
-      }
-    }
   }
 
   return (
@@ -173,117 +120,7 @@ function Movies() {
               </div>
             </div>
           </section>
-          <section className="filtersDesktop">
-            <div className="filtersDesktop__content">
-              <div className="filtersDesktop__plank-list">
-                <div className="filtersDesktop__plank-item flag-Genres">
-                  <div
-                    className={
-                      clickSwitchFilter === "Genres"
-                        ? "filtersDesktop__plank isActive"
-                        : "filtersDesktop__plank"
-                    }
-                  >
-                    <MyButton onClick={clickToggleFilter} classes="nbl-plank">
-                      <div className="nbl-plank__textWrapper">
-                        <div className="nbl-plank__title">Жанры</div>
-                      </div>
-                      <div className="nbl-plank__icon">
-                        <IoIosArrowDown></IoIosArrowDown>
-                      </div>
-                    </MyButton>
-                    {clickSwitchFilter === "Genres" ? (
-                      <div className="filterDropdown filterDropdown_genres">
-                        <div className="filterDropdown__inner">
-                          <div className="filterDropdown__content">
-                            <div className="filterDropdown__list-container">
-                              <ul className="filterDropdown__list">
-                                {janr.map((item, index) => {
-                                  return (
-                                    <li
-                                      key={item + "-" + index}
-                                      className="filterDropdown__item nbl-button__primaryText"
-                                    >
-                                      {item}
-                                    </li>
-                                  );
-                                })}
-                                {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
-                          <label className="filterDropdown__label">
-                            <input
-                              type="checkbox"
-                              className="filterDropdown__input"
-                            />
-                            <div className="filterDropdown__input-text">Артхаус</div>
-                            <div className="filterDropdown__checkbox"></div>
-                          </label>
-                        </li> */}
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </div>
-                <div className="filtersDesktop__plank-item flag-Countries">
-                  <div
-                    className={
-                      clickSwitchFilter === "Countries"
-                        ? "filtersDesktop__plank isActive"
-                        : "filtersDesktop__plank"
-                    }
-                  >
-                    <MyButton onClick={clickToggleFilter} classes="nbl-plank">
-                      <div className="nbl-plank__textWrapper">
-                        <div className="nbl-plank__title">Страны</div>
-                      </div>
-                      <div className="nbl-plank__icon">
-                        <IoIosArrowDown></IoIosArrowDown>
-                      </div>
-                      {clickSwitchFilter === "Countries" ? (
-                        <div className="filterDropdown filterDropdown_countries">
-                          <div className="filterDropdown__inner">
-                            <div className="filterDropdown__content">
-                              <div className="filterDropdown__list-container">
-                                <ul className="filterDropdown__list">
-                                  {janr.map((item, index) => {
-                                    return (
-                                      <li
-                                        key={item + "-" + index}
-                                        className="filterDropdown__item nbl-button__primaryText"
-                                      >
-                                        {item}
-                                      </li>
-                                    );
-                                  })}
-                                  {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
-                          <label className="filterDropdown__label">
-                            <input
-                              type="checkbox"
-                              className="filterDropdown__input"
-                            />
-                            <div className="filterDropdown__input-text">Артхаус</div>
-                            <div className="filterDropdown__checkbox"></div>
-                          </label>
-                        </li> */}
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        ""
-                      )}
-                    </MyButton>
-                  </div>
-                </div>
-              </div>
-              <div className="filtersDesktop__button-container"></div>
-            </div>
-          </section>
+          <FiltersDesktop></FiltersDesktop>
         </div>
       </main>
     </div>
