@@ -18,7 +18,7 @@ const FooterLinks = ({ title, links }: FooterLinksProps) => {
           <li key={link.href}>
             <Link to={link.href}>
               <MyButton
-                classes={"nbl-button__primaryText"}
+                classes={"nbl-button__primaryText nbl-button__linkItem"}
                 children={link.name}
               />
             </Link>

@@ -1,25 +1,21 @@
 .slick {
-    // &-list {
-    //     transform: translate3d(0,0,0);
-    // }
-    &-track {
-        width: 100%;
-        padding-right: 24px;
-    }
-    &__link {
-        width: 25%;
-        // padding-right: 24px;
-    }
+   
     &-slide {
         .nbl-poster {
             &__image {
-                width: 100%;
+                padding: 8px;
+                width: 83%;
+                border-radius: 10px;
+                background-color: #1f1b2e;
             }
         }
     }
 }
 
 .swiper-button-next, .swiper-button-prev {
+    &:active {
+        transform: scale(.8) !important;
+    }
     &:hover {
         &::after {
             color: #ffffff;
@@ -31,9 +27,29 @@
         font-size: 22px !important
     }
 }
+
+.swiper-wrapper {
+    margin-left: 20px;
+}
 .swiper-button-next {
     margin-right: -15px;
+    top: var(--swiper-navigation-top-offset,40%) !important;
 }
 .swiper-button-prev {
-    margin-left: -10px;
+    margin-left: -15px;
+    top: var(--swiper-navigation-top-offset,40%) !important;
+}
+.swiper-button-disabled {
+    display: none !important;
+}
+
+.miniPromoBlockCustom__title {
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 600;
+    font-style: normal;
 }
