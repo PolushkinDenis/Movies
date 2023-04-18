@@ -1,46 +1,18 @@
 import React from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { GrClose } from "react-icons/gr";
+import { BsCheckLg } from "react-icons/bs";
 import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
-const janr = [
-  "аниме",
-  "биографический",
-  "боевик",
-  "вестерн",
-  "военный",
-  "детектив",
-  "детский",
-  "документальный",
-  "драма",
-  "исторический",
-  "кинокомикс",
-  "комедия",
-  "концерт",
-  "короткометражный",
-  "криминал",
-  "мелодрама",
-  "мистика",
-  "музыка",
-  "мультфильм",
-  "мюзикл",
-  "научный",
-  "нуар",
-  "приключения",
-  "реалити-шоу",
-  "семейный",
-  "спорт",
-  "триллер",
-  "ужасы",
-  "фантастика",
-  "фэнтези",
-];
+import FilterDropdown from "./FilterDropdown";
 
 function FiltersDesktop() {
   // Countries,Genres,Rating,Evaluations
-  const [clickSwitchFilter, setClickSwitchFilter] = React.useState("");
-  const [rangeValue, setRangeValue] = React.useState(7.5);
-  const [evaluationsValue, setEvaluationsValue] = React.useState(0);
+  const [clickSwitchFilter, setClickSwitchFilter] = React.useState<string>("");
+  const [rangeValue, setRangeValue] = React.useState<number>(7.5);
+  const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
+  const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
+  const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
   function shiftRangeValue(e: any) {
     setRangeValue(e.target.value);
   }
@@ -75,6 +47,7 @@ function FiltersDesktop() {
       }
     }
   }
+
   return (
     <section className="filtersDesktop">
       <div className="filtersDesktop__content">
@@ -96,36 +69,11 @@ function FiltersDesktop() {
                 </div>
               </MyButton>
               {clickSwitchFilter === "Genres" ? (
-                <div className="filterDropdown filterDropdown_genres">
-                  <div className="filterDropdown__inner">
-                    <div className="filterDropdown__content">
-                      <div className="filterDropdown__list-container">
-                        <ul className="filterDropdown__list">
-                          {janr.map((item, index) => {
-                            return (
-                              <li
-                                key={item + "-" + index}
-                                className="filterDropdown__item nbl-button__primaryText"
-                              >
-                                {item}
-                              </li>
-                            );
-                          })}
-                          {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
-                          <label className="filterDropdown__label">
-                            <input
-                              type="checkbox"
-                              className="filterDropdown__input"
-                            />
-                            <div className="filterDropdown__input-text">Артхаус</div>
-                            <div className="filterDropdown__checkbox"></div>
-                          </label>
-                        </li> */}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <FilterDropdown
+                  classes={"genres"}
+                  meaningActiv={activeGenres}
+                  funcActiv={setActiveGenres}
+                ></FilterDropdown>
               ) : (
                 ""
               )}
@@ -148,36 +96,11 @@ function FiltersDesktop() {
                 </div>
               </MyButton>
               {clickSwitchFilter === "Countries" ? (
-                <div className="filterDropdown filterDropdown_countries">
-                  <div className="filterDropdown__inner">
-                    <div className="filterDropdown__content">
-                      <div className="filterDropdown__list-container">
-                        <ul className="filterDropdown__list">
-                          {janr.map((item, index) => {
-                            return (
-                              <li
-                                key={item + "-" + index}
-                                className="filterDropdown__item nbl-button__primaryText"
-                              >
-                                {item}
-                              </li>
-                            );
-                          })}
-                          {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
-                          <label className="filterDropdown__label">
-                            <input
-                              type="checkbox"
-                              className="filterDropdown__input"
-                            />
-                            <div className="filterDropdown__input-text">Артхаус</div>
-                            <div className="filterDropdown__checkbox"></div>
-                          </label>
-                        </li> */}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <FilterDropdown
+                  classes={"countries"}
+                  meaningActiv={activeCountries}
+                  funcActiv={setActiveCountries}
+                ></FilterDropdown>
               ) : (
                 ""
               )}
