@@ -5,8 +5,9 @@ import { TbDownload } from 'react-icons/tb';
 import { TbFlag3 } from 'react-icons/tb';
 import { TbFlag3Filled } from 'react-icons/tb';
 import { TbPlayerPlay } from 'react-icons/tb';
+import { RxCross2 } from 'react-icons/rx';
+import Modal from '../../components/UI/modal/Modal';
 import ModalRating from '../../components/modalRating/ModalRating';
-import CreatorsList from '../../components/creatorsList/CreatorsList';
 
 const ContentPage: FC = () => {
   const [info, setInfo] = useState<boolean>(false);
@@ -144,7 +145,6 @@ const ContentPage: FC = () => {
             </div>
           </div>
         </div>
-        <CreatorsList />
         <ModalRating activeModal={rating} setActiveModal={setRating} />
       </div>
     </div>

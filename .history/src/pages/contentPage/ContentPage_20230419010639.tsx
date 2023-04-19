@@ -5,13 +5,12 @@ import { TbDownload } from 'react-icons/tb';
 import { TbFlag3 } from 'react-icons/tb';
 import { TbFlag3Filled } from 'react-icons/tb';
 import { TbPlayerPlay } from 'react-icons/tb';
-import ModalRating from '../../components/modalRating/ModalRating';
-import CreatorsList from '../../components/creatorsList/CreatorsList';
+import Modal from '../../components/UI/modal/Modal';
 
 const ContentPage: FC = () => {
   const [info, setInfo] = useState<boolean>(false);
   const [flag, setFlag] = useState<boolean>(false);
-  const [rating, setRating] = useState<boolean>(false);
+  const [rating, setRating] = useState<boolean>(true);
 
   const showMoreInfo = () => {
     setInfo(!info);
@@ -133,7 +132,7 @@ const ContentPage: FC = () => {
             <span onClick={showMoreInfo} className="contentPage__info-more">
               {info ? 'Свернуть детали' : 'Детали о мультфильме'}
             </span>
-            <div onClick={() => setRating(true)} className="contentPage__info-ratingMobile">
+            <div className="contentPage__info-ratingMobile">
               <div className="ratingMobile__rating">7,5</div>
               <div className="ratingMobile__info">
                 <div className="ratingMobile__info-title">Рейтинг Иви</div>
@@ -144,9 +143,27 @@ const ContentPage: FC = () => {
             </div>
           </div>
         </div>
-        <CreatorsList />
-        <ModalRating activeModal={rating} setActiveModal={setRating} />
       </div>
+      <Modal active={rating} setActive={setRating}>
+        <h1>Ваша оценка</h1>
+        <p>Оценки улучшают рекомендации</p>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>10</li>
+        </ul>
+        <div>
+          <div>очень плохо</div>
+          <div>отлично</div>
+        </div>
+      </Modal>
     </div>
   );
 };

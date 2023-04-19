@@ -5,13 +5,13 @@ import { TbDownload } from 'react-icons/tb';
 import { TbFlag3 } from 'react-icons/tb';
 import { TbFlag3Filled } from 'react-icons/tb';
 import { TbPlayerPlay } from 'react-icons/tb';
-import ModalRating from '../../components/modalRating/ModalRating';
-import CreatorsList from '../../components/creatorsList/CreatorsList';
+import { RxCross2 } from 'react-icons/rx';
+import Modal from '../../components/UI/modal/Modal';
 
 const ContentPage: FC = () => {
   const [info, setInfo] = useState<boolean>(false);
   const [flag, setFlag] = useState<boolean>(false);
-  const [rating, setRating] = useState<boolean>(false);
+  const [rating, setRating] = useState<boolean>(true);
 
   const showMoreInfo = () => {
     setInfo(!info);
@@ -133,19 +133,44 @@ const ContentPage: FC = () => {
             <span onClick={showMoreInfo} className="contentPage__info-more">
               {info ? 'Свернуть детали' : 'Детали о мультфильме'}
             </span>
-            <div onClick={() => setRating(true)} className="contentPage__info-ratingMobile">
+            <div className="contentPage__info-ratingMobile">
               <div className="ratingMobile__rating">7,5</div>
               <div className="ratingMobile__info">
                 <div className="ratingMobile__info-title">Рейтинг Иви</div>
                 <div className="ratingMobile__info-subtitle">Интересный сюжет</div>
                 <div className="ratingMobile__info-extra">73 465 оценок</div>
               </div>
-              <button className="ratingMobile__rateBtn">Оценить</button>
+              <button onClick={() => setRating(true)} className="ratingMobile__rateBtn">
+                Оценить
+              </button>
             </div>
           </div>
         </div>
-        <CreatorsList />
-        <ModalRating activeModal={rating} setActiveModal={setRating} />
+        <Modal active={rating} setActive={setRating}>
+          <h1 className="modalRating__title">Ваша оценка</h1>
+          <p className="modalRating__desc">Оценки улучшают рекомендации</p>
+          <ul className="modalRating__rateList">
+            <li className="modalRating__rateList-item">1</li>
+            <li className="modalRating__rateList-item">2</li>
+            <li className="modalRating__rateList-item">3</li>
+            <li className="modalRating__rateList-item">4</li>
+            <li className="modalRating__rateList-item">5</li>
+            <li className="modalRating__rateList-item">6</li>
+            <li className="modalRating__rateList-item">7</li>
+            <li className="modalRating__rateList-item">8</li>
+            <li className="modalRating__rateList-item">9</li>
+            <li className="modalRating__rateList-item">10</li>
+          </ul>
+          <div className="modalRating__labelBlock">
+            <div>очень плохо</div>
+            <div>отлично</div>
+          </div>
+        </Modal>
+        {rating && (
+          <div onClick={() => setRating(false)} className="modalRating__closeBtn">
+            <RxCross2 />
+          </div>
+        )}
       </div>
     </div>
   );

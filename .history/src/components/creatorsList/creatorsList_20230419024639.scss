@@ -1,0 +1,21 @@
+.creatorsList {
+    &__title {
+        font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif !important;
+        box-shadow: 0 1px 0 rgba(255,255,255,.16), inset 0 0 0 rgba(255,255,255,.16);
+        width: max-content;
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    &__creatorsList {
+        display: flex;
+        align-items:center;
+        &-item {
+            &-image {
+                width: 88px;
+                height: 88px;
+            }
+        }
+    }
+}

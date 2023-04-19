@@ -1,0 +1,53 @@
+.creatorsList {
+    padding-left: 0 !important;
+    &__title {
+        box-shadow: 0 1px 0 rgba(255,255,255,.16), inset 0 0 0 rgba(255,255,255,.16);
+        width: max-content;
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 700;   
+        cursor: pointer;
+        transition-duration: .4s;
+        &:hover {
+            box-shadow: 0 1px 0 #fff, inset 0 0 0 #fff;
+        }
+    }
+    &__list {
+        margin-top: 20px;
+        display: flex;
+        align-items:center;
+        &-item {
+            &-image {
+                width: 88px;
+                height: 88px;
+                border-radius: 50%;
+                margin-bottom: 8px;
+            }
+            &-name {
+                color: #d9d7e0;
+                font-size: 13px;
+                line-height: 16px;
+                font-weight: 500;
+                transition: color 400ms;
+            }
+            &-role {
+                font-size: 13px;
+                line-height: 16px;
+                font-weight: 400;
+                color: #a5a1b2;
+            }
+            &:not(:last-child) {
+                margin-right: 24px;
+            }
+        }
+        &-more {
+            transition-duration: .4s;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 500;
+            width: 88px;
+            height: 88px;
+            ackground-color: #1f1b2e;
+        }
+    }
+}

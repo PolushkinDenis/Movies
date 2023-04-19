@@ -1,0 +1,28 @@
+@import url(//db.onlinewebfonts.com/c/29e676384bcea6f376417bcfee5c8595?family=ivi+Sans);
+
+.modal {
+    font-family: Arial;
+    z-index: 5;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(7,5,14,.96);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+        &__content {
+        width: 596px;
+        height: 188px;
+        background: none;
+        border-radius: 8px;
+        }
+}

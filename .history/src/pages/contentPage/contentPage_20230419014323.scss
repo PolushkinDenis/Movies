@@ -16,7 +16,6 @@
 }
 
 .contentPage {
-    position: relative;
     &__container {
         &-inner {
             display: flex;
@@ -281,7 +280,6 @@
         }
     }
     .modalRating__title {
-        font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif !important;
         font-size: 40px;
         line-height: 44px;
         font-weight: 900;
@@ -313,7 +311,6 @@
             margin-top: 0;
             cursor: pointer;
             border-radius: 12px;
-            transition-duration: .16s;
             &:hover {
                 background-color: #ea003d;
                 box-shadow: 0 4px 16px rgba(234,0,61,.32);
@@ -330,8 +327,7 @@
         line-height: 16px;
     }
     .modalRating__closeBtn {
-        z-index: 5;
-        position: fixed;
+        position: absolute;
         right: 30px;
         top: 30px;
         height: 33px;
@@ -340,13 +336,7 @@
         svg {
             width: 33px;
             height: 33px;
-            background-color: none;
-            transition: .2s;
-        }
-        &:hover {
-            svg {
-                transform: scale(1.1);
-            }
+            background-color: none
         }
     }
 }
