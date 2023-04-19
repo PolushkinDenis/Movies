@@ -6,11 +6,9 @@ import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
 import FilterDropdown from "./FilterDropdown";
 
-function FiltersDesktop() {
-  // Countries,Genres,Rating,Evaluations
-  const [clickSwitchFilter, setClickSwitchFilter] = React.useState<string>("");
+function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
   const [rangeValue, setRangeValue] = React.useState<number>(7.5);
-  const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
+  const [evaluationsValue, setEvaluationsValue] = React.useState<number>(1);
   const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
   const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
   function shiftRangeValue(e: any) {
@@ -47,6 +45,22 @@ function FiltersDesktop() {
       }
     }
   }
+  function limpiezaFilter(e: any) {
+    setActiveGenres([]);
+    setActiveCountries([]);
+    setEvaluationsValue(1);
+    setRangeValue(7.5);
+  }
+  // function clickFilterClose(e: any) {
+  //   if (!e.target.closest(".filtersDesktop__plank-list")) {
+  //     setClickSwitchFilter("");
+  //     return;
+  //   }
+  // }
+
+  // React.useEffect(() => {
+  //   document.body.addEventListener("click", clickFilterClose);
+  // }, []);
 
   return (
     <section className="filtersDesktop">
@@ -206,7 +220,17 @@ function FiltersDesktop() {
           </div>
         </div>
         <div className="filtersDesktop__button-container">
-          <div className="filtersDesktop__button filtersDesktop__button_disabled">
+          <div
+            className={
+              activeGenres.length ||
+              activeCountries.length ||
+              evaluationsValue !== 1 ||
+              rangeValue !== 7.5
+                ? "filtersDesktop__button"
+                : "filtersDesktop__button filtersDesktop__button_disabled"
+            }
+            onClick={limpiezaFilter}
+          >
             <div className="filtersDesktop__button-icon">
               <GrClose></GrClose>
             </div>

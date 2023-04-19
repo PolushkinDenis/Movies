@@ -2,12 +2,30 @@ import React, { FC, useEffect } from "react";
 
 import "./Movies.scss";
 import FiltersDesktop from "../../components/main/filter/FiltersDesktop";
+import Sorting from "../../components/main/sorting/Sorting";
 
 function Movies() {
+  // Countries,Genres,Rating,Evaluations
+  const [clickSwitchFilter, setClickSwitchFilter] = React.useState<string>("");
+
   const [onClickToggle, setOnClickToggle] = React.useState(false);
   function clickToggle(e: any) {
     setOnClickToggle(!onClickToggle);
   }
+
+  const [clickToggleSorting, setClickToggleSorting] = React.useState(false);
+
+  function clickFilterClose(e: any) {
+    if (!e.target.closest(".filtersDesktop__plank-list")) {
+      setClickSwitchFilter("");
+    }
+    if (!e.target.closest(".catalogControlPanel__pageSection")) {
+      setClickToggleSorting(false);
+    }
+  }
+  React.useEffect(() => {
+    document.body.addEventListener("click", clickFilterClose);
+  }, []);
 
   return (
     <div>
@@ -120,7 +138,14 @@ function Movies() {
               </div>
             </div>
           </section>
-          <FiltersDesktop></FiltersDesktop>
+          <Sorting
+            clickToggleSorting={clickToggleSorting}
+            setClickToggleSorting={setClickToggleSorting}
+          ></Sorting>
+          <FiltersDesktop
+            clickSwitchFilter={clickSwitchFilter}
+            setClickSwitchFilter={setClickSwitchFilter}
+          ></FiltersDesktop>
         </div>
       </main>
     </div>

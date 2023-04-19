@@ -229,3 +229,38 @@
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
+.nbl-arrowButton {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    -webkit-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+    opacity: 1;
+
+    &__caption {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 20px;
+        margin: 0 8px;
+    }
+
+    & .nbl-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
