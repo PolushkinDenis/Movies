@@ -101,7 +101,7 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
                   <div className="nbl-plank__title">Страны</div>
-                  {activeGenres.length === 0 ? (
+                  {activeCountries.length === 0 ? (
                     ""
                   ) : (
                     <div className="nbl-plank__extra">
