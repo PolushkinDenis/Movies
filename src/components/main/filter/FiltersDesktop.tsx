@@ -51,16 +51,6 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
     setEvaluationsValue(1);
     setRangeValue(7.5);
   }
-  // function clickFilterClose(e: any) {
-  //   if (!e.target.closest(".filtersDesktop__plank-list")) {
-  //     setClickSwitchFilter("");
-  //     return;
-  //   }
-  // }
-
-  // React.useEffect(() => {
-  //   document.body.addEventListener("click", clickFilterClose);
-  // }, []);
 
   return (
     <section className="filtersDesktop">
@@ -77,6 +67,13 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
                   <div className="nbl-plank__title">Жанры</div>
+                  {activeGenres.length === 0 ? (
+                    ""
+                  ) : (
+                    <div className="nbl-plank__extra">
+                      {activeGenres.join(", ")}
+                    </div>
+                  )}
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
@@ -104,6 +101,13 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
                   <div className="nbl-plank__title">Страны</div>
+                  {activeGenres.length === 0 ? (
+                    ""
+                  ) : (
+                    <div className="nbl-plank__extra">
+                      {activeCountries.join(", ")}
+                    </div>
+                  )}
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
@@ -131,6 +135,7 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
                   <div className="nbl-plank__title">Рейтинг</div>
+                  <div className="nbl-plank__extra">{"от " + rangeValue}</div>
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
@@ -179,6 +184,9 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
                   <div className="nbl-plank__title">Количество оценок</div>
+                  <div className="nbl-plank__extra">
+                    {"от " + evaluationsValue + " т."}
+                  </div>
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
