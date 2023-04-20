@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Autoplay, Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import './PromoSlider.scss'
 
 interface PromoData {
@@ -16,24 +16,33 @@ interface PromoSliderProps {
 }
 
 const PromoSlider: FC<PromoSliderProps> = ({ promos }) => {
+    const [swiper, setSwiper] = useState(1);
+
+    useEffect(() => {
+        setSwiper(2)
+      }, [])
+
     return (
         <div className="promoSlider__slider">
             <Swiper
-                autoplay={{delay: 2500}}
+                loop={true}
+                autoplay={{ delay: 2500 }}
                 slidesPerView={"auto"}
-                rewind={true}
+                speed={500}
+                spaceBetween={15}
+                initialSlide={swiper}
                 navigation={true}
                 modules={[Navigation, Autoplay]}
                 className="mySwiper__promo"
             >
                 {promos.map((promo) => (
-                    <SwiperSlide>
-                        <img src={promo.imgHref} />
-                        <Link to={promo.href}>
-                            <div>
-                                <div>{promo.title}</div>
-                                <div>{promo.synopsis}</div>
-                                <button>Показать подборку</button>
+                    <SwiperSlide key={promo.imgHref}>
+                        <img className="mySwiper__promo__logo" src={promo.imgHref} />
+                        <Link className="mySwiper__promo__link" to={promo.href}>
+                            <div className="mySwiper__promo__content">
+                                <div className="mySwiper__promo__title">{promo.title}</div>
+                                <div className="mySwiper__promo__synopsis">{promo.synopsis}</div>
+                                <button className="mySwiper__promo__btn">Показать подборку</button>
                             </div>
                         </Link>
                     </SwiperSlide>

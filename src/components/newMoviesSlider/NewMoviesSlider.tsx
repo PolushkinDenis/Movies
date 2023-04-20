@@ -50,9 +50,6 @@ const NewMoviesSlider: FC<NewMoviesSliderProps> = ({data, breakpoints}) => {
             slidesPerGroup={1}
             spaceBetween={10}
             navigation={true}
-            pagination={{
-                clickable: true,
-            }}
             breakpoints={breakpoints}          
             modules={[Navigation]}
             className="mySwiper"

@@ -7,23 +7,18 @@ import PromoSlider from "../../components/promoSlider/PromoSlider";
 
 const promoData = [
   {href: "https://www.ivi.ru/collections/this-is-the-end", imgHref: "https://thumbs.dfs.ivi.ru/storage5/contents/0/3/99372bba75f4652a5d4b2f6a7d2ca3.jpg/1216x524/?q=85", title: "Это всего лишь конец света", synopsis: "Самые зрелищные и масштабные фильмы-катастрофы"},
-  {href: "https://www.ivi.ru/collections/this-is-the-end", imgHref: "https://thumbs.dfs.ivi.ru/storage5/contents/0/3/99372bba75f4652a5d4b2f6a7d2ca3.jpg/1216x524/?q=85", title: "Это всего лишь конец света", synopsis: "Самые зрелищные и масштабные фильмы-катастрофы"},
-  {href: "https://www.ivi.ru/collections/this-is-the-end", imgHref: "https://thumbs.dfs.ivi.ru/storage5/contents/0/3/99372bba75f4652a5d4b2f6a7d2ca3.jpg/1216x524/?q=85", title: "Это всего лишь конец света", synopsis: "Самые зрелищные и масштабные фильмы-катастрофы"},
-  {href: "https://www.ivi.ru/collections/this-is-the-end", imgHref: "https://thumbs.dfs.ivi.ru/storage5/contents/0/3/99372bba75f4652a5d4b2f6a7d2ca3.jpg/1216x524/?q=85", title: "Это всего лишь конец света", synopsis: "Самые зрелищные и масштабные фильмы-катастрофы"},
+  {href: "https://www.ivi.ru/collections/meditsinskie-serialyi", imgHref: "https://thumbs.dfs.ivi.ru/storage6/contents/5/5/03a8751c356b28a8dbf9a8a798be87.jpg/1216x524/?q=85", title: "Очень хорошие доктора", synopsis: "Лучшие медицинские сериалы для фанатов жанра"},
+  {href: "https://www.ivi.ru/collections/ivi-originals", imgHref: "https://thumbs.dfs.ivi.ru/storage37/contents/0/a/1d3381c9a1549a24212f58b8c2495b.jpg/1216x524/?q=85", title: "Создано Иви", synopsis: "Целый вагон впечатлений и тележка эмоций: все проекты производства Иви в одном месте. Запрыгивай!"},
+  {href: "https://www.ivi.ru/collections/amediateka-vesna-vremya-lyubvi", imgHref: "https://thumbs.dfs.ivi.ru/storage6/contents/e/b/419c834059e49aa440f3bfdaaaacc6.jpg/1216x524/?q=85", title: "Весна — время любви", synopsis: "Лучшие романтические сериалы о настоящей любви"},
 ]
 
 const Main: FC = () => {
-
-
-
   return (
-    <div>
       <main className="main">
         <div className="promo">
           <PromoSlider promos={promoData}/>
         </div>
       </main>
-    </div>
   );
 };
 

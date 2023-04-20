@@ -14,7 +14,9 @@
 .swiper-button-next,
 .swiper-button-prev {
     &:active {
-        transform: scale(0.8) !important;
+        &::after {
+            font-size: 18px !important;
+        }
     }
     &:hover {
         &::after {
