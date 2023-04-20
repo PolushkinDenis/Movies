@@ -64,6 +64,23 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
               <SwiperSlide>Slide 3</SwiperSlide>
               <SwiperSlide>Slide 4</SwiperSlide>
             </Swiper>
+            <Swiper
+              slidesPerView={1}
+              slidesPerGroup={1}
+              spaceBetween={10}
+              navigation={true}
+              pagination={{
+                clickable: true,
+              }}
+              // breakpoints={breakpoints}
+              // modules={[Navigation]}
+              className="mySwiper"
+            >
+              <SwiperSlide>Slide 1</SwiperSlide>
+              <SwiperSlide>Slide 2</SwiperSlide>
+              <SwiperSlide>Slide 3</SwiperSlide>
+              <SwiperSlide>Slide 4</SwiperSlide>
+            </Swiper>
           </div>
           <div className="filterDropdown__list-container">
             <ul className="filterDropdown__list">
