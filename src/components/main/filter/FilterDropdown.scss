@@ -35,17 +35,21 @@
     }
 
     &__carousel {
-        // & .swiper {
-        //     padding: 0 5px;
-        // }
+        margin: 0 -16px;
+        position: relative;
+
+        & .swiper {
+            margin: 0 21px;
+            position: static;
+
+            & .swiper-wrapper {}
+        }
     }
 
     &__swiper {
 
-
         & .swiper-button-next,
         & .swiper-button-prev {
-            z-index: 111;
 
             &:active {
                 transform: scale(0.8) !important;
@@ -67,22 +71,44 @@
         & .swiper-wrapper {}
 
         & .swiper-button-next {
-            left: 98%;
+            right: -5px;
         }
 
-        & .swiper-button-prev {}
+        & .swiper-button-prev {
+            left: -5px;
+        }
+
+    }
+
+    &__scrollpane {
+        & .swiper-slide {
+            cursor: pointer;
+            border-color: rgba(255, 255, 255, .32);
+            padding: 8px 16px;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 32px;
+            width: auto !important;
+        }
+
 
     }
 
     &__carousel-item {}
 
+    &__sausage {
+        border-color: rgba(255, 255, 255, .32);
+        cursor: pointer;
+        margin-right: 12px;
+    }
+
     &__nbl-tile {
         height: 88px;
         padding: 16px 8px;
         display: flex;
-        // justify-content: center;
+
         flex-direction: column;
-        // align-items: center;
+
         border-radius: 6px;
         border-width: 1px;
         border-style: solid;
@@ -92,6 +118,11 @@
             height: 32px;
             margin-left: auto;
             margin-right: auto;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
 
             svg {
                 fill: rgb(255, 255, 255);

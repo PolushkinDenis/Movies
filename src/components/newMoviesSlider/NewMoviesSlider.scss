@@ -1,0 +1,105 @@
+.slick {
+    &-slide {
+        .nbl-poster {
+            &__image {
+                padding: 8px;
+                width: 83%;
+                border-radius: 10px;
+                background-color: #1f1b2e;
+            }
+        }
+    }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    &:active {
+        transform: scale(0.8) !important;
+    }
+
+    &:hover {
+        &::after {
+
+            color: #ffffff;
+        }
+    }
+
+    &::after {
+        transform-origin: 50% 50%;
+        color: #bcbcbf;
+        font-size: 22px !important;
+    }
+}
+
+.swiper-wrapper {
+    margin-left: 20px;
+}
+
+.swiper-button-next {
+    margin-right: -15px;
+    top: var(--swiper-navigation-top-offset, 40%) !important;
+}
+
+.swiper-button-prev {
+    margin-left: -15px;
+    top: var(--swiper-navigation-top-offset, 40%) !important;
+}
+
+.swiper-button-disabled {
+    display: none !important;
+}
+
+.miniPromoBlockCustom__title {
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.main-img {
+    width: 83%;
+    overflow: hidden;
+    max-height: 196px;
+    display: grid;
+    grid-template-areas:
+        "poster-main poster-1 poster-2"
+        "poster-main poster-3 poster-4";
+    // grid-template-rows: repeat(2, 100%);
+    grid-template-rows: repeat(2, 8vw);
+
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+
+    justify-items: center;
+}
+
+.poster-main {
+    height: 90%;
+    grid-area: poster-main;
+}
+
+.poster-1 {
+    height: 90%;
+    grid-area: poster-1;
+}
+
+.poster-2 {
+    height: 90%;
+    grid-area: poster-2;
+    margin-top: -50%;
+}
+
+.poster-3 {
+    height: 90%;
+    grid-area: poster-3;
+}
+
+.poster-4 {
+    height: 90%;
+    grid-area: poster-4;
+    margin-top: -50%;
+}

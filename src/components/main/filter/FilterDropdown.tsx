@@ -2,11 +2,16 @@ import React from "react";
 import "./FilterDropdown.scss";
 import { BsCheckLg } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, SwiperOptions } from "swiper";
+import { Navigation, SwiperOptions, FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/scss/navigation";
+import "swiper/css/free-mode";
 
-import { ReactComponent as MaskTr } from "../../../images/filter/maskTr.svg";
+// swiper/css/free-mode
+
+import MaskTr from "../../../images/filter/maskTr.png";
+import MaskTs from "../../../images/filter/maskTs.png";
+
 const janr = [
   "аниме",
   "биографический",
@@ -39,7 +44,7 @@ const janr = [
   "фантастика",
   "фэнтези",
 ];
-const janrIm = [];
+
 function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
   function changesActiveGenres(e: any) {
     console.log(e);
@@ -57,75 +62,50 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
       <div className="filterDropdown__inner">
         <div className="filterDropdown__content">
           <div className="filterDropdown__carousel">
-            <Swiper
-              slidesPerView={5}
-              slidesPerGroup={2}
-              spaceBetween={12}
-              navigation={true}
-              modules={[Navigation]}
-              className="filterDropdown__swiper"
-            >
-              <SwiperSlide>
-                <div className="filterDropdown__carousel-item">
-                  <div className="filterDropdown__nbl-tile">
-                    <div className="nbl-icon">
-                      <MaskTr />
-                    </div>
-                    <div className="nbl-tile__caption">Драмы</div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="filterDropdown__carousel-item">
-                  <div className="filterDropdown__nbl-tile">
-                    <div className="nbl-icon">
-                      <MaskTr />
-                    </div>
-                    <div className="nbl-tile__caption">Драмы</div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="filterDropdown__carousel-item">
-                  <div className="filterDropdown__nbl-tile">
-                    <div className="nbl-icon">
-                      <MaskTr />
-                    </div>
-                    <div className="nbl-tile__caption">Драмы</div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="filterDropdown__carousel-item">
-                  <div className="filterDropdown__nbl-tile">
-                    <div className="nbl-icon">
-                      <MaskTr />
-                    </div>
-                    <div className="nbl-tile__caption">Драмы</div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="filterDropdown__carousel-item">
-                  <div className="filterDropdown__nbl-tile">
-                    <div className="nbl-icon">
-                      <MaskTr />
-                    </div>
-                    <div className="nbl-tile__caption">Драмы</div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="filterDropdown__carousel-item">
-                  <div className="filterDropdown__nbl-tile">
-                    <div className="nbl-icon">
-                      <MaskTr />
-                    </div>
-                    <div className="nbl-tile__caption">Драмы</div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            </Swiper>
+            {classes === "genres" ? (
+              <Swiper
+                slidesPerView={5}
+                slidesPerGroup={2}
+                spaceBetween={12}
+                navigation={true}
+                modules={[Navigation]}
+                className="filterDropdown__swiper"
+              >
+                {janr.map((item, index) => {
+                  return (
+                    <SwiperSlide key={item + "-" + index}>
+                      <div className="filterDropdown__carousel-item">
+                        <div className="filterDropdown__nbl-tile">
+                          <div className="nbl-icon">
+                            <img src={MaskTs} alt="" />
+                          </div>
+                          <div className="nbl-tile__caption">{item}</div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            ) : (
+              <div className="filterDropdown__scrollpane">
+                <Swiper
+                  slidesPerView={"auto"}
+                  slidesPerGroup={1}
+                  spaceBetween={12}
+                  navigation={true}
+                  modules={[Navigation]}
+                  className="filterDropdown__swiper"
+                >
+                  {janr.map((item, index) => {
+                    return (
+                      <SwiperSlide key={item + "-" + index}>
+                        <div className="sausage__title">{item}</div>
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </div>
+            )}
           </div>
           <div className="filterDropdown__list-container">
             <ul className="filterDropdown__list">
