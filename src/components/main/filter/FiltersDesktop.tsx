@@ -43,6 +43,18 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
       } else {
         setClickSwitchFilter("Evaluations");
       }
+    } else if (e.target.closest(".flag-SearchDirector")) {
+      if (clickSwitchFilter === "SearchDirector") {
+        setClickSwitchFilter("");
+      } else {
+        setClickSwitchFilter("SearchDirector");
+      }
+    } else if (e.target.closest(".flag-SearchActor")) {
+      if (clickSwitchFilter === "SearchActor") {
+        setClickSwitchFilter("");
+      } else {
+        setClickSwitchFilter("SearchActor");
+      }
     }
   }
   function limpiezaFilter(e: any) {
@@ -217,6 +229,76 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
                             </div>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="filtersDesktop__plank-item flag-SearchDirector">
+            <div
+              className={
+                clickSwitchFilter === "SearchDirector"
+                  ? "filtersDesktop__plank isActive"
+                  : "filtersDesktop__plank"
+              }
+            >
+              <MyButton onClick={clickToggleFilter} classes="nbl-plank">
+                <div className="nbl-plank__textWrapper">
+                  <div className="nbl-plank__title">Поиск по Режиссёру</div>
+                </div>
+                <div className="nbl-plank__icon">
+                  <IoIosArrowDown></IoIosArrowDown>
+                </div>
+              </MyButton>
+              {clickSwitchFilter === "SearchDirector" ? (
+                <div className="filterDropdown filterDropdown_searchDirector">
+                  <div className="filterDropdown__inner">
+                    <div className="filterDropdown__content">
+                      <div className="filterDropdown__list-container">
+                        <input
+                          className="search-input"
+                          type="text"
+                          placeholder="Поиск"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="filtersDesktop__plank-item flag-SearchActor">
+            <div
+              className={
+                clickSwitchFilter === "SearchActor"
+                  ? "filtersDesktop__plank isActive"
+                  : "filtersDesktop__plank"
+              }
+            >
+              <MyButton onClick={clickToggleFilter} classes="nbl-plank">
+                <div className="nbl-plank__textWrapper">
+                  <div className="nbl-plank__title">Поиск по Актёру</div>
+                </div>
+                <div className="nbl-plank__icon">
+                  <IoIosArrowDown></IoIosArrowDown>
+                </div>
+              </MyButton>
+              {clickSwitchFilter === "SearchActor" ? (
+                <div className="filterDropdown filterDropdown_searchActor">
+                  <div className="filterDropdown__inner">
+                    <div className="filterDropdown__content">
+                      <div className="filterDropdown__list-container">
+                        <input
+                          className="search-input"
+                          type="text"
+                          placeholder="Поиск"
+                        />
                       </div>
                     </div>
                   </div>

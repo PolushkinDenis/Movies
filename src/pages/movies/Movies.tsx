@@ -5,7 +5,7 @@ import FiltersDesktop from "../../components/main/filter/FiltersDesktop";
 import Sorting from "../../components/main/sorting/Sorting";
 
 function Movies() {
-  // Countries,Genres,Rating,Evaluations
+  // Countries,Genres,Rating,Evaluations,SearchDirector,SearchActor
   const [clickSwitchFilter, setClickSwitchFilter] = React.useState<string>("");
 
   const [onClickToggle, setOnClickToggle] = React.useState(false);
@@ -16,7 +16,9 @@ function Movies() {
   const [clickToggleSorting, setClickToggleSorting] = React.useState(false);
 
   function clickFilterClose(e: any) {
-    if (!e.target.closest(".filtersDesktop__plank-list")) {
+    // filtersDesktop__plank isActive
+    // filtersDesktop__plank-item
+    if (!e.target.closest(".filtersDesktop__plank")) {
       setClickSwitchFilter("");
     }
     if (!e.target.closest(".catalogControlPanel__pageSection")) {

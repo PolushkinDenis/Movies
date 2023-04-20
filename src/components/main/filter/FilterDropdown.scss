@@ -112,6 +112,8 @@
     }
 
     &__checkbox {
+        pointer-events: none;
+        cursor: default;
         position: absolute;
         right: 0;
         top: 0;

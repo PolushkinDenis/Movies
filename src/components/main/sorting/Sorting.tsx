@@ -1,4 +1,5 @@
 import React from "react";
+import "./Sorting.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 const sortArr = [
@@ -34,7 +35,7 @@ function Sorting({ clickToggleSorting, setClickToggleSorting }: any) {
               <BiMenuAltRight></BiMenuAltRight>
             </div>
             <div className="nbl-arrowButton__caption">{activeFilter}</div>
-            <div className="nbl-icon">
+            <div className="nbl-icon nbl-icon__reverse">
               <IoIosArrowDown></IoIosArrowDown>
             </div>
           </div>

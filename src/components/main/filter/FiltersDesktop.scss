@@ -97,6 +97,29 @@
     }
 }
 
+.search-input {
+    height: 31px;
+    width: 100%;
+    padding: 0 0 0 5px;
+    background-color: #312b45;
+    border: 1px solid #a5a1b2;
+    border-radius: 8px;
+    color: #a5a1b2;
+    -webkit-transition: 400ms;
+    -o-transition: 400ms;
+    transition: 400ms;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 600;
+    font-style: normal;
+
+    &:focus,
+    &:hover {
+        border: 1px solid #fff;
+        color: #fff;
+    }
+}
+
 .filtersDesktop__plank.isActive .nbl-plank__icon {
     -webkit-transform: rotate(180deg);
     -o-transform: rotate(180deg);
