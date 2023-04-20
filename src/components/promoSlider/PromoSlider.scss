@@ -1,0 +1,12 @@
+.promoSlider__slider {
+    .mySwiper__promo {
+        .swiper-wrapper {
+            width: 90%;
+            .swiper-slide {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    }
+}

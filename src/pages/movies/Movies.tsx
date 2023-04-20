@@ -5,6 +5,7 @@ import { testSlice } from "../../store/slices/testSlice";
 import { IoIosArrowDown } from "react-icons/io";
 import "./Movies.scss";
 import NewMoviesSlider from "../../components/newMoviesSlider/NewMoviesSlider";
+import premieres_img from '../../images/newMoviesSlider/premieres.png'
 
 const janr = [
   "аниме",
@@ -38,6 +39,18 @@ const janr = [
   "фантастика",
   "фэнтези",
 ];
+
+//Даные с Бека
+const newFilmsData  = [
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Премьеры на Иви" },
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Новинки подписки" },
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Лучшее в подписке" },
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Российские новинки" },
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Российские" },
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Зарубежные новинки" },
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Лучшие новинки" },
+  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Бесплатные новинки" },
+]
 
 function Movies() {
   const [conClickToggle, setConClickToggle] = React.useState(false);
@@ -220,7 +233,23 @@ function Movies() {
                   <span className="gallery__headerLink">Фильмы-новинки</span>
                 </div>
                 <div className="gallery__viewport-inner">
-                  <NewMoviesSlider />
+                  <NewMoviesSlider data={newFilmsData} breakpoints={{
+                    395: {
+                      slidesPerView: 2,
+                      slidesPerGroup: 2,
+                      spaceBetween: 10,
+                    },
+                    745: {
+                      slidesPerView: 3,
+                      slidesPerGroup: 3,
+                      spaceBetween: 10,
+                    },
+                    920: {
+                      slidesPerView: 4,
+                      slidesPerGroup: 4,
+                      spaceBetween: 10,
+                    },
+                  }} />
                 </div>
               </div>
             </div>
