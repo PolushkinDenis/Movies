@@ -2,6 +2,7 @@ import React from "react";
 import "./FilterDropdown.scss";
 import { BsCheckLg } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, SwiperOptions } from "swiper";
 import "swiper/css";
 const janr = [
   "аниме",
@@ -53,7 +54,7 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
       <div className="filterDropdown__inner">
         <div className="filterDropdown__content">
           <div className="filterDropdown__carousel">
-            <Swiper
+            {/* <Swiper
               spaceBetween={50}
               slidesPerView={3}
               onSlideChange={() => console.log("slide change")}
@@ -63,17 +64,17 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
               <SwiperSlide>Slide 2</SwiperSlide>
               <SwiperSlide>Slide 3</SwiperSlide>
               <SwiperSlide>Slide 4</SwiperSlide>
-            </Swiper>
+            </Swiper> */}
             <Swiper
               slidesPerView={1}
               slidesPerGroup={1}
-              spaceBetween={10}
+              spaceBetween={1}
               navigation={true}
               pagination={{
                 clickable: true,
               }}
               // breakpoints={breakpoints}
-              // modules={[Navigation]}
+              modules={[Navigation]}
               className="mySwiper"
             >
               <SwiperSlide>Slide 1</SwiperSlide>
