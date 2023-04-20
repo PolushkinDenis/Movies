@@ -4,6 +4,9 @@ import { BsCheckLg } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, SwiperOptions } from "swiper";
 import "swiper/css";
+import "swiper/scss/navigation";
+
+import { ReactComponent as MaskTr } from "../../../images/filter/maskTr.svg";
 const janr = [
   "аниме",
   "биографический",
@@ -54,33 +57,74 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
       <div className="filterDropdown__inner">
         <div className="filterDropdown__content">
           <div className="filterDropdown__carousel">
-            {/* <Swiper
-              spaceBetween={50}
-              slidesPerView={3}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
-            >
-              <SwiperSlide>Slide 1</SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
-            </Swiper> */}
             <Swiper
-              slidesPerView={1}
-              slidesPerGroup={1}
-              spaceBetween={1}
+              slidesPerView={5}
+              slidesPerGroup={2}
+              spaceBetween={12}
               navigation={true}
-              pagination={{
-                clickable: true,
-              }}
-              // breakpoints={breakpoints}
               modules={[Navigation]}
-              className="mySwiper"
+              className="filterDropdown__swiper"
             >
-              <SwiperSlide>Slide 1</SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
+              <SwiperSlide>
+                <div className="filterDropdown__carousel-item">
+                  <div className="filterDropdown__nbl-tile">
+                    <div className="nbl-icon">
+                      <MaskTr />
+                    </div>
+                    <div className="nbl-tile__caption">Драмы</div>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="filterDropdown__carousel-item">
+                  <div className="filterDropdown__nbl-tile">
+                    <div className="nbl-icon">
+                      <MaskTr />
+                    </div>
+                    <div className="nbl-tile__caption">Драмы</div>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="filterDropdown__carousel-item">
+                  <div className="filterDropdown__nbl-tile">
+                    <div className="nbl-icon">
+                      <MaskTr />
+                    </div>
+                    <div className="nbl-tile__caption">Драмы</div>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="filterDropdown__carousel-item">
+                  <div className="filterDropdown__nbl-tile">
+                    <div className="nbl-icon">
+                      <MaskTr />
+                    </div>
+                    <div className="nbl-tile__caption">Драмы</div>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="filterDropdown__carousel-item">
+                  <div className="filterDropdown__nbl-tile">
+                    <div className="nbl-icon">
+                      <MaskTr />
+                    </div>
+                    <div className="nbl-tile__caption">Драмы</div>
+                  </div>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div className="filterDropdown__carousel-item">
+                  <div className="filterDropdown__nbl-tile">
+                    <div className="nbl-icon">
+                      <MaskTr />
+                    </div>
+                    <div className="nbl-tile__caption">Драмы</div>
+                  </div>
+                </div>
+              </SwiperSlide>
             </Swiper>
           </div>
           <div className="filterDropdown__list-container">

@@ -34,6 +34,100 @@
 
     }
 
+    &__carousel {
+        // & .swiper {
+        //     padding: 0 5px;
+        // }
+    }
+
+    &__swiper {
+
+
+        & .swiper-button-next,
+        & .swiper-button-prev {
+            z-index: 111;
+
+            &:active {
+                transform: scale(0.8) !important;
+            }
+
+            &:hover {
+                &::after {
+                    color: #ffffff;
+                }
+            }
+
+            &::after {
+                transform-origin: 50% 50%;
+                color: #bcbcbf;
+                font-size: 22px !important;
+            }
+        }
+
+        & .swiper-wrapper {}
+
+        & .swiper-button-next {
+            left: 98%;
+        }
+
+        & .swiper-button-prev {}
+
+    }
+
+    &__carousel-item {}
+
+    &__nbl-tile {
+        height: 88px;
+        padding: 16px 8px;
+        display: flex;
+        // justify-content: center;
+        flex-direction: column;
+        // align-items: center;
+        border-radius: 6px;
+        border-width: 1px;
+        border-style: solid;
+
+        & .nbl-icon {
+            width: 32px;
+            height: 32px;
+            margin-left: auto;
+            margin-right: auto;
+
+            svg {
+                fill: rgb(255, 255, 255);
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        & .nbl-tile__caption {
+            font-size: 13px;
+            line-height: 16px;
+            font-weight: 500;
+            font-style: normal;
+            height: 16px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            margin-top: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        &:not(:hover):not(:active) {
+            background-color: #312b45;
+            border-color: rgba(255, 255, 255, .32);
+        }
+
+        &:active,
+        &:focus,
+        &:hover:not(:active) {
+            background-color: #7e798f;
+            border-color: #7e798f;
+        }
+    }
+
     &__list-container {}
 
     &__list {

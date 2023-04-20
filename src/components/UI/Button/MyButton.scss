@@ -21,9 +21,7 @@
         display: flex;
 
         .nbl-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
             margin-right: 8px;
 
             svg {
@@ -267,13 +265,17 @@
     }
 
     & .nbl-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+
 
         svg {
             width: 20px;
             height: 20px;
         }
     }
+}
+
+.nbl-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
