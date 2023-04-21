@@ -11,7 +11,7 @@ interface FooterLinksProps {
 
 const FooterLinks = ({ title, links }: FooterLinksProps) => {
   return (
-    <div>
+    <div className="footerLinks">
       <span className="iviFooter__title">{title}</span>
       <ul>
         {links.map((link) => (
