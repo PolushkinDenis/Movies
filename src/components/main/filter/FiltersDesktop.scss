@@ -23,7 +23,6 @@
     }
 
     &__plank-item {
-
         width: 25%;
 
         -moz-box-sizing: border-box;
@@ -32,6 +31,20 @@
         margin-bottom: 12px;
         padding-right: 6px;
         padding-left: 6px;
+    }
+
+    @media (max-width:880px) {
+        &__plank-item {
+            width: 50%;
+        }
+
+    }
+
+    @media (max-width:600px) {
+        &__plank-item {
+            width: 100%;
+        }
+
     }
 
     &__plank {

@@ -8,7 +8,7 @@ import FilterDropdown from "./FilterDropdown";
 
 function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
   const [rangeValue, setRangeValue] = React.useState<number>(7.5);
-  const [evaluationsValue, setEvaluationsValue] = React.useState<number>(1);
+  const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
   const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
   const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
   function shiftRangeValue(e: any) {
@@ -213,12 +213,12 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
                           {"от " + evaluationsValue + " т."}
                           <div className="slidecontainer__item">
                             <div className="slidecontainer__meaning-min">
-                              1 т.
+                              0 т.
                             </div>
                             <input
                               type="range"
-                              step="1"
-                              min="1"
+                              step="100"
+                              min="0"
                               max="1000"
                               value={evaluationsValue}
                               onChange={shiftEvaluationsValue}
