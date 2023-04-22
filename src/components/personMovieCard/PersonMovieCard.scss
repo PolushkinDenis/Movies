@@ -1,0 +1,61 @@
+.person-movie-card {
+  margin-bottom: 20px;
+
+  &__flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & img {
+      width: 80px;
+      height: 123px;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+  }
+
+  &__info {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 500;
+
+    & p {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__rating {
+    color: #a5a1b2;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  &__hidden-action {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .person-movie-card {
+    &__hidden-action {
+      display: block;
+    }
+
+    &__flex2 {
+      width: 100%;
+    }
+
+    &__info {
+      flex-grow: 1;
+    }
+
+    &__watch-btn {
+      width: 100%;
+      margin-left: 0 !important;
+    }
+
+    &__action {
+      display: none;
+    }
+  }
+}
