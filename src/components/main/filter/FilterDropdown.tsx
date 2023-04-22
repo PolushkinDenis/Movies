@@ -46,15 +46,12 @@ const janr = [
 ];
 
 function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
-  function changesActiveGenres(e: any) {
-    console.log(e);
-    console.log(e.target);
-    console.log(e.target.value);
-    if (meaningActiv.includes(e.target.value)) {
-      const obj = meaningActiv.filter((item: any) => item !== e.target.value);
+  function changesActiveGenres(item: string) {
+    if (meaningActiv.includes(item)) {
+      const obj = meaningActiv.filter((i: string) => i !== item);
       funcActiv(obj);
     } else {
-      funcActiv([...meaningActiv, e.target.getAttribute("value")]);
+      funcActiv([...meaningActiv, item]);
     }
   }
   return (
@@ -74,7 +71,14 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
                 {janr.map((item, index) => {
                   return (
                     <SwiperSlide key={item + "-" + index}>
-                      <div className="filterDropdown__carousel-item">
+                      <div
+                        onClick={() => changesActiveGenres(item)}
+                        className={
+                          meaningActiv.includes(item)
+                            ? "filterDropdown__carousel-item checked"
+                            : "filterDropdown__carousel-item"
+                        }
+                      >
                         <div className="filterDropdown__nbl-tile">
                           <div className="nbl-icon">
                             <img src={MaskTs} alt="" />
@@ -99,7 +103,16 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
                   {janr.map((item, index) => {
                     return (
                       <SwiperSlide key={item + "-" + index}>
-                        <div className="sausage__title">{item}</div>
+                        <div
+                          onClick={() => changesActiveGenres(item)}
+                          className={
+                            meaningActiv.includes(item)
+                              ? "sausage filterDropdown__sausage checked"
+                              : "sausage filterDropdown__sausage"
+                          }
+                        >
+                          <div className="sausage__title">{item}</div>
+                        </div>
                       </SwiperSlide>
                     );
                   })}
@@ -120,7 +133,7 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
                     }
                   >
                     <label
-                      onClick={changesActiveGenres}
+                      onClick={() => changesActiveGenres(item)}
                       className="filterDropdown__label"
                     >
                       <input

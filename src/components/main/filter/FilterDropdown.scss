@@ -81,14 +81,31 @@
     }
 
     &__scrollpane {
+
+        // sausage filterDropdown__sausage checked
         & .swiper-slide {
+            // cursor: pointer;
+            // border-color: rgba(255, 255, 255, .32);
+            // padding: 8px 16px;
+            // border-width: 1px;
+            // border-style: solid;
+            // border-radius: 32px;
+            width: auto !important;
+        }
+
+        & .filterDropdown__sausage {
             cursor: pointer;
             border-color: rgba(255, 255, 255, .32);
             padding: 8px 16px;
             border-width: 1px;
             border-style: solid;
             border-radius: 32px;
-            width: auto !important;
+            // width: auto !important;
+        }
+
+        & .filterDropdown__sausage.checked {
+            background-color: #a5a1b2;
+            border-color: #a5a1b2;
         }
 
 
@@ -96,10 +113,10 @@
 
     &__carousel-item {}
 
+
     &__sausage {
         border-color: rgba(255, 255, 255, .32);
         cursor: pointer;
-        margin-right: 12px;
     }
 
     &__nbl-tile {
@@ -159,6 +176,11 @@
         }
     }
 
+    &__carousel-item.checked .filterDropdown__nbl-tile {
+        background-color: #7e798f;
+        border-color: #7e798f;
+    }
+
     &__list-container {}
 
     &__list {
@@ -185,6 +207,8 @@
     &__item {
         margin-top: 12px;
     }
+
+
 
     &__item_checkbox {}
 
@@ -260,6 +284,8 @@
     }
 
 }
+
+
 
 //ползунок
 .slidecontainer {
