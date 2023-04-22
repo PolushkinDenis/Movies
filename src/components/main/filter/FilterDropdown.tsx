@@ -45,7 +45,12 @@ const janr = [
   "фэнтези",
 ];
 
-function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
+function FilterDropdown({
+  classes,
+  meaningActiv,
+  funcActiv,
+  breakpoints,
+}: any) {
   function changesActiveGenres(item: string) {
     if (meaningActiv.includes(item)) {
       const obj = meaningActiv.filter((i: string) => i !== item);
@@ -66,6 +71,7 @@ function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
                 spaceBetween={12}
                 navigation={true}
                 modules={[Navigation]}
+                breakpoints={breakpoints}
                 className="filterDropdown__swiper"
               >
                 {janr.map((item, index) => {

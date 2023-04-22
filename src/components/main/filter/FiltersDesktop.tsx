@@ -96,6 +96,18 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
                   classes={"genres"}
                   meaningActiv={activeGenres}
                   funcActiv={setActiveGenres}
+                  breakpoints={{
+                    280: {
+                      slidesPerView: 3,
+                      slidesPerGroup: 1,
+                      spaceBetween: 12,
+                    },
+                    744: {
+                      slidesPerView: 5,
+                      slidesPerGroup: 2,
+                      spaceBetween: 12,
+                    },
+                  }}
                 ></FilterDropdown>
               ) : (
                 ""

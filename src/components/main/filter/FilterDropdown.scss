@@ -35,6 +35,16 @@
         }
     }
 
+    @media (max-width:600px) {
+        &_genres {
+            width: 100%;
+        }
+
+        &_countries {
+            width: 100%;
+        }
+    }
+
     &_rating {
         width: 100%;
     }
@@ -212,6 +222,19 @@
             .filterDropdown__checkbox {
                 opacity: 1;
             }
+        }
+    }
+
+    @media (max-width:744px) {
+        &__list {
+
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width:511px) {
+        &__list {
+            grid-template-columns: 1fr;
         }
     }
 

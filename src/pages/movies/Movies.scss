@@ -85,5 +85,11 @@
     font-style: normal;
 }
 
+@media (max-width:880px) {
+    .catalog__clause {
+        width: 100%;
+    }
+}
+
 
 //
