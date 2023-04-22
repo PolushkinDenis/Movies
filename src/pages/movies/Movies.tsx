@@ -16,8 +16,6 @@ function Movies() {
   const [clickToggleSorting, setClickToggleSorting] = React.useState(false);
 
   function clickFilterClose(e: any) {
-    // filtersDesktop__plank isActive
-    // filtersDesktop__plank-item
     if (!e.target.closest(".filtersDesktop__plank")) {
       setClickSwitchFilter("");
     }
