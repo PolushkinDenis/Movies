@@ -6,9 +6,7 @@ import Films from "./pages/films/Films";
 import Footer from "./components/footer/Footer";
 import Person from "./pages/person/Person";
 import Movies from "./pages/movies/Movies";
-
 import ContentPage from "./pages/contentPage/ContentPage";
-
 import "./scss/app.scss";
 
 function App() {
