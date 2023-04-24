@@ -1,32 +1,17 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import './TopSlider.scss'
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { Navigation } from 'swiper'
 import { TopFilms } from '../../data/topFilms'
-import type { Swiper as AS } from 'swiper';
 
 interface TopSlider {
     topFilms: TopFilms[]
 }
 
 const TopSlider: FC<TopSlider> = ({ topFilms }) => {
-    // const swiper = useSwiper();
-    // console.log(swiper)
-    // const [swiperInstance, setSwiperInstance] = useState<AS | null>(null)
-
-    // console.log(swiperInstance?.slideNext())
-
-    // useEffect(() => {
-    //     console.log("AAAA")
-    // }, [swiperInstance])
-
-
     return (
-        // <div>
-
             <Swiper
-                // onSwiper={(swiper) => setSwiperInstance(swiper)}
                 modules={[Navigation]}
                 spaceBetween={10}
                 navigation={true}
@@ -76,14 +61,9 @@ const TopSlider: FC<TopSlider> = ({ topFilms }) => {
                                     </div>
                                 </div>
                             </Link>
-
                         </SwiperSlide>
                 ))}
             </Swiper>
-        //     <button onClick={() => swiperInstance?.slidePrev()} className=" test">prev </button>
-
-        //     <button onClick={() => swiperInstance?.slideNext()} className=" test">next</button>
-        // </div>
     )
 }
 
