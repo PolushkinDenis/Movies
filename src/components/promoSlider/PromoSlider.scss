@@ -4,7 +4,7 @@
             @media screen and (min-width: 1280px) {
                 width: 1216px;
             }
-            @media screen and (min-width: 600px) and (max-width: 1279px) {
+            @media screen  and (max-width: 1279px) {
                 width: calc(100% - 60px);
             }
             margin-left: auto;
@@ -158,10 +158,21 @@
                             }
                         }
                     }
+                    @media screen and (max-width: 525px) {
+                        padding: 28px;
+                        .mySwiper__promo__content {
+                            width: 80%;
+                        }
+                    }
+
                     @media screen and (max-width: 450px) {
                         padding: 28px;
                         .mySwiper__promo__content {
                             width: 100%;
+                            .mySwiper__promo__synopsis {
+                                display: none;
+                            }
+
                         }
                     }
                 }

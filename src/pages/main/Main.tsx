@@ -1,9 +1,8 @@
-import React, { FC, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { testSlice } from "../../store/slices/testSlice";
+import React, { FC, useEffect, useState } from "react";
 import "./Main.scss";
-import NewMoviesSlider from "../../components/newMoviesSlider/NewMoviesSlider";
 import PromoSlider from "../../components/promoSlider/PromoSlider";
+import TopSlider from "../../components/topSlider/TopSlider";
+import { topFilms } from "../../data/topFilms";
 
 const promoData = [
   { href: "https://www.ivi.ru/collections/this-is-the-end", imgHref: "https://thumbs.dfs.ivi.ru/storage5/contents/0/3/99372bba75f4652a5d4b2f6a7d2ca3.jpg/1216x524/?q=85", title: "Это всего лишь конец света", synopsis: "Самые зрелищные и масштабные фильмы-катастрофы" },
@@ -13,6 +12,7 @@ const promoData = [
 ]
 
 const Main: FC = () => {
+
   return (
     <main className="main">
       <div className="promo">
@@ -20,21 +20,35 @@ const Main: FC = () => {
       </div>
       <section className="pageSection__main">
         <div className="pageSection__main__container">
-          {/* <div className="home__teaserList"> */}
-            <ul className="home__teaserList">
-              <li className="home__teaserPlate">
-                <div className="nbl-teaserTile__content nbl-teaserTile__content__subscribe">
-                  <img src="https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg" />
-                  <div className="nbl-teaserTile__caption">30 дней подписки за 1 ₽</div>
-                </div>
-              </li>
-              <li className="home__teaserPlate">
-                <div className="nbl-teaserTile__content">
-                  <img src="https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/gift.svg" />
-                  <div className="nbl-teaserTile__caption">Активировать сертификат</div>
-                </div>
-              </li>
-            </ul>
+          <ul className="home__teaserList">
+            <li className="home__teaserPlate">
+              <div className="nbl-teaserTile__content nbl-teaserTile__content__subscribe">
+                <img src="https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/lightning.svg" />
+                <div className="nbl-teaserTile__caption">30 дней подписки за 1 ₽</div>
+              </div>
+            </li>
+            <li className="home__teaserPlate">
+              <div className="nbl-teaserTile__content">
+                <img className="teaserPlate__img" src="https://solea-parent.dfs.ivi.ru/picture/ffffff,ffffff/gift.svg" />
+                <div className="nbl-teaserTile__caption">Активировать сертификат</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section className="pageSection home__pageSection">
+        <div className="pageSection__container">
+          <div className="gallery__top">
+            <div className="gallery__blockHeader">
+              <div className="gallery__imageHeader">
+                <img src="https://solea-parent.dfs.ivi.ru/picture/bypass/top10.svg" />
+                <span>за неделю</span>
+              </div>
+            </div>
+            <div className="top_slider">
+              <TopSlider topFilms={topFilms}/>
+            </div>
+          </div>
         </div>
       </section>
     </main>
