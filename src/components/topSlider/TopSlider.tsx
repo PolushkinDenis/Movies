@@ -35,17 +35,22 @@ const TopSlider: FC<TopSlider> = ({ topFilms }) => {
                     330: {
                         slidesPerView: 1,
                         slidesPerGroup: 1,
-                        spaceBetween: 10,
+                        spaceBetween: 20,
                     },
-                    600: {
-                        slidesPerView: 2,
-                        slidesPerGroup: 2,
-                        spaceBetween: 10,
-                    },
-                    880: {
+                    450: {
                         slidesPerView: 3,
                         slidesPerGroup: 3,
-                        spaceBetween: 10,
+                        spaceBetween: 20,
+                    },
+                    600: {
+                        slidesPerView: 3,
+                        slidesPerGroup: 3,
+                        spaceBetween: 20,
+                    },
+                    880: {
+                        slidesPerView: 4,
+                        slidesPerGroup: 4,
+                        spaceBetween: 20,
 
                     },
                     1160: {

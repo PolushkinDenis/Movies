@@ -101,9 +101,11 @@
             }
         }
     }
-    @media screen and (min-width: 600px) and (max-width: 1279px) {
+    @media screen and (max-width: 1279px) {
         .pageSection__container {
             width: auto;
+            margin-left: 20px;
+            margin-right: 20px;
         }
     }
 }
