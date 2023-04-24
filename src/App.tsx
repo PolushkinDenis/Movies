@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import Header from "./components/header/Header";
 import Main from "./pages/main/Main";
 import Films from "./pages/films/Films";
