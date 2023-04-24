@@ -44,11 +44,15 @@ const janr = [
   "фантастика",
   "фэнтези",
 ];
+interface Breakpoints {
+  [width: number]: SwiperOptions;
+  [ratio: string]: SwiperOptions;
+}
 interface TypeFilterDropdown {
   classes: string | null;
   meaningActiv: string[];
   funcActiv: React.Dispatch<React.SetStateAction<string[]>>;
-  breakpoints?: {};
+  breakpoints?: Breakpoints;
 }
 
 function FilterDropdown({
