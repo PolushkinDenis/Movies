@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import MyButton from "../UI/Button/MyButton";
@@ -45,10 +46,16 @@ const Header: FC = () => {
     document.body.addEventListener("mouseover", handleOutsideClick);
   }, []);
 
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (lange: any) => {
+    i18n.changeLanguage(lange);
+    console.log(t);
+    console.log(i18n);
+  };
+
   return (
     <div>
       <header className="header">
-        text
         <div className="header__container _container">
           <div className="headerTop">
             <div className="headerTop__content">
@@ -61,6 +68,12 @@ const Header: FC = () => {
               {width > 1160 ? <HeaderTopMenu></HeaderTopMenu> : ""}
 
               <div className="headerTop__wideArea">
+                <div className="headerTop__translation">
+                  <button onClick={() => changeLanguage("ru")}>ru</button>
+                  <br></br>
+                  <button onClick={() => changeLanguage("en")}>en</button>
+                </div>
+
                 <div className="headerTop__additionalButton">
                   <Link
                     to={
@@ -140,6 +153,7 @@ const Header: FC = () => {
             }
           </div>
         </div>
+
         {width > 1160 ? (
           ""
         ) : (
