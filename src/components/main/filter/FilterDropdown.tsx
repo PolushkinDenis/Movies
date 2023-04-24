@@ -44,8 +44,17 @@ const janr = [
   "фантастика",
   "фэнтези",
 ];
+interface TypeFilterDropdown {
+  classes: string | null;
+  meaningActiv: string[];
+  funcActiv: React.Dispatch<React.SetStateAction<string[]>>;
+}
 
-function FilterDropdown({ classes, meaningActiv, funcActiv }: any) {
+function FilterDropdown({
+  classes,
+  meaningActiv,
+  funcActiv,
+}: TypeFilterDropdown) {
   function changesActiveGenres(item: string) {
     if (meaningActiv.includes(item)) {
       const obj = meaningActiv.filter((i: string) => i !== item);

@@ -2,6 +2,10 @@ import React from "react";
 import "./Sorting.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
+interface TypeSorting {
+  clickToggleSorting: boolean;
+  setClickToggleSorting: React.Dispatch<React.SetStateAction<boolean>>;
+}
 const sortArr = [
   "По количсетсву оценок на кинопоиске",
   "По рейтингу",
@@ -9,15 +13,15 @@ const sortArr = [
   "По алфавиту",
 ];
 
-function Sorting({ clickToggleSorting, setClickToggleSorting }: any) {
-  const [activeFilter, setActiveFilter] = React.useState<string>(
+function Sorting({ clickToggleSorting, setClickToggleSorting }: TypeSorting) {
+  const [activeFilter, setActiveFilter] = React.useState<string | null>(
     "По количсетсву оценок на кинопоиске"
   );
-  function toggleSorting(e: any) {
+  function toggleSorting() {
     setClickToggleSorting(!clickToggleSorting);
   }
-  function clickItemSorting(e: any) {
-    setActiveFilter(e.target.textContent);
+  function clickItemSorting(e: React.MouseEvent<HTMLDivElement>) {
+    setActiveFilter(e.currentTarget.textContent);
   }
   return (
     <section className="pageSection catalogControlPanel__pageSection">
