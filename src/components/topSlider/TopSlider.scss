@@ -1,8 +1,11 @@
 .top_slider {
+    position: relative;
     .swiper-wrapper {
-        width: 100%;
+        // width: 100%;
         margin-left: 0;
-        margin-left: 20px;
+        position: static;
+        
+        // margin-left: 20px;
     }
     // .swiper-slide {
     //     width: ;
