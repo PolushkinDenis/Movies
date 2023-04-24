@@ -1,0 +1,35 @@
+.recommendSwiper {
+    &__title {
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 700;
+        font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+        margin-bottom: 24px;
+    }
+    &__swiper {
+        &-item {
+            .swiperItem__container {
+                position: relative;
+                &-image {
+                    border-radius: 8px;
+                    width: 153px;
+                    height: 235px;    
+                }
+                &-properties{
+                    display: none;
+                    border-radius: 8px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 153px;
+                    height: 235px;  
+                }
+                &:hover {
+                    &-properties {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

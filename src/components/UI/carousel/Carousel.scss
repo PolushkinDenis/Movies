@@ -1,0 +1,29 @@
+//.splide__track {
+//  padding: 0 25px !important;
+//}
+
+//.splide__list {
+//  transform: translateX(- 994.273 px) !important;
+//}
+
+.splide__slide {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .splide__arrow {
+    background-color: transparent;
+  
+    &:disabled {
+      display: none;
+    }
+  
+    & svg {
+      height: 100px;
+      width: 100px;
+    }
+  
+    & path {
+      fill: #ffffff;
+    }
+  }

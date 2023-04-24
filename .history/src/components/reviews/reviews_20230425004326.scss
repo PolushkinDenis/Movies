@@ -1,0 +1,46 @@
+.reviews {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items:start;
+    &__container {
+        &-link {
+            position: relative;
+            font-size: 24px;
+            line-height: 28px;
+            font-weight: 700;
+            width: max-content;
+            box-shadow: 0 1px 0 rgba(255,255,255,.16), inset 0 0 0 rgba(255,255,255,.16);
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition-duration: .4s;
+            &:hover {
+                box-shadow: 0 1px 0 #fff, inset 0 0 0 #fff;
+            }
+            div {
+                position: absolute;
+                right: -18px;
+                top: 0;
+                font-size: 13px;
+                line-height: 16px;
+                color: #a5a1b2;
+            }
+        }
+        &-desc {
+            margin-top: 16px;
+            font-size: 15px;
+            line-height: 20px;
+            color: #a5a1b2;
+        }
+    }
+    &__btn {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 500;
+        padding: 7px 11px;  
+        color: #fff;
+        font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+        background-color: transparent;
+        border-color: rgba(255,255,255,.32);
+    }
+}

@@ -1,0 +1,19 @@
+.review {
+    width: 286px;
+    height: 162px;
+    background-color: #1f1b2e;
+    border-radius: 8px;
+    padding: 20px;
+    &__name {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #a5a1b2;
+    }
+    &__text {
+        font-size: 15px;
+        line-height: 22px;
+        -webkit-line-clamp: 3;
+    }
+}

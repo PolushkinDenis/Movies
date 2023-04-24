@@ -1,0 +1,52 @@
+.review {
+    width: 286px;
+    height: 162px;
+    background-color: #1f1b2e;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__name {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #a5a1b2;
+    }
+    &__text {
+        font-size: 15px;
+        line-height: 22px;
+        -webkit-line-clamp: 3;
+    }
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &-date {
+            color: #a5a1b2;
+            font-size: 13px;
+            line-height: 16px;
+        }
+        &-assesment {
+            display: flex;
+            align-items: center;
+            span {
+                padding: 0 8px;
+                font-size: 15px;
+                line-height: 20px;
+                font-weight: 700;
+                color: #73a32f;
+            }
+            svg {
+                width: 20px;
+                height: 20px;
+                color: rgba(126,121,143,.72);
+                cursor: pointer;
+                &:hover {
+                    color: #7e798f;
+                }
+            }
+        }
+    }
+}
