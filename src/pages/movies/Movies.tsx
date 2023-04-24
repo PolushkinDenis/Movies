@@ -6,20 +6,25 @@ import Sorting from "../../components/main/sorting/Sorting";
 
 function Movies() {
   // Countries,Genres,Rating,Evaluations,SearchDirector,SearchActor
-  const [clickSwitchFilter, setClickSwitchFilter] = React.useState<string>("");
+  const [clickSwitchFilter, setClickSwitchFilter] = React.useState<
+    string | null
+  >("");
 
-  const [onClickToggle, setOnClickToggle] = React.useState(false);
-  function clickToggle(e: any) {
+  const [onClickToggle, setOnClickToggle] = React.useState<boolean | null>(
+    false
+  );
+  function clickToggle(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     setOnClickToggle(!onClickToggle);
   }
 
-  const [clickToggleSorting, setClickToggleSorting] = React.useState(false);
+  const [clickToggleSorting, setClickToggleSorting] =
+    React.useState<boolean>(false);
 
   function clickFilterClose(e: any) {
-    if (!e.target.closest(".filtersDesktop__plank")) {
+    if (!e.currentTarget.closest(".filtersDesktop__plank")) {
       setClickSwitchFilter("");
     }
-    if (!e.target.closest(".catalogControlPanel__pageSection")) {
+    if (!e.currentTarget.closest(".catalogControlPanel__pageSection")) {
       setClickToggleSorting(false);
     }
   }

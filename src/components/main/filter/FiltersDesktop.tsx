@@ -6,50 +6,58 @@ import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
 import FilterDropdown from "./FilterDropdown";
 
-function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
+interface TypeFiltersDesktop {
+  clickSwitchFilter: string | null;
+  setClickSwitchFilter: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+function FiltersDesktop({
+  clickSwitchFilter,
+  setClickSwitchFilter,
+}: TypeFiltersDesktop) {
   const [rangeValue, setRangeValue] = React.useState<number>(7.5);
   const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
   const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
   const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
-  function shiftRangeValue(e: any) {
-    setRangeValue(e.target.value);
+  function shiftRangeValue(e: React.ChangeEvent<HTMLInputElement>) {
+    setRangeValue(Number(e.currentTarget.value));
   }
-  function shiftEvaluationsValue(e: any) {
-    setEvaluationsValue(e.target.value);
+  function shiftEvaluationsValue(e: React.ChangeEvent<HTMLInputElement>) {
+    setEvaluationsValue(Number(e.currentTarget.value));
   }
 
-  function clickToggleFilter(e: any) {
-    if (e.target.closest(".flag-Genres")) {
+  function clickToggleFilter(e: React.MouseEvent<HTMLDivElement>) {
+    if (e.currentTarget.closest(".flag-Genres")) {
       if (clickSwitchFilter === "Genres") {
         setClickSwitchFilter("");
       } else {
         setClickSwitchFilter("Genres");
       }
-    } else if (e.target.closest(".flag-Countries")) {
+    } else if (e.currentTarget.closest(".flag-Countries")) {
       if (clickSwitchFilter === "Countries") {
         setClickSwitchFilter("");
       } else {
         setClickSwitchFilter("Countries");
       }
-    } else if (e.target.closest(".flag-Rating")) {
+    } else if (e.currentTarget.closest(".flag-Rating")) {
       if (clickSwitchFilter === "Rating") {
         setClickSwitchFilter("");
       } else {
         setClickSwitchFilter("Rating");
       }
-    } else if (e.target.closest(".flag-Evaluations")) {
+    } else if (e.currentTarget.closest(".flag-Evaluations")) {
       if (clickSwitchFilter === "Evaluations") {
         setClickSwitchFilter("");
       } else {
         setClickSwitchFilter("Evaluations");
       }
-    } else if (e.target.closest(".flag-SearchDirector")) {
+    } else if (e.currentTarget.closest(".flag-SearchDirector")) {
       if (clickSwitchFilter === "SearchDirector") {
         setClickSwitchFilter("");
       } else {
         setClickSwitchFilter("SearchDirector");
       }
-    } else if (e.target.closest(".flag-SearchActor")) {
+    } else if (e.currentTarget.closest(".flag-SearchActor")) {
       if (clickSwitchFilter === "SearchActor") {
         setClickSwitchFilter("");
       } else {
@@ -57,7 +65,7 @@ function FiltersDesktop({ clickSwitchFilter, setClickSwitchFilter }: any) {
       }
     }
   }
-  function limpiezaFilter(e: any) {
+  function limpiezaFilter() {
     setActiveGenres([]);
     setActiveCountries([]);
     setEvaluationsValue(1);
