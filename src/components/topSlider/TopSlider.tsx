@@ -50,7 +50,7 @@ const TopSlider: FC<TopSlider> = ({ topFilms }) => {
                     880: {
                         slidesPerView: 4,
                         slidesPerGroup: 4,
-                        spaceBetween: 20,
+                        spaceBetween: 24,
 
                     },
                     1160: {
@@ -62,7 +62,7 @@ const TopSlider: FC<TopSlider> = ({ topFilms }) => {
             >
                 {topFilms.map((film) => (
                         <SwiperSlide key={film.link}>
-                            <Link to={film.link}>
+                            <Link className='posterUrl' to={film.link}>
                                 <div className='posterUprightBlock__nbl-poster'>
                                     <div className='poster__imageWrapper'>
                                         <img className='poster__image' src={film.img} />

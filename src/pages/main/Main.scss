@@ -63,8 +63,8 @@
             }
             @media screen and (max-width: 1279px) {
                 width: auto;
-                margin-left: 15px;
-                margin-right: 15px;
+                margin-left: 20px;
+                margin-right: 20px;
                 .home__teaserList {
                     padding-left: 12px;
                     padding-right: 12px;
@@ -97,7 +97,11 @@
                     }
                 }
             }
-            .top_slider {
+            @media screen and (min-width: 1279px) {
+                .gallery__blockHeader {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
             }
         }
     }

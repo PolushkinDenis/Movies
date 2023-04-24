@@ -1,97 +1,130 @@
 .top_slider {
     position: relative;
-    padding-left: 12px;
-    padding-right: 12px;
     .swiper {
         position: static;
-    }
-    .swiper-wrapper {
-        // width: 100%;
-        margin-left: 0;
-        // position: static;
-        
-        // margin-left: 20px;
-    }
-    .posterUprightBlock__nbl-poster {
-        display: block;
-        position: relative;
-        &::before {
-            content: "";
-            display: block;
-            height: 0;
-            padding-bottom: 219.73684211%;
-        }
-        .poster__imageWrapper {
-            display: flex;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            &::before {
-                content: "";
-                display: block;
-                height: 0;
-                width: 100%;
-                background-color: #1f1b2e;
-                padding-bottom: 203.94736842%;
-            }
-            .poster__image {
-                width: 100%;
-                height: 100%;
-                border-radius: 8px 8px 0 0;
-            }
-            .poster__imageFade {
-                background-image: linear-gradient(0deg, #100e19, rgba(16, 14, 25, 0));
-                bottom: 0;
-                left: 0;
-                position: absolute;
-                right: 0;
-                &::before {
-                    content: "";
+        margin-left: -12px;
+        margin-right: -12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        margin-top: -12px;
+        padding-top: 12px;
+        .swiper-wrapper {
+            margin-left: 0;
+            .posterUrl {
+                .posterUprightBlock__nbl-poster {
                     display: block;
-                    height: 0;
-                    padding-bottom: 120.90163934%;
+                    position: relative;
+                    border-radius: 8px;
+                    transform-origin: 50% 50%;
+                    transition-property: transform;
+                    will-change: transform;
+                    &:not(:hover):not(:active) {
+                        transform: scale(1) translateY(0);
+                        transition-duration: .4s;
+                    }
+                    &:active {
+                        transform: scale(1) translateY(-2%);
+                    }
+                    &:hover:not(:active) {
+                        transition-duration: 80ms;
+                        transform: scale(1.04) translateY(0);
+                    }
+                    
+                    &::before {
+                        content: "";
+                        display: block;
+                        height: 0;
+                        border-radius: 8px 8px 0 0;
+                        padding-bottom: 219.73684211%;
+                    }
+                    .poster__imageWrapper {
+                        display: flex;
+                        left: 0;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        // &:hover {
+                        //     transition-duration: 80ms;
+                        // }
+                        &::before {
+                            content: "";
+                            display: block;
+                            height: 0;
+                            background-color: #1f1b2e;
+                            padding-bottom: 203.94736842%;
+                        }
+                        .poster__image {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 8px 8px 0 0;
+                        }
+                        .poster__imageFade {
+                            background-image: linear-gradient(0deg, #100e19, rgba(16, 14, 25, 0));
+                            bottom: 0;
+                            left: 0;
+                            position: absolute;
+                            right: 0;
+                            &::before {
+                                content: "";
+                                display: block;
+                                height: 0;
+                                padding-bottom: 120.90163934%;
+                            }
+                        }
+                        .poster__imageLogoArea {
+                            align-items: flex-end;
+                            display: flex;
+                            justify-content: center;
+                            bottom: 54px;
+                            height: 21.05263158%;
+                            left: 24px;
+                            position: absolute;
+                            right: 24px;
+                            .poster__imageLogo {
+                                max-height: 100%;
+                                max-width: 100%;
+                                -o-object-fit: cover;
+                                object-fit: cover;
+                                z-index: 1;
+                            }
+                        }
+                        .poster__placeNumber {
+                            bottom: -33px;
+                            height: 66px;
+                            left: 50%;
+                            position: absolute;
+                            transform: translateX(-50%);
+                            white-space: nowrap;
+                            .poster__picture-number {
+                                width: 100%;
+                                display: inline-block;
+                                height: 66px;
+                                vertical-align: top;
+                            }
+                        }
+                    }
                 }
             }
-            .poster__imageLogoArea {
-                align-items: flex-end;
-                display: flex;
-                justify-content: center;
-
-                bottom: 54px;
-                height: 21.05263158%;
-                left: 24px;
-                position: absolute;
-                right: 24px;
-                .poster__imageLogo {
-                    max-height: 100%;
-                    max-width: 100%;
-                    -o-object-fit: cover;
-                    object-fit: cover;
-                    z-index: 1;
-                }
+        }
+        .swiper-button-next {
+            margin-right: -40px;
+        }
+        .swiper-button-prev {
+            margin-left: -40px;
+        }
+    }
+}
+@media screen and (max-width: 1279px) {
+    .top_slider {
+        width: auto;
+        padding-left: 12px;
+        padding-right: 12px;
+        .swiper {
+            .swiper-button-next {
+                margin-right: -25px;
             }
-            .poster__placeNumber {
-                bottom: -33px;
-                height: 66px;
-                left: 50%;
-                position: absolute;
-                transform: translateX(-50%);
-                white-space: nowrap;
-                // @media screen and (min-width: 744px) {
-                //     bottom: -33px;
-                //     height: 66px;
-                //     left: 50%;
-                //     position: absolute;
-                //     transform: translateX(-50%);
-                //     white-space: nowrap;
-                // }
-                .poster__picture-number {
-                    width: 100%;
-                    display: inline-block;
-                    height: 66px;
-                    vertical-align: top;
-                }
+            .swiper-button-prev {
+                margin-left: -25px;
             }
         }
     }
