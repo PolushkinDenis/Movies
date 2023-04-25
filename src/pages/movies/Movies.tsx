@@ -17,15 +17,13 @@ function Movies() {
 
   const [clickToggleSorting, setClickToggleSorting] =
     React.useState<boolean>(false);
+  console.log(true);
 
   function clickFilterClose(e: any) {
     if (!e.target.closest(".filtersDesktop__plank")) {
       setClickSwitchFilter("");
     }
-    if (
-      !e.target.closest(".catalogControlPanel__pageSection") &&
-      clickToggleSorting === true
-    ) {
+    if (!e.target.closest(".catalogControlPanel__pageSection")) {
       setClickToggleSorting(false);
     }
   }
