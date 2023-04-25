@@ -1,0 +1,71 @@
+.viewOnDevices {
+    display: flex;
+    &__container {
+        &-title {
+            font-size: 24px;
+            line-height: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        &-desc {
+            font-size: 15px;
+            line-height: 20px;
+            color: #a5a1b2;
+            margin-bottom: 24px;
+        }
+        &-btn {
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 500;
+            background-color: #ea003d;
+            border-color: #ea003d;
+            font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+            transition-duration: .4s;
+            color: #fff;
+            width: 215px;
+            height: 40px;
+            border-width: 1px;
+            border-radius: 8px;
+            padding: 9px 15px;
+            cursor: pointer;
+            &:hover {
+                background-color: #ff0f4d;
+                border-color: #ff0f4d;
+                transition-duration: 80ms;
+            }
+        }
+    }
+    &__images {
+        position: relative;
+        margin: 0 auto;
+        &-screen1 {
+            position: relative;
+            z-index: 2;
+            width: 536px;
+            height: 272px;
+        }
+        &-screen2 {
+            z-index: 1;
+            position: absolute;
+            width: 200px;
+            height: 136px;
+            right: 42px;
+            bottom: 0;
+        }
+        &-photo1 {
+            position: absolute;
+            left: 100px;
+            top: 3px;
+            width: 337px;
+            height: 192px;
+        }
+        &-photo2 {
+            position: absolute;
+            width: 188px;
+            height: 102px;
+            right: 48px;
+            bottom: 7px;
+            z-index: 2;
+        }
+    }
+}
