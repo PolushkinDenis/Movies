@@ -4,51 +4,51 @@ import all_device_img from "../../images/footer/all_device.png";
 import mail_img from "../../images/footer/mail.png";
 import phone_img from "../../images/footer/phone.png";
 import widget_img from "../../images/footer/widget.png";
-
+import { useTranslation } from "react-i18next";
 import FooterLinks from "./footerLinks/FooterLinks";
 import { LinkFooter } from "../../types/footerLinks";
 import ButtonDevice from "./buttonDevice/ButtonDevice";
 
-const aboutUsLinks: LinkFooter[] = [
-  { href: "https://corp.ivi.ru/", name: "О компании" },
-  {
-    href: "https://corp.ivi.ru/career/#career-vacancy-block",
-    name: "Вакансии",
-  },
-  {
-    href: "https://www.ivi.ru/pages/beta",
-    name: "Программа бета-тестирования",
-  },
-  {
-    href: "https://www.ivi.ru/info/partners",
-    name: "Информация для партнёров",
-  },
-  { href: "https://corp.ivi.ru/advertisers/", name: "Размещение рекламы" },
-  {
-    href: "https://www.ivi.ru/info/agreement",
-    name: "Пользовательское соглашение",
-  },
-  {
-    href: "https://www.ivi.ru/info/confidential",
-    name: "Политика конфиденциальности",
-  },
-  {
-    href: "https://www.ivi.ru/info/goryachaya-liniya-komplaens",
-    name: "Комплаенс",
-  },
-];
-
-const sectionsLinks: LinkFooter[] = [
-  { href: "https://www.ivi.ru/", name: "Мой Иви" },
-  { href: "https://www.ivi.ru/new", name: "Что нового" },
-  { href: "https://www.ivi.ru/movies", name: "Фильмы" },
-  { href: "https://www.ivi.ru/series", name: "Сериалы" },
-  { href: "https://www.ivi.ru/animation", name: "Мультфильмы" },
-  { href: "https://www.ivi.ru/tvplus", name: "TV+" },
-  { href: "https://www.ivi.ru/goodmovies", name: "Что посмотреть" },
-];
-
 const Footer: FC = () => {
+  //Translation
+  const { t } = useTranslation();
+  const aboutUsLinks: LinkFooter[] = [
+    { href: "https://corp.ivi.ru/", name: t("О компании") },
+    {
+      href: "https://corp.ivi.ru/career/#career-vacancy-block",
+      name: t("Вакансии"),
+    },
+    {
+      href: "https://www.ivi.ru/pages/beta",
+      name: t("Программа бета-тестирования"),
+    },
+    {
+      href: "https://www.ivi.ru/info/partners",
+      name: t("Информация для партнёров"),
+    },
+    { href: "https://corp.ivi.ru/advertisers/", name: t("Размещение рекламы") },
+    {
+      href: "https://www.ivi.ru/info/agreement",
+      name: t("Пользовательское соглашение"),
+    },
+    {
+      href: "https://www.ivi.ru/info/confidential",
+      name: t("Политика конфиденциальности"),
+    },
+    {
+      href: "https://www.ivi.ru/info/goryachaya-liniya-komplaens",
+      name: t("Комплаенс"),
+    },
+  ];
+  const sectionsLinks: LinkFooter[] = [
+    { href: "https://www.ivi.ru/", name: t("Мой Иви") },
+    { href: "https://www.ivi.ru/new", name: t("Что нового") },
+    { href: "https://www.ivi.ru/movies", name: t("Фильмы") },
+    { href: "https://www.ivi.ru/series", name: t("Сериалы") },
+    { href: "https://www.ivi.ru/animation", name: t("Мультфильмы") },
+    { href: "https://www.ivi.ru/tvplus", name: t("TV+") },
+    { href: "https://www.ivi.ru/goodmovies", name: t("Что посмотреть") },
+  ];
   const [phone, setPhone] = useState(false);
   return (
     <footer>
@@ -65,15 +65,15 @@ const Footer: FC = () => {
                   className="iviFooter__certificateLink"
                   href="https://www.ivi.ru/cert"
                 >
-                  Активация сертификата
+                  {t("Активация сертификата")}
                 </a>
               </div>
             </div>
             <div className="iviFooter__column">
-              <span className="iviFooter__title">Служба поддержки</span>
+              <span className="iviFooter__title">{t("Служба поддержки")}</span>
               <div className="iviFooter__description">
-                <span>Мы всегда готовы вам помочь.</span>
-                <span>Наши операторы онлайн 24/7</span>
+                <span>{t("Мы всегда готовы вам помочь.")}</span>
+                <span>{t("Наши операторы онлайн 24/7")}</span>
               </div>
               <div className="iviFooter__support">
                 <ButtonDevice
@@ -113,7 +113,7 @@ const Footer: FC = () => {
                       ask.ivi.ru
                     </a>
                     <div className="iviFooter__description">
-                      Ответы на вопросы
+                      {t("Ответы на вопросы")}
                     </div>
                   </li>
                 </ul>
@@ -127,7 +127,7 @@ const Footer: FC = () => {
                   </div>
                 </div>
                 <div className="footerWidget__text">
-                  Смотрите фильмы, сериалы и мультфильмы без рекламы
+                  {t("Смотрите фильмы, сериалы и мультфильмы без рекламы")}
                 </div>
               </div>
             </div>

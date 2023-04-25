@@ -5,6 +5,7 @@ import { BsCheckLg } from "react-icons/bs";
 import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
 import FilterDropdown from "./FilterDropdown";
+import { useTranslation } from "react-i18next";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
@@ -71,6 +72,8 @@ function FiltersDesktop({
     setEvaluationsValue(1);
     setRangeValue(7.5);
   }
+  //Translation
+  const { t } = useTranslation();
 
   return (
     <section className="filtersDesktop">
@@ -86,7 +89,7 @@ function FiltersDesktop({
             >
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
-                  <div className="nbl-plank__title">Жанры</div>
+                  <div className="nbl-plank__title">{t("Жанры")}</div>
                   {activeGenres.length === 0 ? (
                     ""
                   ) : (
@@ -132,7 +135,7 @@ function FiltersDesktop({
             >
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
-                  <div className="nbl-plank__title">Страны</div>
+                  <div className="nbl-plank__title">{t("Страны")}</div>
                   {activeCountries.length === 0 ? (
                     ""
                   ) : (
@@ -166,7 +169,7 @@ function FiltersDesktop({
             >
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
-                  <div className="nbl-plank__title">Рейтинг</div>
+                  <div className="nbl-plank__title">{t("Рейтинг")}</div>
                   <div className="nbl-plank__extra">{"от " + rangeValue}</div>
                 </div>
                 <div className="nbl-plank__icon">
@@ -215,7 +218,9 @@ function FiltersDesktop({
             >
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
-                  <div className="nbl-plank__title">Количество оценок</div>
+                  <div className="nbl-plank__title">
+                    {t("Количество оценок")}
+                  </div>
                   <div className="nbl-plank__extra">
                     {"от " + evaluationsValue + " т."}
                   </div>
@@ -268,7 +273,9 @@ function FiltersDesktop({
             >
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
-                  <div className="nbl-plank__title">Поиск по Режиссёру</div>
+                  <div className="nbl-plank__title">
+                    {t("Поиск по Режиссёру")}
+                  </div>
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
@@ -303,7 +310,7 @@ function FiltersDesktop({
             >
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
-                  <div className="nbl-plank__title">Поиск по Актёру</div>
+                  <div className="nbl-plank__title">{t("Поиск по Актёру")}</div>
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
@@ -334,7 +341,7 @@ function FiltersDesktop({
             className={
               activeGenres.length ||
               activeCountries.length ||
-              evaluationsValue !== 1 ||
+              evaluationsValue !== 0 ||
               rangeValue !== 7.5
                 ? "filtersDesktop__button"
                 : "filtersDesktop__button filtersDesktop__button_disabled"
@@ -344,7 +351,7 @@ function FiltersDesktop({
             <div className="filtersDesktop__button-icon">
               <GrClose></GrClose>
             </div>
-            Сбросить фильтры
+            {t("Сбросить фильтры")}
           </div>
         </div>
       </div>

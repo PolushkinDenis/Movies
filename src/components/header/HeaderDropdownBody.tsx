@@ -2,7 +2,11 @@ import React from "react";
 import "./HeaderDropdownBody.scss";
 import MyButton from "../UI/Button/MyButton";
 
-function HeaderDropdownBody({ clasee, type }: any) {
+interface TypeHeaderDropdownBody {
+  clasee?: string;
+  type: string | null;
+}
+function HeaderDropdownBody({ clasee, type }: TypeHeaderDropdownBody) {
   return (
     <div className={`headerDropdownBody ` + clasee}>
       <div className="headerDropdown__content">

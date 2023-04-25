@@ -16,13 +16,15 @@ const Header: FC = () => {
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
-  const [clickToggleBurger, setClickToggleBurger] = React.useState(false);
+  const [clickToggleBurger, setClickToggleBurger] =
+    React.useState<boolean>(false);
   function clickBurger() {
     setClickToggleBurger(!clickToggleBurger);
   }
-  const [onMouseOverTogle, setOnMouseOverTogle] = React.useState(false);
+  const [onMouseOverTogle, setOnMouseOverTogle] =
+    React.useState<boolean>(false);
   //['bell','movies']
-  const [typeMouseOver, setTypeMouseOver] = React.useState("bell");
+  const [typeMouseOver, setTypeMouseOver] = React.useState<string>("bell");
   const [focusBoxRight, setFocusBoxRight] = React.useState(0);
 
   function handleOutsideClick(e: any) {
@@ -45,12 +47,10 @@ const Header: FC = () => {
   React.useEffect(() => {
     document.body.addEventListener("mouseover", handleOutsideClick);
   }, []);
-
+  //Translation
   const { t, i18n } = useTranslation();
   const changeLanguage = (lange: any) => {
     i18n.changeLanguage(lange);
-    console.log(t);
-    console.log(i18n);
   };
 
   return (
@@ -68,10 +68,28 @@ const Header: FC = () => {
               {width > 1160 ? <HeaderTopMenu></HeaderTopMenu> : ""}
 
               <div className="headerTop__wideArea">
-                <div className="headerTop__translation">
-                  <button onClick={() => changeLanguage("ru")}>ru</button>
-                  <br></br>
-                  <button onClick={() => changeLanguage("en")}>en</button>
+                <div className="headerTop__translation ">
+                  <div
+                    className={
+                      i18n.language === "ru"
+                        ? "nbl-button__primaryText active"
+                        : "nbl-button__primaryText"
+                    }
+                    onClick={() => changeLanguage("ru")}
+                  >
+                    ru
+                  </div>
+                  <span>/</span>
+                  <div
+                    className={
+                      i18n.language === "en"
+                        ? "nbl-button__primaryText active"
+                        : "nbl-button__primaryText"
+                    }
+                    onClick={() => changeLanguage("en")}
+                  >
+                    en
+                  </div>
                 </div>
 
                 <div className="headerTop__additionalButton">
@@ -81,7 +99,7 @@ const Header: FC = () => {
                     }
                   >
                     <MyButton classes="nbl-button__subscription">
-                      Смотреть 30 дней за 1 ₽
+                      {t("Смотреть 30 дней за 1 ₽")}
                     </MyButton>
                   </Link>
                 </div>
@@ -101,7 +119,7 @@ const Header: FC = () => {
                         />
                       </svg>
                     </div>
-                    Поиск
+                    {t("Поиск")}
                   </MyButton>
                 </div>
               </div>
@@ -183,7 +201,10 @@ const Header: FC = () => {
                     </svg>
                   </div>
                 </div>
-                <div className="nbl-tabBar__itemCaption">Мой Иви</div>
+                <div className="nbl-tabBar__itemCaption">
+                  {t("Мой Иви")}
+                  {/* Мой Иви */}
+                </div>
               </TabBar>
               <TabBar
                 toLink="https://www.ivi.ru/movies"
@@ -208,7 +229,10 @@ const Header: FC = () => {
                     </svg>
                   </div>
                 </div>
-                <div className="nbl-tabBar__itemCaption">Каталог</div>{" "}
+                <div className="nbl-tabBar__itemCaption">
+                  {t("Каталог")}
+                  {/* Каталог */}
+                </div>
               </TabBar>
               <MyButton classes="nbl-tabBar__item">
                 <div className="nbl-tabBar__itemGlowImage"></div>
@@ -227,7 +251,10 @@ const Header: FC = () => {
                     </svg>
                   </div>
                 </div>
-                <div className="nbl-tabBar__itemCaption">Поиск</div>
+                <div className="nbl-tabBar__itemCaption">
+                  {t("Поиск")}
+                  {/* Поиск */}
+                </div>
               </MyButton>
               <TabBar
                 toLink="https://www.ivi.ru/tvplus"
@@ -274,7 +301,10 @@ const Header: FC = () => {
                     </svg>
                   </div>
                 </div>
-                <div className="nbl-tabBar__itemCaption">TV+</div>
+                <div className="nbl-tabBar__itemCaption">
+                  {t("TV+")}
+                  {/* TV+ */}
+                </div>
               </TabBar>
               <MyButton onClick={clickBurger} classes="nbl-tabBar__item">
                 {clickToggleBurger ? (
@@ -299,7 +329,10 @@ const Header: FC = () => {
                         </svg>
                       </div>
                     </div>
-                    <div className="nbl-tabBar__itemCaption">Закрыть</div>
+                    <div className="nbl-tabBar__itemCaption">
+                      {t("Закрыть")}
+                      {/* Закрыть */}
+                    </div>
                   </>
                 ) : (
                   <>
@@ -315,7 +348,10 @@ const Header: FC = () => {
                         </svg>
                       </div>
                     </div>
-                    <div className="nbl-tabBar__itemCaption">Ещё</div>
+                    <div className="nbl-tabBar__itemCaption">
+                      {t("Ещё")}
+                      {/* Ещё */}
+                    </div>
                   </>
                 )}{" "}
               </MyButton>

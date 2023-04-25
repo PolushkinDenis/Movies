@@ -13,13 +13,13 @@ i18n
     fallbackLng: "ru",
     supportedLngs: ["ru", "en"],
     debug: true,
-    resources: {
-      en: {
-        translation: {
-          "Welcome to React": "Welcome to React and react-i18next",
-        },
-      },
-    },
+    // resources: {
+    //   en: {
+    //     translation: {
+    //       "Welcome to React": "Welcome to React and react-i18next",
+    //     },
+    //   },
+    // },
     backend: {
       loadPath: "./locales/{{lng}}/translation.json",
     },
