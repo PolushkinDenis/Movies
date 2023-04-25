@@ -97,9 +97,7 @@ const Main: FC = () => {
               </div>
             </div>
           </div>
-
         </div>
-
       </section>
       <section className="pageSection home__pageSection">
         <div className="pageSection__container">
