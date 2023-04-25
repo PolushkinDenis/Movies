@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import MyButton from "../UI/Button/MyButton";
 import TabBar from "../UI/Button/TabBar";
 import HeaderDropdownBody from "./HeaderDropdownBody";
