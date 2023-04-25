@@ -10,10 +10,8 @@ function Movies() {
     string | null
   >("");
 
-  const [onClickToggle, setOnClickToggle] = React.useState<boolean | null>(
-    false
-  );
-  function clickToggle(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+  const [onClickToggle, setOnClickToggle] = React.useState<boolean>(false);
+  function clickToggle() {
     setOnClickToggle(!onClickToggle);
   }
 
@@ -21,10 +19,13 @@ function Movies() {
     React.useState<boolean>(false);
 
   function clickFilterClose(e: any) {
-    if (!e.currentTarget.closest(".filtersDesktop__plank")) {
+    if (!e.target.closest(".filtersDesktop__plank")) {
       setClickSwitchFilter("");
     }
-    if (!e.currentTarget.closest(".catalogControlPanel__pageSection")) {
+    if (
+      !e.target.closest(".catalogControlPanel__pageSection") &&
+      clickToggleSorting === true
+    ) {
       setClickToggleSorting(false);
     }
   }
