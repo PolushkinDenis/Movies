@@ -23,6 +23,7 @@
             color: #ffffff;
         }
     }
+
     &::after {
         transform-origin: 50% 50%;
         color: #bcbcbf;
@@ -33,14 +34,17 @@
 .swiper-wrapper {
     margin-left: 20px;
 }
+
 .swiper-button-next {
     margin-right: -15px;
     top: var(--swiper-navigation-top-offset, 40%) !important;
 }
+
 .swiper-button-prev {
     margin-left: -15px;
     top: var(--swiper-navigation-top-offset, 40%) !important;
 }
+
 .swiper-button-disabled {
     display: none !important;
 }
@@ -72,23 +76,28 @@
 
     justify-items: center;
 }
+
 .poster-main {
     height: 90%;
     grid-area: poster-main;
 }
+
 .poster-1 {
     height: 90%;
     grid-area: poster-1;
 }
+
 .poster-2 {
     height: 90%;
     grid-area: poster-2;
     margin-top: -50%;
 }
+
 .poster-3 {
     height: 90%;
     grid-area: poster-3;
 }
+
 .poster-4 {
     height: 90%;
     grid-area: poster-4;

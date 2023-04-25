@@ -29,6 +29,26 @@
 
     &__logo {}
 
+    &__translation {
+        display: flex;
+
+        & :not(:last-child) {
+            margin-right: 5px;
+        }
+
+        span {
+            color: rgba(255, 255, 255, 0.48);
+            transition-duration: 0.4s;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        & .nbl-button__primaryText.active {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
 
     &__wideArea {
         margin-right: 12px;

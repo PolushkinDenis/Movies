@@ -1,4 +1,9 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
+import { SplideSlide } from "@splidejs/react-splide";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { testSlice } from "../../store/slices/testSlice";
+import PersonCard from "../../components/personCard/PersonCard";
+import Carousel from "../../components/UI/carousel/Carousel";
 import "./Main.scss";
 import PromoSlider from "../../components/promoSlider/PromoSlider";
 import TopSlider from "../../components/topSlider/TopSlider";

@@ -1,0 +1,58 @@
+.person-card {
+  letter-spacing: 1px;
+  //width: inherit;
+  //width: 100%;
+
+  &__relative {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  &__img-wrapper {
+    width: 163px;
+    height: 163px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all .2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    & img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  }
+
+  &__movies-amount {
+    background-color: rgb(168,105,240);
+    border-radius: 5px;
+    padding: 8px !important;
+    font-weight: 700;
+    position: absolute;
+    bottom: 2px;
+    left: 8px;
+  }
+
+  &__name {
+    font-weight: 500;
+    color: #d9d7e0;
+    line-height: 18px;
+  }
+
+  &__movies {
+    font-weight: 300;
+    color: #a5a1b2;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  & p {
+    padding-left: 10px;
+  }
+}

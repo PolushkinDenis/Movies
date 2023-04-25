@@ -25,9 +25,7 @@
         display: flex;
 
         .nbl-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
             margin-right: 8px;
 
             svg {
@@ -200,6 +198,19 @@
         font-weight: 600;
     }
 
+    &__extra {
+        color: #a5a1b2;
+        margin-top: 4px;
+        font-size: 13px;
+        line-height: 16px;
+        height: 16px;
+        font-weight: 500;
+        font-style: normal;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
     &__icon {
         width: 20px;
         height: 100%;
@@ -214,6 +225,7 @@
         align-self: center;
         margin-left: 16px;
         -webkit-box-flex: 0;
+        // transform: rotate(90deg);
 
         svg {
             width: 100%;
@@ -225,4 +237,49 @@
             }
         }
     }
+}
+
+.filtersDesktop__plank.isActive .bl-plank__icon {
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.nbl-arrowButton {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    -webkit-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+    opacity: 1;
+
+    &__caption {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 500;
+        font-style: normal;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 20px;
+        margin: 0 8px;
+    }
+
+    & .nbl-icon {
+
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.nbl-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

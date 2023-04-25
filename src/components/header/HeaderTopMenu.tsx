@@ -2,40 +2,61 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MyButton from "../UI/Button/MyButton";
 import "./HeaderTopMenu.scss";
+import { useTranslation } from "react-i18next";
 
 function HeaderTopMenu() {
+  //Translation
+  const { t } = useTranslation();
   return (
     <div className="headerTop__menu">
       <nav className="headerMenu__navigation">
         <ul className="headerMenu__list">
           <li className="headerMenu__listItem">
             <Link to={"/"}>
-              <MyButton classes="nbl-button__primaryText">Мой Иви</MyButton>
+              <MyButton classes="nbl-button__primaryText">
+                {t("Мой Иви")}
+                {/* Мой Иви */}
+              </MyButton>
             </Link>
           </li>
           <li className="headerMenu__listItem">
             <a href="">
-              <div className="nbl-button__primaryText">Что нового</div>
+              <div className="nbl-button__primaryText">
+                {t("Что нового")}
+                {/* Что нового */}
+              </div>
             </a>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
             <a href="">
-              <div className="nbl-button__primaryText">Фильмы</div>
+              <div className="nbl-button__primaryText">
+                {t("Фильмы")}
+                {/* Фильмы */}
+              </div>
             </a>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
             <a href="">
-              <div className="nbl-button__primaryText">Сериалы</div>
+              <div className="nbl-button__primaryText">
+                {t("Сериалы")}
+                {/* Сериалы */}
+              </div>
             </a>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
             <a href="">
-              <div className="nbl-button__primaryText">Мультфильмы</div>
+              <div className="nbl-button__primaryText">
+                {t("Мультфильмы")}
+                {/* Мультфильмы */}
+              </div>
             </a>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
             <a href="">
-              <div className="nbl-button__primaryText">TV+</div>
+              <div className="nbl-button__primaryText">
+                {t("TV+")}
+                {/* TV+ */}
+              </div>
             </a>
           </li>
         </ul>
