@@ -195,16 +195,6 @@ function Movies() {
                                   </li>
                                 );
                               })}
-                              {/* <li className="filterDropdown__item filterDropdown__item_checkbox">
-                          <label className="filterDropdown__label">
-                            <input
-                              type="checkbox"
-                              className="filterDropdown__input"
-                            />
-                            <div className="filterDropdown__input-text">Артхаус</div>
-                            <div className="filterDropdown__checkbox"></div>
-                          </label>
-                        </li> */}
                             </ul>
                           </div>
                         </div>
