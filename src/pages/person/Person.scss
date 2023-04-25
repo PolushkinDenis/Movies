@@ -1,0 +1,167 @@
+.person {
+  padding-bottom: 30px;
+
+  &__no-bg-img {
+    margin-top: 20px;
+  }
+
+  &__img-wrapper {
+    width: 45%;
+    margin: 30px auto 0;
+
+    & img {
+      width: 120px;
+      height: 144px;
+      border-radius: 16px;
+    }
+  }
+
+  &__bg-img {
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    padding-top: -webkit-calc(100vw * .321);
+    padding-top: calc(100vw * .321);
+    z-index: 999;
+    position: relative;
+  }
+
+  &__gradient {
+    padding-top: 20px;
+    background: linear-gradient(to bottom, rgba(16,14,25,0.1) 0%, rgba(16,14,25, 1) 100%) !important;
+    box-shadow: 4px 4px 57px 14px rgba(16, 14, 25, 0.21);
+    margin-bottom: 30px;
+  }
+
+  &__gradient-inner {
+    width: 45%;
+    margin: 0 auto;
+  }
+
+  &__filmography {
+    width: 45%;
+    margin: 30px auto;
+  }
+
+  &__filmography-title {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+    & span {
+      margin-left: 10px;
+      color: #a5a1b2;
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 400;
+    }
+  }
+
+  &__alternate,
+  &__story {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  &__alternate {
+    color: #a5a1b2;
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    font-size: 56px;
+    line-height: 56px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  &__story {
+    color: #d9d7e0;
+  }
+
+  &__back {
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+
+    & span {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__back-position {
+    position: absolute;
+    top: 20px;
+    left: 7%;
+  }
+}
+
+@media screen and (max-width: 1159px) {
+  .person {
+    &__img-wrapper,
+    &__gradient-inner,
+    &__filmography {
+      width: 70%;
+    }
+
+    &__back-position {
+      left: 0;
+    }
+
+    &__bg-img {
+      background-position: center;
+      padding-top: -webkit-calc(100vw * .421);
+      padding-top: calc(100vw * .421);
+    }
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .person {
+    &__img-wrapper,
+    &__gradient-inner,
+    &__filmography {
+      width: 80%;
+    }
+
+    &__bg-img {
+      padding-top: -webkit-calc(100vw * .521);
+      padding-top: calc(100vw * .521);
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .person {
+    &__name {
+      font-size: 40px;
+      line-height: 44px;
+    }
+
+    &__img-wrapper,
+    &__gradient-inner,
+    &__filmography {
+      width: 95%;
+    }
+
+    &__filmography-title {
+      & span {
+        display: block;
+        margin: 10px 0 0 0;
+      }
+    }
+
+    &__bg-img {
+      padding-top: -webkit-calc(100vw * .721);
+      padding-top: calc(100vw * .721);
+    }
+  }
+}
