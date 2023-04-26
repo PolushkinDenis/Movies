@@ -32,18 +32,25 @@
 }
 
 .swiper-wrapper {
-    margin-left: 20px;
+    // margin-left: 20px;
 }
 
-.swiper-button-next {
-    margin-right: -15px;
-    top: var(--swiper-navigation-top-offset, 40%) !important;
+.pageSection__movies__container {
+    .swiper-horizontal {
+        position: static;
+    }
+    .swiper-button-next {
+        margin-right: -40px;
+        top: var(--swiper-navigation-top-offset, 40%) !important;
+    }
+    
+    .swiper-button-prev {
+        margin-left: -40px;
+        top: var(--swiper-navigation-top-offset, 40%) !important;
+    }
+
 }
 
-.swiper-button-prev {
-    margin-left: -15px;
-    top: var(--swiper-navigation-top-offset, 40%) !important;
-}
 
 .swiper-button-disabled {
     display: none !important;
@@ -59,47 +66,73 @@
     font-weight: 600;
     font-style: normal;
 }
-
+.nbl-poster__fon {
+    border-radius: 10px;
+    &::before {
+        content: '';
+        height: 0;
+        padding-bottom: 76%;
+        display: block;
+        background-color: #1f1b2e;
+        border-radius: 10px
+    }
+}
+.nms-poster__imageWrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    &::before {
+        content: '';
+        height: 0;
+        padding-bottom: 76%;
+        display: block;
+        background-color: #1f1b2e;
+        border-radius: 10px;
+        width: 100%;
+    }
+}
 .main-img {
-    width: 83%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 8px;
     overflow: hidden;
-    max-height: 196px;
     display: grid;
     grid-template-areas:
         "poster-main poster-1 poster-2"
         "poster-main poster-3 poster-4";
-    // grid-template-rows: repeat(2, 100%);
-    grid-template-rows: repeat(2, 8vw);
-
-    // grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: 1fr 0.5fr 0.5fr;
-
+    grid-template-rows: repeat(2, 50%);
+    grid-template-columns: 0.9fr 0.5fr 0.5fr;
     justify-items: center;
 }
 
 .poster-main {
-    height: 90%;
+    width: 100%;
+    height: 100%;
     grid-area: poster-main;
 }
 
 .poster-1 {
-    height: 90%;
+    width: 100%;
+    padding-left: 3px;
     grid-area: poster-1;
 }
 
 .poster-2 {
-    height: 90%;
+    width: 100%;
+    padding-left: 3px;
     grid-area: poster-2;
-    margin-top: -50%;
 }
 
 .poster-3 {
-    height: 90%;
+    width: 100%;
+    padding-left: 3px;
     grid-area: poster-3;
 }
 
 .poster-4 {
-    height: 90%;
+    width: 100%;
+    padding-left: 3px;
     grid-area: poster-4;
-    margin-top: -50%;
 }

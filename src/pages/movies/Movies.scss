@@ -83,9 +83,18 @@
     font-style: normal;
 }
 
-@media (max-width:880px) {
+@media (max-width: 880px) {
     .catalog__clause {
         width: 100%;
+    }
+}
+.pageSection__movies__container {
+    padding-bottom: 24px;
+    padding-top: 24px;
+    @media screen and (max-width: 1279px) {
+        width: auto;
+        margin-left: 8px;
+        margin-right: 8px;
     }
 }
 .gallery {
@@ -106,7 +115,7 @@
     @media screen and (max-width: 599px) {
         &__header {
             padding-left: 8px;
-            padding-right: 8px; 
+            padding-right: 8px;
         }
     }
 
@@ -118,12 +127,12 @@
     }
     @media screen and (max-width: 599px) {
         &__headerLink {
-            font-size: 20px; 
-        }  
+            font-size: 20px;
+        }
     }
 
     &__viewport-inner {
         position: relative;
-        margin-right: -26px;
-    }
+        margin-left: 12px;
+        margin-right: 12px;    }
 }

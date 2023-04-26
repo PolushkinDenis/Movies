@@ -18,34 +18,11 @@ const promoData = [
 ]
 
 const Main: FC = () => {
-  const dispatch = useAppDispatch()
-  const response = useAppSelector(state => state.moviesTop10Slice.movies)
-  const [page, setPage] = useState<number>(1)
   const { data: movies, error, isLoading } = moviesAPI.useFetchMoviesTop10Query(10)
-  // const { data: film } = moviesAPI.useGetMovieByIdQuery(535341)
-  // const {data: films} = moviesAPI.useGetMoviesQuery(page) 
   const [onClickToggle, setOnClickToggle] = React.useState(false);
-
-  console.log(response)
-  
-  // console.log(movies)
-  // console.log(data)
-  // console.log(film)
-  // console.log(page)
-  // console.log(films)
-
-  const pagginationFilms = () => {
-    setPage(page + 1)
-    // refetch()
-  }
-
-  useEffect(() => {
-    dispatch(fetchMoviesTop10())
-  }, [])
 
   return (
     <main className="main">
-      <button onClick={pagginationFilms}>REFRESH</button>
       <div className="promo">
         <PromoSlider promos={promoData} />
       </div>

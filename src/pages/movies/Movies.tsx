@@ -143,13 +143,13 @@ function Movies() {
             setClickSwitchFilter={setClickSwitchFilter}
           ></FiltersDesktop>
            <section className="pageSection">
-            <div className="pageSection__container">
+            <div className="pageSection__movies__container">
               <div className="gallery">
                 <div className="gallery__header">
                   <span className="gallery__headerLink">Фильмы-новинки</span>
                 </div>
                 <div className="gallery__viewport-inner">
-                  <NewMoviesSlider data={newFilmsData}/>
+                  <NewMoviesSlider />
                 </div>
               </div>
             </div>
