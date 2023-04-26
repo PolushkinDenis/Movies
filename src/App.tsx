@@ -21,7 +21,6 @@ function App() {
           <Route path="/film" element={<ContentPage />} />
           <Route path="/person/:name" element={<Person />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/film" element={<ContentPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

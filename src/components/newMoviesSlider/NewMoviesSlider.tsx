@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import './NewMoviesSlider.scss'
 import premieres_img from '../../images/newMoviesSlider/premieres.png'
 import { Swiper, SwiperProps, SwiperRef, SwiperSlide } from "swiper/react";
@@ -6,6 +6,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, SwiperOptions } from "swiper";
 import { Link } from "react-router-dom";
+import { moviesAPI } from "../../services/MoviesService";
+import { IMovies } from "../../types/IMovies";
+import { IFilm } from "../../types/IFilm";
 
 const postersFilms = [
     { imgHref: "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/5ec7dbd7-1cab-4eae-8846-8be00c56dc0a/150x225" },
@@ -43,14 +46,53 @@ interface NewMoviesSliderProps {
     breakpoints?: Breakpoints
 }
 
-const NewMoviesSlider: FC<NewMoviesSliderProps> = ({data, breakpoints}) => {
+interface MoviesSlide {
+    movies: IFilm[]
+}
+
+interface NewMoviesArray {
+    moviesArray: MoviesSlide[]
+}
+
+const NewMoviesSlider: FC<NewMoviesSliderProps> = ({data}) => {
+    const [arrMovies, setArrMovies] = useState<NewMoviesArray[]>([])
+    // const { data: movies, error, isLoading } = moviesAPI.useFetchMoviesTop10Query(10)
+    const res = moviesAPI.useGetNewMoviesQuery("2023").data?.rows
+    console.log(res)
+    useEffect(() => {
+        // console.log("USEEEFECT")
+        // let newArrMovies = [...arrMovies]
+        // res && newArrMovies.push(res)
+
+        // res && setArrMovies(res)
+        
+    }, [res])
+
+    console.log(arrMovies)
+
     return (
         <Swiper
             slidesPerView={1}
             slidesPerGroup={1}
             spaceBetween={10}
             navigation={true}
-            breakpoints={breakpoints}          
+            breakpoints={{
+                395: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                  spaceBetween: 10,
+                },
+                745: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                  spaceBetween: 10,
+                },
+                920: {
+                  slidesPerView: 4,
+                  slidesPerGroup: 4,
+                  spaceBetween: 10,
+                },
+              }}          
             modules={[Navigation]}
             className="mySwiper"
         >

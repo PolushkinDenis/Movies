@@ -4,9 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { Navigation } from 'swiper'
 import { TopFilms } from '../../data/topFilms'
+import { IMovies } from '../../types/IMovies'
 
 interface TopSlider {
-    topFilms: TopFilms[]
+    topFilms: IMovies
 }
 
 const TopSlider: FC<TopSlider> = ({ topFilms }) => {
@@ -45,18 +46,18 @@ const TopSlider: FC<TopSlider> = ({ topFilms }) => {
                     },
                 }}
             >
-                {topFilms.map((film) => (
-                        <SwiperSlide key={film.link}>
-                            <Link className='posterUrl' to={film.link}>
+                {topFilms.rows.map((film, index) => (
+                        <SwiperSlide key={film.id}>
+                            <Link className='posterUrl' to={`/film/${film.id}`}>
                                 <div className='posterUprightBlock__nbl-poster'>
                                     <div className='poster__imageWrapper'>
-                                        <img className='poster__image' src={film.img} />
+                                        <img className='poster__image' src={film.posterUrlPreview} />
                                         <div className='poster__imageFade'></div>
                                         <div className='poster__imageLogoArea'>
-                                            <img className='poster__imageLogo' src={film.title} />
+                                            <img className='poster__imageLogo' src={film.logoUrl} />
                                         </div>
                                         <div className='poster__placeNumber'>
-                                            <img className='poster__picture-number' src={film.number} />
+                                            <img className='poster__picture-number' src={`https://solea-parent.dfs.ivi.ru/picture/bypass/number${index + 1}.svg`} />
                                         </div>
                                     </div>
                                 </div>

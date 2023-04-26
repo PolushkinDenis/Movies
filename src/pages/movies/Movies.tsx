@@ -149,23 +149,7 @@ function Movies() {
                   <span className="gallery__headerLink">Фильмы-новинки</span>
                 </div>
                 <div className="gallery__viewport-inner">
-                  <NewMoviesSlider data={newFilmsData} breakpoints={{
-                    395: {
-                      slidesPerView: 2,
-                      slidesPerGroup: 2,
-                      spaceBetween: 10,
-                    },
-                    745: {
-                      slidesPerView: 3,
-                      slidesPerGroup: 3,
-                      spaceBetween: 10,
-                    },
-                    920: {
-                      slidesPerView: 4,
-                      slidesPerGroup: 4,
-                      spaceBetween: 10,
-                    },
-                  }} />
+                  <NewMoviesSlider data={newFilmsData}/>
                 </div>
               </div>
             </div>

@@ -1,14 +1,19 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import testReducer from "./slices/testSlice";
-
+import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { moviesAPI } from "../services/MoviesService";
+import moviesTop10Slice from "./moviesTop10/moviesTop10Slice";
+import newMoviesSlice from "./newMovies/newMoviesSlice"
 
 const rootReducer = combineReducers({
-    testReducer
+    moviesTop10Slice,
+    newMoviesSlice,
+    [moviesAPI.reducerPath]: moviesAPI.reducer
 })
 
 export const setupStore = () => {
     return configureStore({
-        reducer: rootReducer
+        reducer: rootReducer,
+        middleware: (getDefaultMiddleware) => 
+        getDefaultMiddleware().concat(moviesAPI.middleware)
     })
 }
 

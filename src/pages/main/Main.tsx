@@ -1,13 +1,14 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { SplideSlide } from "@splidejs/react-splide";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { testSlice } from "../../store/slices/testSlice";
 import PersonCard from "../../components/personCard/PersonCard";
 import Carousel from "../../components/UI/carousel/Carousel";
 import "./Main.scss";
 import PromoSlider from "../../components/promoSlider/PromoSlider";
 import TopSlider from "../../components/topSlider/TopSlider";
 import { topFilms } from "../../data/topFilms";
+import { moviesAPI } from "../../services/MoviesService";
+import { fetchMoviesTop10 } from "../../store/moviesTop10/moviesTop10Action";
 
 const promoData = [
   { href: "https://www.ivi.ru/collections/this-is-the-end", imgHref: "https://thumbs.dfs.ivi.ru/storage5/contents/0/3/99372bba75f4652a5d4b2f6a7d2ca3.jpg/1216x524/?q=85", title: "Это всего лишь конец света", synopsis: "Самые зрелищные и масштабные фильмы-катастрофы" },
@@ -17,9 +18,34 @@ const promoData = [
 ]
 
 const Main: FC = () => {
+  const dispatch = useAppDispatch()
+  const response = useAppSelector(state => state.moviesTop10Slice.movies)
+  const [page, setPage] = useState<number>(1)
+  const { data: movies, error, isLoading } = moviesAPI.useFetchMoviesTop10Query(10)
+  // const { data: film } = moviesAPI.useGetMovieByIdQuery(535341)
+  // const {data: films} = moviesAPI.useGetMoviesQuery(page) 
   const [onClickToggle, setOnClickToggle] = React.useState(false);
+
+  console.log(response)
+  
+  // console.log(movies)
+  // console.log(data)
+  // console.log(film)
+  // console.log(page)
+  // console.log(films)
+
+  const pagginationFilms = () => {
+    setPage(page + 1)
+    // refetch()
+  }
+
+  useEffect(() => {
+    dispatch(fetchMoviesTop10())
+  }, [])
+
   return (
     <main className="main">
+      <button onClick={pagginationFilms}>REFRESH</button>
       <div className="promo">
         <PromoSlider promos={promoData} />
       </div>
@@ -52,10 +78,10 @@ const Main: FC = () => {
               </div>
               <div className="clause__text is-truncated">
                 <div className={
-                      onClickToggle
-                        ? "clause__text-inner"
-                        : "clause__text-inner hidden-children"
-                    }>
+                  onClickToggle
+                    ? "clause__text-inner"
+                    : "clause__text-inner hidden-children"
+                }>
                   <p>Каждый день миллионы людей ищут фильмы онлайн, и никто не хочет усложнять себе жизнь –
                     и вы наверняка один из них! А раз так, то Иви – это именно тот ресурс, который вам нужен.
                     От лучших кинолент в HD-качестве вас отделяет буквально один клик. Мы не просто освобождаем
@@ -114,7 +140,9 @@ const Main: FC = () => {
               </div>
             </div>
             <div className="top_slider">
-              <TopSlider topFilms={topFilms} />
+              {movies && (
+                <TopSlider topFilms={movies} />
+              )}
             </div>
           </div>
         </div>
