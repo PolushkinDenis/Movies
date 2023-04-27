@@ -11,59 +11,59 @@ interface TopSlider {
 
 const TopSlider: FC<TopSlider> = ({ topFilms }) => {
     return (
-            <Swiper
-                modules={[Navigation]}
-                spaceBetween={10}
-                navigation={true}
-                className='topSlider'
-                breakpoints={{
-                    330: {
-                        slidesPerView: 1,
-                        slidesPerGroup: 1,
-                        spaceBetween: 20,
-                    },
-                    450: {
-                        slidesPerView: 3,
-                        slidesPerGroup: 3,
-                        spaceBetween: 20,
-                    },
-                    600: {
-                        slidesPerView: 3,
-                        slidesPerGroup: 3,
-                        spaceBetween: 20,
-                    },
-                    880: {
-                        slidesPerView: 4,
-                        slidesPerGroup: 4,
-                        spaceBetween: 24,
+        <Swiper
+            modules={[Navigation]}
+            spaceBetween={10}
+            navigation={true}
+            className='topSlider'
+            breakpoints={{
+                330: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 20,
+                },
+                450: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 20,
+                },
+                600: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 20,
+                },
+                880: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                    spaceBetween: 24,
 
-                    },
-                    1160: {
-                        slidesPerView: 5,
-                        slidesPerGroup: 5,
-                        spaceBetween: 20,
-                    },
-                }}
-            >
-                {topFilms.rows.map((film, index) => (
-                        <SwiperSlide key={film.id}>
-                            <Link className='posterUrl' to={`/film/${film.id}`}>
-                                <div className='posterUprightBlock__nbl-poster'>
-                                    <div className='poster__imageWrapper'>
-                                        <img className='poster__image' src={film.posterUrlPreview} />
-                                        <div className='poster__imageFade'></div>
-                                        <div className='poster__imageLogoArea'>
+                },
+                1160: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 5,
+                    spaceBetween: 20,
+                },
+            }}
+        >
+            {topFilms.rows.map((film, index) => (
+                <SwiperSlide key={film.id}>
+                    <Link className='posterUrl' to={`/film/${film.id}`}>
+                        <div className='posterUprightBlock__nbl-poster'>
+                            <div className='poster__imageWrapper'>
+                                <img className='poster__image' src={film.posterUrlPreview} />
+                                <div className='poster__imageFade'></div>
+                                {/* <div className='poster__imageLogoArea'>
                                             <img className='poster__imageLogo' src={film.logoUrl} />
-                                        </div>
-                                        <div className='poster__placeNumber'>
-                                            <img className='poster__picture-number' src={`https://solea-parent.dfs.ivi.ru/picture/bypass/number${index + 1}.svg`} />
-                                        </div>
-                                    </div>
+                                        </div> */}
+                                <div className='poster__placeNumber'>
+                                    <img className='poster__picture-number' src={`https://solea-parent.dfs.ivi.ru/picture/bypass/number${index + 1}.svg`} />
                                 </div>
-                            </Link>
-                        </SwiperSlide>
-                ))}
-            </Swiper>
+                            </div>
+                        </div>
+                    </Link>
+                </SwiperSlide>
+            ))}
+        </Swiper>
     )
 }
 
