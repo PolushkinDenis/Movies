@@ -120,3 +120,47 @@
         color: #fff;
     }
 }
+
+.nbl-link {
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
+
+
+    &_style_chaf {
+        &:not(:hover):not(:active) {
+            // box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+            animation: FocusAnim;
+            animation-duration: .4s;
+            animation-fill-mode: forwards;
+        }
+
+        &:hover,
+        &:active {
+            // box-shadow: 0 0 0 #6d687c, inset 0 -1.5em 0 #6d687c;
+            animation: notFocusAnim;
+            animation-duration: .2s;
+            animation-fill-mode: forwards;
+        }
+    }
+
+    @keyframes FocusAnim {
+        0% {
+            box-shadow: 0 0 0 #6d687c, inset 0 -1.5em 0 #6d687c;
+        }
+
+        100% {
+            box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+        }
+    }
+
+    @keyframes notFocusAnim {
+        0% {
+            box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+        }
+
+        100% {
+            box-shadow: 0 0 0 #6d687c, inset 0 -1.5em 0 #6d687c;
+        }
+    }
+}
