@@ -2,21 +2,9 @@ import React, { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./Movies.scss";
 import NewMoviesSlider from "../../components/newMoviesSlider/NewMoviesSlider";
-import premieres_img from '../../images/newMoviesSlider/premieres.png'
 import FiltersDesktop from "../../components/main/filter/FiltersDesktop";
 import Sorting from "../../components/main/sorting/Sorting";
 
-//Даные с Бека
-const newFilmsData  = [
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Премьеры на Иви" },
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Новинки подписки" },
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Лучшее в подписке" },
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Российские новинки" },
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Российские" },
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Зарубежные новинки" },
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Лучшие новинки" },
-  { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Бесплатные новинки" },
-]
 
 function Movies() {
   // Countries,Genres,Rating,Evaluations,SearchDirector,SearchActor
