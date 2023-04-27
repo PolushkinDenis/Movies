@@ -18,3 +18,21 @@
     margin: 0 auto;
     padding: 0 12px;
 }
+
+::-webkit-input-placeholder {
+    font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+}
+
+::-moz-placeholder {
+    font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+}
+
+/* Firefox 19+ */
+:-moz-placeholder {
+    font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+}
+
+/* Firefox 18- */
+:-ms-input-placeholder {
+    font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+}

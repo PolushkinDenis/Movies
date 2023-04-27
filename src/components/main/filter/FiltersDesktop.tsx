@@ -10,16 +10,24 @@ import { useTranslation } from "react-i18next";
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
   setClickSwitchFilter: React.Dispatch<React.SetStateAction<string | null>>;
+  activeGenres: string[];
+  setActiveGenres: React.Dispatch<React.SetStateAction<string[]>>;
+  activeCountries: string[];
+  setActiveCountries: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 function FiltersDesktop({
   clickSwitchFilter,
   setClickSwitchFilter,
+  activeGenres,
+  setActiveGenres,
+  activeCountries,
+  setActiveCountries,
 }: TypeFiltersDesktop) {
   const [rangeValue, setRangeValue] = React.useState<number>(7.5);
   const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
-  const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
-  const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
+  // const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
+  // const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
   function shiftRangeValue(e: React.ChangeEvent<HTMLInputElement>) {
     setRangeValue(Number(e.currentTarget.value));
   }

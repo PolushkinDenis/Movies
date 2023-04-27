@@ -131,6 +131,13 @@
         border: 1px solid #fff;
         color: #fff;
     }
+
+    &::placeholder {
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 600;
+        font-style: normal;
+    }
 }
 
 .filtersDesktop__plank.isActive .nbl-plank__icon {
