@@ -6,7 +6,7 @@ import { IQuery } from '../types/IQuery'
 
 export const moviesAPI = createApi({
     reducerPath: 'moviesAPI',
-    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:5000/api'}),
+    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/api'}),
     endpoints: (build) => ({
         fetchMoviesTop10: build.query<IMovies, number>({
             query: (size: number = 10) => ({

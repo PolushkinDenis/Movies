@@ -35,13 +35,8 @@ const NewMoviesSlider: FC = () => {
             dispach(fetchNewMovies())
             dispach(fetchNewMovies())
             dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
+            dispach(fetchNewMovies())     
+            dispach(fetchNewMovies())               
         }
     }, [])
 
