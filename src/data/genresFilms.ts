@@ -1,5 +1,5 @@
 import React from "react";
-const Data = {
+const genresFilms = {
   genresMovies: [
     "Артхаус",
     "Боевики",
@@ -33,4 +33,4 @@ const Data = {
   ],
 };
 
-export default Data;
+export default genresFilms;

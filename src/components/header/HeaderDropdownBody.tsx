@@ -1,7 +1,7 @@
 import React from "react";
 import "./HeaderDropdownBody.scss";
 import MyButton from "../UI/Button/MyButton";
-import Data from "./Data";
+import genresFilms from "../../data/genresFilms";
 interface TypeHeaderDropdownBody {
   clasee?: string;
   type: string | null;
@@ -15,7 +15,7 @@ function HeaderDropdownBody({ clasee, type }: TypeHeaderDropdownBody) {
             <div className="box-genres">
               <div className="box-genres__title box-title">Жанры</div>
               <ul className="box-genres__lists">
-                {Data.genresMovies.map((item, index) => {
+                {genresFilms.genresMovies.map((item, index) => {
                   return (
                     <li key={item + "-" + index} className="box-genres__item">
                       {item}
@@ -27,7 +27,7 @@ function HeaderDropdownBody({ clasee, type }: TypeHeaderDropdownBody) {
             <div className="box-countries">
               <div className="box-countries__title box-title">Страны</div>
               <ul className="box-countries__lists">
-                {Data.countriesMovies.map((item, index) => {
+                {genresFilms.countriesMovies.map((item, index) => {
                   return (
                     <li
                       key={item + "-" + index}
@@ -42,7 +42,7 @@ function HeaderDropdownBody({ clasee, type }: TypeHeaderDropdownBody) {
             <div className="box-years">
               <div className="box-years__title box-title">Годы</div>
               <ul className="box-years__lists">
-                {Data.yearsMovies.map((item, index) => {
+                {genresFilms.yearsMovies.map((item, index) => {
                   return (
                     <li key={item + "-" + index} className="box-years__item">
                       {item}
