@@ -15,10 +15,7 @@ function HeaderDropdownBody({ clasee, type }: TypeHeaderDropdownBody) {
             <div className="box-genres">
               <div className="box-genres__title box-title">Жанры</div>
               <ul className="box-genres__lists">
-                {genresFilms.genresMovies.map((item, index) => {
-                  if (index > 21) {
-                    return;
-                  }
+                {genresFilms.genresMovies.slice(0, 22).map((item, index) => {
                   return (
                     <li key={item + "-" + index} className="box-genres__item">
                       {item.genreNameRu}

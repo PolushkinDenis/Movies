@@ -66,10 +66,16 @@ function Movies() {
               </div>
             </div>
           </section>
+          <section className="pageSection genre__pageSection ">
+            <div className="genre__gallery gallery ">
+              <ul className="gallery__list">
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+              </ul>
+            </div>
+          </section>
         </div>
-        <SlimPoster></SlimPoster>
-        <SlimPoster></SlimPoster>
-        <SlimPoster></SlimPoster>
       </main>
     </div>
   );

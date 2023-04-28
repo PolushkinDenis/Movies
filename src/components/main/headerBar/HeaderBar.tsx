@@ -65,22 +65,20 @@ function HeaderBar({
                 </li>
                 <li className="breadCrumbs__item">
                   {activeGenres.length !== 0
-                    ? activeGenres.map((item: string, index: number) => {
-                        if (index > 2) {
-                          return;
-                        }
-                        return (
-                          <span>{item + (index === 2 ? "..." : ", ")}</span>
-                        );
-                      })
-                    : activeCountries.map((item: string, index: number) => {
-                        if (index > 2) {
-                          return;
-                        }
-                        return (
-                          <span>{item + (index === 2 ? "..." : ", ")}</span>
-                        );
-                      })}
+                    ? activeGenres
+                        .slice(0, 3)
+                        .map((item: string, index: number) => {
+                          return (
+                            <span>{item + (index === 2 ? "..." : ", ")}</span>
+                          );
+                        })
+                    : activeCountries
+                        .slice(0, 3)
+                        .map((item: string, index: number) => {
+                          return (
+                            <span>{item + (index === 2 ? "..." : ", ")}</span>
+                          );
+                        })}
                 </li>
               </>
             )}
