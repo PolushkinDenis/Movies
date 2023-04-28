@@ -9,6 +9,9 @@ import TopSlider from "../../components/topSlider/TopSlider";
 import { topFilms } from "../../data/topFilms";
 import { moviesAPI } from "../../services/MoviesService";
 import { fetchMoviesTop10 } from "../../store/moviesTop10/moviesTop10Action";
+import MoviesSlider from "../../components/movieSlider/MovieSlider";
+import { Link } from "react-router-dom";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 const promoData = [
   { href: "https://www.ivi.ru/collections/this-is-the-end", imgHref: "https://thumbs.dfs.ivi.ru/storage5/contents/0/3/99372bba75f4652a5d4b2f6a7d2ca3.jpg/1216x524/?q=85", title: "Это всего лишь конец света", synopsis: "Самые зрелищные и масштабные фильмы-катастрофы" },
@@ -18,8 +21,13 @@ const promoData = [
 ]
 
 const Main: FC = () => {
+  const kindCartoons = moviesAPI.useGetKindCartoonsQuery(18).data?.rows
+  const moviesCollection = moviesAPI.useGetMoviesForSliderQuery(18).data?.rows
+
   const { data: movies, error, isLoading } = moviesAPI.useFetchMoviesTop10Query(10)
   const [onClickToggle, setOnClickToggle] = React.useState(false);
+
+  console.log(kindCartoons)
 
   return (
     <main className="main">
@@ -119,6 +127,44 @@ const Main: FC = () => {
             <div className="top_slider">
               {movies && (
                 <TopSlider topFilms={movies} />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="pageSection home__pageSection">
+        <div className="pageSection__container">
+          <div className="gallery__movie-slider">
+            <div className="gallery__blockHeader">
+              <Link to='/films'>
+                <div className="blockHeader__textBlockContent">
+                  <div className="blockHeader__titleText">Подборка 1</div>
+                  <div className="blockHeader__titleArrow"><MdOutlineArrowForwardIos /></div>
+                </div>
+              </Link>
+            </div>
+            <div className="movie__slider">
+              {kindCartoons && (
+                <MoviesSlider  url="/movies/filters?size=10&genreId=1&countryId=1&year=2000"/>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="pageSection home__pageSection">
+        <div className="pageSection__container">
+          <div className="gallery__movie-slider">
+            <div className="gallery__blockHeader">
+              <Link to='/films'>
+                <div className="blockHeader__textBlockContent">
+                  <div className="blockHeader__titleText">Подборка 2</div>
+                  <div className="blockHeader__titleArrow"><MdOutlineArrowForwardIos /></div>
+                </div>
+              </Link>
+            </div>
+            <div className="movie__slider">
+              {moviesCollection && (
+                <MoviesSlider  url="/movies?size=18&field=nameRu&value=мир"/>
               )}
             </div>
           </div>

@@ -1,3 +1,9 @@
+interface IBudgetFilms {
+    id: number,
+    filmId: number,
+    budgetId: number
+}
+
 export interface IBudget {
     id: number,
     type: string,
@@ -5,4 +11,5 @@ export interface IBudget {
     currencyCode: string,
     name: string,
     symbol: string,
+    BudgetFilms?: IBudgetFilms
 }

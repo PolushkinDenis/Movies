@@ -1,12 +1,16 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
-import { IFilm } from "../../types/IFilm"
+import { IMovie } from "../../types/IMovies";
+// import { IFilm } from "../../types/IFilm"
 
-interface IMovie {
-    movies: IFilm[],
-}
+// interface IFilm {
+//     mivis: []
+// }
+// interface IMovie {
+//     movies: IFilm[],
+// }
 
 interface NewMoviesState {
-    slide: Array<IFilm[]>,
+    slide: Array<IMovie[]>,
     isLoading: boolean,
     error: string,
 }
@@ -24,7 +28,7 @@ export const newMovies = createSlice({
         moviesFetching(state) {
             state.isLoading = true
         },
-        moviesFetchingSuccess(state, action: PayloadAction<IFilm[]>) {
+        moviesFetchingSuccess(state, action: PayloadAction<IMovie[]>) {
             state.isLoading = false;
             state.error = ''
             state.slide.push(action.payload)

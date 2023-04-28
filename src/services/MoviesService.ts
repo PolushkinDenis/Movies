@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IMovies } from '../types/IMovies'
-import { IMovie } from '../types/IMovie'
+// import { IMovie } from '../types/IMovie'
 import { IQuery } from '../types/IQuery'
 
 
@@ -13,14 +13,29 @@ export const moviesAPI = createApi({
                 url: `/movies?size=${size}`        
             })
         }),
-        getMovieById: build.query<IMovie[], number>({
-            query: (id: number) => ({
-                url: `/movies/${id}`        
+        getKindCartoons: build.query<IMovies, number>({
+            query: (size: number) => ({
+                url: `/movies?size=${size}&field=nameRu&value=мир`        
             })
         }),
+        getMoviesForSlider: build.query<IMovies, number>({
+            query: (size: number) => ({
+                url: `/movies?size=${size}&field=nameRu&value=тор`        
+            })
+        }),
+        getMoviesForSlider1: build.query<IMovies, string>({
+            query: (url: string) => ({
+                url: url        
+            })
+        }),
+        // getMovieById: build.query<IMovie[], number>({
+        //     query: (id: number) => ({
+        //         url: `/movies/${id}`        
+        //     })
+        // }),
         getNewMovies: build.query<IMovies, string>({
             query: (year: string) => ({
-                url: `/movies?size=5&field=nameRu&value=гол`        
+                url: `/movies/filters?&size=5&year=2022`        
             })
         })
     })

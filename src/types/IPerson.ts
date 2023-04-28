@@ -13,10 +13,3 @@ export interface IPerson {
     hasAwards: string,
     profession: string,
 }
-
-export interface IStaff {
-    personId: number,
-    professionText: string,
-    professionKey: string,
-    person: IPerson[]
-}

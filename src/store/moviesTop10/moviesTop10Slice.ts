@@ -1,5 +1,9 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
-import { IFilm } from "../../types/IFilm"
+// import { IFilm } from "../../types/IFilm"
+
+interface IFilm {
+    mivis: []
+}
 
 interface MoviesTop10State {
     movies: IFilm[],

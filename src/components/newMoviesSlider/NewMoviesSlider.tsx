@@ -6,9 +6,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Link } from "react-router-dom";
-import { IFilm } from "../../types/IFilm";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchNewMovies } from "../../store/newMovies/newMoviesAction";
+import { IMovie } from "../../types/IMovies";
 
 
 const newFilmsData = [
@@ -25,8 +25,7 @@ const newFilmsData = [
 const NewMoviesSlider: FC = () => {
     const dispach = useAppDispatch()
     const newMoviesRedux = useAppSelector(state => state.newMoviesSlice.slide)
-    const [arrMovies, setArrMovies] = useState<IFilm[][]>(newMoviesRedux)
-    console.log(newMoviesRedux)
+    const [arrMovies, setArrMovies] = useState<IMovie[][]>(newMoviesRedux)
 
     useEffect(() => {
         if (newMoviesRedux.length < 4) {
@@ -44,6 +43,7 @@ const NewMoviesSlider: FC = () => {
         setArrMovies(newMoviesRedux)
     }, [newMoviesRedux])
 
+    console.log(newMoviesRedux)
     console.log(arrMovies)
 
     return (

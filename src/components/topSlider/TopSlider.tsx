@@ -23,6 +23,7 @@ interface TopSlider {
 }
 
 const TopSlider: FC<TopSlider> = ({ topFilms }) => {
+    console.log(topFilms)
     return (
         <Swiper
             modules={[Navigation]}
@@ -68,7 +69,7 @@ const TopSlider: FC<TopSlider> = ({ topFilms }) => {
                                 {/* <div className='poster__imageLogoArea'>
                                             <img className='poster__imageLogo' src={film.logoUrl} />
                                         </div> */}
-                                <div className='poster__placeNumber'>
+                                 <div className='poster__placeNumber'>
                                     <img className='poster__picture-number' src={`https://solea-parent.dfs.ivi.ru/picture/bypass/number${index + 1}.svg`} />
                                 </div>
                             </div>
