@@ -5,7 +5,7 @@ import NewMoviesSlider from "../../components/newMoviesSlider/NewMoviesSlider";
 import FiltersDesktop from "../../components/main/filter/FiltersDesktop";
 import Sorting from "../../components/main/sorting/Sorting";
 import HeaderBar from "../../components/main/headerBar/HeaderBar";
-
+import SlimPoster from "../../components/slimPoster/SlimPoster";
 
 function Movies() {
   // Countries,Genres,Rating,Evaluations,SearchDirector,SearchActor
@@ -54,7 +54,7 @@ function Movies() {
             activeCountries={activeCountries}
             setActiveCountries={setActiveCountries}
           ></FiltersDesktop>
-           <section className="pageSection">
+          <section className="pageSection">
             <div className="pageSection__movies__container">
               <div className="gallery">
                 <div className="gallery__header">
@@ -67,6 +67,9 @@ function Movies() {
             </div>
           </section>
         </div>
+        <SlimPoster></SlimPoster>
+        <SlimPoster></SlimPoster>
+        <SlimPoster></SlimPoster>
       </main>
     </div>
   );
