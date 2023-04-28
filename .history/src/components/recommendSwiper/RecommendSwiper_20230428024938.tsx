@@ -3,7 +3,6 @@ import { TbFlag3 } from 'react-icons/tb';
 import { TbFlag3Filled } from 'react-icons/tb';
 import Carousel from '../UI/carousel/Carousel';
 import { SplideSlide } from '@splidejs/react-splide';
-import RecommendFilm from '../recommendFilm/RecommendFilm';
 
 const RecommendSwiper: FC = () => {
   return (
@@ -45,10 +44,7 @@ const RecommendSwiper: FC = () => {
       </ul> */}
       <Carousel perPage={7} perMove={6}>
         <SplideSlide>
-          <RecommendFilm />
-        </SplideSlide>
-        <SplideSlide>
-          <RecommendFilm />
+          <RecommendSwiper />
         </SplideSlide>
       </Carousel>
     </div>
