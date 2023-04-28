@@ -39,7 +39,7 @@ function HeaderBar({
                     <span>Мой Иви</span>
                   </TabBar>
                 </li>
-                <li className="breadCrumbs__item">фильмы</li>
+                <li className="breadCrumbs__item">Фильмы</li>
               </>
             ) : (
               <>
