@@ -8,13 +8,13 @@ interface IProps {
   year: number,
   movieName: string,
   movieId: number,
-  rating: number
+  rating: string
 }
 
 const PersonMovieCard: FC<IProps> = ({image, year, movieName, movieId, rating}) => {
   return (
     <div className="person-movie-card">
-      <Link to={`/watch/${movieId}`}>
+      <Link to={`/film/${movieId}`}>
         <div className="person-movie-card__flex">
          <div className="person-movie-card__flex person-movie-card__flex2">
            <img src={image} alt={movieName + 'poster'}/>

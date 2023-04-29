@@ -1,13 +1,14 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import './TopSlider.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { Navigation } from 'swiper'
 import { IMovies } from '../../types/IMovies'
+import { moviesAPI } from '../../services/MoviesService'
 
 
 //Даные с Бека TEST
-const newFilmsData  = [
+const newFilmsData = [
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Премьеры на Иви" },
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Новинки подписки" },
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Лучшее в подписке" },
@@ -16,14 +17,18 @@ const newFilmsData  = [
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Зарубежные новинки" },
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Лучшие новинки" },
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: "https://thumbs.dfs.ivi.ru/storage33/contents/b/1/abbeaa2d5c95b43afa0f740e0d0e2a.png/604x406/?q=85", title: "Бесплатные новинки" },
-  ]
+]
 
 interface TopSlider {
     topFilms: IMovies
 }
 
-const TopSlider: FC<TopSlider> = ({ topFilms }) => {
-    console.log(topFilms)
+const TopSlider: FC = () => {
+    const moviesImpty = Array(5).fill('')
+    const { data: movies } = moviesAPI.useFetchMoviesTop10Query(10)
+
+    console.log(moviesImpty)
+    console.log(movies)
     return (
         <Swiper
             modules={[Navigation]}
@@ -59,23 +64,21 @@ const TopSlider: FC<TopSlider> = ({ topFilms }) => {
                 },
             }}
         >
-            {topFilms.rows.map((film, index) => (
+            {movies?.rows.map((film, index) => (
                 <SwiperSlide key={film.id}>
                     <Link className='posterUrl' to={`/film/${film.id}`}>
                         <div className='posterUprightBlock__nbl-poster'>
                             <div className='poster__imageWrapper'>
                                 <img className='poster__image' src={film.posterUrlPreview} />
-                                <div className='poster__imageFade'></div>
-                                {/* <div className='poster__imageLogoArea'>
-                                            <img className='poster__imageLogo' src={film.logoUrl} />
-                                        </div> */}
-                                 <div className='poster__placeNumber'>
+                                <div className='poster__imageFade'></div>                              
+                                <div className='poster__placeNumber'>
                                     <img className='poster__picture-number' src={`https://solea-parent.dfs.ivi.ru/picture/bypass/number${index + 1}.svg`} />
                                 </div>
                             </div>
                         </div>
                     </Link>
                 </SwiperSlide>
+            
             ))}
         </Swiper>
     )

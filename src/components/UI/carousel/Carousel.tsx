@@ -21,6 +21,9 @@ const Carousel: FC<IProps> = ({perPage, perMove, children}) => {
         // padding: { left: 25, right: 25 },
         mediaQuery: "max",
         breakpoints: {
+          1270: {
+            perPage: 6,
+          },
           1124: {
             perPage: 5,
           },

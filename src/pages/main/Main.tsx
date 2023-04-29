@@ -1,14 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
-import { SplideSlide } from "@splidejs/react-splide";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import PersonCard from "../../components/personCard/PersonCard";
-import Carousel from "../../components/UI/carousel/Carousel";
 import "./Main.scss";
 import PromoSlider from "../../components/promoSlider/PromoSlider";
 import TopSlider from "../../components/topSlider/TopSlider";
-import { topFilms } from "../../data/topFilms";
 import { moviesAPI } from "../../services/MoviesService";
-import { fetchMoviesTop10 } from "../../store/moviesTop10/moviesTop10Action";
 import MoviesSlider from "../../components/movieSlider/MovieSlider";
 import { Link } from "react-router-dom";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
@@ -21,13 +15,9 @@ const promoData = [
 ]
 
 const Main: FC = () => {
-  const kindCartoons = moviesAPI.useGetKindCartoonsQuery(18).data?.rows
-  const moviesCollection = moviesAPI.useGetMoviesForSliderQuery(18).data?.rows
 
-  const { data: movies, error, isLoading } = moviesAPI.useFetchMoviesTop10Query(10)
+  const { data: movies } = moviesAPI.useFetchMoviesTop10Query(10)
   const [onClickToggle, setOnClickToggle] = React.useState(false);
-
-  console.log(kindCartoons)
 
   return (
     <main className="main">
@@ -125,9 +115,9 @@ const Main: FC = () => {
               </div>
             </div>
             <div className="top_slider">
-              {movies && (
-                <TopSlider topFilms={movies} />
-              )}
+              {/* {movies && ( */}
+                <TopSlider />
+              {/* )} */}
             </div>
           </div>
         </div>
@@ -138,15 +128,13 @@ const Main: FC = () => {
             <div className="gallery__blockHeader">
               <Link to='/films'>
                 <div className="blockHeader__textBlockContent">
-                  <div className="blockHeader__titleText">Подборка 1</div>
+                  <div className="blockHeader__titleText">Добрые мультфильмы</div>
                   <div className="blockHeader__titleArrow"><MdOutlineArrowForwardIos /></div>
                 </div>
               </Link>
             </div>
             <div className="movie__slider">
-              {kindCartoons && (
-                <MoviesSlider  url="/movies/filters?size=10&genreId=1&countryId=1&year=2000"/>
-              )}
+                <MoviesSlider url="/movies/filters?size=19&genreId=15"/>
             </div>
           </div>
         </div>
@@ -157,15 +145,13 @@ const Main: FC = () => {
             <div className="gallery__blockHeader">
               <Link to='/films'>
                 <div className="blockHeader__textBlockContent">
-                  <div className="blockHeader__titleText">Подборка 2</div>
+                  <div className="blockHeader__titleText">Романтические мелодрамы</div>
                   <div className="blockHeader__titleArrow"><MdOutlineArrowForwardIos /></div>
                 </div>
               </Link>
             </div>
             <div className="movie__slider">
-              {moviesCollection && (
-                <MoviesSlider  url="/movies?size=18&field=nameRu&value=мир"/>
-              )}
+                <MoviesSlider  url="/movies/filters?size=19&genreId=7"/>
             </div>
           </div>
         </div>

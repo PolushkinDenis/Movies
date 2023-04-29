@@ -1,3 +1,12 @@
+export interface IPersonFinded {
+    personId: number,
+    nameRu: string
+}
+export interface IPersonFindByName {
+    count: number,
+    rows: IPersonFinded[]
+}
+
 export interface IPerson {
     id: number,
     personId: number,
@@ -12,4 +21,9 @@ export interface IPerson {
     deathPlace: string | null,
     hasAwards: string,
     profession: string,
+}
+
+export interface IPersonAll {
+    count: number,
+    rows: IPerson[]
 }

@@ -19,17 +19,18 @@ const checkFilmDeclension = (number: number) => {
 };
 
 interface IProps {
+  id: number,
   name: string,
   image: string,
   mainMoviesAmount: number
 }
 
-const PersonCard: FC<IProps> = ({name, image, mainMoviesAmount}) => {
+const PersonCard: FC<IProps> = ({id, name, image, mainMoviesAmount}) => {
   const nameToArray = name.split(' ');
 
   return (
     <div  className="person-card">
-      <Link to={`/person/${nameToArray[0]}_${nameToArray[1]}`}>
+      <Link to={`/person/${nameToArray[0]}_${nameToArray[1]}`} state={{id: id}}>
         <div className="person-card__relative">
           <div className="person-card__img-wrapper">
             <img

@@ -1,7 +1,8 @@
-import React, {FC} from 'react';
-import {useNavigate} from "react-router-dom";
+import React, { FC } from 'react';
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import PersonMovieCard from "../../components/personMovieCard/PersonMovieCard";
 import './Person.scss';
+import { moviesAPI } from '../../services/MoviesService';
 
 //test data
 const personData = {
@@ -14,14 +15,31 @@ const personData = {
   filmsAmount: 50
 };
 
+type IParams = {
+  name: string
+}
+
+interface LocationState {
+  from: {
+    id: number;
+  };
+}
+
 const Person: FC = () => {
   const navigate = useNavigate();
+
+  const { name } = useParams<IParams>()
+  const personId = moviesAPI.useGetPersonIdByNameQuery(name).data?.rows[0]
+  const { data: person } = moviesAPI.useGetPersonByIdQuery(Number(personId?.personId))
+
+
+  console.log(person)
 
   const personInfo = (
     <div className="person__gradient">
       <div className="person__gradient-inner">
-        <p className="person__alternate">{personData.alternate}</p>
-        <p className="person__name">{personData.name}</p>
+        <p className="person__alternate">{person?.person.nameEng}</p>
+        <p className="person__name">{person?.person.nameRu}</p>
         {personData.story && <p className="person__story">{personData.story}</p>}
       </div>
     </div>
@@ -30,10 +48,10 @@ const Person: FC = () => {
   const prevPageElem = (
     <div
       onClick={() => navigate(-1)}
-      className={`person__back ${personData.poster ? 'person__back-position' : '_container'}`}
+      className={`person__back ${person?.person.posterUrl ? 'person__back-position' : '_container'}`}
     >
       <svg
-        style={{color: 'white'}} xmlns="http://www.w3.org/2000/svg"
+        style={{ color: 'white' }} xmlns="http://www.w3.org/2000/svg"
         width="16" height="16" fill="currentColor"
         className="bi bi-chevron-left" viewBox="0 0 16 16"
       >
@@ -50,9 +68,9 @@ const Person: FC = () => {
   return (
     <div className="person">
       {
-        personData.poster ?
+        person?.person.posterUrl ?
           <div
-            style={{backgroundImage: `url(${personData.poster})`}}
+            style={{ backgroundImage: `url(${person?.person.posterUrl})` }}
             className="person__bg-img"
           >
             {prevPageElem}
@@ -61,7 +79,7 @@ const Person: FC = () => {
           <div className="person__no-bg-img">
             {prevPageElem}
             <div className="person__img-wrapper">
-              <img src={personData.image} alt={personData.name}/>
+              <img src={person?.person.posterUrl} alt={person?.person.nameRu} />
             </div>
             {personInfo}
           </div>
@@ -69,37 +87,19 @@ const Person: FC = () => {
       <div className="person__filmography">
         <p className="person__filmography-title">
           Полная фильмография
-          <span>{personData.filmsAmount} фильмов</span>
+          <span>{person?.films.length} фильмов</span>
         </p>
         <div>
-          <PersonMovieCard
-            image={'https://thumbs.dfs.ivi.ru/storage2/contents/f/3/9cc8c3c27c79bb1c7070a181a8437d.jpg/172x264/?q=85'}
-            year={2022}
-            movieName={'Странный Эл'}
-            movieId={508772}
-            rating={6.9}
-          />
-          <PersonMovieCard
-            image={'https://thumbs.dfs.ivi.ru/storage28/contents/1/b/1edfca5174b0805359f4c77ae0aff0.jpg/172x264/?q=85'}
-            year={2020}
-            movieName={'Побег из Претории'}
-            movieId={211385}
-            rating={8.0}
-          />
-          <PersonMovieCard
-            image={'https://thumbs.dfs.ivi.ru/storage2/contents/f/3/9cc8c3c27c79bb1c7070a181a8437d.jpg/172x264/?q=85'}
-            year={2022}
-            movieName={'Странный Эл'}
-            movieId={508772}
-            rating={6.9}
-          />
-          <PersonMovieCard
-            image={'https://thumbs.dfs.ivi.ru/storage28/contents/1/b/1edfca5174b0805359f4c77ae0aff0.jpg/172x264/?q=85'}
-            year={2020}
-            movieName={'Побег из Претории'}
-            movieId={211385}
-            rating={8.0}
-          />
+          {person && person?.films.map((film) => (
+            <PersonMovieCard
+              image={film[0].posterUrlPreview}
+              year={film[0].year}
+              movieName={film[0].nameRu}
+              movieId={film[0].id}
+              rating={film[0].ratingKinopoisk}
+              key={film[0].id}
+            />
+          ))}
         </div>
       </div>
     </div>

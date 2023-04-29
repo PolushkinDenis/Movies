@@ -1,5 +1,7 @@
 import { IPerson } from "./IPerson";
 
+
+
 interface IPersonsFilms {
     id: number,
     year: number,
@@ -14,5 +16,5 @@ interface IPersonsFilms {
 
 export interface IPersonsAbout {
     person: IPerson,
-    films: IPersonsFilms[]
+    films: IPersonsFilms[][]
 }
