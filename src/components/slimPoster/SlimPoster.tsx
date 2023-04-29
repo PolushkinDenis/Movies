@@ -1,12 +1,17 @@
 import React from "react";
 import "./SlimPoster.scss";
 import { TbFlag3 } from "react-icons/tb";
+import { FaRegBookmark } from "react-icons/fa";
+import { IoMdColorWand } from "react-icons/io";
+import { AiOutlineStar } from "react-icons/ai";
+import { TbCircleOff } from "react-icons/tb";
+
 import { Link } from "react-router-dom";
 
 function SlimPoster() {
   return (
     <li className="recommendSwiper__swiper-item">
-      <Link to={"film/"}>
+      <Link to={"/film/"}>
         <div className="swiperItem__container">
           <img
             className="swiperItem__container-image"
@@ -14,7 +19,19 @@ function SlimPoster() {
             alt="film"
           />
           <div className="swiperItem__container-properties">
-            <TbFlag3 />
+            <FaRegBookmark />
+            <IoMdColorWand
+              style={{
+                transform: "rotate(90deg)",
+              }}
+            />
+            <AiOutlineStar />
+            <TbCircleOff
+              style={{
+                transform: "rotate(90deg)",
+              }}
+            />
+
             <div className="swiperItem__container-properties-info">
               <div className="propertiesInfo__container">
                 <div className="propertiesInfo__container-rating">
@@ -83,9 +100,9 @@ function SlimPoster() {
               <div className="propertiesInfo__time">93 минуты</div>
             </div>
           </div>
+          <div className="swiperItem__title">Рейка</div>
+          <div className="swiperItem__subscribe">Подписка</div>
         </div>
-        <div className="swiperItem__title">Рейка</div>
-        <div className="swiperItem__subscribe">Подписка</div>
       </Link>
     </li>
   );

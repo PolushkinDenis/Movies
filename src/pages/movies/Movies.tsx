@@ -72,6 +72,17 @@ function Movies() {
                 <SlimPoster></SlimPoster>
                 <SlimPoster></SlimPoster>
                 <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
+                <SlimPoster></SlimPoster>
               </ul>
             </div>
           </section>
