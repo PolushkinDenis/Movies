@@ -83,6 +83,11 @@ function Movies() {
                 <SlimPoster></SlimPoster>
                 <SlimPoster></SlimPoster>
                 <SlimPoster></SlimPoster>
+                <div className="genre__moreButton">
+                  <button className="nbl-button nbl-button_style_ran">
+                    <div className="nbl-button__primaryText">Показать еще</div>
+                  </button>
+                </div>
               </ul>
             </div>
           </section>

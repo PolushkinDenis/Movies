@@ -1,4 +1,9 @@
 .nbl-button {
+    -webkit-transition-duration: .4s;
+    -o-transition-duration: .4s;
+    transition-duration: .4s;
+
+
     &__primaryText {
         color: rgba(255, 255, 255, .48);
         -webkit-transition-duration: .4s;
@@ -13,6 +18,23 @@
 
         &:hover {
             color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    &_style_ran.nbl-button {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, .32);
+        height: 40px;
+        border-radius: 8px;
+        padding: 9px 15px;
+
+        &:hover {
+            border: 1px solid rgba(255, 255, 255, 1);
+        }
+
+        & .nbl-button__primaryText {
+            color: #fff;
         }
     }
 

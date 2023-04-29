@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function SlimPoster() {
   return (
-    <li className="recommendSwiper__swiper-item">
+    <li className="slim-poster__swiper-item">
       <Link to={"/film/"}>
         <div className="swiperItem__container">
           <img
