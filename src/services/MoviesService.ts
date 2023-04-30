@@ -1,8 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IMovies } from '../types/IMovies'
-// import { IMovie } from '../types/IMovie'
-import { IQuery } from '../types/IQuery'
-import { IPerson, IPersonAll, IPersonFindByName } from '../types/IPerson'
+import { IPersonAll, IPersonFindByName } from '../types/IPerson'
 import { IPersonsAbout } from '../types/IPersonsAbout'
 
 
