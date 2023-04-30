@@ -61,4 +61,4 @@ const TopSlider: FC = () => {
     )
 }
 
-export default TopSlider
+export default TopSlider;

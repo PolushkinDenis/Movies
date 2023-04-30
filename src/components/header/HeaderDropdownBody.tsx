@@ -1,7 +1,7 @@
 import React from "react";
 import "./HeaderDropdownBody.scss";
 import MyButton from "../UI/Button/MyButton";
-
+import genresFilms from "../../data/genresFilms";
 interface TypeHeaderDropdownBody {
   clasee?: string;
   type: string | null;
@@ -15,36 +15,40 @@ function HeaderDropdownBody({ clasee, type }: TypeHeaderDropdownBody) {
             <div className="box-genres">
               <div className="box-genres__title box-title">Жанры</div>
               <ul className="box-genres__lists">
-                <li className="box-genres__item">аниме</li>
-                <li className="box-genres__item">биографический</li>
-                <li className="box-genres__item">боевик</li>
-                <li className="box-genres__item">вестерн</li>
-                <li className="box-genres__item">военный</li>
-                <li className="box-genres__item">детектив</li>
-                <li className="box-genres__item">аниме</li>
-                <li className="box-genres__item">биографический</li>
-                <li className="box-genres__item">боевик</li>
-                <li className="box-genres__item">вестерн</li>
-                <li className="box-genres__item">военный</li>
-                <li className="box-genres__item">детектив</li>
+                {genresFilms.genresMovies.slice(0, 22).map((item, index) => {
+                  return (
+                    <li key={item + "-" + index} className="box-genres__item">
+                      {item.genreNameRu}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="box-countries">
               <div className="box-countries__title box-title">Страны</div>
               <ul className="box-countries__lists">
-                <li className="box-countries__item">Русские</li>
-                <li className="box-countries__item">Зарубежные</li>
-                <li className="box-countries__item">Американские</li>
-                <li className="box-countries__item">Советское кино</li>
+                {genresFilms.countriesMovies.map((item, index) => {
+                  return (
+                    <li
+                      key={item + "-" + index}
+                      className="box-countries__item"
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="box-years">
               <div className="box-years__title box-title">Годы</div>
               <ul className="box-years__lists">
-                <li className="box-years__item">Фильмы 2023 года</li>
-                <li className="box-years__item">Фильмы 2022 года</li>
-                <li className="box-years__item">Фильмы 2021 года</li>
-                <li className="box-years__item">Фильмы 2020 года</li>
+                {genresFilms.yearsMovies.map((item, index) => {
+                  return (
+                    <li key={item + "-" + index} className="box-years__item">
+                      {item}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="box-right">
