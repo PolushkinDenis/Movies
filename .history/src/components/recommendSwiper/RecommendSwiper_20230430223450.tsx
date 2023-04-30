@@ -68,24 +68,6 @@ const RecommendSwiper: FC = () => {
         <SplideSlide>
           <RecommendFilm />
         </SplideSlide>
-        <SplideSlide>
-          <RecommendFilm />
-        </SplideSlide>
-        <SplideSlide>
-          <RecommendFilm />
-        </SplideSlide>
-        <SplideSlide>
-          <RecommendFilm />
-        </SplideSlide>
-        <SplideSlide>
-          <RecommendFilm />
-        </SplideSlide>
-        <SplideSlide>
-          <RecommendFilm />
-        </SplideSlide>
-        <SplideSlide>
-          <RecommendFilm />
-        </SplideSlide>
       </Carousel>
     </div>
   );

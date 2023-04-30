@@ -22,9 +22,6 @@
             display: flex;
             padding-bottom: 24px;
             margin-bottom: 24px;
-            &-info {
-                display: none;
-            }
         }
     }
     &__player {
@@ -270,7 +267,6 @@
                 }
             }
             .ratingMobile__rateBtn {
-                font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
                 font-size: 13px;
                 line-height: 16px;
                 font-weight: 500;
@@ -405,49 +401,6 @@
                     .contentPage__info-watchMedallions {
                         display: grid;
                         grid-template-columns: repeat(6,1fr);
-                    }
-                    .contentPage__info-freeFilmsLink {
-                        cursor: pointer;
-                        display: block;
-                        padding: 10px 12px;
-                        margin-bottom: 36px;
-                        width: 100%;
-                        font-size: 15px;
-                        line-height: 20px;
-                        font-weight: 500;
-                        color: rgba(255,255,255,.72);
-                        background-color: rgba(255,255,255,.08);
-                        border-color: rgba(255,255,255,.08);
-                        border-radius: 8px;
-                        text-align: center;
-                        transition-duration: .4s;
-                        &:hover {
-                            background-color: rgba(255,255,255,.16);
-                            border-color: rgba(255,255,255,.16);
-                            transition-duration: 80ms;
-                        }
-                        svg  {
-                            transform: translate(-6px,2.5px);
-                        }
-                    }
-                    .contentPage__info-more {
-                        margin-top: 8px;
-                        color: rgba(255,255,255,.48);
-                        transition-duration: .4s;
-                        &:hover {
-                            color:#fff;
-                            transition-duration: 80ms;
-                        }
-                    }
-                    .contentPage__info-ratingMobile {
-                        margin-top: 48px;
-                        .ratingMobile__rating {
-                            width: 48px;
-                            height: 48px;
-                            padding-top: 13px;
-                            font-size: 20px;
-                            line-height: 24px;
-                        }
                     }
                 }
             }

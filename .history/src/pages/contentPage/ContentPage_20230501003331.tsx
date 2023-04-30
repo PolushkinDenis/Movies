@@ -60,9 +60,7 @@ const ContentPage: FC = () => {
                   <div className="watchMedallions__item-title">Наталья Данилова</div>
                 </li>
               </ul>
-              <a
-                href="https://www.ivi.ru/collections/free-movies"
-                className="contentPage__info-freeFilmsLink">
+              <a className="contentPage__info-freeFilmsLink">
                 <BsCollectionPlayFill />
                 Бесплатные фильмы
               </a>
@@ -85,11 +83,14 @@ const ContentPage: FC = () => {
                   {info ? 'Свернуть детали' : 'Детали о мультфильме'}
                 </span>
               </div>
-              <div onClick={() => setRating(true)} className="contentPage__info-ratingMobile">
+              <div
+                onClick={() => setRating(true)}
+                className="contentPage__info-ratingMobile ratingMobile1160">
                 <div className="ratingMobile__rating">7,5</div>
                 <div className="ratingMobile__info">
                   <div className="ratingMobile__info-title">Рейтинг Иви</div>
                   <div className="ratingMobile__info-subtitle">Интересный сюжет</div>
+                  <div className="ratingMobile__info-extra">73 465 оценок</div>
                 </div>
                 <button className="ratingMobile__rateBtn">Оценить</button>
               </div>

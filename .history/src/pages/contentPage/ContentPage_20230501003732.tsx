@@ -60,9 +60,7 @@ const ContentPage: FC = () => {
                   <div className="watchMedallions__item-title">Наталья Данилова</div>
                 </li>
               </ul>
-              <a
-                href="https://www.ivi.ru/collections/free-movies"
-                className="contentPage__info-freeFilmsLink">
+              <a className="contentPage__info-freeFilmsLink">
                 <BsCollectionPlayFill />
                 Бесплатные фильмы
               </a>

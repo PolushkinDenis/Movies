@@ -60,39 +60,10 @@ const ContentPage: FC = () => {
                   <div className="watchMedallions__item-title">Наталья Данилова</div>
                 </li>
               </ul>
-              <a
-                href="https://www.ivi.ru/collections/free-movies"
-                className="contentPage__info-freeFilmsLink">
+              <a className="contentPage__info-freeFilmsLink">
                 <BsCollectionPlayFill />
                 Бесплатные фильмы
               </a>
-              <div className="contentPage__info-watchDescription watchDescription1160">
-                <p className="watchDescription__desc1">
-                  Симпатичное существо, которое только недавно родилось и упало на Землю, еще не
-                  знает, что он – Лунтик. Но ему уже страшно в незнакомом мире, неуютно, да к тому
-                  же все почему-то с криками убегают от него. Напуганный сиреневый пушистик
-                  успокаивается, лишь забравшись на высокий камень и увидев такую родную ему и
-                  красивую луну…
-                </p>
-                {info && (
-                  <p className="watchDescription__desc2">
-                    Посмотреть мультфильм Лунтик и его друзья 1 сезон 1 серия онлайн вы можете
-                    совершенно бесплатно на русском языке в хорошем HD качестве. Приятного
-                    просмотра!
-                  </p>
-                )}
-                <span onClick={showMoreInfo} className="contentPage__info-more">
-                  {info ? 'Свернуть детали' : 'Детали о мультфильме'}
-                </span>
-              </div>
-              <div onClick={() => setRating(true)} className="contentPage__info-ratingMobile">
-                <div className="ratingMobile__rating">7,5</div>
-                <div className="ratingMobile__info">
-                  <div className="ratingMobile__info-title">Рейтинг Иви</div>
-                  <div className="ratingMobile__info-subtitle">Интересный сюжет</div>
-                </div>
-                <button className="ratingMobile__rateBtn">Оценить</button>
-              </div>
             </div>
             1
           </div>
