@@ -30,7 +30,6 @@ const formatFilmLength = (filmLength: string) => {
 }
 
 const swiperSlide = (movie: IMovie, index: number) => {
-    console.log(index)
     return (
         <SwiperSlide key={movie.id}>
             <div className="recommendSwiper">
@@ -86,12 +85,12 @@ const MoviesSlider: FC<MoviesSliderProps> = ({ url }) => {
             navigation={true}
             className='topSlider'
             breakpoints={{
-                330: {
-                    slidesPerView: 1,
-                    slidesPerGroup: 1,
+                310: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
                     spaceBetween: 20,
                 },
-                450: {
+                540: {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                     spaceBetween: 20,
@@ -101,7 +100,12 @@ const MoviesSlider: FC<MoviesSliderProps> = ({ url }) => {
                     slidesPerGroup: 3,
                     spaceBetween: 20,
                 },
-                800: {
+                700: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 4,
+                    spaceBetween: 20,
+                },
+                880: {
                     slidesPerView: 5,
                     slidesPerGroup: 5,
                     spaceBetween: 20,

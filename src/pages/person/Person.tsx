@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PersonMovieCard from "../../components/personMovieCard/PersonMovieCard";
 import './Person.scss';
 import { moviesAPI } from '../../services/MoviesService';
@@ -19,21 +19,11 @@ type IParams = {
   name: string
 }
 
-interface LocationState {
-  from: {
-    id: number;
-  };
-}
-
 const Person: FC = () => {
   const navigate = useNavigate();
-
   const { name } = useParams<IParams>()
   const personId = moviesAPI.useGetPersonIdByNameQuery(name).data?.rows[0]
   const { data: person } = moviesAPI.useGetPersonByIdQuery(Number(personId?.personId))
-
-
-  console.log(person)
 
   const personInfo = (
     <div className="person__gradient">
