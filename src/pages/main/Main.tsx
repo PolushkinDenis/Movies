@@ -156,6 +156,91 @@ const Main: FC = () => {
           </div>
         </div>
       </section>
+      <div>
+        <br />
+        <Carousel perPage={7} perMove={7}>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <PersonCard
+              name={'Дэниэл Рэдклифф'}
+              image={'https://thumbs.dfs.ivi.ru/storage8/contents/a/a/2d2d1a24a0024ffe5a4cdd7b9371b2.jpg/153x183/?q=85'}
+              mainMoviesAmount={6}
+            />
+          </SplideSlide>
+        </Carousel>
+        <br />
+        <br />
+        <br />
+      </div>
     </main>
   );
 };
