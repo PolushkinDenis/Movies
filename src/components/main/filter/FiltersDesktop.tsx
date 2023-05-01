@@ -7,6 +7,7 @@ import "./FiltersDesktop.scss";
 import FilterDropdown from "./FilterDropdown";
 import { useTranslation } from "react-i18next";
 import { AutoContext } from "../../../context/";
+import { Link } from "react-router-dom";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
@@ -97,7 +98,13 @@ function FiltersDesktop({
                     ""
                   ) : (
                     <div className="nbl-plank__extra">
-                      {activeGenres.join(", ")}
+                      {activeGenres.reduce((accumulator, item) => {
+                        if (accumulator.length === 0) {
+                          return item.genreNameRu;
+                        } else {
+                          return accumulator + "," + item.genreNameRu;
+                        }
+                      }, "")}
                     </div>
                   )}
                 </div>
@@ -143,7 +150,13 @@ function FiltersDesktop({
                     ""
                   ) : (
                     <div className="nbl-plank__extra">
-                      {activeCountries.join(", ")}
+                      {activeCountries.reduce((accumulator, item) => {
+                        if (accumulator.length === 0) {
+                          return item.genreNameRu;
+                        } else {
+                          return accumulator + "," + item.genreNameRu;
+                        }
+                      }, "")}
                     </div>
                   )}
                 </div>
@@ -340,22 +353,24 @@ function FiltersDesktop({
           </div>
         </div>
         <div className="filtersDesktop__button-container">
-          <div
-            className={
-              activeGenres.length ||
-              activeCountries.length ||
-              evaluationsValue !== 0 ||
-              rangeValue !== 7.5
-                ? "filtersDesktop__button"
-                : "filtersDesktop__button filtersDesktop__button_disabled"
-            }
-            onClick={limpiezaFilter}
-          >
-            <div className="filtersDesktop__button-icon">
-              <GrClose></GrClose>
+          <Link to={"/movies/all"}>
+            <div
+              className={
+                activeGenres.length ||
+                activeCountries.length ||
+                evaluationsValue !== 0 ||
+                rangeValue !== 7.5
+                  ? "filtersDesktop__button"
+                  : "filtersDesktop__button filtersDesktop__button_disabled"
+              }
+              onClick={limpiezaFilter}
+            >
+              <div className="filtersDesktop__button-icon">
+                <GrClose></GrClose>
+              </div>
+              {t("Сбросить фильтры")}
             </div>
-            {t("Сбросить фильтры")}
-          </div>
+          </Link>
         </div>
       </div>
     </section>

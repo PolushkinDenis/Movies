@@ -9,6 +9,8 @@ import Movies from "./pages/movies/Movies";
 import ContentPage from "./pages/contentPage/ContentPage";
 import ContextFc, { AutoContext } from "./context";
 import "./scss/app.scss";
+import MoviesFilt from "./pages/movies/MoviesFilt";
+import MoviesAll from "./pages/movies/MoviesAll";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path="/person/:name" element={<Person />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/movies/:filter" element={<Movies />} />
+            <Route path="/movies/filter/:filter" element={<Movies />} />
+            <Route path="/movies/all" element={<Movies />} />
           </Routes>
           <Footer />
         </BrowserRouter>

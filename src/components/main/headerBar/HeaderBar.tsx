@@ -48,31 +48,27 @@ function HeaderBar() {
                     classes={
                       "nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"
                     }
-                    toLink={"/Movies"}
+                    toLink={"/movies"}
                   >
                     <span>Фильмы</span>
                   </TabBar>
                 </li>
                 <li className="breadCrumbs__item">
                   {activeGenres.length !== 0
-                    ? activeGenres
-                        .slice(0, 3)
-                        .map((item: string, index: number) => {
-                          return (
-                            <span key={item + "-" + index}>
-                              {item + (index === 2 ? "..." : ", ")}
-                            </span>
-                          );
-                        })
-                    : activeCountries
-                        .slice(0, 3)
-                        .map((item: string, index: number) => {
-                          return (
-                            <span key={item + "-" + index}>
-                              {item + (index === 2 ? "..." : ", ")}
-                            </span>
-                          );
-                        })}
+                    ? activeGenres.slice(0, 3).map((item, index) => {
+                        return (
+                          <span key={item + "-" + index}>
+                            {item + (index === 2 ? "..." : ", ")}
+                          </span>
+                        );
+                      })
+                    : activeCountries.slice(0, 3).map((item, index) => {
+                        return (
+                          <span key={item + "-" + index}>
+                            {item + (index === 2 ? "..." : ", ")}
+                          </span>
+                        );
+                      })}
                 </li>
               </>
             )}

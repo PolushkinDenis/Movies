@@ -1,10 +1,11 @@
 import React, { useState, createContext } from "react";
+import { IGenresMovies } from "../types/IGenresMovies";
 
 interface typeAutoContext {
-  activeGenres: string[];
-  setActiveGenres: React.Dispatch<React.SetStateAction<string[]>>;
-  activeCountries: string[];
-  setActiveCountries: React.Dispatch<React.SetStateAction<string[]>>;
+  activeGenres: IGenresMovies[];
+  setActiveGenres: React.Dispatch<React.SetStateAction<IGenresMovies[]>>;
+  activeCountries: IGenresMovies[];
+  setActiveCountries: React.Dispatch<React.SetStateAction<IGenresMovies[]>>;
 }
 
 export const AutoContext = createContext<typeAutoContext>(
@@ -12,8 +13,10 @@ export const AutoContext = createContext<typeAutoContext>(
 );
 
 export default function ContextFc({ children }: any) {
-  const [activeGenres, setActiveGenres] = useState<string[]>([]);
-  const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
+  const [activeGenres, setActiveGenres] = useState<IGenresMovies[]>([]);
+  const [activeCountries, setActiveCountries] = React.useState<IGenresMovies[]>(
+    []
+  );
 
   return (
     <AutoContext.Provider
