@@ -6,13 +6,14 @@ import { Navigation, SwiperOptions, FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/scss/navigation";
 import "swiper/css/free-mode";
+import genresFilms from "../../../data/genresFilms";
 
 // swiper/css/free-mode
 
 import MaskTr from "../../../images/filter/maskTr.png";
 import MaskTs from "../../../images/filter/maskTs.png";
 
-const janr = [
+const a = [
   "аниме",
   "биографический",
   "боевик",
@@ -69,6 +70,7 @@ function FilterDropdown({
       funcActiv([...meaningActiv, item]);
     }
   }
+
   return (
     <div className={"filterDropdown filterDropdown_" + classes}>
       <div className="filterDropdown__inner">
@@ -84,13 +86,13 @@ function FilterDropdown({
                 breakpoints={breakpoints}
                 className="filterDropdown__swiper"
               >
-                {janr.map((item, index) => {
+                {genresFilms.genresMovies.map((item, index) => {
                   return (
-                    <SwiperSlide key={item + "-" + index}>
+                    <SwiperSlide key={item.genreNameRu + "-" + index}>
                       <div
-                        onClick={() => changesActiveGenres(item)}
+                        onClick={() => changesActiveGenres(item.genreNameRu)}
                         className={
-                          meaningActiv.includes(item)
+                          meaningActiv.includes(item.genreNameRu)
                             ? "filterDropdown__carousel-item checked"
                             : "filterDropdown__carousel-item"
                         }
@@ -99,7 +101,9 @@ function FilterDropdown({
                           <div className="nbl-icon">
                             <img src={MaskTs} alt="" />
                           </div>
-                          <div className="nbl-tile__caption">{item}</div>
+                          <div className="nbl-tile__caption">
+                            {item.genreNameRu}
+                          </div>
                         </div>
                       </div>
                     </SwiperSlide>
@@ -116,18 +120,20 @@ function FilterDropdown({
                   modules={[Navigation]}
                   className="filterDropdown__swiper"
                 >
-                  {janr.map((item, index) => {
+                  {genresFilms.genresMovies.map((item, index) => {
                     return (
                       <SwiperSlide key={item + "-" + index}>
                         <div
-                          onClick={() => changesActiveGenres(item)}
+                          onClick={() => changesActiveGenres(item.genreNameRu)}
                           className={
-                            meaningActiv.includes(item)
+                            meaningActiv.includes(item.genreNameRu)
                               ? "sausage filterDropdown__sausage checked"
                               : "sausage filterDropdown__sausage"
                           }
                         >
-                          <div className="sausage__title">{item}</div>
+                          <div className="sausage__title">
+                            {item.genreNameRu}
+                          </div>
                         </div>
                       </SwiperSlide>
                     );
@@ -138,26 +144,28 @@ function FilterDropdown({
           </div>
           <div className="filterDropdown__list-container">
             <ul className="filterDropdown__list">
-              {janr.map((item, index) => {
+              {genresFilms.genresMovies.map((item, index) => {
                 return (
                   <li
-                    key={item + "-" + index}
+                    key={item.genreNameRu + "-" + index}
                     className={
-                      meaningActiv.includes(item)
+                      meaningActiv.includes(item.genreNameRu)
                         ? "filterDropdown__item filterDropdown__item_checkbox checked"
                         : "filterDropdown__item filterDropdown__item_checkbox"
                     }
                   >
                     <label
-                      onClick={() => changesActiveGenres(item)}
+                      onClick={() => changesActiveGenres(item.genreNameRu)}
                       className="filterDropdown__label"
                     >
                       <input
                         type="checkbox"
                         className="filterDropdown__input"
-                        value={item}
+                        value={item.genreNameRu}
                       />
-                      <div className="filterDropdown__input-text">{item}</div>
+                      <div className="filterDropdown__input-text">
+                        {item.genreNameRu}
+                      </div>
                       <div className="filterDropdown__checkbox">
                         <BsCheckLg></BsCheckLg>
                       </div>

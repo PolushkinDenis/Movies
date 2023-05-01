@@ -12,7 +12,7 @@ i18n
   .init({
     fallbackLng: "ru",
     supportedLngs: ["ru", "en"],
-    debug: true,
+    // debug: true,
     // resources: {
     //   en: {
     //     translation: {

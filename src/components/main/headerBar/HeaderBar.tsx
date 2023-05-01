@@ -2,20 +2,10 @@ import React from "react";
 import "./HeaderBar.scss";
 import { useTranslation } from "react-i18next";
 import TabBar from "../../UI/Button/TabBar";
+import { AutoContext } from "../../../context/";
 
-interface TypeHeaderBar {
-  activeGenres: string[];
-  setActiveGenres: React.Dispatch<React.SetStateAction<string[]>>;
-  activeCountries: string[];
-  setActiveCountries: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-function HeaderBar({
-  activeGenres,
-  setActiveGenres,
-  activeCountries,
-  setActiveCountries,
-}: TypeHeaderBar) {
+function HeaderBar() {
+  const { activeGenres, activeCountries } = React.useContext(AutoContext);
   const [onClickToggle, setOnClickToggle] = React.useState<boolean>(false);
   function clickToggle() {
     setOnClickToggle(!onClickToggle);
@@ -69,14 +59,18 @@ function HeaderBar({
                         .slice(0, 3)
                         .map((item: string, index: number) => {
                           return (
-                            <span>{item + (index === 2 ? "..." : ", ")}</span>
+                            <span key={item + "-" + index}>
+                              {item + (index === 2 ? "..." : ", ")}
+                            </span>
                           );
                         })
                     : activeCountries
                         .slice(0, 3)
                         .map((item: string, index: number) => {
                           return (
-                            <span>{item + (index === 2 ? "..." : ", ")}</span>
+                            <span key={item + "-" + index}>
+                              {item + (index === 2 ? "..." : ", ")}
+                            </span>
                           );
                         })}
                 </li>
