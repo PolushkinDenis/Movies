@@ -1,20 +1,24 @@
 import React, { FC, useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Movies.scss";
+import { IGenresMovies } from "../../types/IGenresMovies";
 import NewMoviesSlider from "../../components/newMoviesSlider/NewMoviesSlider";
 import FiltersDesktop from "../../components/main/filter/FiltersDesktop";
 import Sorting from "../../components/main/sorting/Sorting";
 import HeaderBar from "../../components/main/headerBar/HeaderBar";
 import SlimPoster from "../../components/slimPoster/SlimPoster";
 import { AutoContext } from "../../context";
-import qs from "qs";
-import { useNavigate } from "react-router-dom";
 import MoviesAll from "./MoviesAll";
 import MoviesFilt from "./MoviesFilt";
+import genresFilms from "../../data/genresFilms";
+import { AnyAction } from "@reduxjs/toolkit";
 
 function Movies() {
   const navigate = useNavigate();
+  const location = useLocation();
+  // location.pathname
+
   // Countries,Genres,Rating,Evaluations,SearchDirector,SearchActor
   const [clickSwitchFilter, setClickSwitchFilter] = React.useState<
     string | null
@@ -35,6 +39,31 @@ function Movies() {
   }
   React.useEffect(() => {
     document.body.addEventListener("click", clickFilterClose);
+  }, []);
+  React.useEffect(() => {
+    let rez: IGenresMovies[] | any[];
+    console.log(location.pathname);
+
+    const urlData = location.pathname.split("/");
+    console.log(urlData);
+    if (urlData[2] === "filter") {
+      rez = urlData[3].split("+").map((item) => {
+        return genresFilms.genresMovies.find((i: IGenresMovies) => {
+          if (item === i.genreNameEng) {
+            return i;
+          }
+        });
+      });
+      setActiveGenres(rez);
+    } else if (urlData[2] !== "all" && urlData[2] !== "") {
+      rez = genresFilms.genresMovies.filter((i: IGenresMovies) => {
+        if (urlData[2] === i.genreNameEng) {
+          return i;
+        }
+      });
+      setActiveGenres(rez);
+      console.log(urlData[2]);
+    }
   }, []);
   //
   // React.useEffect(() => {

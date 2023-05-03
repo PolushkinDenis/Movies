@@ -55,20 +55,34 @@ function HeaderBar() {
                 </li>
                 <li className="breadCrumbs__item">
                   {activeGenres.length !== 0
-                    ? activeGenres.slice(0, 3).map((item, index) => {
-                        return (
-                          <span key={item + "-" + index}>
-                            {item + (index === 2 ? "..." : ", ")}
-                          </span>
-                        );
-                      })
-                    : activeCountries.slice(0, 3).map((item, index) => {
-                        return (
-                          <span key={item + "-" + index}>
-                            {item + (index === 2 ? "..." : ", ")}
-                          </span>
-                        );
-                      })}
+                    ? activeGenres
+                        .slice(0, 3)
+                        .reduce((accumulator, item, index) => {
+                          if (accumulator.length === 0) {
+                            return item.genreNameRu;
+                          } else if (index === 2) {
+                            console.log(1);
+                            return (
+                              accumulator + ", " + item.genreNameRu + "..."
+                            );
+                          } else {
+                            return accumulator + ", " + item.genreNameRu;
+                          }
+                        }, "")
+                    : activeCountries
+                        .slice(0, 3)
+                        .reduce((accumulator, item, index) => {
+                          if (accumulator.length === 0) {
+                            return item.countryNameRu;
+                          } else if (index === 2) {
+                            console.log(1);
+                            return (
+                              accumulator + ", " + item.countryNameRu + "..."
+                            );
+                          } else {
+                            return accumulator + ", " + item.countryNameRu;
+                          }
+                        }, "")}
                 </li>
               </>
             )}

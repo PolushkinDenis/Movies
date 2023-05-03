@@ -4,10 +4,12 @@ import { GrClose } from "react-icons/gr";
 import { BsCheckLg } from "react-icons/bs";
 import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
-import FilterDropdown from "./FilterDropdown";
+// import FilterDropdown from "./FilterDropdown";
 import { useTranslation } from "react-i18next";
 import { AutoContext } from "../../../context/";
 import { Link } from "react-router-dom";
+import FilterDropdownCou from "./FilterDropdownCou";
+import FilterDropdownGen from "./FilterDropdownGen";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
@@ -70,12 +72,14 @@ function FiltersDesktop({
       }
     }
   }
+
   function limpiezaFilter() {
     setActiveGenres([]);
     setActiveCountries([]);
-    setEvaluationsValue(1);
+    setEvaluationsValue(0);
     setRangeValue(7.5);
   }
+
   //Translation
   const { t } = useTranslation();
 
@@ -113,24 +117,25 @@ function FiltersDesktop({
                 </div>
               </MyButton>
               {clickSwitchFilter === "Genres" ? (
-                <FilterDropdown
-                  classes={"genres"}
-                  meaningActiv={activeGenres}
-                  funcActiv={setActiveGenres}
-                  breakpoints={{
-                    280: {
-                      slidesPerView: 3,
-                      slidesPerGroup: 1,
-                      spaceBetween: 12,
-                    },
-                    744: {
-                      slidesPerView: 5,
-                      slidesPerGroup: 2,
-                      spaceBetween: 12,
-                    },
-                  }}
-                ></FilterDropdown>
+                <FilterDropdownGen></FilterDropdownGen>
               ) : (
+                // <FilterDropdown
+                //   classes={"genres"}
+                //   meaningActiv={activeGenres}
+                //   funcActiv={setActiveGenres}
+                //   breakpoints={{
+                //     280: {
+                //       slidesPerView: 3,
+                //       slidesPerGroup: 1,
+                //       spaceBetween: 12,
+                //     },
+                //     744: {
+                //       slidesPerView: 5,
+                //       slidesPerGroup: 2,
+                //       spaceBetween: 12,
+                //     },
+                //   }}
+                // ></FilterDropdown>
                 ""
               )}
             </div>
@@ -152,9 +157,9 @@ function FiltersDesktop({
                     <div className="nbl-plank__extra">
                       {activeCountries.reduce((accumulator, item) => {
                         if (accumulator.length === 0) {
-                          return item.genreNameRu;
+                          return item.countryNameRu;
                         } else {
-                          return accumulator + "," + item.genreNameRu;
+                          return accumulator + "," + item.countryNameRu;
                         }
                       }, "")}
                     </div>
@@ -165,11 +170,12 @@ function FiltersDesktop({
                 </div>
               </MyButton>
               {clickSwitchFilter === "Countries" ? (
-                <FilterDropdown
-                  classes={"countries"}
-                  meaningActiv={activeCountries}
-                  funcActiv={setActiveCountries}
-                ></FilterDropdown>
+                // <FilterDropdown
+                //   classes={"countries"}
+                //   meaningActiv={activeCountries}
+                //   funcActiv={setActiveCountries}
+                // ></FilterDropdown>
+                <FilterDropdownCou></FilterDropdownCou>
               ) : (
                 ""
               )}
@@ -353,24 +359,24 @@ function FiltersDesktop({
           </div>
         </div>
         <div className="filtersDesktop__button-container">
-          <Link to={"/movies/all"}>
-            <div
-              className={
-                activeGenres.length ||
-                activeCountries.length ||
-                evaluationsValue !== 0 ||
-                rangeValue !== 7.5
-                  ? "filtersDesktop__button"
-                  : "filtersDesktop__button filtersDesktop__button_disabled"
-              }
-              onClick={limpiezaFilter}
-            >
+          <div
+            className={
+              activeGenres.length ||
+              activeCountries.length ||
+              evaluationsValue !== 0 ||
+              rangeValue !== 7.5
+                ? "filtersDesktop__button"
+                : "filtersDesktop__button filtersDesktop__button_disabled"
+            }
+            onClick={limpiezaFilter}
+          >
+            <Link to={"/movies/all"}>
               <div className="filtersDesktop__button-icon">
                 <GrClose></GrClose>
               </div>
               {t("Сбросить фильтры")}
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
