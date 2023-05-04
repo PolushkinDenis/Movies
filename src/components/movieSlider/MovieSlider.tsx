@@ -8,6 +8,7 @@ import '../recommendSwiper/recommendSwiper.scss'
 import { moviesAPI } from "../../services/MoviesService";
 import { IMovie } from "../../types/IMovies";
 import { Link } from "react-router-dom";
+import SlimPoster from "../slimPoster/SlimPoster";
 
 interface MoviesSliderProps {
     url: string
@@ -29,55 +30,8 @@ const formatFilmLength = (filmLength: string) => {
 
 }
 
-const swiperSlide = (movie: IMovie, index: number) => {
-    return (
-        <SwiperSlide key={movie.id}>
-            <div className="recommendSwiper">
-                <Link to={`/film/${movie.id}`}>
-                    <li className="recommendSwiper__swiper-item">
-                        <div className="swiperItem__container">
-                            <div className="swiperItem__container-imageWrapper">
-                                <img
-                                    className="swiperItem__container-image"
-                                    src={movie.posterUrlPreview}
-                                    alt="film"
-                                />
-                            </div>
-                            <div className="swiperItem__container-properties">
-                                <TbFlag3 />
-                                <div className="swiperItem__container-properties-info">
-                                    <div className="propertiesInfo__container">
-                                        <div className="propertiesInfo__container-rating">
-                                            <div className="propertiesInfo__container-rating-1">7</div>
-                                            <div className="propertiesInfo__container-rating-2">,3</div>
-                                        </div>
-                                        <ul className="propertiesInfo__container-bars">
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                    <div className="propertiesInfo__barName">сюжет</div>
-                                    <div className="propertiesInfo__bar"></div>
-                                    <p className="propertiesInfo__moreInfo">{movie.year}, США, Драмы</p>
-                                    {movie.filmLength && (
-                                        <div className="propertiesInfo__time">{movie.filmLength} {formatFilmLength(movie.filmLength)}</div>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="swiperItem__title">{movie.nameRu}</div>
-                        <div className="swiperItem__subscribe">Подписка</div>
-                    </li>
-                </Link>
-            </div>
-        </SwiperSlide>
-    )
-}
-
 const MoviesSlider: FC<MoviesSliderProps> = ({ url }) => {
-    const movies = moviesAPI.useGetMoviesForSlider1Query(url).data?.rows
+    const movies = moviesAPI.useGetMoviesForSlider1Query(url).data?.result
     return (
         <Swiper
             modules={[Navigation]}
@@ -125,7 +79,9 @@ const MoviesSlider: FC<MoviesSliderProps> = ({ url }) => {
         >
             {movies?.map((movie, index) =>
                 index !== movies.length - 1 ? (
-                    swiperSlide(movie, index)
+                    <SwiperSlide key={movie.id}>
+                        <SlimPoster movie={movie} />
+                    </SwiperSlide>
                 ) : (
                     <SwiperSlide key={movie.id}>
                         <div className="recommendSwiper">

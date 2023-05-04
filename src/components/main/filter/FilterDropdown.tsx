@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./FilterDropdown.scss";
 import { BsCheckLg } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,52 +6,22 @@ import { Navigation, SwiperOptions, FreeMode } from "swiper";
 import "swiper/css";
 import "swiper/scss/navigation";
 import "swiper/css/free-mode";
-
-// swiper/css/free-mode
-
+import genresFilms from "../../../data/genresFilms";
+import { AutoContext } from "../../../context";
+import { IGenresMovies } from "../../../types/IGenresMovies";
 import MaskTr from "../../../images/filter/maskTr.png";
 import MaskTs from "../../../images/filter/maskTs.png";
+import { Link, useNavigate, redirect } from "react-router-dom";
+import { useLocation } from "react-router";
 
-const janr = [
-  "аниме",
-  "биографический",
-  "боевик",
-  "вестерн",
-  "военный",
-  "детектив",
-  "детский",
-  "документальный",
-  "драма",
-  "исторический",
-  "кинокомикс",
-  "комедия",
-  "концерт",
-  "короткометражный",
-  "криминал",
-  "мелодрама",
-  "мистика",
-  "музыка",
-  "мультфильм",
-  "мюзикл",
-  "научный",
-  "нуар",
-  "приключения",
-  "реалити-шоу",
-  "семейный",
-  "спорт",
-  "триллер",
-  "ужасы",
-  "фантастика",
-  "фэнтези",
-];
 interface Breakpoints {
   [width: number]: SwiperOptions;
   [ratio: string]: SwiperOptions;
 }
 interface TypeFilterDropdown {
   classes: string | null;
-  meaningActiv: string[];
-  funcActiv: React.Dispatch<React.SetStateAction<string[]>>;
+  meaningActiv: IGenresMovies[];
+  funcActiv: React.Dispatch<React.SetStateAction<IGenresMovies[]>>;
   breakpoints?: Breakpoints;
 }
 
@@ -61,14 +31,35 @@ function FilterDropdown({
   funcActiv,
   breakpoints,
 }: TypeFilterDropdown) {
-  function changesActiveGenres(item: string) {
-    if (meaningActiv.includes(item)) {
-      const obj = meaningActiv.filter((i: string) => i !== item);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname);
+
+  const { activeGenres, setActiveGenres, activeCountries, setActiveCountries } =
+    useContext(AutoContext);
+
+  function changesActiveGenres(item: IGenresMovies) {
+    if (meaningActiv.find((i) => i.id === item.id)) {
+      const obj = meaningActiv.filter((i) => i.id !== item.id);
       funcActiv(obj);
     } else {
       funcActiv([...meaningActiv, item]);
     }
+
+    // meaningActiv.find((item, index, array)=> {
+    //   // если true - возвращается текущий элемент и перебор прерывается
+    //   // если все итерации оказались ложными, возвращается undefined
+    // });
+    // meaningActiv
+
+    // if (meaningActiv.includes(item)) {
+    //   const obj = meaningActiv.filter((i: string) => i !== item);
+    //   funcActiv(obj);
+    // } else {
+    //   funcActiv([...meaningActiv, item]);
+    // }
   }
+
   return (
     <div className={"filterDropdown filterDropdown_" + classes}>
       <div className="filterDropdown__inner">
@@ -84,13 +75,13 @@ function FilterDropdown({
                 breakpoints={breakpoints}
                 className="filterDropdown__swiper"
               >
-                {janr.map((item, index) => {
+                {genresFilms.genresMovies.map((item, index) => {
                   return (
-                    <SwiperSlide key={item + "-" + index}>
+                    <SwiperSlide key={item.genreNameRu + "-" + index}>
                       <div
                         onClick={() => changesActiveGenres(item)}
                         className={
-                          meaningActiv.includes(item)
+                          meaningActiv.find((i) => i.id === item.id)
                             ? "filterDropdown__carousel-item checked"
                             : "filterDropdown__carousel-item"
                         }
@@ -99,7 +90,9 @@ function FilterDropdown({
                           <div className="nbl-icon">
                             <img src={MaskTs} alt="" />
                           </div>
-                          <div className="nbl-tile__caption">{item}</div>
+                          <div className="nbl-tile__caption">
+                            {item.genreNameRu}
+                          </div>
                         </div>
                       </div>
                     </SwiperSlide>
@@ -116,18 +109,20 @@ function FilterDropdown({
                   modules={[Navigation]}
                   className="filterDropdown__swiper"
                 >
-                  {janr.map((item, index) => {
+                  {genresFilms.genresMovies.map((item, index) => {
                     return (
                       <SwiperSlide key={item + "-" + index}>
                         <div
                           onClick={() => changesActiveGenres(item)}
                           className={
-                            meaningActiv.includes(item)
+                            meaningActiv.find((i) => i.id === item.id)
                               ? "sausage filterDropdown__sausage checked"
                               : "sausage filterDropdown__sausage"
                           }
                         >
-                          <div className="sausage__title">{item}</div>
+                          <div className="sausage__title">
+                            {item.genreNameRu}
+                          </div>
                         </div>
                       </SwiperSlide>
                     );
@@ -138,29 +133,64 @@ function FilterDropdown({
           </div>
           <div className="filterDropdown__list-container">
             <ul className="filterDropdown__list">
-              {janr.map((item, index) => {
+              {genresFilms.genresMovies.map((item, index) => {
                 return (
                   <li
-                    key={item + "-" + index}
+                    key={item.genreNameRu + "-" + index}
                     className={
-                      meaningActiv.includes(item)
+                      meaningActiv.find((i) => i.id === item.id)
                         ? "filterDropdown__item filterDropdown__item_checkbox checked"
                         : "filterDropdown__item filterDropdown__item_checkbox"
                     }
                   >
+                    {/* {activeCountries.reduce((accumulator, item) => {
+                        if (accumulator.length === 0) {
+                          return item.genreNameRu;
+                        } else {
+                          return accumulator + "," + item.genreNameRu;
+                        }
+                      }, "")} */}
                     <label
                       onClick={() => changesActiveGenres(item)}
                       className="filterDropdown__label"
                     >
-                      <input
-                        type="checkbox"
-                        className="filterDropdown__input"
-                        value={item}
-                      />
-                      <div className="filterDropdown__input-text">{item}</div>
-                      <div className="filterDropdown__checkbox">
-                        <BsCheckLg></BsCheckLg>
-                      </div>
+                      <Link
+                        to={`${
+                          location.pathname === "/movies"
+                            ? `/movies/${item.genreNameEng}`
+                            : `/movies${
+                                activeGenres.length === 0
+                                  ? "/all"
+                                  : "/filter/" +
+                                    activeGenres.reduce((accumulator, item) => {
+                                      if (accumulator.length === 0) {
+                                        return item.genreNameEng;
+                                      } else {
+                                        return (
+                                          accumulator + "+" + item.genreNameEng
+                                        );
+                                      }
+                                    }, "")
+
+                                // +
+                                // "+" +
+                                // item.genreNameEng
+                              }
+                        `
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          className="filterDropdown__input"
+                          value={item.genreNameRu}
+                        />
+                        <div className="filterDropdown__input-text">
+                          {item.genreNameRu}
+                        </div>
+                        <div className="filterDropdown__checkbox">
+                          <BsCheckLg></BsCheckLg>
+                        </div>
+                      </Link>
                     </label>
                   </li>
                 );

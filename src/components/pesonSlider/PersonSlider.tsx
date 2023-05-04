@@ -11,13 +11,13 @@ const PersonSlider: FC = () => {
     return (
         <Carousel perPage={7} perMove={7}>
             {persons?.map((person) => (
-                <SplideSlide>
+                <SplideSlide key={person.id}>
                     <PersonCard
                     id={person.personId}
                         name={person.nameRu}
                         image={person.posterUrl}
                         mainMoviesAmount={Number(person.hasAwards)}
-                        key={person.id}
+                       
                     />
                 </SplideSlide>
             ))}
