@@ -240,7 +240,7 @@ const genresFilms = {
     {
       id: 7,
       countryNameRu: "Великобритания",
-      countryNameEng: "Great Britain",
+      countryNameEng: "Great-Britain",
     },
     {
       id: 8,
@@ -295,7 +295,7 @@ const genresFilms = {
     {
       id: 18,
       countryNameRu: "Новая Зеландия",
-      countryNameEng: "New Zealand",
+      countryNameEng: "New-Zealand",
     },
     {
       id: 19,
@@ -315,12 +315,12 @@ const genresFilms = {
     {
       id: 22,
       countryNameRu: "Корея Южная",
-      countryNameEng: "Korea South",
+      countryNameEng: "Korea-South",
     },
     {
       id: 23,
       countryNameRu: "Гонконг",
-      countryNameEng: "Hong Kong",
+      countryNameEng: "Hong-Kong",
     },
     {
       id: 24,
@@ -474,8 +474,8 @@ const genresFilms = {
     },
     {
       id: 55,
-      countryNameRu: "Германия (ФРГ)",
-      countryNameEng: "Germany (FRG)",
+      countryNameRu: "Германия-(ФРГ)",
+      countryNameEng: "Germany-(FRG)",
     },
     {
       id: 56,

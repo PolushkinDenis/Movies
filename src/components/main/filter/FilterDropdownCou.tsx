@@ -18,7 +18,7 @@ import { useLocation } from "react-router";
 function FilterDropdownCou() {
   const navigate = useNavigate();
   const location = useLocation();
-  const goTransitionsPage = (e: string) => navigate(e);
+  const goTransitionsPage = (e: any) => navigate(e);
   const { activeGenres, setActiveGenres, activeCountries, setActiveCountries } =
     useContext(AutoContext);
 
@@ -31,32 +31,91 @@ function FilterDropdownCou() {
     }
     //
 
-    let result: any[] = [];
+    let arrActiveCountries: any[] = [];
+    let arrActiveGenres: any[] = [];
+    activeGenres.forEach((i) => {
+      arrActiveGenres.push(i.genreNameEng);
+    });
+    const urlData: (string | undefined)[] = location.pathname.split("/");
+    console.log(urlData);
+    let number = 4;
+    if (activeGenres.length === 0) {
+      number = 3;
+    }
+
     if (
       location.pathname === "/movies" ||
       location.pathname === "/movies/all"
     ) {
-      goTransitionsPage(`/movies/${item.countryNameEng}`);
+      urlData[2] = item.countryNameEng;
+      console.log("start");
+
+      //   goTransitionsPage(`/movies/${item.countryNameEng}`);
     } else if (location.pathname.includes(item.countryNameEng)) {
+      console.log("close");
       activeCountries.forEach((i) => {
         if (i.id !== item.id) {
-          result.push(i.countryNameEng);
+          arrActiveCountries.push(i.countryNameEng);
         }
       });
-      if (result.length === 1) {
-        goTransitionsPage("/movies/" + result.join(""));
-      } else if (result.length === 0) {
-        goTransitionsPage("/movies/all");
+
+      if (arrActiveGenres.length === 1 && arrActiveCountries.length === 0) {
+        console.log("1");
+        if (urlData[2] === "filter") {
+          urlData[2] = arrActiveGenres[0];
+        }
+        urlData[3] = undefined;
+        urlData[4] = undefined;
+      } else if (activeGenres.length === 0 && arrActiveCountries.length === 1) {
+        console.log(2);
+        urlData[2] = arrActiveCountries[0];
+        urlData[number] = undefined;
+        // goTransitionsPage("/movies/" + arrActiveCountries.join(""));
+      } else if (activeGenres.length === 0 && arrActiveCountries.length === 0) {
+        console.log(3);
+        urlData[2] = "all";
+        urlData[3] = undefined;
+        urlData[4] = undefined;
+        // goTransitionsPage("/movies/all");
+      } else if (activeGenres.length === 1 && arrActiveCountries.length === 1) {
+        urlData[2] = arrActiveGenres[0];
+        urlData[3] = arrActiveCountries[0];
+        urlData[4] = undefined;
       } else {
-        goTransitionsPage("/movies/filter/" + result.join("+"));
+        console.log(5);
+        urlData[number] = arrActiveCountries.join("+");
+        // goTransitionsPage("/movies/filter/" + arrActiveCountries.join("+"));
       }
     } else {
-      result = activeCountries.map(function (i) {
+      console.log("add");
+      arrActiveCountries = activeCountries.map(function (i) {
         return i.countryNameEng;
       });
-      result.push(item.countryNameEng);
-      goTransitionsPage("/movies/filter/" + result.join("+"));
+      arrActiveCountries.push(item.countryNameEng);
+
+      if (arrActiveGenres.length === 1 && arrActiveCountries.length === 1) {
+        console.log("add 1");
+        urlData[2] = arrActiveGenres[0];
+        urlData[3] = arrActiveCountries[0];
+      } else {
+        console.log("add 2");
+        urlData[2] = "filter";
+        urlData[3] = arrActiveGenres.join("+");
+        urlData[number] = arrActiveCountries.join("+");
+      }
+      //   goTransitionsPage("/movies/filter/" + arrActiveCountries.join("+"));
     }
+
+    console.log(urlData);
+    // const urlData1 = urlData.reduce((acc: any, cur: any) =>
+    //   typeof cur !== "undefined" ? `${acc}/${cur}` : acc
+    // );
+    goTransitionsPage(
+      urlData.reduce((acc: any, cur: any) =>
+        typeof cur !== "undefined" ? `${acc}/${cur}` : acc
+      )
+    );
+    console.log(urlData);
   }
   return (
     <div className={"filterDropdown filterDropdown_countries"}>

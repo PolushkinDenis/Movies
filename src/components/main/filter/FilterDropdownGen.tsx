@@ -20,7 +20,7 @@ function FilterDropdownGen() {
 
   const { activeGenres, setActiveGenres, activeCountries, setActiveCountries } =
     useContext(AutoContext);
-  const goTransitionsPage = (e: string) => navigate(e);
+  const goTransitionsPage = (e: any) => navigate(e);
 
   function changesActiveGenres(item: any) {
     if (activeGenres.find((i) => i.id === item.id)) {
@@ -31,32 +31,83 @@ function FilterDropdownGen() {
     }
     //
 
-    let result: any[] = [];
+    const urlData: (string | undefined)[] = location.pathname.split("/");
+    console.log(urlData);
+
+    let arrActiveGenres: any[] = [];
+    let arrActiveCountries: any[] = [];
+    activeCountries.forEach((i) => {
+      arrActiveCountries.push(i.countryNameEng);
+    });
     if (
       location.pathname === "/movies" ||
       location.pathname === "/movies/all"
     ) {
-      goTransitionsPage(`/movies/${item.genreNameEng}`);
+      urlData[2] = item.genreNameEng;
+      //   goTransitionsPage(`/movies/${item.genreNameEng}`);
     } else if (location.pathname.includes(item.genreNameEng)) {
+      console.log("exr");
+
       activeGenres.forEach((i) => {
         if (i.id !== item.id) {
-          result.push(i.genreNameEng);
+          arrActiveGenres.push(i.genreNameEng);
         }
       });
-      if (result.length === 1) {
-        goTransitionsPage("/movies/" + result.join(""));
-      } else if (result.length === 0) {
-        goTransitionsPage("/movies/all");
+      if (arrActiveGenres.length === 0 && activeCountries.length === 1) {
+        console.log("1");
+        if (urlData[2] === "filter") {
+          urlData[2] = arrActiveCountries[0];
+        }
+        urlData[3] = undefined;
+        urlData[4] = undefined;
+      } else if (arrActiveGenres.length === 1 && activeCountries.length === 0) {
+        console.log("2");
+        urlData[2] = arrActiveGenres.join("");
+        urlData[3] = undefined;
+
+        // goTransitionsPage("/movies/" + arrActiveGenres.join(""));
+      } else if (arrActiveGenres.length === 0 && activeCountries.length === 0) {
+        console.log("3");
+        urlData[2] = "all";
+
+        // goTransitionsPage("/movies/all");
+      } else if (arrActiveGenres.length === 1 && activeCountries.length === 1) {
+        urlData[2] = arrActiveGenres[0];
+        urlData[3] = arrActiveCountries[0];
+        urlData[4] = undefined;
+      } else if (arrActiveGenres.length === 0) {
+        urlData[3] = undefined;
       } else {
-        goTransitionsPage("/movies/filter/" + result.join("+"));
+        console.log("4");
+        urlData[3] = arrActiveGenres.join("+");
+        // goTransitionsPage("/movies/filter/" + arrActiveGenres.join("+"));
       }
     } else {
-      result = activeGenres.map(function (i) {
+      arrActiveGenres = activeGenres.map(function (i) {
         return i.genreNameEng;
       });
-      result.push(item.genreNameEng);
-      goTransitionsPage("/movies/filter/" + result.join("+"));
+      arrActiveGenres.push(item.genreNameEng);
+      if (arrActiveGenres.length === 1 && arrActiveCountries.length === 1) {
+        urlData[2] = arrActiveGenres[0];
+        urlData[3] = arrActiveCountries[0];
+      } else {
+        urlData[2] = "filter";
+        urlData[3] = arrActiveGenres.join("+");
+        urlData[4] = arrActiveCountries.join("+");
+      }
+      //   goTransitionsPage("/movies/filter/" + arrActiveGenres.join("+"));
     }
+    // goTransitionsPage(urlData.join("/"));
+
+    goTransitionsPage(
+      urlData.reduce((acc: any, cur: any) =>
+        typeof cur !== "undefined" ? `${acc}/${cur}` : acc
+      )
+    );
+
+    console.log(urlData);
+    // const urlData1 = urlData.join("/");
+    // console.log(urlData1);
   }
   return (
     <div className={"filterDropdown filterDropdown_genres"}>

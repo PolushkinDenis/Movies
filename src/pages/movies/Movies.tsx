@@ -45,7 +45,7 @@ function Movies() {
     console.log(location.pathname);
 
     const urlData = location.pathname.split("/");
-    console.log(urlData);
+
     if (urlData[2] === "filter") {
       rez = urlData[3].split("+").map((item) => {
         return genresFilms.genresMovies.find((i: IGenresMovies) => {

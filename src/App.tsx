@@ -25,8 +25,11 @@ function App() {
             <Route path="/film" element={<ContentPage />} />
             <Route path="/person/:name" element={<Person />} />
             <Route path="/movies" element={<Movies />} />
-            <Route path="/movies/:filter" element={<Movies />} />
-            <Route path="/movies/filter/:filter" element={<Movies />} />
+            <Route path="/movies/:filter?/:filter?/" element={<Movies />} />
+            <Route
+              path="/movies/filter/:filter?/:filter?/"
+              element={<Movies />}
+            />
             <Route path="/movies/all" element={<Movies />} />
           </Routes>
           <Footer />
