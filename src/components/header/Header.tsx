@@ -362,7 +362,7 @@ const Header: FC = () => {
 
       <NavLink to="/films">Фильмы</NavLink>
 
-      <NavLink to="/Movies">Movies</NavLink>
+      <NavLink to="/movies">movies</NavLink>
     </div>
   );
 };

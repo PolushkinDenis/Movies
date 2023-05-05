@@ -12,7 +12,7 @@ i18n
   .init({
     fallbackLng: "ru",
     supportedLngs: ["ru", "en"],
-    debug: true,
+    // debug: true,
     // resources: {
     //   en: {
     //     translation: {
@@ -21,7 +21,7 @@ i18n
     //   },
     // },
     backend: {
-      loadPath: "./locales/{{lng}}/translation.json",
+      loadPath: "locales/{{lng}}/translation.json",
     },
     detection: {
       order: ["cookie", "localStorage", "HtmlTag"],

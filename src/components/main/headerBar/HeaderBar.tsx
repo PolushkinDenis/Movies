@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HeaderBar.scss";
 import { useTranslation } from "react-i18next";
 import TabBar from "../../UI/Button/TabBar";
+import { AutoContext } from "../../../context/";
 
-interface TypeHeaderBar {
-  activeGenres: string[];
-  setActiveGenres: React.Dispatch<React.SetStateAction<string[]>>;
-  activeCountries: string[];
-  setActiveCountries: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-function HeaderBar({
-  activeGenres,
-  setActiveGenres,
-  activeCountries,
-  setActiveCountries,
-}: TypeHeaderBar) {
+function HeaderBar() {
+  const {
+    activeGenres,
+    setActiveGenres,
+    activeCountries,
+    setActiveCountries,
+    rangeValue,
+    setRangeValue,
+    evaluationsValue,
+    setEvaluationsValue,
+  } = useContext(AutoContext);
   const [onClickToggle, setOnClickToggle] = React.useState<boolean>(false);
+
   function clickToggle() {
     setOnClickToggle(!onClickToggle);
+  }
+  function limpiezaFilter() {
+    setActiveGenres([]);
+    setActiveCountries([]);
+    setEvaluationsValue(0);
+    setRangeValue(7.5);
   }
   //Translation
   const { t } = useTranslation();
@@ -27,18 +33,16 @@ function HeaderBar({
       <div className="headerBar__controls">
         <div className="headerBar__nav">
           <ul className="breadCrumbs breadCrumbs_classic headerBar__breadCrumbs">
+            <li className="breadCrumbs__item">
+              <TabBar
+                classes={"nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"}
+                toLink={"/"}
+              >
+                <span>Мой Иви</span>
+              </TabBar>
+            </li>
             {activeGenres.length === 0 && activeCountries.length === 0 ? (
               <>
-                <li className="breadCrumbs__item">
-                  <TabBar
-                    classes={
-                      "nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"
-                    }
-                    toLink={"/"}
-                  >
-                    <span>Мой Иви</span>
-                  </TabBar>
-                </li>
                 <li className="breadCrumbs__item">Фильмы</li>
               </>
             ) : (
@@ -48,17 +52,8 @@ function HeaderBar({
                     classes={
                       "nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"
                     }
-                    toLink={"/"}
-                  >
-                    <span>Мой Иви</span>
-                  </TabBar>
-                </li>
-                <li className="breadCrumbs__item">
-                  <TabBar
-                    classes={
-                      "nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"
-                    }
-                    toLink={"/Movies"}
+                    toLink={"/movies"}
+                    onClick={limpiezaFilter}
                   >
                     <span>Фильмы</span>
                   </TabBar>
@@ -67,18 +62,32 @@ function HeaderBar({
                   {activeGenres.length !== 0
                     ? activeGenres
                         .slice(0, 3)
-                        .map((item: string, index: number) => {
-                          return (
-                            <span>{item + (index === 2 ? "..." : ", ")}</span>
-                          );
-                        })
+                        .reduce((accumulator, item, index) => {
+                          if (accumulator.length === 0) {
+                            return item.genreNameRu;
+                          } else if (index === 2) {
+                            console.log(1);
+                            return (
+                              accumulator + ", " + item.genreNameRu + "..."
+                            );
+                          } else {
+                            return accumulator + ", " + item.genreNameRu;
+                          }
+                        }, "")
                     : activeCountries
                         .slice(0, 3)
-                        .map((item: string, index: number) => {
-                          return (
-                            <span>{item + (index === 2 ? "..." : ", ")}</span>
-                          );
-                        })}
+                        .reduce((accumulator, item, index) => {
+                          if (accumulator.length === 0) {
+                            return item.countryNameRu;
+                          } else if (index === 2) {
+                            console.log(1);
+                            return (
+                              accumulator + ", " + item.countryNameRu + "..."
+                            );
+                          } else {
+                            return accumulator + ", " + item.countryNameRu;
+                          }
+                        }, "")}
                 </li>
               </>
             )}

@@ -1,21 +1,21 @@
-import React, { FC } from 'react';
-import { Splide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
-import './Carousel.scss';
+import React, { FC } from "react";
+import { Splide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import "./Carousel.scss";
 
 interface IProps {
-  perPage: number,
-  perMove: number,
-  children: React.ReactNode
+  perPage: number;
+  perMove: number;
+  children: React.ReactNode;
 }
 
-const Carousel: FC<IProps> = ({perPage, perMove, children}) => {
+const Carousel: FC<IProps> = ({ perPage, perMove, children }) => {
   return (
     <Splide
       options={{
         rewind: false,
         perPage: perPage,
-        gap: '20px',
+        gap: "20px",
         perMove: perMove,
         pagination: false,
         // padding: { left: 25, right: 25 },
@@ -37,7 +37,7 @@ const Carousel: FC<IProps> = ({perPage, perMove, children}) => {
             perPage: 2,
           },
         },
-        updateOnMove : true,
+        updateOnMove: true,
       }}
       aria-label="Carousel"
     >

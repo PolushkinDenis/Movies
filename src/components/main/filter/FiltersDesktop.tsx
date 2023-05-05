@@ -1,38 +1,53 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { GrClose } from "react-icons/gr";
 import { BsCheckLg } from "react-icons/bs";
 import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
-import FilterDropdown from "./FilterDropdown";
 import { useTranslation } from "react-i18next";
+import { AutoContext } from "../../../context/";
+import { Link, useNavigate } from "react-router-dom";
+import FilterDropdownCou from "./FilterDropdownCou";
+import FilterDropdownGen from "./FilterDropdownGen";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
   setClickSwitchFilter: React.Dispatch<React.SetStateAction<string | null>>;
-  activeGenres: string[];
-  setActiveGenres: React.Dispatch<React.SetStateAction<string[]>>;
-  activeCountries: string[];
-  setActiveCountries: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 function FiltersDesktop({
   clickSwitchFilter,
   setClickSwitchFilter,
-  activeGenres,
-  setActiveGenres,
-  activeCountries,
-  setActiveCountries,
 }: TypeFiltersDesktop) {
-  const [rangeValue, setRangeValue] = React.useState<number>(7.5);
-  const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
-  // const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
-  // const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
+  const {
+    activeGenres,
+    setActiveGenres,
+    activeCountries,
+    setActiveCountries,
+    rangeValue,
+    setRangeValue,
+    evaluationsValue,
+    setEvaluationsValue,
+  } = useContext(AutoContext);
+  const navigate = useNavigate();
+  const goTransitionsPage = (e: any) => navigate(e);
   function shiftRangeValue(e: React.ChangeEvent<HTMLInputElement>) {
     setRangeValue(Number(e.currentTarget.value));
+    if (
+      Number(e.currentTarget.value) !== 7.5 &&
+      window.location.pathname === "/movies"
+    ) {
+      goTransitionsPage("/movies/all");
+    }
   }
   function shiftEvaluationsValue(e: React.ChangeEvent<HTMLInputElement>) {
     setEvaluationsValue(Number(e.currentTarget.value));
+    if (
+      Number(e.currentTarget.value) !== 7.5 &&
+      window.location.pathname === "/movies"
+    ) {
+      goTransitionsPage("/movies/all");
+    }
   }
 
   function clickToggleFilter(e: React.MouseEvent<HTMLDivElement>) {
@@ -74,12 +89,14 @@ function FiltersDesktop({
       }
     }
   }
+
   function limpiezaFilter() {
     setActiveGenres([]);
     setActiveCountries([]);
-    setEvaluationsValue(1);
+    setEvaluationsValue(0);
     setRangeValue(7.5);
   }
+
   //Translation
   const { t } = useTranslation();
 
@@ -102,7 +119,13 @@ function FiltersDesktop({
                     ""
                   ) : (
                     <div className="nbl-plank__extra">
-                      {activeGenres.join(", ")}
+                      {activeGenres.reduce((accumulator, item) => {
+                        if (accumulator.length === 0) {
+                          return item.genreNameRu;
+                        } else {
+                          return accumulator + "," + item.genreNameRu;
+                        }
+                      }, "")}
                     </div>
                   )}
                 </div>
@@ -111,23 +134,7 @@ function FiltersDesktop({
                 </div>
               </MyButton>
               {clickSwitchFilter === "Genres" ? (
-                <FilterDropdown
-                  classes={"genres"}
-                  meaningActiv={activeGenres}
-                  funcActiv={setActiveGenres}
-                  breakpoints={{
-                    280: {
-                      slidesPerView: 3,
-                      slidesPerGroup: 1,
-                      spaceBetween: 12,
-                    },
-                    744: {
-                      slidesPerView: 5,
-                      slidesPerGroup: 2,
-                      spaceBetween: 12,
-                    },
-                  }}
-                ></FilterDropdown>
+                <FilterDropdownGen></FilterDropdownGen>
               ) : (
                 ""
               )}
@@ -148,7 +155,13 @@ function FiltersDesktop({
                     ""
                   ) : (
                     <div className="nbl-plank__extra">
-                      {activeCountries.join(", ")}
+                      {activeCountries.reduce((accumulator, item) => {
+                        if (accumulator.length === 0) {
+                          return item.countryNameRu;
+                        } else {
+                          return accumulator + "," + item.countryNameRu;
+                        }
+                      }, "")}
                     </div>
                   )}
                 </div>
@@ -157,11 +170,7 @@ function FiltersDesktop({
                 </div>
               </MyButton>
               {clickSwitchFilter === "Countries" ? (
-                <FilterDropdown
-                  classes={"countries"}
-                  meaningActiv={activeCountries}
-                  funcActiv={setActiveCountries}
-                ></FilterDropdown>
+                <FilterDropdownCou></FilterDropdownCou>
               ) : (
                 ""
               )}
@@ -356,10 +365,12 @@ function FiltersDesktop({
             }
             onClick={limpiezaFilter}
           >
-            <div className="filtersDesktop__button-icon">
-              <GrClose></GrClose>
-            </div>
-            {t("Сбросить фильтры")}
+            <Link to={"/movies/all"}>
+              <div className="filtersDesktop__button-icon">
+                <GrClose></GrClose>
+              </div>
+              {t("Сбросить фильтры")}
+            </Link>
           </div>
         </div>
       </div>
