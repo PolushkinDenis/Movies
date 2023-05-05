@@ -12,26 +12,12 @@ import "./scss/app.scss";
 function App() {
   return (
     <div className="wrapper">
-<<<<<<< HEAD
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="*" element={<Navigate to="/" />} />
-          <Route path="/" element={<Main />} />
-          <Route path="/film" element={<ContentPage />} />
-          <Route path="/person/:name" element={<Person />} />
-          <Route path="/movies" element={<Movies />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-=======
       <ContextFc>
         <BrowserRouter>
           <Header />
           <Routes>
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/" element={<Main />} />
-            <Route path="/films" element={<Films />} />
             <Route path="/film" element={<ContentPage />} />
             <Route path="/person/:name" element={<Person />} />
             <Route path="/movies" element={<Movies />}>
@@ -46,7 +32,6 @@ function App() {
           <Footer />
         </BrowserRouter>
       </ContextFc>
->>>>>>> Andrey
     </div>
   );
 }
