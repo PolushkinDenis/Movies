@@ -42,7 +42,7 @@ const TopSlider: FC = () => {
                 },
             }}
         >
-            {movies?.rows.map((film, index) => (
+            {movies?.result.map((film, index) => (
                 <SwiperSlide key={film.id}>
                     <Link className='posterUrl' to={`/film/${film.id}`}>
                         <div className='posterUprightBlock__nbl-poster'>

@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import qs from "qs";
@@ -11,13 +11,14 @@ import Sorting from "../../components/main/sorting/Sorting";
 import Carousel from "../../components/UI/carousel/Carousel";
 import { SplideSlide } from "@splidejs/react-splide";
 import PersonCard from "../../components/personCard/PersonCard";
+import { AutoContext } from "../../context";
 import PersonSlider from "../../components/pesonSlider/PersonSlider";
 import HeaderBar from "../../components/main/headerBar/HeaderBar";
 import SlimPoster from "../../components/slimPoster/SlimPoster";
-import { AutoContext } from "../../context";
-import MoviesAll from "./MoviesAll";
 import genresFilms from "../../data/genresFilms";
 import { AnyAction } from "@reduxjs/toolkit";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { fetchMovies, getMoreMovies } from "../../store/movies/moviesAction";
 
 function Movies() {
   const navigate = useNavigate();
@@ -38,6 +39,10 @@ function Movies() {
   } = useContext(AutoContext);
   const isMounted = React.useRef(false);
 
+  const dispatch = useAppDispatch();
+  const { movies } = useAppSelector((state) => state.moviesSlice);
+  const [page, setPage] = useState(0);
+
   const [clickToggleSorting, setClickToggleSorting] =
     React.useState<boolean>(false);
 
@@ -52,6 +57,7 @@ function Movies() {
   React.useEffect(() => {
     document.body.addEventListener("click", clickFilterClose);
   }, []);
+
   React.useEffect(() => {
     // при вервой загрузки стр проверяет url и добавляет их в context
     let urlGenres: IGenresMovies[] | any[] = [];
@@ -120,6 +126,14 @@ function Movies() {
     }
     isMounted.current = true;
   }, [rangeValue, evaluationsValue]);
+  const getMore = () => {
+    setPage(page + 1);
+    dispatch(getMoreMovies(activeGenres, activeCountries, page + 1));
+  };
+
+  useEffect(() => {
+    dispatch(fetchMovies(activeGenres, activeCountries));
+  }, [activeGenres, activeCountries]);
 
   //Translation
   const { t } = useTranslation();
@@ -140,20 +154,54 @@ function Movies() {
           ></FiltersDesktop>
           {window.location.pathname === "/movies" ||
           window.location.pathname === "/movies/" ? (
-            <section className="pageSection">
-              <div className="pageSection__movies__container">
-                <div className="gallery">
-                  <div className="gallery__header">
-                    <span className="gallery__headerLink">Фильмы-новинки</span>
-                  </div>
-                  <div className="gallery__viewport-inner">
-                    <NewMoviesSlider />
+            <>
+              <section className="pageSection">
+                <div className="pageSection__movies__container">
+                  <div className="gallery">
+                    <div className="gallery__header">
+                      <span className="gallery__headerLink">
+                        Фильмы-новинки
+                      </span>
+                    </div>
+                    <div className="gallery__viewport-inner">
+                      <NewMoviesSlider />
+                    </div>
                   </div>
                 </div>
+              </section>
+              <section className="pageSection">
+                <div className="pageSection__movies__container">
+                  <div className="gallery">
+                    <div className="gallery__header">
+                      <span className="gallery__headerLink">Персоны</span>
+                    </div>
+                    <div className="gallery__viewport-inner">
+                      <PersonSlider />
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </>
+          ) : (
+            <section className="pageSection genre__pageSection ">
+              <div className="genre__gallery gallery ">
+                <ul className="gallery__list">
+                  {movies.map((movie) => (
+                    <SlimPoster movie={movie} key={movie.id} />
+                  ))}
+                  <div className="genre__moreButton">
+                    <button className="nbl-button nbl-button_style_ran">
+                      <div
+                        onClick={getMore}
+                        className="nbl-button__primaryText"
+                      >
+                        Показать еще
+                      </div>
+                    </button>
+                  </div>
+                </ul>
               </div>
             </section>
-          ) : (
-            <MoviesAll></MoviesAll>
           )}
         </div>
       </main>

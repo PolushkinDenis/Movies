@@ -34,5 +34,5 @@ export interface IMovie {
 
 export interface IMovies {
     count: number,
-    rows: IMovie[]
+    result: IMovie[]
 }

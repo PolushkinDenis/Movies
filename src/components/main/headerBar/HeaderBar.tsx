@@ -15,6 +15,7 @@ function HeaderBar() {
     evaluationsValue,
     setEvaluationsValue,
   } = useContext(AutoContext);
+
   const [onClickToggle, setOnClickToggle] = React.useState<boolean>(false);
 
   function clickToggle() {
@@ -88,6 +89,22 @@ function HeaderBar() {
                             return accumulator + ", " + item.countryNameRu;
                           }
                         }, "")}
+                  {/* =======
+                    ? activeGenres.slice(0, 3).map((item, index) => {
+                        return (
+                          <span key={item + "-" + index}>
+                            {item + (index === 2 ? "..." : ", ")}
+                          </span>
+                        );
+                      })
+                    : activeCountries.slice(0, 3).map((item, index) => {
+                        return (
+                          <span key={item + "-" + index}>
+                            {item + (index === 2 ? "..." : ", ")}
+                          </span>
+                        );
+                      })}
+>>>>>>> 7c231ec8cafc881bb3391d0e1fa8fef750d7db96 */}
                 </li>
               </>
             )}
