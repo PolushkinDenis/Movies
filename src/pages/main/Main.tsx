@@ -17,6 +17,7 @@ const promoData = [
 const Main: FC = () => {
   const [onClickToggle, setOnClickToggle] = useState(false);
 
+  
   return (
     <main className="main">
       <div className="promo">
