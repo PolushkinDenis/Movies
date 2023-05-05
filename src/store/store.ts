@@ -1,9 +1,11 @@
 import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { moviesAPI } from "../services/MoviesService";
 import newMoviesSlice from "./newMovies/newMoviesSlice"
+import moviesSlice from "./movies/moviesSlice";
 
 const rootReducer = combineReducers({
     newMoviesSlice,
+    moviesSlice,
     [moviesAPI.reducerPath]: moviesAPI.reducer
 })
 

@@ -10,17 +10,12 @@ export const moviesAPI = createApi({
     endpoints: (build) => ({
         fetchMoviesTop10: build.query<IMovies, number>({
             query: (size: number = 10) => ({
-                url: `/movies?size=${size}`
+                url: `/movies/filters?size=${size}`
             })
         }),
         getMoviesForSlider1: build.query<IMovies, string>({
             query: (url: string) => ({
                 url: url
-            })
-        }),
-        getNewMovies: build.query<IMovies, string>({
-            query: (year: string) => ({
-                url: `/movies/filters?&size=5&year=2022`
             })
         }),
         getAllPerson: build.query<IPersonAll, string>({

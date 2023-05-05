@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import "./Main.scss";
 import PromoSlider from "../../components/promoSlider/PromoSlider";
 import TopSlider from "../../components/topSlider/TopSlider";
@@ -15,9 +15,7 @@ const promoData = [
 ]
 
 const Main: FC = () => {
-
-  const { data: movies } = moviesAPI.useFetchMoviesTop10Query(10)
-  const [onClickToggle, setOnClickToggle] = React.useState(false);
+  const [onClickToggle, setOnClickToggle] = useState(false);
 
   return (
     <main className="main">
@@ -52,7 +50,7 @@ const Main: FC = () => {
                 </h2>
               </div>
               <div className="clause__text is-truncated">
-                <div className={
+                <div data-testid="clause__text" className={
                   onClickToggle
                     ? "clause__text-inner"
                     : "clause__text-inner hidden-children"
@@ -99,7 +97,7 @@ const Main: FC = () => {
                     кинотеатром Иви!
                   </p>
                 </div>
-                <span onClick={() => setOnClickToggle(!onClickToggle)} className="clause__toggle">Свернуть</span>
+                <span data-testid="toggle-btn" onClick={() => setOnClickToggle(!onClickToggle)} className="clause__toggle">Свернуть</span>
               </div>
             </div>
           </div>
@@ -115,9 +113,7 @@ const Main: FC = () => {
               </div>
             </div>
             <div className="top_slider">
-              {/* {movies && ( */}
                 <TopSlider />
-              {/* )} */}
             </div>
           </div>
         </div>

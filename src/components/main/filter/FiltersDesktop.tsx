@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { GrClose } from "react-icons/gr";
 import { BsCheckLg } from "react-icons/bs";
@@ -6,28 +6,24 @@ import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
 import FilterDropdown from "./FilterDropdown";
 import { useTranslation } from "react-i18next";
+import { AutoContext } from "../../../context/";
+import { Link } from "react-router-dom";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
   setClickSwitchFilter: React.Dispatch<React.SetStateAction<string | null>>;
-  activeGenres: string[];
-  setActiveGenres: React.Dispatch<React.SetStateAction<string[]>>;
-  activeCountries: string[];
-  setActiveCountries: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 function FiltersDesktop({
   clickSwitchFilter,
   setClickSwitchFilter,
-  activeGenres,
-  setActiveGenres,
-  activeCountries,
-  setActiveCountries,
 }: TypeFiltersDesktop) {
   const [rangeValue, setRangeValue] = React.useState<number>(7.5);
   const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
-  // const [activeGenres, setActiveGenres] = React.useState<string[]>([]);
-  // const [activeCountries, setActiveCountries] = React.useState<string[]>([]);
+
+  const { activeGenres, setActiveGenres, activeCountries, setActiveCountries } =
+    useContext(AutoContext);
+
   function shiftRangeValue(e: React.ChangeEvent<HTMLInputElement>) {
     setRangeValue(Number(e.currentTarget.value));
   }
@@ -102,7 +98,13 @@ function FiltersDesktop({
                     ""
                   ) : (
                     <div className="nbl-plank__extra">
-                      {activeGenres.join(", ")}
+                      {activeGenres.reduce((accumulator, item) => {
+                        if (accumulator.length === 0) {
+                          return item.genreNameRu;
+                        } else {
+                          return accumulator + "," + item.genreNameRu;
+                        }
+                      }, "")}
                     </div>
                   )}
                 </div>
@@ -148,7 +150,13 @@ function FiltersDesktop({
                     ""
                   ) : (
                     <div className="nbl-plank__extra">
-                      {activeCountries.join(", ")}
+                      {activeCountries.reduce((accumulator, item) => {
+                        if (accumulator.length === 0) {
+                          return item.genreNameRu;
+                        } else {
+                          return accumulator + "," + item.genreNameRu;
+                        }
+                      }, "")}
                     </div>
                   )}
                 </div>
@@ -345,22 +353,24 @@ function FiltersDesktop({
           </div>
         </div>
         <div className="filtersDesktop__button-container">
-          <div
-            className={
-              activeGenres.length ||
-              activeCountries.length ||
-              evaluationsValue !== 0 ||
-              rangeValue !== 7.5
-                ? "filtersDesktop__button"
-                : "filtersDesktop__button filtersDesktop__button_disabled"
-            }
-            onClick={limpiezaFilter}
-          >
-            <div className="filtersDesktop__button-icon">
-              <GrClose></GrClose>
+          <Link to={"/movies/all"}>
+            <div
+              className={
+                activeGenres.length ||
+                activeCountries.length ||
+                evaluationsValue !== 0 ||
+                rangeValue !== 7.5
+                  ? "filtersDesktop__button"
+                  : "filtersDesktop__button filtersDesktop__button_disabled"
+              }
+              onClick={limpiezaFilter}
+            >
+              <div className="filtersDesktop__button-icon">
+                <GrClose></GrClose>
+              </div>
+              {t("Сбросить фильтры")}
             </div>
-            {t("Сбросить фильтры")}
-          </div>
+          </Link>
         </div>
       </div>
     </section>

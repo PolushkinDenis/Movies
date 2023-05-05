@@ -12,14 +12,38 @@
         .swiper-button-prev {
             margin-left: -40px;
         }
-        .swiperItem__container-image {
-            width: 100%;
+    }
+    .slim-poster__swiper-item {
+        width: 100%;
+        .swiperItem__container {
+            margin-top: 12px;
+            // .swiperItem__container-image {
+            //     height: 100%;
+            // }
+            // .swiperItem__container-properties {
+            //     height: 84%;
+            // }
         }
     }
+    
     .recommendSwiper {
         margin-bottom: 0;
         .recommendSwiper__swiper-item {
             .swiperItem__container {
+                margin-top: 12px;
+                &:hover {
+                    transform: scale(1.02) translateY(-3%);
+                    .swiperItem__container-imageWrapper {
+                        .moreTile__captionWrapper {
+                            .moreTile__caption {
+                                color: #fff
+                            }
+                        }
+                    }
+                    &::before {
+                        background-color: #231f34;
+                    }
+                }
                 &::before {
                     content: "";
                     display: block;

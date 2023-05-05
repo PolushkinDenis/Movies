@@ -30,7 +30,7 @@ const Person: FC = () => {
       <div className="person__gradient-inner">
         <p className="person__alternate">{person?.person.nameEng}</p>
         <p className="person__name">{person?.person.nameRu}</p>
-        {personData.story && <p className="person__story">{personData.story}</p>}
+        {/* {personData.story && <p className="person__story">{personData.story}</p>} */}
       </div>
     </div>
   );
@@ -58,14 +58,14 @@ const Person: FC = () => {
   return (
     <div className="person">
       {
-        person?.person.posterUrl ?
-          <div
-            style={{ backgroundImage: `url(${person?.person.posterUrl})` }}
-            className="person__bg-img"
-          >
-            {prevPageElem}
-            {personInfo}
-          </div> :
+        //person?.person.posterUrl ?
+          // <div
+          //   style={{ backgroundImage: `url(${person?.person.posterUrl})` }}
+          //   className="person__bg-img"
+          // >
+          //   {prevPageElem}
+          //   {personInfo}
+          // </div> :
           <div className="person__no-bg-img">
             {prevPageElem}
             <div className="person__img-wrapper">

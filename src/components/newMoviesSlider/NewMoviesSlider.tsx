@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import './NewMoviesSlider.scss'
 import premieres_img from '../../images/newMoviesSlider/premieres.png'
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
+// import "swiper/css";
+// import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
@@ -22,6 +22,15 @@ const newFilmsData = [
     { href: "https://www.ivi.ru/collections/new-movies", imgHref: { premieres_img }, title: "Бесплатные новинки" },
 ]
 
+const newFilmsTtitle = [
+    { title: "Российские новинки" },
+    { title: "Зарубежные новинки" },
+    { title: "Новые комедии" },
+    { title: "Новые российские комедии" },
+    { title: "Лучшие новинки" },
+
+]
+
 const NewMoviesSlider: FC = () => {
     const dispach = useAppDispatch()
     const newMoviesRedux = useAppSelector(state => state.newMoviesSlice.slide)
@@ -29,13 +38,11 @@ const NewMoviesSlider: FC = () => {
 
     useEffect(() => {
         if (newMoviesRedux.length < 4) {
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())
-            dispach(fetchNewMovies())     
-            dispach(fetchNewMovies())               
+            dispach(fetchNewMovies("movies/filters?size=5&countryId=1&year=2022"))
+            dispach(fetchNewMovies("movies/filters?size=5&countryId=6&countryId=7&countryId=11&year=2022"))
+            dispach(fetchNewMovies("movies/filters?size=5&genreId=2&year=2022"))
+            dispach(fetchNewMovies("movies/filters?size=5&genreId=2&countryId=1&year=2022"))
+            dispach(fetchNewMovies("movies/filters?size=5&year=2023&orderBy=ratingKinopoisk"))
         }
     }, [])
 
@@ -43,7 +50,6 @@ const NewMoviesSlider: FC = () => {
         setArrMovies(newMoviesRedux)
     }, [newMoviesRedux])
 
-    console.log(newMoviesRedux)
     console.log(arrMovies)
 
     return (
@@ -83,7 +89,7 @@ const NewMoviesSlider: FC = () => {
                                             <div className="nms-poster__imageWrapper">
                                                 <div className="main-img">
                                                     {film.map((item, index) => (
-                                                        <img className={index === 0 ? "poster-main" : `poster-${index}`} src={item.posterUrlPreview} alt=" " />
+                                                        <img className={index === 0 ? "poster-main" : `poster-${index}`} src={item.posterUrlPreview} alt=" " key={item.id} />
                                                     ))}
                                                 </div>
                                             </div>
@@ -94,7 +100,7 @@ const NewMoviesSlider: FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="miniPromoBlockCustom__title">Новинки</div>
+                    <div className="miniPromoBlockCustom__title">{newFilmsTtitle[index].title}</div>
                 </SwiperSlide>
             ))
             }

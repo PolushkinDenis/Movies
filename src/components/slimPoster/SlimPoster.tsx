@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 import "./SlimPoster.scss";
 import { TbFlag3 } from "react-icons/tb";
 import { FaRegBookmark } from "react-icons/fa";
@@ -7,15 +7,20 @@ import { AiOutlineStar } from "react-icons/ai";
 import { TbCircleOff } from "react-icons/tb";
 
 import { Link } from "react-router-dom";
+import { IMovie } from "../../types/IMovies";
 
-function SlimPoster() {
+interface SlimPosterProps {
+  movie: IMovie
+}
+
+const SlimPoster: FC<SlimPosterProps> = ({movie}) => {
   return (
     <li className="slim-poster__swiper-item">
-      <Link to={"/film/"}>
+      <Link  to={"/film/"}>
         <div className="swiperItem__container">
           <img
             className="swiperItem__container-image"
-            src="https://thumbs.dfs.ivi.ru/storage2/contents/9/1/4514a3111b4121c4ea02facf52efc1.jpg/234x360/?q=85"
+            src={movie.posterUrlPreview}
             alt="film"
           />
           <div className="swiperItem__container-properties">
@@ -96,11 +101,11 @@ function SlimPoster() {
                   }}
                 ></div>
               </div>
-              <p className="propertiesInfo__moreInfo">2020, США, Драмы</p>
+              <p className="propertiesInfo__moreInfo">{movie.year}, {movie.countries[0].countryNameRu}, {movie.genres[0].genreNameRu}</p>
               <div className="propertiesInfo__time">93 минуты</div>
             </div>
           </div>
-          <div className="swiperItem__title">Рейка</div>
+          <div className="swiperItem__title">{movie.nameRu}</div>
           <div className="swiperItem__subscribe">Подписка</div>
         </div>
       </Link>
