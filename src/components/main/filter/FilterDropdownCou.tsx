@@ -23,13 +23,15 @@ function FilterDropdownCou() {
     useContext(AutoContext);
 
   function changesActiveCountry(item: any) {
+    // Изменение context
     if (activeCountries.find((i) => i.id === item.id)) {
       const obj = activeCountries.filter((i) => i.id !== item.id);
       setActiveCountries(obj);
     } else {
       setActiveCountries([...activeCountries, item]);
     }
-    //
+
+    // Изменение url
 
     let arrActiveCountries: any[] = [];
     let arrActiveGenres: any[] = [];
@@ -38,55 +40,49 @@ function FilterDropdownCou() {
     });
     const urlData: (string | undefined)[] = location.pathname.split("/");
     console.log(urlData);
-    let number = 4;
+    let number = 4; // номер в [urlData] если есть жанры то он 4 если есть толко страны то 3
     if (activeGenres.length === 0) {
       number = 3;
     }
-
+    // стартовая позиция "всё чисто"
     if (
       location.pathname === "/movies" ||
       location.pathname === "/movies/all"
     ) {
       urlData[2] = item.countryNameEng;
       console.log("start");
-
-      //   goTransitionsPage(`/movies/${item.countryNameEng}`);
     } else if (location.pathname.includes(item.countryNameEng)) {
+      // удаление данных в url
       console.log("close");
       activeCountries.forEach((i) => {
         if (i.id !== item.id) {
           arrActiveCountries.push(i.countryNameEng);
         }
       });
-
       if (arrActiveGenres.length === 1 && arrActiveCountries.length === 0) {
         console.log("1");
-        if (urlData[2] === "filter") {
-          urlData[2] = arrActiveGenres[0];
-        }
-        urlData[3] = undefined;
-        urlData[4] = undefined;
+        urlData[2] = arrActiveGenres[0];
+
+        urlData.splice(3, 2);
       } else if (activeGenres.length === 0 && arrActiveCountries.length === 1) {
         console.log(2);
         urlData[2] = arrActiveCountries[0];
-        urlData[number] = undefined;
-        // goTransitionsPage("/movies/" + arrActiveCountries.join(""));
+        urlData.splice(number, 1);
       } else if (activeGenres.length === 0 && arrActiveCountries.length === 0) {
         console.log(3);
         urlData[2] = "all";
-        urlData[3] = undefined;
-        urlData[4] = undefined;
-        // goTransitionsPage("/movies/all");
+        urlData.splice(3, 2);
       } else if (activeGenres.length === 1 && arrActiveCountries.length === 1) {
         urlData[2] = arrActiveGenres[0];
         urlData[3] = arrActiveCountries[0];
-        urlData[4] = undefined;
+
+        urlData.splice(4, 1);
       } else {
         console.log(5);
         urlData[number] = arrActiveCountries.join("+");
-        // goTransitionsPage("/movies/filter/" + arrActiveCountries.join("+"));
       }
     } else {
+      // добавляет данных в url
       console.log("add");
       arrActiveCountries = activeCountries.map(function (i) {
         return i.countryNameEng;
@@ -103,19 +99,14 @@ function FilterDropdownCou() {
         urlData[3] = arrActiveGenres.join("+");
         urlData[number] = arrActiveCountries.join("+");
       }
-      //   goTransitionsPage("/movies/filter/" + arrActiveCountries.join("+"));
     }
 
     console.log(urlData);
-    // const urlData1 = urlData.reduce((acc: any, cur: any) =>
-    //   typeof cur !== "undefined" ? `${acc}/${cur}` : acc
-    // );
     goTransitionsPage(
       urlData.reduce((acc: any, cur: any) =>
         typeof cur !== "undefined" ? `${acc}/${cur}` : acc
-      )
+      ) + window.location.search
     );
-    console.log(urlData);
   }
   return (
     <div className={"filterDropdown filterDropdown_countries"}>

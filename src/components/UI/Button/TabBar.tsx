@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./TabBar.scss";
 
-function TabBar({ children, classes, toLink }: any) {
+function TabBar({ children, classes, toLink, ...props }: any) {
   return (
-    <Link to={toLink} className={classes}>
+    <Link {...props} to={toLink} className={classes}>
       {children}
     </Link>
   );

@@ -4,10 +4,9 @@ import { GrClose } from "react-icons/gr";
 import { BsCheckLg } from "react-icons/bs";
 import MyButton from "../../UI/Button/MyButton";
 import "./FiltersDesktop.scss";
-// import FilterDropdown from "./FilterDropdown";
 import { useTranslation } from "react-i18next";
 import { AutoContext } from "../../../context/";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FilterDropdownCou from "./FilterDropdownCou";
 import FilterDropdownGen from "./FilterDropdownGen";
 
@@ -20,17 +19,35 @@ function FiltersDesktop({
   clickSwitchFilter,
   setClickSwitchFilter,
 }: TypeFiltersDesktop) {
-  const [rangeValue, setRangeValue] = React.useState<number>(7.5);
-  const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
-
-  const { activeGenres, setActiveGenres, activeCountries, setActiveCountries } =
-    useContext(AutoContext);
-
+  const {
+    activeGenres,
+    setActiveGenres,
+    activeCountries,
+    setActiveCountries,
+    rangeValue,
+    setRangeValue,
+    evaluationsValue,
+    setEvaluationsValue,
+  } = useContext(AutoContext);
+  const navigate = useNavigate();
+  const goTransitionsPage = (e: any) => navigate(e);
   function shiftRangeValue(e: React.ChangeEvent<HTMLInputElement>) {
     setRangeValue(Number(e.currentTarget.value));
+    if (
+      Number(e.currentTarget.value) !== 7.5 &&
+      window.location.pathname === "/movies"
+    ) {
+      goTransitionsPage("/movies/all");
+    }
   }
   function shiftEvaluationsValue(e: React.ChangeEvent<HTMLInputElement>) {
     setEvaluationsValue(Number(e.currentTarget.value));
+    if (
+      Number(e.currentTarget.value) !== 7.5 &&
+      window.location.pathname === "/movies"
+    ) {
+      goTransitionsPage("/movies/all");
+    }
   }
 
   function clickToggleFilter(e: React.MouseEvent<HTMLDivElement>) {
@@ -119,23 +136,6 @@ function FiltersDesktop({
               {clickSwitchFilter === "Genres" ? (
                 <FilterDropdownGen></FilterDropdownGen>
               ) : (
-                // <FilterDropdown
-                //   classes={"genres"}
-                //   meaningActiv={activeGenres}
-                //   funcActiv={setActiveGenres}
-                //   breakpoints={{
-                //     280: {
-                //       slidesPerView: 3,
-                //       slidesPerGroup: 1,
-                //       spaceBetween: 12,
-                //     },
-                //     744: {
-                //       slidesPerView: 5,
-                //       slidesPerGroup: 2,
-                //       spaceBetween: 12,
-                //     },
-                //   }}
-                // ></FilterDropdown>
                 ""
               )}
             </div>
@@ -170,11 +170,6 @@ function FiltersDesktop({
                 </div>
               </MyButton>
               {clickSwitchFilter === "Countries" ? (
-                // <FilterDropdown
-                //   classes={"countries"}
-                //   meaningActiv={activeCountries}
-                //   funcActiv={setActiveCountries}
-                // ></FilterDropdown>
                 <FilterDropdownCou></FilterDropdownCou>
               ) : (
                 ""

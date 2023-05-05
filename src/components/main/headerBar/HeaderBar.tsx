@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./HeaderBar.scss";
 import { useTranslation } from "react-i18next";
 import TabBar from "../../UI/Button/TabBar";
 import { AutoContext } from "../../../context/";
 
 function HeaderBar() {
-  const { activeGenres, activeCountries } = React.useContext(AutoContext);
+  const {
+    activeGenres,
+    setActiveGenres,
+    activeCountries,
+    setActiveCountries,
+    rangeValue,
+    setRangeValue,
+    evaluationsValue,
+    setEvaluationsValue,
+  } = useContext(AutoContext);
   const [onClickToggle, setOnClickToggle] = React.useState<boolean>(false);
+
   function clickToggle() {
     setOnClickToggle(!onClickToggle);
+  }
+  function limpiezaFilter() {
+    setActiveGenres([]);
+    setActiveCountries([]);
+    setEvaluationsValue(0);
+    setRangeValue(7.5);
   }
   //Translation
   const { t } = useTranslation();
@@ -17,18 +33,16 @@ function HeaderBar() {
       <div className="headerBar__controls">
         <div className="headerBar__nav">
           <ul className="breadCrumbs breadCrumbs_classic headerBar__breadCrumbs">
+            <li className="breadCrumbs__item">
+              <TabBar
+                classes={"nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"}
+                toLink={"/"}
+              >
+                <span>Мой Иви</span>
+              </TabBar>
+            </li>
             {activeGenres.length === 0 && activeCountries.length === 0 ? (
               <>
-                <li className="breadCrumbs__item">
-                  <TabBar
-                    classes={
-                      "nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"
-                    }
-                    toLink={"/"}
-                  >
-                    <span>Мой Иви</span>
-                  </TabBar>
-                </li>
                 <li className="breadCrumbs__item">Фильмы</li>
               </>
             ) : (
@@ -38,17 +52,8 @@ function HeaderBar() {
                     classes={
                       "nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"
                     }
-                    toLink={"/"}
-                  >
-                    <span>Мой Иви</span>
-                  </TabBar>
-                </li>
-                <li className="breadCrumbs__item">
-                  <TabBar
-                    classes={
-                      "nbl-link nbl-link_style_chaf breadCrumbs__nbl-link"
-                    }
                     toLink={"/movies"}
+                    onClick={limpiezaFilter}
                   >
                     <span>Фильмы</span>
                   </TabBar>
