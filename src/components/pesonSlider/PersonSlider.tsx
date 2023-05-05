@@ -16,8 +16,7 @@ const PersonSlider: FC = () => {
                     id={person.personId}
                         name={person.nameRu}
                         image={person.posterUrl}
-                        mainMoviesAmount={Number(person.hasAwards)}
-                       
+                        mainMoviesAmount={Number(person.hasAwards)}      
                     />
                 </SplideSlide>
             ))}

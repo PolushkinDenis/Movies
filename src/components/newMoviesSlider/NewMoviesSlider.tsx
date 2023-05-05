@@ -2,8 +2,8 @@ import React, { FC, useState, useEffect } from "react";
 import './NewMoviesSlider.scss'
 import premieres_img from '../../images/newMoviesSlider/premieres.png'
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
+// import "swiper/css";
+// import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
@@ -23,11 +23,11 @@ const newFilmsData = [
 ]
 
 const newFilmsTtitle = [
-    {title: "Российские новинки"},
-    {title: "Зарубежные новинки"},
-    {title: "Новые комедии"},
-    {title: "Новые российские комедии"},
-    {title: "Лучшие новинки"},
+    { title: "Российские новинки" },
+    { title: "Зарубежные новинки" },
+    { title: "Новые комедии" },
+    { title: "Новые российские комедии" },
+    { title: "Лучшие новинки" },
 
 ]
 
@@ -49,6 +49,8 @@ const NewMoviesSlider: FC = () => {
     useEffect(() => {
         setArrMovies(newMoviesRedux)
     }, [newMoviesRedux])
+
+    console.log(arrMovies)
 
     return (
         <Swiper
@@ -87,7 +89,7 @@ const NewMoviesSlider: FC = () => {
                                             <div className="nms-poster__imageWrapper">
                                                 <div className="main-img">
                                                     {film.map((item, index) => (
-                                                        <img className={index === 0 ? "poster-main" : `poster-${index}`} src={item.posterUrlPreview} alt=" " key={item.id}/>
+                                                        <img className={index === 0 ? "poster-main" : `poster-${index}`} src={item.posterUrlPreview} alt=" " key={item.id} />
                                                     ))}
                                                 </div>
                                             </div>

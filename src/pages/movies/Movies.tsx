@@ -50,8 +50,8 @@ function Movies() {
     dispatch(fetchMovies(activeGenres, activeCountries))
   }, [activeGenres, activeCountries])
 
-  console.log(movies)
-  console.log(activeGenres)
+  // console.log(movies)
+  // console.log(activeGenres)
 
   //Translation
   const { t } = useTranslation();
