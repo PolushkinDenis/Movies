@@ -6,6 +6,7 @@ import { TbFlag3 } from 'react-icons/tb';
 import { TbFlag3Filled } from 'react-icons/tb';
 import { TbPlayerPlay } from 'react-icons/tb';
 import { BsCollectionPlayFill } from 'react-icons/bs';
+import { IoPlayOutline } from 'react-icons/io5';
 import ModalRating from '../../components/modalRating/ModalRating';
 import CreatorsList from '../../components/creatorsList/CreatorsList';
 import RecommendSwiper from '../../components/recommendSwiper/RecommendSwiper';
@@ -93,13 +94,44 @@ const ContentPage: FC = () => {
                 </div>
                 <button className="ratingMobile__rateBtn">Оценить</button>
               </div>
+              <div>
+                <div className="contentPage__info-options">
+                  <div className="contentPage__info-options-title">Языки</div>
+                  <div className="contentPage__info-options-values">Русский, Английский</div>
+                </div>
+                <div className="contentPage__info-options">
+                  <div className="contentPage__info-options-title">Субтитры</div>
+                  <div className="contentPage__info-options-values">Английский, Русский</div>
+                </div>
+                <div className="contentPage__info-options">
+                  <div className="contentPage__info-options-title">Качество</div>
+                  <ul>
+                    <li>FullHD</li>
+                    <li>HD</li>
+                    <li>1080</li>
+                    <li>720</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            1
+            <div className="contentPage__userButtons">
+              <button className="contentPage__userButtons-btn">
+                <IoPlayOutline />
+                Трейлер
+              </button>
+              <div>
+                <button className="contentPage__userButtons-btn">
+                  {flag ? <TbFlag3Filled /> : <TbFlag3 />}
+                </button>
+                <button className="contentPage__userButtons-btn">
+                  {' '}
+                  <TbDownload />
+                </button>
+              </div>
+            </div>
           </div>
           <div className="contentPage__player">
-            <video controls>
-              <source src="https://www.youtube.com/watch?v=nLQ-9vfEjUI" type="video/mp4" />
-            </video>
+            <video controls src={'../../../public/SpaceX.mp4'}></video>
             <ul className="contentPage__player-userButtons">
               <li className="userButton-trailer">
                 <TbPlayerPlay />

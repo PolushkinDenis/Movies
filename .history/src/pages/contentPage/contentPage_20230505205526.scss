@@ -1,0 +1,460 @@
+@mixin backgrounds-buttons {
+    padding: 10px 12px;
+    background-color: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.08);
+    border-width: 0;
+    border-radius: 8px;
+}
+@mixin quality {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 4px 12px transparent;
+    background-color: rgba(255,255,255,.16);
+}
+
+.contentPage {
+    position: relative;
+    &__container {
+        &-inner {
+            display: flex;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            &-info {
+                display: none;
+            }
+        }
+    }
+    &__player {
+        margin-right: 44px;
+        position: sticky;
+        height: max-content;
+        top: 0;
+        video {
+            width: 719px;
+            height: 404.5px;
+            margin-bottom: 24px;
+        }
+        &-userButtons {
+            display: flex;
+            align-items: center;
+            li {
+                @include backgrounds-buttons;
+                cursor: pointer;
+                transition-duration: .4s;
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+                &:not(:last-child) {
+                    margin-right: 16px;
+                }
+                &:hover {
+                    background-color: rgba(255,255,255,.16);
+                    border-color: rgba(255,255,255,.16);
+                }
+            }
+            .userButton-trailer {
+                display: flex;
+                align-items: center;
+                font-size: 15px;
+                line-height: 20px;
+                font-weight: 500;
+                padding: 10px 12px;
+                color: rgba(255,255,255,.72);
+                svg{
+                    margin-right: 6px;
+                }
+            }
+        }
+    }
+    &__info {
+        &-title {
+            font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+            font-size: 42px;
+            line-height: 44px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            padding: 0 12px;
+        }
+        &-watchParams {
+            .watchParams__paramsList {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 4px;
+                &-link, &-item {
+                    font-size: 15px;
+                    line-height: 20px;
+                    color: rgba(255,255,255,.72);
+                }     
+                &-link {
+                    cursor: pointer;
+                    transition-duration: 80ms;
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+                &-quality {
+                    @include quality;
+                }
+                &-item {
+                    margin-left: 8px;
+                }
+                li {
+                    position: relative;
+                }
+                li:not(:last-child) {
+                    margin-right: 14px;
+                }
+                li:not(:last-child)::after {
+                    content: '';
+                    position: absolute;
+                    top: 9px;
+                    right: -8px;
+                    height: 2px;
+                    width: 2px;
+                    background-color:rgba(255,255,255,.72);
+                    border-radius: 50%;
+                }
+            }
+        }
+        &-watchMedallions {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            margin-top: 24px;
+            padding: 0 12px;
+            justify-content: center;
+            .watchMedallions__item {
+                height: 96px;
+                margin-bottom: 24px;
+                cursor: pointer;
+                &-rate,&-photo {
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 56px;
+                    height: 56px;
+                    border:  6px solid rgba(255,255,255,.16);
+                    border-radius: 12px;
+                    transition: .4s; 
+                }
+                &-photo img {
+                    border-radius: 8px     
+                }
+                &-rate>div {
+                    text-align: center;
+                    padding-top: 12px;
+                    height: 44px;
+                    width: 44px;
+                    border-radius:8px;                    
+                    font-size: 15px;
+                    line-height: 20px;
+                    font-weight: 500;
+                    background-color: #73a32f;
+                }
+                &-title {
+                    margin-top: 8px;
+                    font-size: 13px;
+                    line-height: 16px;
+                    height: 32px;
+                    color: rgba(255,255,255,.48);
+                    text-align: center;
+                    transition: .4s; 
+                }
+                &:hover  &-rate,&-photo {
+                    border:  6px solid rgba(255,255,255,.16);
+                }
+                &:hover {
+                    .watchMedallions__item-rate,.watchMedallions__item-photo {
+                        border:  6px solid rgba(255,255,255,.32)
+                    }
+                    .watchMedallions__item-title {
+                        color: #fff
+                    }
+                }
+            }
+        }
+        &-watchDescription {
+            font-size: 15px;
+            line-height: 20px;
+            color: rgba(255,255,255,.72);
+            .watchDescription__desc1{
+                margin-bottom: 8px;
+            }
+        }
+        &-watchOptions {
+            padding-top: 16px;
+            padding-bottom: 32px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 20px;
+            border-top: 1px solid rgba(255,255,255,.16);
+            border-bottom: 1px solid rgba(255,255,255,.16);
+            .watchOptions__title {
+                color: rgba(255,255,255,.72);
+            }
+            .watchOptions__value {
+                margin-top: 4px;
+                margin-bottom: 16px;
+            }
+            .watchOptions__description {
+                color: rgba(255,255,255,.72);
+                margin-bottom: 8px;
+                span {
+                    color: #fff
+                }
+            }
+            .watchOptions__quality {
+                display: flex;
+                align-items: center;
+                li {
+                    @include quality;
+                    &:not(:last-child) {
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+        &-more {
+            width: max-content;
+            display: block;
+            font-size: 15px;
+            line-height: 20px;
+            color: rgba(255,255,255,.72);
+            cursor: pointer;
+            transition-duration: 80ms;
+            &:hover {
+                color: #fff
+            }
+        }
+        &-ratingMobile {
+            margin-top: 24px;
+            padding: 10px;
+            background-color: rgba(255,255,255,.08);
+            border-radius: 12px;
+            display: flex;
+            align-items:center;
+            cursor: pointer;
+            .ratingMobile__rating {
+                font-size: 24px;
+                line-height: 28px;
+                font-weight: 700;
+                width: 64px;
+                height: 64px;
+                padding-top: 16px;
+                text-align: center;
+                background-color: #73a32f;
+                border-radius: 8px;
+            }
+            .ratingMobile__info {
+                margin-left: 16px;
+                &-title {
+                    font-size: 15px;
+                    line-height: 20px;
+                    font-weight: 500;
+                }
+                &-subtitle {
+                    font-size: 15px;
+                    line-height: 20px;
+                    color: rgba(255,255,255,.72);
+                }
+                &-extra {
+                    font-size: 13px;
+                    line-height: 16px;
+                    margin-top: 4px;
+                }
+            }
+            .ratingMobile__rateBtn {
+                font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif;
+                font-size: 13px;
+                line-height: 16px;
+                font-weight: 500;
+                padding: 3px 7px;
+                margin-right: 10px;
+                margin-left: auto;
+                background-color: transparent;
+                border: 1px solid rgba(255,255,255,.32);
+                border-radius: 6px;
+                color: #fff;
+                transition-duration: 80ms;
+                &:hover {
+                    border-color: rgba(255,255,255,.72);
+                }
+            }
+        }
+    }
+    .modalRating__title {
+        font-family: iviSans, Arial, Helvetica, Helvetica Neue, FreeSans, sans-serif !important;
+        font-size: 40px;
+        line-height: 44px;
+        font-weight: 900;
+        margin-bottom: 12px;
+    }
+    .modalRating__desc {
+        color: #a5a1b2;
+        font-size: 15px;
+        line-height: 20px;
+        margin-bottom: 24px;
+    }
+    .modalRating__rateList {
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        background-color: #1f1b2e;
+        column-gap: 2px;
+        border-radius: 16px;
+        margin-bottom: 12px;
+        &-item {
+            text-align: center;
+            padding-top: 14px;
+            color: #7e798f;
+            font-size: 20px;
+            line-height: 24px;
+            font-weight: 500;
+            height: 52px;
+            width: 57px;
+            margin-top: 0;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: .16s;
+            &:hover {
+                background-color: #ea003d;
+                box-shadow: 0 4px 16px rgba(234,0,61,.32);
+                color: #fff;
+            }
+        }
+    }
+    .modalRating__labelBlock {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #7e798f;
+        font-size: 13px;
+        line-height: 16px;
+    }
+    .modalRating__closeBtn {
+        z-index: 5;
+        position: fixed;
+        right: 30px;
+        top: 30px;
+        height: 33px;
+        width: 33px;
+        cursor: pointer;
+        svg {
+            width: 33px;
+            height: 33px;
+            background-color: none;
+            transition: .2s;
+        }
+        &:hover {
+            svg {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1159px) {
+    .contentPage {
+        &__container {
+            &-inner {
+                flex-direction: column-reverse;
+                .contentPage__player {
+                    position: static;
+                    margin-right: 0;
+                    video {
+                        width: 100%;
+                        height:max-content;
+                        margin-bottom: 32px;
+                    }
+                    .contentPage__player-userButtons {
+                        display: none;
+                    }
+                }
+                .contentPage__info {
+                    margin-bottom: 20px;
+                    &-title {
+                        font-size: 50px;
+                        line-height: 50px;
+                    }
+                    .watchMedallions__1160 {
+                        display: none;
+                    }
+                    .watchDescription1160 {
+                        display: none;
+                    }
+                    .ratingMobile1160 {
+                        display: none;
+                    }
+                    .watchOptions1160 {
+                        display: none;
+                    }
+                    .more1160 {
+                        display: none;
+                    }
+                }
+                &-info {
+                    display: grid;
+                    grid-template-columns: 2fr 1fr;
+                    .contentPage__info-watchMedallions {
+                        display: grid;
+                        grid-template-columns: repeat(6,1fr);
+                    }
+                    .contentPage__info-freeFilmsLink {
+                        cursor: pointer;
+                        display: block;
+                        padding: 10px 12px;
+                        margin-bottom: 36px;
+                        width: 100%;
+                        font-size: 15px;
+                        line-height: 20px;
+                        font-weight: 500;
+                        color: rgba(255,255,255,.72);
+                        background-color: rgba(255,255,255,.08);
+                        border-color: rgba(255,255,255,.08);
+                        border-radius: 8px;
+                        text-align: center;
+                        transition-duration: .4s;
+                        &:hover {
+                            background-color: rgba(255,255,255,.16);
+                            border-color: rgba(255,255,255,.16);
+                            transition-duration: 80ms;
+                        }
+                        svg  {
+                            transform: translate(-6px,2.5px);
+                        }
+                    }
+                    .contentPage__info-more {
+                        margin-top: 8px;
+                        color: rgba(255,255,255,.48);
+                        transition-duration: .4s;
+                        &:hover {
+                            color:#fff;
+                            transition-duration: 80ms;
+                        }
+                    }
+                    .contentPage__info-ratingMobile {
+                        margin-top: 48px;
+                        .ratingMobile__rating {
+                            width: 48px;
+                            height: 48px;
+                            padding-top: 13px;
+                            font-size: 20px;
+                            line-height: 24px;
+                        }
+                    }
+                    .contentPage__info-options {
+                        display: flex;
+                        align-items:center;
+                    }
+                }
+            }
+        }
+    }
+}
