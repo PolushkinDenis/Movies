@@ -14,14 +14,14 @@ const sortArr = [
 ];
 
 function Sorting({ clickToggleSorting, setClickToggleSorting }: TypeSorting) {
-  const [activeFilter, setActiveFilter] = React.useState<string | null>(
+  const [activeFilter, setActiveFilter] = React.useState<string>(
     "По количсетсву оценок на кинопоиске"
   );
   function toggleSorting() {
     setClickToggleSorting(!clickToggleSorting);
   }
-  function clickItemSorting(e: React.MouseEvent<HTMLDivElement>) {
-    setActiveFilter(e.currentTarget.textContent);
+  function clickItemSorting(item: string) {
+    setActiveFilter(item);
   }
   return (
     <section className="pageSection catalogControlPanel__pageSection">
@@ -48,7 +48,7 @@ function Sorting({ clickToggleSorting, setClickToggleSorting }: TypeSorting) {
             {sortArr.map((item, index) => {
               return (
                 <div
-                  onClick={clickItemSorting}
+                  onClick={() => clickItemSorting(item)}
                   key={item + "-" + index}
                   className={
                     activeFilter === item

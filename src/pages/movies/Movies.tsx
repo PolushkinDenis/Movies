@@ -36,8 +36,18 @@ function Movies() {
     setRangeValue,
     evaluationsValue,
     setEvaluationsValue,
+    //
+    searchDirectorValue,
+    setSearchDirectorValue,
+    searchDirectorСhoice,
+    setSearchDirectorСhoice,
+    //
+    searchActorValue,
+    setSearchActorValue,
+    searchActorСhoice,
+    setSearchActorСhoice,
   } = useContext(AutoContext);
-  const isMounted = React.useRef(false);
+  // const isMounted = React.useRef(false);
 
   // console.log(activeGenres)
   // console.log(activeCountries)
@@ -116,22 +126,43 @@ function Movies() {
     // если в url есть рейтин и оценки он их добавит
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
-      console.log(params);
+
       setRangeValue(Number(params.rangeValue));
       setEvaluationsValue(Number(params.evaluationsValue));
+      setSearchDirectorСhoice({
+        personId: Number(params.directorСhoiceId),
+        nameRu: String(params.directorСhoiceName),
+      });
+      setSearchActorСhoice({
+        personId: Number(params.actorСhoiceId),
+        nameRu: String(params.actorСhoiceName),
+      });
     }
   }, []);
   //Запрещает при первом рендоре и стартовых значений появляться в url ?rangeValue&evaluationsValue
   React.useEffect(() => {
-    if (isMounted.current && (rangeValue !== 7.5 || evaluationsValue !== 0)) {
+    if (
+      // isMounted.current &&
+      rangeValue !== 7.5 ||
+      evaluationsValue !== 0 ||
+      searchDirectorСhoice.personId !== -1 ||
+      searchDirectorСhoice.nameRu !== "" ||
+      searchActorСhoice.personId !== -1 ||
+      searchActorСhoice.nameRu !== ""
+    ) {
       const queryString = qs.stringify({
         rangeValue,
         evaluationsValue,
+        directorСhoiceId: searchDirectorСhoice.personId,
+        directorСhoiceName: searchDirectorСhoice.nameRu,
+        actorСhoiceId: searchActorСhoice.personId,
+        actorСhoiceName: searchActorСhoice.nameRu,
       });
+
       navigate("?" + queryString);
     }
-    isMounted.current = true;
-  }, [rangeValue, evaluationsValue]);
+    // isMounted.current = true;
+  }, [rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice]);
 
   const getMore = () => {
     setPage(page + 1);

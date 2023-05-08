@@ -191,6 +191,31 @@ const genresFilms = {
     "Фильмы 2021 года",
     "Фильмы 2020 года",
   ],
+  foundActors: {
+    count: 49,
+    rows: [
+      {
+        personId: 4518313,
+        nameRu: "Егор Чичканов",
+      },
+      {
+        personId: 2531697,
+        nameRu: "Грегори М. Браун",
+      },
+      {
+        personId: 614365,
+        nameRu: "Грегори Миддлтон",
+      },
+      {
+        personId: 252208,
+        nameRu: "Грегори Р. Алосио",
+      },
+      {
+        personId: 573035,
+        nameRu: "Егор Дружинин",
+      },
+    ],
+  },
   countries: [
     {
       id: 32,
