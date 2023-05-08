@@ -10,8 +10,10 @@ i18n
   .use(Languagedetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "ru",
-    supportedLngs: ["ru", "en"],
+    // fallbackLng: "ru",
+    // supportedLngs: ["ru", "en"],
+    lng: "ru",
+    fallbackLng: ["ru", "en"],
     // debug: true,
     // resources: {
     //   en: {
@@ -23,10 +25,10 @@ i18n
     backend: {
       loadPath: "locales/{{lng}}/translation.json",
     },
-    detection: {
-      order: ["cookie", "localStorage", "HtmlTag"],
-      caches: ["cookie"],
-    },
+    // detection: {
+    //   order: ["cookie", "localStorage", "HtmlTag"],
+    //   caches: ["cookie"],
+    // },
     interpolation: {
       escapeValue: false,
     },

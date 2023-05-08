@@ -28,19 +28,24 @@ function Movies() {
     string | null
   >("");
   const {
-    activeGenres,
     setActiveGenres,
-    activeCountries,
     setActiveCountries,
     rangeValue,
     setRangeValue,
     evaluationsValue,
     setEvaluationsValue,
+    //
+    searchDirectorСhoice,
+    setSearchDirectorСhoice,
+    //
+    searchActorСhoice,
+    setSearchActorСhoice,
   } = useContext(AutoContext);
-  const isMounted = React.useRef(false);
+  // const isMounted = React.useRef(false);
 
   const dispatch = useAppDispatch();
-  const { movies } = useAppSelector((state) => state.moviesSlice);
+  //код дениса
+  // const { movies } = useAppSelector((state) => state.moviesSlice);
   const [page, setPage] = useState(0);
 
   const [clickToggleSorting, setClickToggleSorting] =
@@ -110,30 +115,53 @@ function Movies() {
     // если в url есть рейтин и оценки он их добавит
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
-      console.log(params);
+
       setRangeValue(Number(params.rangeValue));
       setEvaluationsValue(Number(params.evaluationsValue));
+      setSearchDirectorСhoice({
+        personId: Number(params.directorСhoiceId),
+        nameRu: String(params.directorСhoiceName),
+      });
+      setSearchActorСhoice({
+        personId: Number(params.actorСhoiceId),
+        nameRu: String(params.actorСhoiceName),
+      });
     }
   }, []);
   //Запрещает при первом рендоре и стартовых значений появляться в url ?rangeValue&evaluationsValue
   React.useEffect(() => {
-    if (isMounted.current && (rangeValue !== 7.5 || evaluationsValue !== 0)) {
+    if (
+      // isMounted.current &&
+      rangeValue !== 7.5 ||
+      evaluationsValue !== 0 ||
+      searchDirectorСhoice.personId !== -1 ||
+      searchDirectorСhoice.nameRu !== "" ||
+      searchActorСhoice.personId !== -1 ||
+      searchActorСhoice.nameRu !== ""
+    ) {
       const queryString = qs.stringify({
         rangeValue,
         evaluationsValue,
+        directorСhoiceId: searchDirectorСhoice.personId,
+        directorСhoiceName: searchDirectorСhoice.nameRu,
+        actorСhoiceId: searchActorСhoice.personId,
+        actorСhoiceName: searchActorСhoice.nameRu,
       });
+
       navigate("?" + queryString);
     }
-    isMounted.current = true;
-  }, [rangeValue, evaluationsValue]);
-  const getMore = () => {
-    setPage(page + 1);
-    dispatch(getMoreMovies(activeGenres, activeCountries, page + 1));
-  };
+    // isMounted.current = true;
+  }, [rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice]);
 
-  useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries));
-  }, [activeGenres, activeCountries]);
+  //код дениса
+  // const getMore = () => {
+  //   setPage(page + 1);
+  //   dispatch(getMoreMovies(activeGenres, activeCountries, page + 1));
+  // };
+
+  // useEffect(() => {
+  //   dispatch(fetchMovies(activeGenres, activeCountries));
+  // }, [activeGenres, activeCountries]);
 
   //Translation
   const { t } = useTranslation();
@@ -185,7 +213,8 @@ function Movies() {
           ) : (
             <section className="pageSection genre__pageSection ">
               <div className="genre__gallery gallery ">
-                <ul className="gallery__list">
+                {/* {"код дениса"} */}
+                {/* <ul className="gallery__list">
                   {movies.map((movie) => (
                     <SlimPoster movie={movie} key={movie.id} />
                   ))}
@@ -199,7 +228,7 @@ function Movies() {
                       </div>
                     </button>
                   </div>
-                </ul>
+                </ul> */}
               </div>
             </section>
           )}

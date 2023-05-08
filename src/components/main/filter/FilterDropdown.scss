@@ -209,10 +209,6 @@
         padding-top: 4px;
         border-top: 1px solid rgba(255, 255, 255, .32);
 
-        display: grid;
-        grid-column-gap: 40px;
-        grid-template-columns: repeat(3, 1fr);
-
         & .checked {
             .filterDropdown__input-text {
                 opacity: 1;
@@ -222,7 +218,30 @@
             .filterDropdown__checkbox {
                 opacity: 1;
             }
+
+            .filterDropdown__radio {
+                opacity: 1;
+            }
         }
+
+        & :not(.checked) .filterDropdown__label:hover .filterDropdown__checkbox {
+            -webkit-transition: color 80ms;
+            -o-transition: color 80ms;
+            transition: color 80ms;
+            opacity: .3;
+        }
+    }
+
+    .flag-Countries &__list {
+        display: grid;
+        grid-column-gap: 40px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .flag-Genres &__list {
+        display: grid;
+        grid-column-gap: 40px;
+        grid-template-columns: repeat(3, 1fr);
     }
 
     @media (max-width:744px) {
@@ -251,7 +270,6 @@
         display: block;
 
         &:hover {
-
             .filterDropdown__input-text {
                 -webkit-transition: color 80ms;
                 -o-transition: color 80ms;
@@ -259,13 +277,15 @@
                 color: #fff;
             }
 
-            .filterDropdown__checkbox {
+
+
+            .filterDropdown__input:not(:checked)~.filterDropdown__radio {
                 -webkit-transition: color 80ms;
                 -o-transition: color 80ms;
                 transition: color 80ms;
-                opacity: .3;
-
+                opacity: .4;
             }
+
 
         }
     }
@@ -316,8 +336,58 @@
         }
     }
 
+    &__radio {
+        pointer-events: none;
+        position: absolute;
+        right: -4px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        opacity: 0;
+
+        &::after,
+        &::before {
+            content: '';
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+
+        &::before {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            opacity: .32;
+            -webkit-transition: opacity 80ms;
+            -o-transition: opacity 80ms;
+            transition: opacity 80ms;
+        }
+
+        &::after {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-2px, -2px);
+            -o-transform: translate(-2px, -2px);
+            transform: translate(-2px, -2px);
+            opacity: 0;
+            -webkit-transition: opacity 400ms;
+            -o-transition: opacity 400ms;
+            transition: opacity 400ms;
+        }
+    }
+
 }
 
+
+.filterDropdown__input:checked~.filterDropdown__radio::after,
+.filterDropdown__input:checked~.filterDropdown__radio::before {
+    opacity: 1;
+    -webkit-transition: opacity 80ms;
+    -o-transition: opacity 80ms;
+    transition: opacity 80ms;
+}
 
 
 //ползунок

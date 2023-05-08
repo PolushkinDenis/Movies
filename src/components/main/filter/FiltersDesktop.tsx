@@ -9,6 +9,8 @@ import { AutoContext } from "../../../context/";
 import { Link, useNavigate } from "react-router-dom";
 import FilterDropdownCou from "./FilterDropdownCou";
 import FilterDropdownGen from "./FilterDropdownGen";
+import genresFilms from "../../../data/genresFilms";
+import { IPersonFinded } from "../../../types/IPerson";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
@@ -28,6 +30,16 @@ function FiltersDesktop({
     setRangeValue,
     evaluationsValue,
     setEvaluationsValue,
+    //
+    searchDirectorValue,
+    setSearchDirectorValue,
+    searchDirectorСhoice,
+    setSearchDirectorСhoice,
+    //
+    searchActorValue,
+    setSearchActorValue,
+    searchActorСhoice,
+    setSearchActorСhoice,
   } = useContext(AutoContext);
   const navigate = useNavigate();
   const goTransitionsPage = (e: any) => navigate(e);
@@ -90,11 +102,53 @@ function FiltersDesktop({
     }
   }
 
+  function onChangeSearchDirector(e: React.FormEvent<HTMLInputElement>) {
+    console.log(e.currentTarget.value);
+    setSearchDirectorValue(e.currentTarget.value);
+  }
+  function onChangeSearchActor(e: React.FormEvent<HTMLInputElement>) {
+    console.log(e.currentTarget.value);
+    setSearchActorValue(e.currentTarget.value);
+  }
+  function onClickDirectorСhoice(item: IPersonFinded) {
+    console.log(item);
+    if (searchDirectorСhoice.personId === item.personId) {
+      setSearchDirectorСhoice({
+        personId: -1,
+        nameRu: "",
+      });
+    } else {
+      setSearchDirectorСhoice(item);
+    }
+    console.log(searchDirectorСhoice);
+  }
+  function onClickActorСhoice(item: IPersonFinded) {
+    console.log(item);
+    console.log(searchActorСhoice);
+    if (searchActorСhoice.personId === item.personId) {
+      setSearchActorСhoice({
+        personId: -1,
+        nameRu: "",
+      });
+    } else {
+      setSearchActorСhoice(item);
+    }
+  }
   function limpiezaFilter() {
     setActiveGenres([]);
     setActiveCountries([]);
     setEvaluationsValue(0);
     setRangeValue(7.5);
+    setSearchActorValue("");
+    setSearchDirectorValue("");
+    setSearchDirectorСhoice({
+      personId: -1,
+      nameRu: "",
+    });
+    setSearchActorСhoice({
+      personId: -1,
+      nameRu: "",
+    });
   }
 
   //Translation
@@ -292,7 +346,15 @@ function FiltersDesktop({
                 <div className="nbl-plank__textWrapper">
                   <div className="nbl-plank__title">
                     {t("Поиск по Режиссёру")}
+                    {/* searchDirectorСhoice */}
                   </div>
+                  {searchDirectorСhoice.personId === -1 ? (
+                    ""
+                  ) : (
+                    <div className="nbl-plank__extra">
+                      {searchDirectorСhoice.nameRu}
+                    </div>
+                  )}
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
@@ -307,7 +369,45 @@ function FiltersDesktop({
                           className="search-input"
                           type="text"
                           placeholder="Поиск"
+                          value={searchDirectorValue}
+                          onChange={onChangeSearchDirector}
                         />
+                        <ul className="filterDropdown__list">
+                          {genresFilms.foundActors.rows.map((item, index) => {
+                            return (
+                              <li
+                                key={item + "-" + index}
+                                className={
+                                  item.personId ===
+                                  searchDirectorСhoice.personId
+                                    ? "filterDropdown__item filterDropdown__item_radio checked"
+                                    : "filterDropdown__item filterDropdown__item_radio"
+                                }
+                                onClick={() => onClickDirectorСhoice(item)}
+                              >
+                                <label
+                                  htmlFor=""
+                                  className="filterDropdown__label"
+                                >
+                                  <input
+                                    className="filterDropdown__input"
+                                    type="radio"
+                                    name="years"
+                                    value={item.nameRu}
+                                    defaultChecked={
+                                      item.personId ===
+                                      searchDirectorСhoice.personId
+                                    }
+                                  />
+                                  <div className="filterDropdown__input-text">
+                                    {item.nameRu}
+                                  </div>
+                                  <div className="filterDropdown__radio"></div>
+                                </label>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -327,7 +427,17 @@ function FiltersDesktop({
             >
               <MyButton onClick={clickToggleFilter} classes="nbl-plank">
                 <div className="nbl-plank__textWrapper">
-                  <div className="nbl-plank__title">{t("Поиск по Актёру")}</div>
+                  <div className="nbl-plank__title">
+                    {t("Поиск по Актёру")}
+                    {/* searchDirectorСhoice */}
+                  </div>
+                  {searchActorСhoice.personId === -1 ? (
+                    ""
+                  ) : (
+                    <div className="nbl-plank__extra">
+                      {searchActorСhoice.nameRu}
+                    </div>
+                  )}
                 </div>
                 <div className="nbl-plank__icon">
                   <IoIosArrowDown></IoIosArrowDown>
@@ -342,7 +452,44 @@ function FiltersDesktop({
                           className="search-input"
                           type="text"
                           placeholder="Поиск"
+                          value={searchActorValue}
+                          onChange={onChangeSearchActor}
                         />
+                        <ul className="filterDropdown__list">
+                          {genresFilms.foundActors.rows.map((item, index) => {
+                            return (
+                              <li
+                                key={item + "-" + index}
+                                className={
+                                  item.personId === searchActorСhoice.personId
+                                    ? "filterDropdown__item filterDropdown__item_radio checked"
+                                    : "filterDropdown__item filterDropdown__item_radio"
+                                }
+                                onClick={() => onClickActorСhoice(item)}
+                              >
+                                <label
+                                  htmlFor=""
+                                  className="filterDropdown__label"
+                                >
+                                  <input
+                                    className="filterDropdown__input"
+                                    type="radio"
+                                    name="years"
+                                    value={item.nameRu}
+                                    defaultChecked={
+                                      item.personId ===
+                                      searchActorСhoice.personId
+                                    }
+                                  />
+                                  <div className="filterDropdown__input-text">
+                                    {item.nameRu}
+                                  </div>
+                                  <div className="filterDropdown__radio"></div>
+                                </label>
+                              </li>
+                            );
+                          })}
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -359,7 +506,11 @@ function FiltersDesktop({
               activeGenres.length ||
               activeCountries.length ||
               evaluationsValue !== 0 ||
-              rangeValue !== 7.5
+              rangeValue !== 7.5 ||
+              searchDirectorСhoice.personId !== -1 ||
+              searchDirectorСhoice.nameRu !== "" ||
+              searchActorСhoice.personId !== -1 ||
+              searchActorСhoice.nameRu !== ""
                 ? "filtersDesktop__button"
                 : "filtersDesktop__button filtersDesktop__button_disabled"
             }
