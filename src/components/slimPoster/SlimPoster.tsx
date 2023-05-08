@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import "./SlimPoster.scss";
 import { TbFlag3 } from "react-icons/tb";
 import { FaRegBookmark } from "react-icons/fa";
@@ -13,10 +13,28 @@ interface SlimPosterProps {
   movie: IMovie
 }
 
-const SlimPoster: FC<SlimPosterProps> = ({movie}) => {
+
+const SlimPoster: FC<SlimPosterProps> = ({ movie }) => {
+  const formatFilmLength = (filmLength: string) => {
+    if (filmLength !== null) {
+      const filmLengthSplite = filmLength.split("")
+      const lastSymbol = filmLengthSplite[filmLengthSplite.length - 1]
+      if (lastSymbol === "1") {
+        return "минута"
+      }
+      else if (lastSymbol === "2" || lastSymbol === "3" || lastSymbol === "4") {
+        return "минуты"
+      }
+      else if (lastSymbol === "0" || lastSymbol === "5" || lastSymbol === "6" ||
+        lastSymbol === "7" || lastSymbol === "8" || lastSymbol === "9") {
+        return "минут"
+      }
+    }
+  }
+
   return (
     <li className="slim-poster__swiper-item">
-      <Link  to={"/film/"}>
+      <Link to={"/film/"}>
         <div className="swiperItem__container">
           <img
             className="swiperItem__container-image"
@@ -40,8 +58,8 @@ const SlimPoster: FC<SlimPosterProps> = ({movie}) => {
             <div className="swiperItem__container-properties-info">
               <div className="propertiesInfo__container">
                 <div className="propertiesInfo__container-rating">
-                  <div className="propertiesInfo__container-rating-1">7</div>
-                  <div className="propertiesInfo__container-rating-2">,3</div>
+                  <div className="propertiesInfo__container-rating-1">{movie.ratingKinopoisk}</div>
+                  {/* <div className="propertiesInfo__container-rating-2">,3</div> */}
                 </div>
                 <ul className="propertiesInfo__container-bars">
                   <li>
@@ -102,7 +120,7 @@ const SlimPoster: FC<SlimPosterProps> = ({movie}) => {
                 ></div>
               </div>
               <p className="propertiesInfo__moreInfo">{movie.year}, {movie.countries[0].countryNameRu}, {movie.genres[0].genreNameRu}</p>
-              <div className="propertiesInfo__time">93 минуты</div>
+              <div className="propertiesInfo__time">{movie.filmLength} {formatFilmLength(movie.filmLength)}</div>
             </div>
           </div>
           <div className="swiperItem__title">{movie.nameRu}</div>

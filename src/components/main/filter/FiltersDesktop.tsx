@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { GrClose } from "react-icons/gr";
 import { BsCheckLg } from "react-icons/bs";
@@ -9,6 +9,9 @@ import { AutoContext } from "../../../context/";
 import { Link, useNavigate } from "react-router-dom";
 import FilterDropdownCou from "./FilterDropdownCou";
 import FilterDropdownGen from "./FilterDropdownGen";
+import useDebounce from "../../../hooks/useDebounce";
+import { fetchMovies } from "../../../store/movies/moviesAction";
+import { useAppDispatch } from "../../../hooks/redux";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
@@ -29,6 +32,11 @@ function FiltersDesktop({
     evaluationsValue,
     setEvaluationsValue,
   } = useContext(AutoContext);
+
+  const debouncedRangeValue = useDebounce<number>(rangeValue, 600)
+  const debouncedEvaluationsValue = useDebounce<number>(evaluationsValue, 600)
+  const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
   const goTransitionsPage = (e: any) => navigate(e);
   function shiftRangeValue(e: React.ChangeEvent<HTMLInputElement>) {
@@ -40,6 +48,7 @@ function FiltersDesktop({
       goTransitionsPage("/movies/all");
     }
   }
+
   function shiftEvaluationsValue(e: React.ChangeEvent<HTMLInputElement>) {
     setEvaluationsValue(Number(e.currentTarget.value));
     if (
@@ -49,6 +58,14 @@ function FiltersDesktop({
       goTransitionsPage("/movies/all");
     }
   }
+
+  useEffect(() => {
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue));
+  }, [debouncedRangeValue]);
+
+  useEffect(() => {
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue));
+  }, [debouncedEvaluationsValue]);
 
   function clickToggleFilter(e: React.MouseEvent<HTMLDivElement>) {
     if (e.currentTarget.closest(".flag-Genres")) {

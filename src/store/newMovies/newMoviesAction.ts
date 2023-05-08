@@ -10,7 +10,7 @@ export const fetchNewMovies = (url: string) => async (dispatch: AppDispatch) => 
     const response = await axios.get<IMovies>(
       `http://localhost:8000/api/${url}`
     );
-    dispatch(newMovies.actions.moviesFetchingSuccess(response.data.result));
+    dispatch(newMovies.actions.moviesFetchingSuccess(response.data.rows));
   } catch (e: any) {
     dispatch(newMovies.actions.moviesFetchingError(e.message));
   }

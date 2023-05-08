@@ -39,6 +39,12 @@ function Movies() {
   } = useContext(AutoContext);
   const isMounted = React.useRef(false);
 
+  // console.log(activeGenres)
+  // console.log(activeCountries)
+  // console.log(rangeValue)
+  // console.log(evaluationsValue)
+
+
   const dispatch = useAppDispatch();
   const { movies } = useAppSelector((state) => state.moviesSlice);
   const [page, setPage] = useState(0);
@@ -126,13 +132,14 @@ function Movies() {
     }
     isMounted.current = true;
   }, [rangeValue, evaluationsValue]);
+
   const getMore = () => {
     setPage(page + 1);
-    dispatch(getMoreMovies(activeGenres, activeCountries, page + 1));
+    dispatch(getMoreMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, page + 1));
   };
 
   useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries));
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue));
   }, [activeGenres, activeCountries]);
 
   //Translation
