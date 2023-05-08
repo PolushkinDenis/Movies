@@ -33,6 +33,11 @@ export const moviesAPI = createApi({
                 url: `/persons/about/${id}`
             })
         }),
+        searchDirector: build.query<IPersonFindByName, string>({
+            query: (name: string | undefined) => ({
+                url: `persons/search?profession=актер&name=${name}&size=5`
+            })
+        })
     })
 
 })

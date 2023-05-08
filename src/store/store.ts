@@ -6,11 +6,14 @@ import {
 import { moviesAPI } from "../services/MoviesService";
 import newMoviesSlice from "./newMovies/newMoviesSlice";
 import moviesSlice from "./movies/moviesSlice";
-
+import directorSlice from "./searchDirector/directorSlice";
+import actorSlice from "./searchActor/actorSlice";
 
 const rootReducer = combineReducers({
   newMoviesSlice,
   moviesSlice,
+  directorSlice,
+  actorSlice,
   [moviesAPI.reducerPath]: moviesAPI.reducer,
 });
 

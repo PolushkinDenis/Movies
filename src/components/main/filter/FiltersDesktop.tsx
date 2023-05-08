@@ -11,9 +11,12 @@ import FilterDropdownCou from "./FilterDropdownCou";
 import FilterDropdownGen from "./FilterDropdownGen";
 import useDebounce from "../../../hooks/useDebounce";
 import { fetchMovies } from "../../../store/movies/moviesAction";
-import { useAppDispatch } from "../../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import genresFilms from "../../../data/genresFilms";
 import { IPersonFinded } from "../../../types/IPerson";
+import { moviesAPI } from "../../../services/MoviesService";
+import { fetchDirector } from "../../../store/searchDirector/directorAction";
+import { fetchActor } from "../../../store/searchActor/actorAction";
 
 interface TypeFiltersDesktop {
   clickSwitchFilter: string | null;
@@ -45,8 +48,14 @@ function FiltersDesktop({
     setSearchActorСhoice,
   } = useContext(AutoContext);
 
+  const foundDirectors = useAppSelector(state => state.directorSlice.directors)
+  const foundActors = useAppSelector(state => state.actorSlice.actors)
+
   const debouncedRangeValue = useDebounce<number>(rangeValue, 600)
   const debouncedEvaluationsValue = useDebounce<number>(evaluationsValue, 600)
+  const debouncedSearchDirectorValue = useDebounce<string>(searchDirectorValue, 600)
+  const debouncedSearchActorValue = useDebounce<string>(searchActorValue, 600)
+
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
@@ -78,6 +87,14 @@ function FiltersDesktop({
   useEffect(() => {
     dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue));
   }, [debouncedEvaluationsValue]);
+
+  useEffect(() => {
+    dispatch(fetchDirector(searchDirectorValue))
+  }, [debouncedSearchDirectorValue])
+
+  useEffect(() => {
+    dispatch(fetchActor(searchActorValue))
+  }, [debouncedSearchActorValue])
 
   function clickToggleFilter(e: React.MouseEvent<HTMLDivElement>) {
     if (e.currentTarget.closest(".flag-Genres")) {
@@ -390,7 +407,8 @@ function FiltersDesktop({
                           onChange={onChangeSearchDirector}
                         />
                         <ul className="filterDropdown__list">
-                          {genresFilms.foundActors.rows.map((item, index) => {
+                          {/* {genresFilms.foundActors.rows.map((item, index) => { */}
+                          {foundDirectors?.map((item, index) => {
                             return (
                               <li
                                 key={item + "-" + index}
@@ -473,7 +491,7 @@ function FiltersDesktop({
                           onChange={onChangeSearchActor}
                         />
                         <ul className="filterDropdown__list">
-                          {genresFilms.foundActors.rows.map((item, index) => {
+                          {foundActors.map((item, index) => {
                             return (
                               <li
                                 key={item + "-" + index}
