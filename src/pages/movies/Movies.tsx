@@ -44,8 +44,7 @@ function Movies() {
   // const isMounted = React.useRef(false);
 
   const dispatch = useAppDispatch();
-  //код дениса
-  // const { movies } = useAppSelector((state) => state.moviesSlice);
+  const { movies } = useAppSelector((state) => state.moviesSlice);
   const [page, setPage] = useState(0);
 
   const [clickToggleSorting, setClickToggleSorting] =
@@ -153,15 +152,14 @@ function Movies() {
     // isMounted.current = true;
   }, [rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice]);
 
-  //код дениса
-  // const getMore = () => {
-  //   setPage(page + 1);
-  //   dispatch(getMoreMovies(activeGenres, activeCountries, page + 1));
-  // };
+  const getMore = () => {
+    setPage(page + 1);
+    dispatch(getMoreMovies(activeGenres, activeCountries, page + 1));
+  };
 
-  // useEffect(() => {
-  //   dispatch(fetchMovies(activeGenres, activeCountries));
-  // }, [activeGenres, activeCountries]);
+  useEffect(() => {
+    dispatch(fetchMovies(activeGenres, activeCountries));
+  }, [activeGenres, activeCountries]);
 
   //Translation
   const { t } = useTranslation();
@@ -213,8 +211,7 @@ function Movies() {
           ) : (
             <section className="pageSection genre__pageSection ">
               <div className="genre__gallery gallery ">
-                {/* {"код дениса"} */}
-                {/* <ul className="gallery__list">
+                <ul className="gallery__list">
                   {movies.map((movie) => (
                     <SlimPoster movie={movie} key={movie.id} />
                   ))}
@@ -228,7 +225,7 @@ function Movies() {
                       </div>
                     </button>
                   </div>
-                </ul> */}
+                </ul>
               </div>
             </section>
           )}
