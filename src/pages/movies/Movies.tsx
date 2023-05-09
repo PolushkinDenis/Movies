@@ -19,6 +19,7 @@ import genresFilms from "../../data/genresFilms";
 import { AnyAction } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchMovies, getMoreMovies } from "../../store/movies/moviesAction";
+import Loader from "../../components/UI/Loader/Loader";
 
 function Movies() {
   const navigate = useNavigate();
@@ -52,11 +53,11 @@ function Movies() {
   // console.log(activeGenres)
   // console.log(activeCountries)
   // console.log(rangeValue)
-  // console.log(evaluationsValue)
+  console.log(searchDirectorСhoice)
 
 
   const dispatch = useAppDispatch();
-  const { movies } = useAppSelector((state) => state.moviesSlice);
+  const { movies, isLoading } = useAppSelector((state) => state.moviesSlice);
   const [page, setPage] = useState(0);
 
   const [clickToggleSorting, setClickToggleSorting] =
@@ -166,12 +167,12 @@ function Movies() {
 
   const getMore = () => {
     setPage(page + 1);
-    dispatch(getMoreMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, page + 1));
+    dispatch(getMoreMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, page + 1));
   };
 
   useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue));
-  }, [activeGenres, activeCountries]);
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice));
+  }, [activeGenres, activeCountries, searchDirectorСhoice, searchActorСhoice]);
 
   //Translation
   const { t } = useTranslation();
@@ -191,7 +192,7 @@ function Movies() {
             setClickSwitchFilter={setClickSwitchFilter}
           ></FiltersDesktop>
           {window.location.pathname === "/movies" ||
-          window.location.pathname === "/movies/" ? (
+            window.location.pathname === "/movies/" ? (
             <>
               <section className="pageSection">
                 <div className="pageSection__movies__container">
@@ -223,21 +224,28 @@ function Movies() {
           ) : (
             <section className="pageSection genre__pageSection ">
               <div className="genre__gallery gallery ">
+                {movies.length !== 0 ? (
                 <ul className="gallery__list">
                   {movies.map((movie) => (
                     <SlimPoster movie={movie} key={movie.id} />
                   ))}
                   <div className="genre__moreButton">
-                    <button className="nbl-button nbl-button_style_ran">
-                      <div
-                        onClick={getMore}
-                        className="nbl-button__primaryText"
-                      >
-                        Показать еще
-                      </div>
-                    </button>
+                    {isLoading ? (
+                      <Loader />
+                    ) : (
+                      <button className="nbl-button nbl-button_style_ran">
+                        <div onClick={getMore} className="nbl-button__primaryText">
+                          Показать еще
+                        </div>
+                      </button>
+                    )}
                   </div>
                 </ul>
+                ) : (
+                  <div className="empty__search">
+                    {isLoading ? (<Loader />) : (<div className="empty__search-text">Ничего не найдено</div>)}
+                    </div>
+                )}
               </div>
             </section>
           )}

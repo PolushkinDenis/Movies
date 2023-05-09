@@ -80,12 +80,16 @@ function FiltersDesktop({
     }
   }
 
+  const changeDirector = () => {
+    goTransitionsPage("/movies/all");
+  }
+
   useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue));
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice));
   }, [debouncedRangeValue]);
 
   useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue));
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice));
   }, [debouncedEvaluationsValue]);
 
   useEffect(() => {
@@ -153,6 +157,7 @@ function FiltersDesktop({
       });
     } else {
       setSearchDirectorСhoice(item);
+      goTransitionsPage("/movies/all");
     }
     console.log(searchDirectorСhoice);
   }
@@ -166,6 +171,7 @@ function FiltersDesktop({
       });
     } else {
       setSearchActorСhoice(item);
+      goTransitionsPage("/movies/all");
     }
   }
   function limpiezaFilter() {

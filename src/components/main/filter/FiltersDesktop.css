@@ -1,0 +1,123 @@
+.filtersDesktop {
+  margin-top: 20px;
+}
+.filtersDesktop__content {
+  box-sizing: border-box;
+  background-color: #1f1b2e;
+  padding: 16px;
+  border-radius: 6px;
+}
+.filtersDesktop__plank-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -6px;
+  margin-right: -6px;
+}
+.filtersDesktop__plank-item {
+  width: 25%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+@media (max-width: 880px) {
+  .filtersDesktop__plank-item {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .filtersDesktop__plank-item {
+    width: 100%;
+  }
+}
+.filtersDesktop__plank {
+  position: relative;
+}
+.filtersDesktop__button-container {
+  display: flex;
+  margin-top: 16px;
+}
+.filtersDesktop__button {
+  margin-right: 16px;
+}
+.filtersDesktop__button a {
+  display: flex;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  font-style: normal;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  margin-top: auto;
+  height: 32px;
+  padding: 8px;
+  transition: color 400ms;
+}
+.filtersDesktop__button_disabled {
+  pointer-events: none;
+  opacity: 0.32;
+}
+.filtersDesktop__button-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  margin-right: 8px;
+}
+.filtersDesktop__button-icon svg {
+  fill: #fff;
+  width: 100%;
+  height: 100%;
+  stroke-width: 1;
+}
+.filtersDesktop__button-icon svg path {
+  fill: #fff;
+  stroke: #fff;
+}
+
+.search-input {
+  height: 31px;
+  width: 100%;
+  padding: 0 0 0 5px;
+  background-color: #312b45;
+  border: 1px solid #a5a1b2;
+  border-radius: 8px;
+  color: #a5a1b2;
+  transition: 400ms;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+}
+.search-input:focus, .search-input:hover {
+  border: 1px solid #fff;
+  color: #fff;
+}
+.search-input::-moz-placeholder {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+}
+.search-input::placeholder {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.filtersDesktop__plank.isActive .nbl-plank__icon {
+  transform: rotate(180deg);
+}
+
+.filtersDesktop__plank.isActive .nbl-plank {
+  background-color: #7e798f !important;
+}
+
+.filtersDesktop__plank-item.dropdownCenter .filterDropdown {
+  left: 50%;
+  transform: translateX(-50%);
+}/*# sourceMappingURL=FiltersDesktop.css.map */

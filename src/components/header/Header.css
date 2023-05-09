@@ -1,0 +1,85 @@
+.headerTop {
+  position: relative;
+}
+.headerTop__content {
+  display: flex;
+  height: 72px;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+}
+.headerTop__content::after {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.16);
+  height: 1px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+.headerTop__translation {
+  display: flex;
+}
+.headerTop__translation :not(:last-child) {
+  margin-right: 5px;
+}
+.headerTop__translation span {
+  color: rgba(255, 255, 255, 0.48);
+  transition-duration: 0.4s;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+}
+.headerTop__translation .nbl-button__primaryText.active {
+  color: rgb(255, 255, 255);
+}
+.headerTop__wideArea {
+  margin-right: 12px;
+  margin-left: 16px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.headerTop__wideArea > :not(:last-child) {
+  margin-right: 20px;
+}
+.headerTop__notify {
+  cursor: pointer;
+  height: 100%;
+  padding: 0 0 0 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.headerTop__avatar {
+  padding-left: 16px;
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.my-node-exit {
+  opacity: 1;
+}
+
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.tabBarPlate {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}/*# sourceMappingURL=Header.css.map */

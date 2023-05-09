@@ -1,0 +1,119 @@
+.slick-slide .nbl-poster__image {
+  padding: 8px;
+  width: 83%;
+  border-radius: 10px;
+  background-color: #1f1b2e;
+}
+
+.swiper-button-next:active::after,
+.swiper-button-prev:active::after {
+  font-size: 18px !important;
+}
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+  color: #ffffff;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  transform-origin: 50% 50%;
+  color: #bcbcbf;
+  font-size: 22px !important;
+}
+
+.pageSection__movies__container .swiper-horizontal {
+  position: static;
+}
+.pageSection__movies__container .swiper-button-next {
+  margin-right: -40px;
+  top: var(--swiper-navigation-top-offset, 40%) !important;
+}
+.pageSection__movies__container .swiper-button-prev {
+  margin-left: -40px;
+  top: var(--swiper-navigation-top-offset, 40%) !important;
+}
+
+.swiper-button-disabled {
+  display: none !important;
+}
+
+.miniPromoBlockCustom__title {
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.nbl-poster__fon {
+  border-radius: 10px;
+}
+.nbl-poster__fon::before {
+  content: "";
+  height: 0;
+  padding-bottom: 76%;
+  display: block;
+  background-color: #1f1b2e;
+  border-radius: 10px;
+}
+
+.nms-poster__imageWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.nms-poster__imageWrapper::before {
+  content: "";
+  height: 0;
+  padding-bottom: 76%;
+  display: block;
+  background-color: #1f1b2e;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.main-img {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "poster-main poster-1 poster-2" "poster-main poster-3 poster-4";
+  grid-template-rows: repeat(2, 50%);
+  grid-template-columns: 0.9fr 0.5fr 0.5fr;
+  justify-items: center;
+}
+
+.poster-main {
+  width: 100%;
+  height: 100%;
+  grid-area: poster-main;
+}
+
+.poster-1 {
+  width: 100%;
+  padding-left: 3px;
+  grid-area: poster-1;
+}
+
+.poster-2 {
+  width: 100%;
+  padding-left: 3px;
+  grid-area: poster-2;
+}
+
+.poster-3 {
+  width: 100%;
+  padding-left: 3px;
+  grid-area: poster-3;
+}
+
+.poster-4 {
+  width: 100%;
+  padding-left: 3px;
+  grid-area: poster-4;
+}/*# sourceMappingURL=NewMoviesSlider.css.map */

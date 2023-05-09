@@ -1,0 +1,54 @@
+.nbl-tabBar__item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  max-width: 120px;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  flex-direction: column;
+  flex-grow: 1;
+  cursor: pointer;
+  flex-shrink: 1;
+  flex-basis: 100%;
+}
+.nbl-tabBar__item .tabBar__itemGlowImage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 64px;
+  height: 48px;
+  background-image: url(https://solea-parent.dfs.ivi.ru/picture/7e798f,7e798f/tabBarGlow.svg);
+  background-size: 64px 48px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+}
+.nbl-tabBar__item .nbl-tabBar__itemIcon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+.nbl-tabBar__item .nbl-tabBar__itemCaption {
+  max-width: 100%;
+  align-self: center;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+  font-style: normal;
+  height: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 4px;
+  color: #a5a1b2;
+}
+
+.nbl-tabBar__item_selected .nbl-tabBar__itemGlowImage {
+  opacity: 1;
+}
+.nbl-tabBar__item_selected .nbl-tabBar__itemCaption {
+  color: #fff;
+}/*# sourceMappingURL=ButtonBar.css.map */

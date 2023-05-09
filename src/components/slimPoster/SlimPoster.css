@@ -1,0 +1,155 @@
+.slim-poster__swiper-item {
+  width: 14.28571429%;
+  cursor: pointer;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 24px;
+}
+.slim-poster__swiper-item .swiperItem__container {
+  position: relative;
+  margin-bottom: 8px;
+  transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  transform: scale(1) translateY(0);
+  transition-property: transform;
+  transform-origin: 50% 100%;
+}
+.slim-poster__swiper-item .swiperItem__container-image {
+  border-radius: 8px;
+  height: 235px;
+  width: 100%;
+}
+.slim-poster__swiper-item .swiperItem__container-properties {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 235px;
+  background-color: rgba(7, 5, 14, 0.8);
+  transition-duration: 0.4s;
+}
+.slim-poster__swiper-item .swiperItem__container-properties svg {
+  align-self: flex-end;
+  width: 20px;
+  height: 20px;
+  margin-top: 8px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info {
+  padding: 0 16px;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__container {
+  display: flex;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__container-rating {
+  display: flex;
+  align-items: start;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__container-rating-1 {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__container-rating-2 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__container-bars {
+  margin-left: 8px;
+  padding-top: 5px;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__container-bars li {
+  border-radius: 2px;
+  margin-top: 0;
+  width: 20px;
+  height: 2px !important;
+  background-color: rgba(165, 161, 178, 0.32);
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__container-bars li:not(:last-child) {
+  margin-bottom: 2px;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__barName {
+  font-size: 13px;
+  line-height: 16px;
+  color: #a5a1b2;
+  margin-bottom: 4px;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__bar {
+  width: 104px;
+  height: 4px;
+  background-color: rgba(126, 121, 143, 0.32);
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__moreInfo {
+  color: #d9d7e0;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.slim-poster__swiper-item .swiperItem__container-properties-info .propertiesInfo__time {
+  color: #d9d7e0;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.slim-poster__swiper-item .swiperItem__container:hover {
+  transform: scale(1.02) translateY(-2%);
+}
+.slim-poster__swiper-item .swiperItem__container:hover .swiperItem__container-properties {
+  opacity: 1;
+}
+.slim-poster__swiper-item .swiperItem__container .swiperItem__title {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.slim-poster__swiper-item .swiperItem__container .swiperItem__subscribe {
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #ea003d;
+}
+@media (max-width: 1271px) {
+  .slim-poster__swiper-item {
+    width: 16.66666667%;
+  }
+}
+@media (max-width: 1095px) {
+  .slim-poster__swiper-item {
+    width: 20%;
+  }
+}
+@media (max-width: 920px) {
+  .slim-poster__swiper-item {
+    width: 25%;
+  }
+}
+@media (max-width: 744px) {
+  .slim-poster__swiper-item {
+    width: 33.33333333%;
+  }
+}
+@media (max-width: 600px) {
+  .slim-poster__swiper-item {
+    width: 25%;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+@media (max-width: 511px) {
+  .slim-poster__swiper-item {
+    width: 33.33333333%;
+  }
+}
+@media (max-width: 392px) {
+  .slim-poster__swiper-item {
+    width: 50%;
+  }
+}/*# sourceMappingURL=SlimPoster.css.map */

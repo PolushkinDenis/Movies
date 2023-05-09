@@ -89,7 +89,7 @@
 
 .gallery {
     position: relative;
-
+    padding-top: 24px;
     &__header {
         padding-left: 12px;
         padding-right: 12px;
@@ -163,5 +163,14 @@
     &__moreButton {
         padding-bottom: 24px;
         width: 100%;
+    }
+}
+
+.empty__search {
+    margin-top: 30px;
+    .empty__search-text {
+        display: flex;
+        justify-content: center;
+        font-size: 18px;
     }
 }

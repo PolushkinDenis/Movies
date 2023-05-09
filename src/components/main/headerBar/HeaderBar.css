@@ -1,0 +1,45 @@
+.headerBar {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+.headerBar__controls {
+  display: flex;
+  justify-content: space-between;
+  line-height: 19px;
+}
+.headerBar__textInfo {
+  margin-top: 24px;
+}
+.headerBar__title {
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.breadCrumbs__item {
+  float: left;
+  color: rgba(255, 255, 255, 0.56);
+  padding-bottom: 3px;
+}
+.breadCrumbs_classic .nbl-link {
+  color: #fff;
+}
+
+.breadCrumbs_classic .breadCrumbs__item:last-child:not(:first-child)::before,
+.breadCrumbs_modern .breadCrumbs__item:last-child:not(:first-child)::before {
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.breadCrumbs_classic .breadCrumbs__item + .breadCrumbs__item::before {
+  content: "/";
+  margin-left: 4px;
+  margin-right: 3px;
+  color: #fff;
+}
+
+.breadCrumbs_classic .breadCrumbs__item {
+  float: left;
+  color: rgba(255, 255, 255, 0.56);
+  padding-bottom: 3px;
+}/*# sourceMappingURL=HeaderBar.css.map */

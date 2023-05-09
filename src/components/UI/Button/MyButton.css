@@ -1,0 +1,199 @@
+.nbl-button {
+  transition-duration: 0.4s;
+}
+.nbl-button__primaryText {
+  color: rgba(255, 255, 255, 0.48);
+  transition-duration: 0.4s;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  font-style: normal;
+  cursor: pointer;
+}
+.nbl-button__primaryText:hover {
+  color: rgb(255, 255, 255);
+}
+.nbl-button_style_ran.nbl-button {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  height: 40px;
+  border-radius: 8px;
+  padding: 9px 15px;
+}
+.nbl-button_style_ran.nbl-button:hover {
+  border: 1px solid rgb(255, 255, 255);
+}
+.nbl-button_style_ran.nbl-button .nbl-button__primaryText {
+  color: #fff;
+}
+.nbl-button__linkItem {
+  font-weight: 500;
+}
+.nbl-button__icon {
+  display: flex;
+}
+.nbl-button__icon .nbl-icon {
+  margin-right: 8px;
+}
+.nbl-button__icon .nbl-icon svg path {
+  transition-duration: 0.4s;
+  fill: rgba(255, 255, 255, 0.48);
+}
+.nbl-button__icon:hover .nbl-icon svg path {
+  fill: rgb(255, 255, 255);
+}
+.nbl-button__icon-increase svg {
+  fill: rgba(255, 255, 255, 0.48);
+  width: 16px;
+  height: 16px;
+  transition: all 1s;
+  transform-origin: 50% 50%;
+}
+.nbl-button__icon-increase:hover svg {
+  fill: rgb(255, 255, 255);
+  transform: scale(1.3);
+}
+.nbl-button__onlyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.4s;
+  border: 2px solid rgba(255, 255, 255, 0.48);
+  height: 48px;
+  border-width: 2px;
+  border-radius: 8px;
+  padding: 12px;
+}
+.nbl-button__onlyIcon svg {
+  transition-duration: 0.4s;
+  fill: rgba(255, 255, 255, 0.48);
+}
+.nbl-button__onlyIcon:hover {
+  box-shadow: 0px 0px 18px 2px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgb(255, 255, 255);
+}
+.nbl-button__onlyIcon:hover svg {
+  fill: rgb(255, 255, 255);
+}
+.nbl-button__subscription {
+  background-color: #ea003d;
+  border-color: #ea003d;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  height: 32px;
+  border-width: 1px;
+  border-radius: 8px;
+  padding: 7px 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nbl-tabs {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.48);
+  cursor: pointer;
+  transition-duration: 80ms;
+}
+.nbl-tabs:hover {
+  color: rgb(255, 255, 255);
+}
+
+.nbl-plank {
+  background-color: #312b45;
+  transition-duration: 0.4s;
+  height: 56px;
+  border-radius: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  padding-left: 16px;
+  padding-right: 16px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  transition-property: background-color;
+}
+.nbl-plank__textWrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 30px;
+  align-self: center;
+}
+.nbl-plank__title {
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+  height: 20px;
+  font-weight: 600;
+}
+.nbl-plank__extra {
+  color: #a5a1b2;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 16px;
+  height: 16px;
+  font-weight: 500;
+  font-style: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.nbl-plank__icon {
+  width: 20px;
+  height: 100%;
+  font-size: 6px;
+  line-height: 6px;
+  flex: 0 0 20px;
+  align-self: center;
+  margin-left: 16px;
+  -webkit-box-flex: 0;
+}
+.nbl-plank__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 2;
+}
+.nbl-plank__icon svg path {
+  width: 16px;
+}
+
+.filtersDesktop__plank.isActive .bl-plank__icon {
+  transform: rotate(180deg);
+}
+
+.nbl-arrowButton {
+  display: flex;
+  cursor: pointer;
+  transition-property: opacity;
+  opacity: 1;
+}
+.nbl-arrowButton__caption {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  font-style: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 20px;
+  margin: 0 8px;
+}
+.nbl-arrowButton .nbl-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nbl-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=MyButton.css.map */

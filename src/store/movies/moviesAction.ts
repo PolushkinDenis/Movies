@@ -5,25 +5,33 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { movies } from "./moviesSlice";
 import { IGenresMovies } from "../../types/IGenresMovies";
 import { ICountry } from "../../types/ICountry";
+import { IPersonFinded } from "../../types/IPerson";
 
 
 
-const creatingUrl = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number): string => {
+const creatingUrl = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded): string => {
     let url = ''
+    console.log(activeGenres)
     for (let filter of activeGenres) {
-        url = "&genreId=" + filter.id
+        url = url + "&genreId=" + filter.id
     }
     for (let filter of activeCountries) {
-        url = "&countryId=" + filter.id
+        url = url + "&countryId=" + filter.id
     }
     url += `&ratingKinopoisk=${rangeValue}`
     url += `&ratingKinopoiskVoteCount=${evaluationsValue}`
+    if(searchDirectorСhoice.personId !== -1) {
+        url += `&DIRECTOR=${searchDirectorСhoice.personId}`
+    }
+    if(searchActorСhoice.personId !== -1) {
+        url += `&ACTOR=${searchActorСhoice.personId}`
+    }
     console.log(url)
    return url
 }
 
-export const fetchMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number ) => async (dispatch: AppDispatch) => {
-    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue)
+export const fetchMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded ) => async (dispatch: AppDispatch) => {
+    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice)
     try {
         dispatch(movies.actions.moviesFetching());
         const response = await axios.get<IMovies>(
@@ -35,8 +43,8 @@ export const fetchMovies = (activeGenres: IGenresMovies[], activeCountries: ICou
     }
 };
 
-export const getMoreMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue:number, evaluationsValue: number, page: number) => async (dispatch: AppDispatch) => {
-    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue)
+export const getMoreMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue:number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded, page: number) => async (dispatch: AppDispatch) => {
+    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice)
     try {
         dispatch(movies.actions.moviesFetching());
         const response = await axios.get<IMovies>(

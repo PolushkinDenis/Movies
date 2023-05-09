@@ -1,0 +1,127 @@
+.person {
+  padding-bottom: 30px;
+}
+.person__no-bg-img {
+  margin-top: 20px;
+}
+.person__img-wrapper {
+  width: 45%;
+  margin: 30px auto 0;
+}
+.person__img-wrapper img {
+  width: 120px;
+  height: 144px;
+  border-radius: 16px;
+}
+.person__bg-img {
+  background-attachment: fixed;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  padding-top: -webkit-calc(100vw * .321);
+  padding-top: 32.1vw;
+  z-index: 999;
+  position: relative;
+}
+.person__gradient {
+  padding-top: 20px;
+  background: linear-gradient(to bottom, rgba(16, 14, 25, 0.1) 0%, rgb(16, 14, 25) 100%) !important;
+  box-shadow: 4px 4px 57px 14px rgba(16, 14, 25, 0.21);
+  margin-bottom: 30px;
+}
+.person__gradient-inner {
+  width: 45%;
+  margin: 0 auto;
+}
+.person__filmography {
+  width: 45%;
+  margin: 30px auto;
+}
+.person__filmography-title {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.person__filmography-title span {
+  margin-left: 10px;
+  color: #a5a1b2;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.person__alternate, .person__story {
+  font-size: 15px;
+  line-height: 22px;
+}
+.person__alternate {
+  color: #a5a1b2;
+  margin-bottom: 20px;
+}
+.person__name {
+  font-size: 56px;
+  line-height: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.person__story {
+  color: #d9d7e0;
+}
+.person__back {
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.person__back span {
+  margin-left: 10px;
+}
+.person__back:hover {
+  cursor: pointer;
+}
+.person__back-position {
+  position: absolute;
+  top: 20px;
+  left: 7%;
+}
+
+@media screen and (max-width: 1159px) {
+  .person__img-wrapper, .person__gradient-inner, .person__filmography {
+    width: 70%;
+  }
+  .person__back-position {
+    left: 0;
+  }
+  .person__bg-img {
+    background-position: center;
+    padding-top: -webkit-calc(100vw * .421);
+    padding-top: 42.1vw;
+  }
+}
+@media screen and (max-width: 786px) {
+  .person__img-wrapper, .person__gradient-inner, .person__filmography {
+    width: 80%;
+  }
+  .person__bg-img {
+    padding-top: -webkit-calc(100vw * .521);
+    padding-top: 52.1vw;
+  }
+}
+@media screen and (max-width: 576px) {
+  .person__name {
+    font-size: 40px;
+    line-height: 44px;
+  }
+  .person__img-wrapper, .person__gradient-inner, .person__filmography {
+    width: 95%;
+  }
+  .person__filmography-title span {
+    display: block;
+    margin: 10px 0 0 0;
+  }
+  .person__bg-img {
+    padding-top: -webkit-calc(100vw * .721);
+    padding-top: 72.1vw;
+  }
+}/*# sourceMappingURL=Person.css.map */

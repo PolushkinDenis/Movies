@@ -1,0 +1,27 @@
+.headerTop__menu {
+  margin-left: 32px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.headerMenu__navigation {
+  height: 100%;
+}
+.headerMenu__list {
+  height: 100%;
+  display: flex;
+}
+.headerMenu__listItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+.headerMenu__listItem:not(:first-child) {
+  padding-left: 16px;
+}
+.headerMenu__listItem a {
+  color: rgba(255, 255, 255, 0.48);
+}/*# sourceMappingURL=HeaderTopMenu.css.map */

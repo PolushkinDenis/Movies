@@ -1,0 +1,30 @@
+.contentPage__container-inner {
+  display: flex;
+}
+.contentPage__player {
+  margin-right: 44px;
+}
+.contentPage__player-userButtons {
+  display: flex;
+  align-items: center;
+}
+.contentPage__player-userButtons .userButton-trailer {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  padding: 10px 12px;
+  color: rgba(255, 255, 255, 0.72);
+}
+.contentPage__player-userButtons .userButton-trailer svg {
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+video {
+  width: 719px;
+  height: 404.5px;
+  margin-bottom: 24px;
+}/*# sourceMappingURL=contentPage_20230415235052.css.map */

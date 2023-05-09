@@ -1,0 +1,112 @@
+.nbl-tabBar {
+  display: flex;
+  justify-content: center;
+  height: 48px;
+  box-sizing: border-box;
+  box-shadow: 0 -20px 40px rgba(7, 5, 14, 0.24);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: rgba(31, 27, 46, 0.88);
+}
+.nbl-tabBar__item {
+  position: relative;
+  text-decoration: none;
+  max-width: 120px;
+  padding-top: 8px;
+  padding-bottom: 4px;
+  flex-direction: column;
+  flex-grow: 1;
+  cursor: pointer;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  display: flex;
+}
+.nbl-tabBar__itemGlowImage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 64px;
+  height: 48px;
+  background-image: url(https://solea-parent.dfs.ivi.ru/picture/7e798f,7e798f/tabBarGlow.svg);
+  background-size: 64px 48px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+}
+.nbl-tabBar__item-active .nbl-tabBar__itemGlowImage {
+  opacity: 1;
+}
+.nbl-tabBar__itemIcon {
+  position: relative;
+  align-self: center;
+  width: 20px;
+  height: 20px;
+}
+.nbl-tabBar__icon {
+  fill: rgba(255, 255, 255, 0.48);
+}
+.nbl-tabBar__icon svg path {
+  stroke: rgba(255, 255, 255, 0.48);
+}
+.nbl-tabBar__icon svg line {
+  stroke: rgba(255, 255, 255, 0.48);
+}
+.nbl-tabBar__item-active .nbl-tabBar__icon {
+  fill: rgb(255, 255, 255);
+}
+.nbl-tabBar__item-active .nbl-tabBar__icon svg path {
+  stroke: rgb(255, 255, 255);
+}
+.nbl-tabBar__item-active .nbl-tabBar__icon svg line {
+  stroke: rgb(255, 255, 255);
+}
+.nbl-tabBar__itemCaption {
+  max-width: 100%;
+  align-self: center;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+  font-style: normal;
+  height: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 4px;
+  color: #a5a1b2;
+}
+.nbl-tabBar__item-active .nbl-tabBar__itemCaption {
+  color: #fff;
+}
+
+.nbl-link {
+  position: relative;
+  opacity: 1;
+  cursor: pointer;
+}
+.nbl-link_style_chaf:not(:hover):not(:active) {
+  animation: FocusAnim;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+.nbl-link_style_chaf:hover, .nbl-link_style_chaf:active {
+  animation: notFocusAnim;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+@keyframes FocusAnim {
+  0% {
+    box-shadow: 0 0 0 #6d687c, inset 0 -1.5em 0 #6d687c;
+  }
+  100% {
+    box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+  }
+}
+@keyframes notFocusAnim {
+  0% {
+    box-shadow: 0 2px 0 #7e798f, inset 0 0 0 #7e798f;
+  }
+  100% {
+    box-shadow: 0 0 0 #6d687c, inset 0 -1.5em 0 #6d687c;
+  }
+}/*# sourceMappingURL=TabBar.css.map */

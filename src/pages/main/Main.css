@@ -1,0 +1,228 @@
+.main .pageSection__main .pageSection__main__container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1216px;
+  padding-top: 24px;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList {
+  width: 100%;
+  box-sizing: border-box;
+  -moz-column-gap: 24px;
+  column-gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  row-gap: 16px;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate {
+  flex: 1 1 0;
+  height: 48px;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content {
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f1b2e;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content:hover {
+  background-color: #231f34;
+  transition-duration: 80ms;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content:active {
+  background-color: #191524;
+  transition-duration: 80ms;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content__subscribe {
+  background-color: #2d1f3f;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content__subscribe:hover {
+  transition-duration: 80ms;
+  background-color: #31244a;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content__subscribe:active {
+  background-color: #271739;
+  transition-duration: 80ms;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content img {
+  margin-right: 8px;
+}
+.main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content .nbl-teaserTile__caption {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+}
+@media screen and (max-width: 343px) {
+  .main .pageSection__main .pageSection__main__container .home__teaserList .home__teaserPlate .nbl-teaserTile__content .teaserPlate__img {
+    display: none;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .main .pageSection__main .pageSection__main__container {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .main .pageSection__main .pageSection__main__container .home__teaserList {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+@media screen and (max-width: 879px) {
+  .main .pageSection__main .pageSection__main__container .home__teaserList {
+    flex-direction: column;
+    row-gap: 12px;
+  }
+}
+.main .pageSection__container {
+  width: 1216px;
+  margin: 0 auto;
+  padding-bottom: 24px;
+  padding-top: 24px;
+}
+.main .pageSection__container .gallery__top .gallery__blockHeader {
+  margin-bottom: 24px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.main .pageSection__container .gallery__top .gallery__blockHeader .gallery__imageHeader {
+  display: flex;
+  align-items: center;
+}
+.main .pageSection__container .gallery__top .gallery__blockHeader .gallery__imageHeader span {
+  margin-left: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+@media screen and (min-width: 1279px) {
+  .main .pageSection__container .gallery__top .gallery__blockHeader {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.main .pageSection__container .gallery__movie-slider {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.main .pageSection__container .gallery__movie-slider .gallery__blockHeader {
+  margin-bottom: 24px;
+}
+.main .pageSection__container .gallery__movie-slider .gallery__blockHeader .blockHeader__textBlockContent {
+  display: flex;
+  align-items: baseline;
+}
+.main .pageSection__container .gallery__movie-slider .gallery__blockHeader .blockHeader__textBlockContent .blockHeader__titleText {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+}
+.main .pageSection__container .gallery__movie-slider .gallery__blockHeader .blockHeader__textBlockContent .blockHeader__titleArrow {
+  margin-left: 8px;
+}
+@media screen and (min-width: 1279px) {
+  .main .pageSection__container .gallery__movie-slider {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.main .pageSection__container-inner .clause,
+.main .pageSection__container-inner .clause_is-native,
+.main .pageSection__container-inner .home__clause {
+  width: 74%;
+}
+.main .pageSection__container-inner .clause .clause__header,
+.main .pageSection__container-inner .clause_is-native .clause__header,
+.main .pageSection__container-inner .home__clause .clause__header {
+  align-items: baseline;
+  display: flex;
+}
+.main .pageSection__container-inner .clause .clause__header .clause__title,
+.main .pageSection__container-inner .clause_is-native .clause__header .clause__title,
+.main .pageSection__container-inner .home__clause .clause__header .clause__title {
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  color: #fff;
+}
+.main .pageSection__container-inner .clause .clause__header + .clause__text,
+.main .pageSection__container-inner .clause_is-native .clause__header + .clause__text,
+.main .pageSection__container-inner .home__clause .clause__header + .clause__text {
+  margin-top: 12px;
+}
+.main .pageSection__container-inner .clause .clause__text,
+.main .pageSection__container-inner .clause_is-native .clause__text,
+.main .pageSection__container-inner .home__clause .clause__text {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+.main .pageSection__container-inner .clause .clause__text .clause__toggle,
+.main .pageSection__container-inner .clause_is-native .clause__text .clause__toggle,
+.main .pageSection__container-inner .home__clause .clause__text .clause__toggle {
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 8px;
+  color: hsla(0, 0%, 100%, 0.88);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  transition-duration: 0.4s;
+  transition-property: transform, color;
+}
+.main .pageSection__container-inner .clause .clause__text p + p,
+.main .pageSection__container-inner .clause_is-native .clause__text p + p,
+.main .pageSection__container-inner .home__clause .clause__text p + p {
+  margin-top: 8px;
+}
+.main .pageSection__container-inner .clause .clause__text p + ol,
+.main .pageSection__container-inner .clause_is-native .clause__text p + ol,
+.main .pageSection__container-inner .home__clause .clause__text p + ol {
+  list-style: none;
+  margin-top: 8px;
+}
+.main .pageSection__container-inner .clause .clause__text li,
+.main .pageSection__container-inner .clause_is-native .clause__text li,
+.main .pageSection__container-inner .home__clause .clause__text li {
+  margin-left: 12px;
+  padding-left: 16px;
+  position: relative;
+}
+.main .pageSection__container-inner .clause .clause__text li::before,
+.main .pageSection__container-inner .clause_is-native .clause__text li::before,
+.main .pageSection__container-inner .home__clause .clause__text li::before {
+  background-color: #a5a1b2;
+  border-radius: 50%;
+  content: "";
+  height: 6px;
+  left: 0;
+  position: absolute;
+  top: 10px;
+  width: 6px;
+}
+.main .pageSection__container-inner .clause .clause__text li + li,
+.main .pageSection__container-inner .clause_is-native .clause__text li + li,
+.main .pageSection__container-inner .home__clause .clause__text li + li {
+  margin-top: 8px;
+}
+.main .pageSection__container-inner .clause .clause__text ol + p,
+.main .pageSection__container-inner .clause_is-native .clause__text ol + p,
+.main .pageSection__container-inner .home__clause .clause__text ol + p {
+  margin-top: 8px;
+}
+@media screen and (max-width: 1279px) {
+  .main .pageSection__container {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .main .pageSection__container-inner {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}/*# sourceMappingURL=Main.css.map */

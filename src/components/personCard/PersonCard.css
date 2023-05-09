@@ -1,0 +1,49 @@
+.person-card {
+  letter-spacing: 1px;
+  padding-top: 12px;
+}
+.person-card__relative {
+  position: relative;
+  margin-bottom: 10px;
+}
+.person-card__img-wrapper {
+  width: 153px;
+  height: 153px;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.person-card__img-wrapper:hover {
+  transform: scale(1.1);
+}
+.person-card__img-wrapper img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+.person-card__movies-amount {
+  background-color: rgb(168, 105, 240);
+  border-radius: 5px;
+  padding: 8px !important;
+  font-weight: 700;
+  position: absolute;
+  bottom: 2px;
+  left: 8px;
+}
+.person-card__name {
+  font-weight: 500;
+  color: #d9d7e0;
+  line-height: 18px;
+}
+.person-card__movies {
+  font-weight: 300;
+  color: #a5a1b2;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.person-card p {
+  padding-left: 10px;
+}/*# sourceMappingURL=PersonCard.css.map */
