@@ -8,8 +8,10 @@ import newMoviesSlice from "./newMovies/newMoviesSlice";
 import moviesSlice from "./movies/moviesSlice";
 import directorSlice from "./searchDirector/directorSlice";
 import actorSlice from "./searchActor/actorSlice";
+import {authorizationReducer} from "./authorization/authorizationSlice";
 
 const rootReducer = combineReducers({
+  authorizationReducer,
   newMoviesSlice,
   moviesSlice,
   directorSlice,
