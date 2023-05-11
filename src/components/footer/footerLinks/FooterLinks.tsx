@@ -15,7 +15,7 @@ const FooterLinks = ({ title, links }: FooterLinksProps) => {
       <span className="iviFooter__title">{title}</span>
       <ul>
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={link.name}>
             <Link to={link.href}>
               <MyButton
                 classes={"nbl-button__primaryText nbl-button__linkItem"}

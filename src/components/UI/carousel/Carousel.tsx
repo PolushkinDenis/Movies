@@ -1,6 +1,11 @@
 import React, { FC } from "react";
 import { Splide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
+// import "@splidejs/react-splide/css";
+import './css/splide.min.css'
+import './css/splide-core.min.css'
+import './css/themes/splide-default.min.css'
+// import './css/themes/splide-sea-green.min.css'
+// import './css/themes/splide-skyblue.min.css'
 import "./Carousel.scss";
 
 interface IProps {

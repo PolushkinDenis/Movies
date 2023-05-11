@@ -41,11 +41,11 @@ const Footer: FC = () => {
     },
   ];
   const sectionsLinks: LinkFooter[] = [
-    { href: "https://www.ivi.ru/", name: t("Мой Иви") },
+    { href: "/", name: t("Мой Иви") },
     { href: "https://www.ivi.ru/new", name: t("Что нового") },
-    { href: "https://www.ivi.ru/movies", name: t("Фильмы") },
-    { href: "https://www.ivi.ru/series", name: t("Сериалы") },
-    { href: "https://www.ivi.ru/animation", name: t("Мультфильмы") },
+    { href: "/movies", name: t("Фильмы") },
+    { href: "/movies", name: t("Сериалы") },
+    { href: "/movies", name: t("Мультфильмы") },
     { href: "https://www.ivi.ru/tvplus", name: t("TV+") },
     { href: "https://www.ivi.ru/goodmovies", name: t("Что посмотреть") },
   ];

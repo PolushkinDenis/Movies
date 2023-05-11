@@ -1,5 +1,6 @@
 import React, { FC, useState } from "react";
 import "./Main.scss";
+import "../../scss/swiper.css"
 import PromoSlider from "../../components/promoSlider/PromoSlider";
 import TopSlider from "../../components/topSlider/TopSlider";
 import { moviesAPI } from "../../services/MoviesService";
