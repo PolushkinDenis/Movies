@@ -19,15 +19,18 @@ import { IPerson } from "./IPerson";
 
 export interface IMovie {
     id: number,
+    kinopoiskId: number,
     nameRu: string,
     nameOriginal: string | null,
+    ratingKinopoiskVoteCount: number,
     posterUrl: string,
     posterUrlPreview: string,
     coverUrl: string | null,
     logoUrl: string | null,
-    ratingKinopoisk: string,
+    ratingKinopoisk: string | null,
     year: number,
-    filmLength: string,
+    filmLength: string | null,
+    type: string,
     genres: IGenre[],
     countries: ICountry[]
 }

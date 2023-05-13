@@ -11,8 +11,9 @@ import { promoData } from "../../data/promoFilms";
 
 const Main: FC = () => {
   const [onClickToggle, setOnClickToggle] = useState(false);
+  const { data: moviesTop } = moviesAPI.useFetchMoviesTop10Query(10)
 
-  
+
   return (
     <main className="main">
       <div className="promo">
@@ -109,7 +110,9 @@ const Main: FC = () => {
               </div>
             </div>
             <div className="top_slider">
-                <TopSlider />
+              {moviesTop && (
+                <TopSlider movies={moviesTop.rows}/>
+              )}
             </div>
           </div>
         </div>
@@ -126,7 +129,7 @@ const Main: FC = () => {
               </Link>
             </div>
             <div className="movie__slider">
-                <MoviesSlider url="/movies/filters?size=19&genreId=15" genres="cartoon"/>
+              <MoviesSlider url="/movies/filters?size=19&genreId=15" genres="cartoon" />
             </div>
           </div>
         </div>
@@ -143,7 +146,7 @@ const Main: FC = () => {
               </Link>
             </div>
             <div className="movie__slider">
-                <MoviesSlider  url="/movies/filters?size=19&genreId=7" genres="melodrama"/>
+              <MoviesSlider url="/movies/filters?size=19&genreId=7" genres="melodrama" />
             </div>
           </div>
         </div>

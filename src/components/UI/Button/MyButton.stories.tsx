@@ -13,7 +13,7 @@ const meta: Meta<typeof MyButton> = {
 export default meta;
 type Story = StoryObj<typeof MyButton>;
 
-const Template: ComponentStory<typeof MyButton> = (args) => <div style={{ background: "#100e19" }}><MyButton {...args} /></div>
+const Template: ComponentStory<typeof MyButton> = (args) => <div style={{ background: "#100e19", color: "#fff" }}><MyButton {...args} /></div>
 export const Link = Template.bind({});
 Link.args = {
     children: "Ссылка",

@@ -1,4 +1,4 @@
-export const formatFilmLength = (filmLength: string) => {
+export const formatFilmLength = (filmLength: string | null) => {
     if (filmLength !== null) {
       const filmLengthSplite = filmLength.split("")
       const lastSymbol = filmLengthSplite[filmLengthSplite.length - 1]

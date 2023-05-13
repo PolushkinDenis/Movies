@@ -1,13 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 import { IMovie } from "../../types/IMovies";
-// import { IFilm } from "../../types/IFilm"
-
-// interface IFilm {
-//     mivis: []
-// }
-// interface IMovie {
-//     movies: IFilm[],
-// }
 
 interface NewMoviesState {
     slide: Array<IMovie[]>,

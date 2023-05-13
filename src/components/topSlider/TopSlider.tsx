@@ -3,11 +3,15 @@ import './TopSlider.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { Navigation } from 'swiper'
-import { moviesAPI } from '../../services/MoviesService'
+import { IMovie } from '../../types/IMovies'
 // import "swiper/css";
 // import "swiper/css/navigation";
-const TopSlider: FC = () => {
-    const { data: movies } = moviesAPI.useFetchMoviesTop10Query(10)
+
+interface TopSliderProps {
+    movies: IMovie[]
+}
+
+const TopSlider: FC<TopSliderProps> = ({movies}) => {
     return (
         <Swiper
             modules={[Navigation]}
@@ -43,7 +47,7 @@ const TopSlider: FC = () => {
                 },
             }}
         >
-            {movies?.rows.map((film, index) => (
+            {movies?.map((film, index) => (
                 <SwiperSlide key={film.id}>
                     <Link className='posterUrl' to={`/film/${film.id}`}>
                         <div className='posterUprightBlock__nbl-poster'>
