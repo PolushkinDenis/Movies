@@ -8,6 +8,7 @@ import Movies from "./pages/movies/Movies";
 import ContentPage from "./pages/contentPage/ContentPage";
 import ContextFc, { AutoContext } from "./context/index";
 import "./scss/app.scss";
+import "./scss/swiper.navigation.css"
 
 function App() {
   return (

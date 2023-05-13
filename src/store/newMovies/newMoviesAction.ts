@@ -2,7 +2,6 @@ import axios from "axios";
 import { IMovies } from "../../types/IMovies";
 import { AppDispatch } from "../store";
 import { newMovies } from "./newMoviesSlice";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchNewMovies = (url: string) => async (dispatch: AppDispatch) => {
   try {

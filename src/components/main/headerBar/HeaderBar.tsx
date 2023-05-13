@@ -114,6 +114,7 @@ function HeaderBar() {
         <div className="clause clause_is-native catalog__clause">
           <div className="clause__text">
             <div
+            data-testid="clause__text"
               className={
                 onClickToggle
                   ? "clause__text-inner"
@@ -177,7 +178,7 @@ function HeaderBar() {
               <p>{t("Не упустите замечательн...")}</p>
             </div>
           </div>
-          <span onClick={clickToggle} className="clause__toggle">
+          <span data-testid="toggle-btn" onClick={clickToggle} className="clause__toggle">
             {onClickToggle ? t("Свернуть") : t("Развернуть")}
           </span>
         </div>

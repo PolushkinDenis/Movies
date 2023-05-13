@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { Navigation } from 'swiper'
 import { moviesAPI } from '../../services/MoviesService'
-
+// import "swiper/css";
+// import "swiper/css/navigation";
 const TopSlider: FC = () => {
     const { data: movies } = moviesAPI.useFetchMoviesTop10Query(10)
     return (

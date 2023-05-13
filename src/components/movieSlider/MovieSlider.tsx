@@ -11,10 +11,11 @@ import { Link } from "react-router-dom";
 import SlimPoster from "../slimPoster/SlimPoster";
 
 interface MoviesSliderProps {
-    url: string
+    url: string,
+    genres: string
 }
 
-const MoviesSlider: FC<MoviesSliderProps> = ({ url }) => {
+const MoviesSlider: FC<MoviesSliderProps> = ({ url, genres }) => {
     const movies = moviesAPI.useGetMoviesForSlider1Query(url).data?.rows
     return (
         <Swiper
@@ -69,7 +70,7 @@ const MoviesSlider: FC<MoviesSliderProps> = ({ url }) => {
                 ) : (
                     <SwiperSlide key={movie.id}>
                         <div className="recommendSwiper">
-                            <Link to={`/film/all`}>
+                            <Link to={`/movies/${genres}`}>
                                 <li className="recommendSwiper__swiper-item">
                                     <div className="swiperItem__container">
                                         <div className="swiperItem__container-imageWrapper">

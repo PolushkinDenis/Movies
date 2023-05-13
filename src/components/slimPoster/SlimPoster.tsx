@@ -5,7 +5,7 @@ import { FaRegBookmark } from "react-icons/fa";
 import { IoMdColorWand } from "react-icons/io";
 import { AiOutlineStar } from "react-icons/ai";
 import { TbCircleOff } from "react-icons/tb";
-
+import { formatFilmLength } from "../../helpers/formatFilmLength";
 import { Link } from "react-router-dom";
 import { IMovie } from "../../types/IMovies";
 
@@ -15,22 +15,6 @@ interface SlimPosterProps {
 
 
 const SlimPoster: FC<SlimPosterProps> = ({ movie }) => {
-  const formatFilmLength = (filmLength: string) => {
-    if (filmLength !== null) {
-      const filmLengthSplite = filmLength.split("")
-      const lastSymbol = filmLengthSplite[filmLengthSplite.length - 1]
-      if (lastSymbol === "1") {
-        return "минута"
-      }
-      else if (lastSymbol === "2" || lastSymbol === "3" || lastSymbol === "4") {
-        return "минуты"
-      }
-      else if (lastSymbol === "0" || lastSymbol === "5" || lastSymbol === "6" ||
-        lastSymbol === "7" || lastSymbol === "8" || lastSymbol === "9") {
-        return "минут"
-      }
-    }
-  }
 
   return (
     <li className="slim-poster__swiper-item">

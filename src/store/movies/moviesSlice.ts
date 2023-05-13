@@ -38,4 +38,6 @@ export const movies = createSlice({
     },
 })
 
+export const {moviesFetching, moviesFetchingError, moviesFetchingSuccess, moviesGetMoreSuccess} = movies.actions
+
 export default movies.reducer

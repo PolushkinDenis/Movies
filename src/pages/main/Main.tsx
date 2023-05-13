@@ -41,7 +41,7 @@ const Main: FC = () => {
           <div className="pageSection__container-inner">
             <div className="clause clause_is-native home__clause">
               <div className="clause__header">
-                <h2 className="clause__title">
+                <h2 data-testid="main__header" className="clause__title">
                   Онлайн-кинотеатр Иви: фильмы в хорошем качестве всегда приносят настоящее удовольствие
                 </h2>
               </div>
@@ -126,7 +126,7 @@ const Main: FC = () => {
               </Link>
             </div>
             <div className="movie__slider">
-                <MoviesSlider url="/movies/filters?size=19&genreId=15"/>
+                <MoviesSlider url="/movies/filters?size=19&genreId=15" genres="cartoon"/>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@ const Main: FC = () => {
               </Link>
             </div>
             <div className="movie__slider">
-                <MoviesSlider  url="/movies/filters?size=19&genreId=7"/>
+                <MoviesSlider  url="/movies/filters?size=19&genreId=7" genres="melodrama"/>
             </div>
           </div>
         </div>

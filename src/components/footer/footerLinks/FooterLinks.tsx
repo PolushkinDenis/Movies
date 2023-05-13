@@ -16,7 +16,7 @@ const FooterLinks = ({ title, links }: FooterLinksProps) => {
       <ul>
         {links.map((link) => (
           <li key={link.name}>
-            <Link to={link.href}>
+            <Link to={link.href} data-testid={link.name}>
               <MyButton
                 classes={"nbl-button__primaryText nbl-button__linkItem"}
                 children={link.name}

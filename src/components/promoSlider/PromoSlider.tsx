@@ -24,22 +24,7 @@ const PromoSlider: FC<PromoSliderProps> = ({ promos }) => {
     const [swiper, setSwiper] = useState(1);
 
     const {
-        activeGenres,
         setActiveGenres,
-        activeCountries,
-        setActiveCountries,
-        rangeValue,
-        setRangeValue,
-        evaluationsValue,
-        setEvaluationsValue,
-        searchDirectorValue,
-        setSearchDirectorValue,
-        searchDirectorСhoice,
-        setSearchDirectorСhoice,
-        searchActorValue,
-        setSearchActorValue,
-        searchActorСhoice,
-        setSearchActorСhoice,
     } = useContext(AutoContext);
 
     const navigate = useNavigate();

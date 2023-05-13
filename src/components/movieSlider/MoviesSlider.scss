@@ -15,14 +15,9 @@
     }
     .slim-poster__swiper-item {
         width: 100%;
-        .swiperItem__container {
-            margin-top: 12px;
-            // .swiperItem__container-image {
-            //     height: 100%;
-            // }
-            // .swiperItem__container-properties {
-            //     height: 84%;
-            // }
+        padding-left: 0;
+        padding-right: 0;
+        .swiperItem__container {        
         }
     }
     

@@ -181,7 +181,7 @@ function Movies() {
     <div>
       <main className="main">
         <div className="main__container _container">
-          <section className="section-advertisement">{t("Реклама")}</section>
+          <section data-testid="movies__header" className="section-advertisement">{t("Реклама")}</section>
           <HeaderBar></HeaderBar>
           <Sorting
             clickToggleSorting={clickToggleSorting}
