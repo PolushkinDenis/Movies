@@ -8,15 +8,11 @@ import { ICountry } from "../../types/ICountry";
 import NewMoviesSlider from "../../components/newMoviesSlider/NewMoviesSlider";
 import FiltersDesktop from "../../components/main/filter/FiltersDesktop";
 import Sorting from "../../components/main/sorting/Sorting";
-import Carousel from "../../components/UI/carousel/Carousel";
-import { SplideSlide } from "@splidejs/react-splide";
-import PersonCard from "../../components/personCard/PersonCard";
 import { AutoContext } from "../../context";
 import PersonSlider from "../../components/pesonSlider/PersonSlider";
 import HeaderBar from "../../components/main/headerBar/HeaderBar";
 import SlimPoster from "../../components/slimPoster/SlimPoster";
 import genresFilms from "../../data/genresFilms";
-import { AnyAction } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchMovies, getMoreMovies } from "../../store/movies/moviesAction";
 import Loader from "../../components/UI/Loader/Loader";
@@ -24,7 +20,6 @@ import Loader from "../../components/UI/Loader/Loader";
 function Movies() {
   const navigate = useNavigate();
   const location = useLocation();
-  //Countries,Genres,Rating,Evaluations,SearchDirector,SearchActor
   const [clickSwitchFilter, setClickSwitchFilter] = React.useState<
     string | null
   >("");
@@ -37,24 +32,17 @@ function Movies() {
     setRangeValue,
     evaluationsValue,
     setEvaluationsValue,
-    //
+    activeSorting,
+    setActiveSorting,
     searchDirectorValue,
     setSearchDirectorValue,
     searchDirectorСhoice,
     setSearchDirectorСhoice,
-    //
     searchActorValue,
     setSearchActorValue,
     searchActorСhoice,
     setSearchActorСhoice,
   } = useContext(AutoContext);
-  // const isMounted = React.useRef(false);
-
-  // console.log(activeGenres)
-  // console.log(activeCountries)
-  // console.log(rangeValue)
-  console.log(searchDirectorСhoice)
-
 
   const dispatch = useAppDispatch();
   const { movies, isLoading } = useAppSelector((state) => state.moviesSlice);
@@ -167,12 +155,12 @@ function Movies() {
 
   const getMore = () => {
     setPage(page + 1);
-    dispatch(getMoreMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, page + 1));
+    dispatch(getMoreMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, activeSorting, page + 1));
   };
 
   useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice));
-  }, [activeGenres, activeCountries, searchDirectorСhoice, searchActorСhoice]);
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, activeSorting));
+  }, [activeGenres, activeCountries, searchDirectorСhoice, searchActorСhoice, activeSorting]);
 
   //Translation
   const { t } = useTranslation();

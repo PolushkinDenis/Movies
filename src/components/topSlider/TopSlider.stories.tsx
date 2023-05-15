@@ -4,6 +4,8 @@ import '../../scss/app.scss'
 import "../../scss/swiper.navigation.css"
 import "../../scss/swiper.css"
 import './TopSlider.scss'
+import "../newMoviesSlider/NewMoviesSlider.scss";
+
 import type { Meta, StoryObj, ComponentStory } from '@storybook/react';
 import { IMovie } from "../../types/IMovies";
 import { BrowserRouter } from "react-router-dom";

@@ -1,14 +1,16 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useContext } from "react";
 import "./NewMoviesSlider.scss";
 import premieres_img from "../../images/newMoviesSlider/premieres.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import "swiper/css";
 // import "swiper/css/navigation";
 import { Navigation } from "swiper";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchNewMovies } from "../../store/newMovies/newMoviesAction";
 import { IMovie } from "../../types/IMovies";
+import { AutoContext } from "../../context";
+import { SlideItem } from "../../store/newMovies/newMoviesSlice";
 
 const newFilmsData = [
   {
@@ -53,44 +55,70 @@ const newFilmsData = [
   },
 ];
 
-const newFilmsTtitle = [
-  { title: "Российские новинки" },
-  { title: "Зарубежные новинки" },
-  { title: "Новые комедии" },
-  { title: "Новые российские комедии" },
-  { title: "Лучшие новинки" },
+interface INewFilmsCollection {
+  title: string,
+  href: string,
+  genreId: number;
+  genreNameRu: string;
+  genreNameEng: string;
+  countryId: number,
+  countryNameRu: string,
+  countryNameEng: string,
+}
+
+const newFilmsCollection: INewFilmsCollection[] = [
+  { title: "Российские новинки", href: "/movies/Russia", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia"},
+  { title: "Зарубежные новинки", href: "/movies/USA", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia" },
+  { title: "Новые комедии", href: "/movies/comedy", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia"},
+  { title: "Новые российские комедии", href: "/movies/comedy/Russia", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia" },
+  { title: "Лучшие новинки", href: "/movies/comedy", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia" },
 ];
 
 const NewMoviesSlider: FC = () => {
   const dispach = useAppDispatch();
   const newMoviesRedux = useAppSelector((state) => state.newMoviesSlice.slide);
-  const [arrMovies, setArrMovies] = useState<IMovie[][]>(newMoviesRedux);
+  const [arrMovies, setArrMovies] = useState<Array<SlideItem>>(newMoviesRedux);
+  const navigate = useNavigate();
+  const goTransitionsPage = (e: any) => navigate(e);
+
+  const {
+    setActiveGenres,
+    setActiveCountries,
+  
+  } = useContext(AutoContext);
 
   useEffect(() => {
-    if (newMoviesRedux.length < 4) {
-      dispach(fetchNewMovies("movies/filters?size=5&countryId=1&year=2022"));
+    if (newMoviesRedux.length < 4 && newMoviesRedux.length === 0) {
+      console.log("asa")
+      dispach(fetchNewMovies("movies/filters?size=5&countryId=1&year=2022", "Российские новинки"));
       dispach(
         fetchNewMovies(
-          "movies/filters?size=5&countryId=6&countryId=7&countryId=11&year=2022"
+          "movies/filters?size=5&countryId=6&countryId=7&countryId=11&year=2022", "Зарубежные новинки"
         )
       );
-      dispach(fetchNewMovies("movies/filters?size=5&genreId=2&year=2022"));
+      dispach(fetchNewMovies("movies/filters?size=5&genreId=2&year=2022", "Новые комедии"));
       dispach(
-        fetchNewMovies("movies/filters?size=5&genreId=2&countryId=1&year=2022")
+        fetchNewMovies("movies/filters?size=5&genreId=2&countryId=1&year=2022", "Новые российские комедии")
       );
       dispach(
         fetchNewMovies(
-          "movies/filters?size=5&year=2023&orderBy=ratingKinopoisk"
+          "movies/filters?size=5&year=2023&orderBy=ratingKinopoisk", "Лучшие новинки"
         )
       );
     }
   }, []);
 
+  const showСompilation = (collection: INewFilmsCollection) => {
+    setActiveGenres([{ id: collection.genreId, genreNameRu: collection.genreNameRu, genreNameEng: collection.genreNameEng, createdAt: "", updatedAt: "" }])
+    // setActiveCountries([{}])
+    goTransitionsPage("/movies/all");
+  }
+
   useEffect(() => {
     setArrMovies(newMoviesRedux);
   }, [newMoviesRedux]);
 
-  console.log(arrMovies);
+  // console.log(newMoviesRedux)
 
   return (
     <Swiper
@@ -124,11 +152,11 @@ const NewMoviesSlider: FC = () => {
             <div className="slick__link">
               <div className="slick-slide">
                 <div className="nbl-poster">
-                  <Link to="/film">
+                  <Link to="/movies/all" onClick={e => showСompilation(newFilmsCollection[index])}>
                     <div className="nbl-poster__fon">
                       <div className="nms-poster__imageWrapper">
                         <div className="main-img">
-                          {film.map((item, index) => (
+                          {film.movies.map((item, index) => (
                             <img
                               className={
                                 index === 0 ? "poster-main" : `poster-${index}`
@@ -147,7 +175,7 @@ const NewMoviesSlider: FC = () => {
             </div>
           </div>
           <div className="miniPromoBlockCustom__title">
-            {newFilmsTtitle[index].title}
+            {film.title}
           </div>
         </SwiperSlide>
       ))}

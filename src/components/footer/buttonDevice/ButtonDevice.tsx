@@ -1,5 +1,6 @@
 import { FC } from "react";
 import './ButtonDevice.scss'
+import { Link } from "react-router-dom";
 
 interface ButtonDeviceProps {
     href: string,
@@ -11,7 +12,7 @@ interface ButtonDeviceProps {
 
 const ButtonDevice: FC<ButtonDeviceProps> = ({ from, href, imgHref, title, classes }) => {
     return (
-        <a className={classes ? `buttonDevice ${classes}` : "buttonDevice"} href={href}>
+        <Link className={classes ? `buttonDevice ${classes}` : "buttonDevice"} to={href}>
             {imgHref && (
                 <img src={imgHref} />
             )}
@@ -25,7 +26,7 @@ const ButtonDevice: FC<ButtonDeviceProps> = ({ from, href, imgHref, title, class
                     )}
                 </div>
             )}
-        </a>
+        </Link>
     )
 }
 

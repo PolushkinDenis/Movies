@@ -9,9 +9,8 @@ import { IPersonFinded } from "../../types/IPerson";
 
 
 
-const creatingUrl = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded): string => {
+const creatingUrl = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded, activeSorting: string): string => {
     let url = ''
-    console.log(activeGenres)
     for (let filter of activeGenres) {
         url = url + "&genreId=" + filter.id
     }
@@ -26,12 +25,14 @@ const creatingUrl = (activeGenres: IGenresMovies[], activeCountries: ICountry[],
     if(searchActorСhoice.personId !== -1) {
         url += `&ACTOR=${searchActorСhoice.personId}`
     }
-    console.log(url)
+    if(activeSorting !== "undefined") {
+        url += `&orderBy=${activeSorting}`
+    }
    return url
 }
 
-export const fetchMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded ) => async (dispatch: AppDispatch) => {
-    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice)
+export const fetchMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue: number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded, activeSorting: string ) => async (dispatch: AppDispatch) => {
+    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, activeSorting)
     try {
         dispatch(movies.actions.moviesFetching());
         const response = await axios.get<IMovies>(
@@ -43,8 +44,8 @@ export const fetchMovies = (activeGenres: IGenresMovies[], activeCountries: ICou
     }
 };
 
-export const getMoreMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue:number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded, page: number) => async (dispatch: AppDispatch) => {
-    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice)
+export const getMoreMovies = (activeGenres: IGenresMovies[], activeCountries: ICountry[], rangeValue:number, evaluationsValue: number, searchDirectorСhoice: IPersonFinded, searchActorСhoice: IPersonFinded, activeSorting: string, page: number) => async (dispatch: AppDispatch) => {
+    const url = creatingUrl(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, activeSorting)
     try {
         dispatch(movies.actions.moviesFetching());
         const response = await axios.get<IMovies>(

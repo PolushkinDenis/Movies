@@ -3,7 +3,7 @@ import { IPerson } from "./IPerson";
 
 
 interface IPersonsFilms {
-    id: number,
+    kinopoiskId: number,
     year: number,
     nameRu: string,
     nameOriginal: string,
@@ -16,5 +16,5 @@ interface IPersonsFilms {
 
 export interface IPersonsAbout {
     person: IPerson,
-    films: IPersonsFilms[][]
+    films: IPersonsFilms[]
 }

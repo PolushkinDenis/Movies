@@ -28,31 +28,31 @@ function HeaderTopMenu() {
             </a>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
-            <a href="">
+            <Link to="/movies">
               <div className="nbl-button__primaryText">
                 {t("Фильмы")}
                 {/* Фильмы */}
               </div>
-            </a>
+            </Link>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
-            <a href="">
+            <Link to="/movies">
               <div className="nbl-button__primaryText">
                 {t("Сериалы")}
                 {/* Сериалы */}
               </div>
-            </a>
+            </Link>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
-            <a href="">
+            <Link to="/movies">
               <div className="nbl-button__primaryText">
                 {t("Мультфильмы")}
                 {/* Мультфильмы */}
               </div>
-            </a>
+            </Link>
           </li>
           <li className="headerMenu__listItem headerMenu__listItem_expanding">
-            <a href="">
+            <a href="https://www.ivi.ru/tvplus">
               <div className="nbl-button__primaryText">
                 {t("TV+")}
                 {/* TV+ */}

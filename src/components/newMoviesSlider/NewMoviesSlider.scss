@@ -41,12 +41,12 @@
     }
     .swiper-button-next {
         margin-right: -40px;
-        top: var(--swiper-navigation-top-offset, 40%) !important;
+        // top: var(--swiper-navigation-top-offset, 40%) !important;
     }
     
     .swiper-button-prev {
         margin-left: -40px;
-        top: var(--swiper-navigation-top-offset, 40%) !important;
+        // top: var(--swiper-navigation-top-offset, 40%) !important;
     }
 
 }

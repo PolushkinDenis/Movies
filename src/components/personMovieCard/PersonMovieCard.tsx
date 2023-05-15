@@ -12,6 +12,7 @@ interface IProps {
 }
 
 const PersonMovieCard: FC<IProps> = ({image, year, movieName, movieId, rating}) => {
+  console.log(movieId)
   return (
     <div className="person-movie-card">
       <Link to={`/film/${movieId}`}>
@@ -34,7 +35,7 @@ const PersonMovieCard: FC<IProps> = ({image, year, movieName, movieId, rating}) 
           <div className="person-movie-card__action">
             <ButtonDevice
               classes="nbl-button-chatButton"
-              href={`https://www.ivi.ru/watch/${movieId}`}
+              href={`http://localhost:3000/film/${movieId}`}
               title="Смотреть"
             />
           </div>

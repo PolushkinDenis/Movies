@@ -22,6 +22,7 @@ describe("Movies component tests", () => {
             const [searchDirectorСhoice, setSearchDirectorСhoice] = React.useState<IPersonFinded>({ personId: -1, nameRu: "" });
             const [searchActorValue, setSearchActorValue] = React.useState<string>("");
             const [searchActorСhoice, setSearchActorСhoice] = React.useState<IPersonFinded>({ personId: -1, nameRu: "" });
+            const [activeSorting, setActiveSorting] = React.useState<string>("nameRu")
             return (
                 <MemoryRouter>
                     <AutoContext.Provider value={{
@@ -33,6 +34,8 @@ describe("Movies component tests", () => {
                         setRangeValue,
                         evaluationsValue,
                         setEvaluationsValue,
+                        activeSorting,
+                        setActiveSorting,
                         searchDirectorValue,
                         setSearchDirectorValue,
                         searchDirectorСhoice,

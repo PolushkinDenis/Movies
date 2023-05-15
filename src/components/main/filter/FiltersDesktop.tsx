@@ -36,7 +36,8 @@ function FiltersDesktop({
     setRangeValue,
     evaluationsValue,
     setEvaluationsValue,
-    //
+    activeSorting,
+    setActiveSorting,
     searchDirectorValue,
     setSearchDirectorValue,
     searchDirectorСhoice,
@@ -85,11 +86,11 @@ function FiltersDesktop({
   }
 
   useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice));
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, activeSorting));
   }, [debouncedRangeValue]);
 
   useEffect(() => {
-    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice));
+    dispatch(fetchMovies(activeGenres, activeCountries, rangeValue, evaluationsValue, searchDirectorСhoice, searchActorСhoice, activeSorting));
   }, [debouncedEvaluationsValue]);
 
   useEffect(() => {

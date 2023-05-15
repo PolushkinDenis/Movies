@@ -12,7 +12,8 @@ interface typeAutoContext {
   setRangeValue: React.Dispatch<React.SetStateAction<number>>;
   evaluationsValue: number;
   setEvaluationsValue: React.Dispatch<React.SetStateAction<number>>;
-
+  activeSorting: string,
+  setActiveSorting: React.Dispatch<React.SetStateAction<string>>;
   searchDirectorValue: string;
   setSearchDirectorValue: React.Dispatch<React.SetStateAction<string>>;
   searchDirectorСhoice: IPersonFinded;
@@ -32,7 +33,7 @@ export default function ContextFc({ children }: any) {
   const [activeCountries, setActiveCountries] = React.useState<ICountry[]>([]);
   const [rangeValue, setRangeValue] = React.useState<number>(7.5);
   const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
-  //
+  const [activeSorting, setActiveSorting] = React.useState<string>("nameRu")
   const [searchDirectorValue, setSearchDirectorValue] =
     React.useState<string>("");
   const [searchDirectorСhoice, setSearchDirectorСhoice] =
@@ -52,7 +53,8 @@ export default function ContextFc({ children }: any) {
         setRangeValue,
         evaluationsValue,
         setEvaluationsValue,
-        //
+        activeSorting,
+        setActiveSorting,
         searchDirectorValue,
         setSearchDirectorValue,
         searchDirectorСhoice,

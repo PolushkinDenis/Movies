@@ -22,9 +22,11 @@ type IParams = {
 const Person: FC = () => {
   const navigate = useNavigate();
   const { name } = useParams<IParams>()
+  console.log(name)
   const personId = moviesAPI.useGetPersonIdByNameQuery(name).data?.rows[0]
+  console.log(personId)
   const { data: person } = moviesAPI.useGetPersonByIdQuery(Number(personId?.personId))
-
+  console.log(person)
   const personInfo = (
     <div className="person__gradient">
       <div className="person__gradient-inner">
@@ -80,14 +82,14 @@ const Person: FC = () => {
           <span>{person?.films.length} фильмов</span>
         </p>
         <div>
-          {person && person?.films.map((film) => (
+          {person && person.films && person?.films?.map((film) => (
             <PersonMovieCard
-              image={film[0].posterUrlPreview}
-              year={film[0].year}
-              movieName={film[0].nameRu}
-              movieId={film[0].id}
-              rating={film[0].ratingKinopoisk}
-              key={film[0].id}
+              image={film.posterUrlPreview}
+              year={film.year}
+              movieName={film.nameRu}
+              movieId={film.kinopoiskId}
+              rating={film.ratingKinopoisk}
+              key={film.kinopoiskId}
             />
           ))}
         </div>

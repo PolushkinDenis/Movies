@@ -1,28 +1,52 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import "./Sorting.scss";
 import { BiMenuAltRight } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
+import { AutoContext } from "../../../context";
+
 interface TypeSorting {
   clickToggleSorting: boolean;
   setClickToggleSorting: React.Dispatch<React.SetStateAction<boolean>>;
 }
+interface SortArrType {
+  title: string,
+  value: string
+}
 const sortArr = [
-  "По количсетсву оценок на кинопоиске",
-  "По рейтингу",
-  "По дате выхода (сначала свежие)",
-  "По алфавиту",
+  {title: "По количсетсву оценок на кинопоиске", value: "ratingKinopoiskVoteCount"},
+  {title: "По рейтингу", value: "ratingKinopoisk"},
+  {title: "По дате выхода (сначала свежие)", value: "year"},
+  {title: "По алфавиту", value: "nameRu"},
 ];
 
 function Sorting({ clickToggleSorting, setClickToggleSorting }: TypeSorting) {
   const [activeFilter, setActiveFilter] = React.useState<string>(
     "По количсетсву оценок на кинопоиске"
   );
+  const {
+    activeSorting,
+    setActiveSorting,
+  } = useContext(AutoContext);
+
   function toggleSorting() {
     setClickToggleSorting(!clickToggleSorting);
   }
-  function clickItemSorting(item: string) {
-    setActiveFilter(item);
+  function clickItemSorting(item: SortArrType) {
+    setActiveFilter(item.title);
+    setActiveSorting(item.value)
   }
+  useEffect(() => {
+    if(activeSorting === "") {
+      clickItemSorting({title: "По количсетсву оценок на кинопоиске", value: "ratingKinopoiskVoteCount"})
+    }
+    else {
+      const item = {
+        title: sortArr.filter(arr => arr.value === activeSorting)[0].title,
+        value: activeSorting 
+      }
+      clickItemSorting(item)
+    }
+  }, [])
   return (
     <section className="pageSection catalogControlPanel__pageSection">
       <div className="catalogControlPanel genre__catalogControlPanel">
@@ -51,13 +75,13 @@ function Sorting({ clickToggleSorting, setClickToggleSorting }: TypeSorting) {
                   onClick={() => clickItemSorting(item)}
                   key={item + "-" + index}
                   className={
-                    activeFilter === item
+                    activeFilter === item.title
                       ? "nbl-dropdown__item nbl-dropdown__item_selected"
                       : "nbl-dropdown__item"
                   }
                 >
                   <div className="nbl-dropdown__itemStripe"></div>
-                  <div className="nbl-dropdown__itemText">{item}</div>
+                  <div className="nbl-dropdown__itemText">{item.title}</div>
                 </div>
               );
             })}
