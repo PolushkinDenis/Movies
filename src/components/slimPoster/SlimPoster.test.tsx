@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import SlimPoster from './SlimPoster';
 import { formatFilmLength } from '../../helpers/formatFilmLength';
+
 const testData = {
     "id": 1,
     "kinopoiskId": 1112447,
