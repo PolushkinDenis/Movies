@@ -89,7 +89,6 @@ const NewMoviesSlider: FC = () => {
 
   useEffect(() => {
     if (newMoviesRedux.length < 4 && newMoviesRedux.length === 0) {
-      console.log("asa")
       dispach(fetchNewMovies("movies/filters?size=5&countryId=1&year=2022", "Российские новинки"));
       dispach(
         fetchNewMovies(

@@ -33,7 +33,7 @@ export default function ContextFc({ children }: any) {
   const [activeCountries, setActiveCountries] = React.useState<ICountry[]>([]);
   const [rangeValue, setRangeValue] = React.useState<number>(7.5);
   const [evaluationsValue, setEvaluationsValue] = React.useState<number>(0);
-  const [activeSorting, setActiveSorting] = React.useState<string>("nameRu")
+  const [activeSorting, setActiveSorting] = React.useState<string>("ratingKinopoiskVoteCount")
   const [searchDirectorValue, setSearchDirectorValue] =
     React.useState<string>("");
   const [searchDirectorСhoice, setSearchDirectorСhoice] =
