@@ -43,6 +43,7 @@ function Movies() {
     searchActorСhoice,
     setSearchActorСhoice,
   } = useContext(AutoContext);
+  console.log(activeCountries)
 
   const dispatch = useAppDispatch();
   const { movies, isLoading } = useAppSelector((state) => state.moviesSlice);
@@ -164,6 +165,7 @@ function Movies() {
 
   //Translation
   const { t } = useTranslation();
+
 
   return (
     <div>

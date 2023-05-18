@@ -58,20 +58,21 @@ const newFilmsData = [
 interface INewFilmsCollection {
   title: string,
   href: string,
-  genreId: number;
-  genreNameRu: string;
-  genreNameEng: string;
-  countryId: number,
-  countryNameRu: string,
-  countryNameEng: string,
+  genreId?: number;
+  genreNameRu?: string;
+  genreNameEng?: string;
+  countryId?: number,
+  countryNameRu?: string,
+  countryNameEng?: string,
 }
 
 const newFilmsCollection: INewFilmsCollection[] = [
-  { title: "Российские новинки", href: "/movies/Russia", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia"},
-  { title: "Зарубежные новинки", href: "/movies/USA", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia" },
-  { title: "Новые комедии", href: "/movies/comedy", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia"},
+  //   { title: "Российские новинки", href: "/movies/Russia", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia"},
+  { title: "Российские новинки", href: "/movies/Russia", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia"},
+  { title: "Зарубежные новинки", href: "/movies/USA", countryId:11, countryNameRu: "США",  countryNameEng: "USA"},
+  { title: "Новые комедии", href: "/movies/comedy", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy"},
   { title: "Новые российские комедии", href: "/movies/comedy/Russia", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia" },
-  { title: "Лучшие новинки", href: "/movies/comedy", genreId: 2, genreNameRu: "комедия", genreNameEng: "comedy", countryId:1, countryNameRu: "Россия",  countryNameEng: "Russia" },
+  { title: "Лучшие новинки", href: "/movies/comedy"},
 ];
 
 const NewMoviesSlider: FC = () => {
@@ -84,32 +85,46 @@ const NewMoviesSlider: FC = () => {
   const {
     setActiveGenres,
     setActiveCountries,
-  
+    setActiveSorting,  
   } = useContext(AutoContext);
 
   useEffect(() => {
     if (newMoviesRedux.length < 4 && newMoviesRedux.length === 0) {
-      dispach(fetchNewMovies("movies/filters?size=5&countryId=1&year=2022", "Российские новинки"));
+      dispach(fetchNewMovies("movies/filters?size=5&countryId=1&ratingKinopoisk=7.5&ratingKinopoiskVoteCount=0&orderBy=year", "Российские новинки"));
       dispach(
         fetchNewMovies(
-          "movies/filters?size=5&countryId=6&countryId=7&countryId=11&year=2022", "Зарубежные новинки"
+          "movies/filters?size=5&countryId=11&ratingKinopoisk=7.5&ratingKinopoiskVoteCount=0&orderBy=year", "Зарубежные новинки"
         )
       );
-      dispach(fetchNewMovies("movies/filters?size=5&genreId=2&year=2022", "Новые комедии"));
+      dispach(fetchNewMovies("movies/filters?size=5&genreId=2&ratingKinopoisk=7.5&ratingKinopoiskVoteCount=0&orderBy=year", "Новые комедии"));
       dispach(
-        fetchNewMovies("movies/filters?size=5&genreId=2&countryId=1&year=2022", "Новые российские комедии")
+        fetchNewMovies("movies/filters?size=5&genreId=2&countryId=1&ratingKinopoisk=7.5&ratingKinopoiskVoteCount=0&orderBy=year", "Новые российские комедии")
       );
       dispach(
         fetchNewMovies(
-          "movies/filters?size=5&year=2023&orderBy=ratingKinopoisk", "Лучшие новинки"
+          "movies/filters?size=5&ratingKinopoisk=7.5&ratingKinopoiskVoteCount=0&orderBy=year", "Лучшие новинки"
         )
       );
     }
   }, []);
 
   const showСompilation = (collection: INewFilmsCollection) => {
-    setActiveGenres([{ id: collection.genreId, genreNameRu: collection.genreNameRu, genreNameEng: collection.genreNameEng, createdAt: "", updatedAt: "" }])
-    // setActiveCountries([{}])
+    console.log(collection)
+    if(collection.genreId && collection.genreNameRu && collection.genreNameEng && collection.countryId && collection.countryNameRu && collection.countryNameEng) {
+      setActiveGenres([{ id: collection.genreId, genreNameRu: collection.genreNameRu, genreNameEng: collection.genreNameEng, createdAt: "", updatedAt: "" }])
+      setActiveCountries([{id: collection.countryId, countryNameRu: collection.countryNameRu, countryNameEng: collection.countryNameEng}])
+      setActiveSorting("year")
+    }
+    else if(collection.genreId && collection.genreNameRu && collection.genreNameEng) {
+      setActiveCountries([])
+      setActiveGenres([{ id: collection.genreId, genreNameRu: collection.genreNameRu, genreNameEng: collection.genreNameEng, createdAt: "", updatedAt: "" }])
+      setActiveSorting("year")
+    }
+    else if(collection.countryId && collection.countryNameRu && collection.countryNameEng) {
+      setActiveGenres([])
+      setActiveCountries([{id: collection.countryId, countryNameRu: collection.countryNameRu, countryNameEng: collection.countryNameEng}])
+      setActiveSorting("year")
+    }
     goTransitionsPage("/movies/all");
   }
 
@@ -117,7 +132,6 @@ const NewMoviesSlider: FC = () => {
     setArrMovies(newMoviesRedux);
   }, [newMoviesRedux]);
 
-  // console.log(newMoviesRedux)
 
   return (
     <Swiper
@@ -151,7 +165,7 @@ const NewMoviesSlider: FC = () => {
             <div className="slick__link">
               <div className="slick-slide">
                 <div className="nbl-poster">
-                  <Link to="/movies/all" onClick={e => showСompilation(newFilmsCollection[index])}>
+                  <Link to="/movies/all" onClick={e => showСompilation( newFilmsCollection.filter(tit => tit.title === film.title)[0])}>
                     <div className="nbl-poster__fon">
                       <div className="nms-poster__imageWrapper">
                         <div className="main-img">
