@@ -1,4 +1,5 @@
-// 
+@import '../../scss/mixins';
+
 .headerDropdownBody {
     --menuTransition: 250ms;
     position: absolute;
@@ -84,8 +85,7 @@
         grid-template-areas:
             "genres genres countries a"
             "genres genres years a"
-            "test test test test"
-        ;
+            "test test test test";
 
         ul {
             li {
@@ -124,7 +124,8 @@
 .box-genres {
     grid-area: genres;
 
-    &__title {}
+    &__title {
+    }
 
     &__lists {
         -webkit-columns: 2;
@@ -139,28 +140,35 @@
         height: 304px;
     }
 
-    &__item {}
+    &__item {
+    }
 }
 
 .box-countries {
     grid-area: countries;
 
-    &__title {}
+    &__title {
+    }
 
-    &__lists {}
+    &__lists {
+    }
 
-    &__item {}
+    &__item {
+    }
 }
 
 .box-years {
     margin-top: 24px;
     grid-area: years;
 
-    &__title {}
+    &__title {
+    }
 
-    &__lists {}
+    &__lists {
+    }
 
-    &__item {}
+    &__item {
+    }
 }
 
 //плашка
@@ -240,10 +248,139 @@
     &__text {
         text-align: center;
         color: #A5A1B2;
-        font-size: 15px;
-        line-height: 20px;
-        font-weight: 400;
-        font-style: normal;
-        margin-top: 28px;
+
+        ul {
+            li {
+                font-size: 15px;
+                line-height: 20px;
+                font-weight: 400;
+                font-style: normal;
+                color: rgba(255, 255, 255, .48);
+                cursor: pointer;
+                -webkit-transition-duration: 80ms;
+                -o-transition-duration: 80ms;
+                transition-duration: 80ms;
+
+                &:hover {
+                    color: rgba(255, 255, 255, 1);
+                }
+            }
+
+            li:not(:first-child) {
+                margin-top: 8px;
+            }
+        }
     }
+
+    &__flex {
+        display: flex;
+    }
+
+    &__flex-justify {
+        justify-content: space-between;
+    }
+
+    &__flex-stretch {
+        align-items: stretch;
+        flex-wrap: wrap;
+
+        @include large {
+            justify-content: space-between;
+        }
+    }
+
+    &__profile-box1 {
+        width: 67%;
+
+        @include large {
+            height: 20rem;
+            overflow-y: scroll;
+        }
+
+        @include medium {
+            width: 48%;
+        }
+    }
+
+    &__profile-box2 {
+        width: 28%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include medium {
+            width: 48%;
+        }
+
+        & a {
+            color: rgba(255, 255, 255, 0.48);
+
+            &:hover {
+                color: #ffffff;
+            }
+        }
+
+        & p {
+            margin-top: 15px;
+        }
+    }
+
+    &__profile-btn {
+        font-size: 16px;
+        padding: 20px 0 !important;
+        margin-bottom: 20px;
+
+        @include large {
+            font-size: 15px;
+        }
+
+        @include medium {
+            font-size: 14px;
+        }
+
+        @include small {
+            font-size: 12px;
+        }
+
+        & a {
+            color: #ffffff !important;
+        }
+    }
+}
+
+.option {
+    border-radius: 8px;
+    background-color: #27223a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    width: 24%;
+    margin: 0 5px 20px 0;
+
+    @include large {
+        width: 32%;
+        margin-right: 0;
+    }
+
+    @include medium {
+        width: 48%;
+    }
+
+    @include small {
+        width: 99%;
+    }
+
+    &:hover {
+        background-color: #373454;
+    }
+
+    & p {
+        margin-top: 30px;
+    }
+}
+
+.divider {
+    background-color: rgba(255, 255, 255, .16);
+    width: 1px;
 }
